@@ -1,7 +1,8 @@
 git clone ...
 
 lalu:
-1. npm install
+1. composer install
+2. npm install
 
 untuk run:
 1. npm run dev
