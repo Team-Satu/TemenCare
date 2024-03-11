@@ -18,7 +18,7 @@
         Saya Absen:
     </h1>
     <ul>
-        <li class="text-green-950 text-xl">Alfian</li>
+        <li class="text-green-950 text-xl">Alfian Absen</li>
         {{-- Absen masing-masing --}}
     </ul>
 </body>
