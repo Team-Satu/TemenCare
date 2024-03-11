@@ -19,6 +19,7 @@
     </h1>
     <ul>
         <li class="text-green-950 text-xl">Alfian Absen</li>
+        <li class="text-green-950 text-xl">Insan Absen</li>
         {{-- Absen masing-masing --}}
     </ul>
 </body>
