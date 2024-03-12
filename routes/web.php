@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginIgracias;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Login user
+Route::get('/login', function () {
+    return view('login-igracias');
+});
+Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
