@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RequestIgracias;
 
@@ -61,7 +63,66 @@ class LoginIgracias extends Controller
         $pageId = trim($pageId);
         $imageUrl = trim(explode('"', explode('<img class="" src="', $user)[1])[0]);
 
-        error_log($fullName);
+        // Successfully login
+        if ($pageId && $nim) {
+            $countUser = User::where("email", $email)->count();
 
+            // Account existing
+            if ($countUser) {
+                // Update account
+                Accounts::where("email", $email)->update([
+                    "name" => $fullName,
+                    "email" => $email,
+                    "nim" => $nim,
+                    "username" => $username,
+                    "class" => $class,
+                    "major" => $major,
+                    "lecture" => $lecture,
+                    "type" => $type,
+                    "page_id" => $pageId,
+                    "image_url" => $imageUrl,
+                ]);
+
+                // Update Users
+                User::where("email", $email)->update([
+                    'name' => $fullName,
+                    'email' => $email,
+                ]);
+            } else {
+                // Create user data
+                User::create([
+                    'name' => $fullName,
+                    'email' => $email,
+                    'password' => $username,
+                ]);
+
+                // Create account data
+                Accounts::create([
+                    "name" => $fullName,
+                    "email" => $email,
+                    "nim" => $nim,
+                    "username" => $username,
+                    "class" => $class,
+                    "major" => $major,
+                    "lecture" => $lecture,
+                    "type" => $type,
+                    "page_id" => $pageId,
+                    "image_url" => $imageUrl,
+                ]);
+            }
+
+            $user = User::where("email", $email)->first();
+
+            $token = $user->createToken("temen_token");
+            $plainTextToken = $token->plainTextToken;
+            $accessToken = $token->accessToken;
+
+            error_log($plainTextToken);
+            error_log($accessToken);
+
+            return $user;
+        } else {
+            return response(false, 402);
+        }
     }
 }
