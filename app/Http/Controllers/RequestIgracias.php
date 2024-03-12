@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 class RequestIgracias extends Controller
 {
-    public function request($endpoint = "", $type = "GET", $cookies, $postData = "")
+    public function request($endpoint = "/", $type = "GET", $cookies = "", $postData = "")
     {
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL, 'https://igracias.telkomuniversity.ac.id/' . $endpoint);
+        curl_setopt($ch, CURLOPT_URL, 'https://igracias.telkomuniversity.ac.id' . $endpoint);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $type);
 
