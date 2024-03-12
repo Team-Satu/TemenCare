@@ -18,8 +18,11 @@
         Saya Absen:
     </h1>
     <ul>
+        <li class="text-green-950 text-xl">Holy Absen</li>
         <li class="text-green-950 text-xl">Alfian Absen</li>
         <li class="text-green-950 text-xl">Insan Absen</li>
+        <li class="text-green-950 text-xl">Windy Absen</li>
+        <li class="text-green-950 text-xl">Sabitha Absen</li>
         {{-- Absen masing-masing --}}
     </ul>
 </body>
