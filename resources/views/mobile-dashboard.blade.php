@@ -26,8 +26,21 @@
                 <h1 class="poppins-medium tracking-wide text-white text-lg">Bagaimana Kondisimu Hari ini?</h1>
             </section>
 
+            {{-- Main --}}
             <div class="bg-white rounded-t-xl w-full h-full -mt-2">
-                
+                <div class="rounded-xl w-full bg-white shadow-lg p-7 justify-center items-center">
+                    <h1 class="text-center poppins-semibold">Layanan Temen Care</h1>
+                    <div class="mt-6 grid grid-cols-4 w-full">
+                        <div class="col-span-1 space-y-1 flex-col items-center flex">
+                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
+                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
+                        </div>
+                        <div class="col-span-1"></div>
+                        <div class="col-span-1"></div>
+                        <div class="col-span-1"></div>
+                        <div class="col-span-1"></div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
