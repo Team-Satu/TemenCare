@@ -2,7 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    {{-- @googlefonts('poppins') --}}
     @vite('resources/css/app.css')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,8 +70,14 @@
                 <div class="px-6 my-6">
                     <h2 class="text-gray-800 text-base poppins-medium leading-normal tracking-wide">Psikolog kami
                         akan setia membantu</h2>
-                    <p class="text-gray-800 text-xs poppins-reguler leading-normal tracking-wide">Bagi mereka yang butuh
+                    <p class="text-gray-500 text-xs poppins-reguler leading-normal tracking-wide">Bagi mereka yang butuh
                         pertolongan dengan segera.</p>
+
+                    <div>
+                        <div class="w-[165px]">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
