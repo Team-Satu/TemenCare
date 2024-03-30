@@ -2,30 +2,33 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @googlefonts
+    {{-- @googlefonts('poppins') --}}
     @vite('resources/css/app.css')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Temen Care</title>
+
+    {{-- Fonts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body class="bg-gray-100">
     <div class="max-w-md mx-auto bg-green-50">
         <!-- Content -->
-        <main class="bg-white h-screen">
-            <section class="w-full bg-gradient-to-r from-blue-400 to-blue-200 pt-16 px-6">
-                <h1 class="font-semibold text-white text-xl">Halo Holy!</h1>
-                <h1 class="font-medium text-white text-lg">Bagaimana Kondisimu Hari ini ?</h1>
+        <main class="bg-white h-screen flex flex-col">
+            <section class="w-full bg-gradient-to-r from-blue-400 to-blue-200 pt-16 pb-7 px-6 space-y-[6px]">
+                <h1 class="poppins-semibold text-white text-xl">Halo Holy!</h1>
+                <h1 class="poppins-medium tracking-wide text-white text-lg">Bagaimana Kondisimu Hari ini?</h1>
             </section>
 
-            <div class="bg-gradient-to-r from-green-100 to-green-900 bg-white shadow-lg rounded-lg p-6 w-44 h-44">
+            <div class="bg-white rounded-t-xl w-full h-full -mt-2">
+                
             </div>
-            <!-- <section class="bg-white shadow-md rounded-md p-4">
-                <h2 class="text-lg font-semibold mb-2">Content Section</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur felis sit amet lorem
-                    consequat, id dictum mi interdum.</p>
-            </section> -->
         </main>
     </div>
 </body>
