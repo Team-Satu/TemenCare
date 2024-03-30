@@ -100,6 +100,7 @@
                     </div>
                 </div>
             </div>
+            <x-bottom-menu></x-bottom-menu>
         </main>
     </div>
 </body>
