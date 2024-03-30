@@ -28,7 +28,7 @@
 
             {{-- Main --}}
             <div class="bg-white rounded-t-3xl w-full h-full -mt-6">
-                <div class="rounded-3xl w-full bg-white shadow-lg p-7 justify-center items-center">
+                <div class="rounded-3xl w-full bg-white shadow-md p-7 justify-center items-center">
                     <div class="text-center">
                         <span
                             class="text-neutral-600 text-lg font-semibold font-['Poppins'] capitalize leading-normal tracking-wide">Layanan
