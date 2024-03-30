@@ -18,6 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Daftar Fitur Kenalan
+Route::get('/DaftarKenalan', function () {
+    return view('mobile-daftar-fitur-kenalan');
+});
+Route::post('/DaftarKenalan', [DaftarKenalan::class, 'mobile-daftar-fitur-kenalan']);
+
 // Login user
 Route::get('/login', function () {
     return view('login-igracias');
