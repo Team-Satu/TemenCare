@@ -21,25 +21,58 @@
     <div class="max-w-md mx-auto bg-green-50">
         <!-- Content -->
         <main class="bg-white h-screen flex flex-col">
-            <section class="w-full bg-gradient-to-r from-blue-400 to-blue-200 pt-16 pb-7 px-6 space-y-[6px]">
+            <section class="w-full bg-gradient-to-r from-blue-400 to-blue-200 pt-14 pb-10 px-6 space-y-[6px]">
                 <h1 class="poppins-semibold text-white text-xl">Halo Holy!</h1>
                 <h1 class="poppins-medium tracking-wide text-white text-lg">Bagaimana Kondisimu Hari ini?</h1>
             </section>
 
             {{-- Main --}}
-            <div class="bg-white rounded-t-xl w-full h-full -mt-2">
-                <div class="rounded-xl w-full bg-white shadow-lg p-7 justify-center items-center">
-                    <h1 class="text-center poppins-semibold">Layanan Temen Care</h1>
-                    <div class="mt-6 grid grid-cols-4 w-full">
+            <div class="bg-white rounded-t-3xl w-full h-full -mt-6">
+                <div class="rounded-3xl w-full bg-white shadow-lg p-7 justify-center items-center">
+                    <div class="text-center">
+                        <span
+                            class="text-neutral-600 text-lg font-semibold font-['Poppins'] capitalize leading-normal tracking-wide">Layanan
+                        </span>
+                        <span
+                            class="text-blue-300 text-lg font-bold font-['Poppins'] capitalize leading-normal tracking-wide">Temen</span>
+                        <span
+                            class="text-red-400 text-lg font-bold font-['Poppins'] capitalize leading-normal tracking-wide">
+                            Care</span>
+                    </div>
+                    <div class="mt-6 grid grid-cols-4 w-full gap-6">
                         <div class="col-span-1 space-y-1 flex-col items-center flex">
                             <div class="h-6 w-6 border border-black bg-yellow-200"></div>
                             <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
                         </div>
-                        <div class="col-span-1"></div>
-                        <div class="col-span-1"></div>
-                        <div class="col-span-1"></div>
-                        <div class="col-span-1"></div>
+                        <div class="col-span-1 space-y-1 flex-col items-center flex">
+                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
+                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
+                        </div>
+                        <div class="col-span-1 space-y-1 flex-col items-center flex">
+                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
+                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
+                        </div>
+                        <div class="col-span-1 space-y-1 flex-col items-center flex">
+                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
+                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
+                        </div>
+                        <div class="col-span-1 space-y-1 flex-col items-center flex">
+                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
+                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
+                        </div>
+                        <div class="col-span-1 space-y-1 flex-col items-center flex">
+                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
+                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
+                        </div>
                     </div>
+                </div>
+
+                {{-- Main component --}}
+                <div class="px-6 my-6">
+                    <h2 class="text-gray-800 text-base poppins-medium leading-normal tracking-wide">Psikolog kami
+                        akan setia membantu</h2>
+                    <p class="text-gray-800 text-xs poppins-reguler leading-normal tracking-wide">Bagi mereka yang butuh
+                        pertolongan dengan segera.</p>
                 </div>
             </div>
         </main>
