@@ -23,7 +23,7 @@ Route::get('/template', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('mobile-dashboard');
+    return view('mobile-dashboard', ["name" => "Howly"]);
 });
 
 // Login user

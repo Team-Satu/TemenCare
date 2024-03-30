@@ -21,7 +21,7 @@
         <!-- Content -->
         <main class="bg-white h-screen flex flex-col">
             <section class="w-full bg-gradient-to-r from-blue-400 to-blue-200 pt-14 pb-10 px-6 space-y-[6px]">
-                <h1 class="poppins-semibold text-white text-xl">Halo Holy!</h1>
+                <h1 class="poppins-semibold text-white text-xl">Halo {{$name}}!</h1>
                 <h1 class="poppins-medium tracking-wide text-white text-lg">Bagaimana Kondisimu Hari ini?</h1>
             </section>
 
