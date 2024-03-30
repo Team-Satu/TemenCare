@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-gray-100">
-    <div class="max-w-md mx-auto">
+    <div class="max-w-md mx-auto h-screen">
         <!-- Header -->
         <header class="bg-blue-500 text-white text-center py-4">
             <h1 class="text-xl font-bold">Mobile View Header</h1>

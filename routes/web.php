@@ -22,6 +22,10 @@ Route::get('/template', function () {
     return view('template-mobile-view');
 });
 
+Route::get('/dashboard', function () {
+    return view('mobile-dashboard');
+});
+
 // Login user
 Route::get('/login', function () {
     return view('login-igracias');
