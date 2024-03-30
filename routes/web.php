@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/template', function () {
+    return view('template-mobile-view');
+});
+
 // Login user
 Route::get('/login', function () {
     return view('login-igracias');
