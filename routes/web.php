@@ -24,6 +24,12 @@ Route::get('/DaftarKenalan', function () {
 });
 Route::post('/DaftarKenalan', [DaftarKenalan::class, 'mobile-daftar-fitur-kenalan']);
 
+//Temporari Route
+Route::get('/PopUpKenalan', function () {
+    return view('mobile-pop-up-kenalan');
+});
+Route::post('/PopUpKenalan', [DaftarKenalan::class, 'mobile-pop-up-kenalan']);
+
 // Login user
 Route::get('/login', function () {
     return view('login-igracias');

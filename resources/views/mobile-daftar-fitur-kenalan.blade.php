@@ -21,88 +21,41 @@
     <div class="max-w-md mx-auto bg-green-50">
         <!-- Content -->
         <main class="bg-white h-screen flex flex-col">
-            <x-status-bar-phone></x-status-bar-phone>
-            <section class="w-full bg-gradient-to-r from-blue-400 to-blue-200 pt-14 pb-10 px-6 space-y-[6px]">
-                <h1 class="poppins-semibold text-white text-xl">Halo Insan</h1>
-                <h1 class="poppins-medium tracking-wide text-white text-lg">Bagaimana Kondisimu Hari ini?</h1>
-            </section>
-
-            {{-- Main --}}
-            <div class="bg-white rounded-t-3xl w-full h-full -mt-6">
-                <div class="rounded-3xl w-full bg-white shadow-md p-7 justify-center items-center">
-                    <div class="text-center">
-                        <span
-                            class="text-neutral-600 text-lg font-semibold font-['Poppins'] capitalize leading-normal tracking-wide">Layanan
-                        </span>
-                        <span
-                            class="text-blue-300 text-lg font-bold font-['Poppins'] capitalize leading-normal tracking-wide">Temen</span>
-                        <span
-                            class="text-red-400 text-lg font-bold font-['Poppins'] capitalize leading-normal tracking-wide">
-                            Care</span>
-                    </div>
-                    <div class="mt-6 grid grid-cols-4 w-full gap-6">
-                        <div class="col-span-1 space-y-1 flex-col items-center flex">
-                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
-                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
-                        </div>
-                        <div class="col-span-1 space-y-1 flex-col items-center flex">
-                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
-                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
-                        </div>
-                        <div class="col-span-1 space-y-1 flex-col items-center flex">
-                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
-                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
-                        </div>
-                        <div class="col-span-1 space-y-1 flex-col items-center flex">
-                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
-                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
-                        </div>
-                        <div class="col-span-1 space-y-1 flex-col items-center flex">
-                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
-                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
-                        </div>
-                        <div class="col-span-1 space-y-1 flex-col items-center flex">
-                            <div class="h-6 w-6 border border-black bg-yellow-200"></div>
-                            <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Main component --}}
-                <div class="my-6">
-                    <h2 class="text-gray-800 text-base poppins-medium leading-normal tracking-wide px-6">Psikolog kami
-                        akan setia membantu</h2>
-                    <p class="text-gray-500 text-xs poppins-reguler leading-normal tracking-wide px-6">Bagi mereka yang butuh
-                        pertolongan dengan segera.</p>
-
-                    <div class="overflow-x-auto flex">
-                        <div class="w-6 flex-none"></div>
-                        <div class="w-48 border border-gray-200 rounded-2xl mt-6 flex-none mr-6">
-                            <div
-                                class="rounded-t-2xl h-36 w-full bg-[url(https://images.unsplash.com/photo-1651008376811-b90baee60c1f?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-cover">
-                            </div>
-                            <div class="bg-white w-full rounded-b-2xl py-2">
-                                <h1
-                                    class="text-center text-sky-600 text-xs font-semibold font-['Poppins'] capitalize leading-normal tracking-wide">
-                                    Insan Daud, M. Psi. </h1>
-                                <div
-                                    class="text-center text-neutral-600 text-[10px] px-2 font-normal font-['Poppins'] capitalize tracking-wide my-2">
-                                    Psikolog Industri & Organisasi <br />Spesialis Karir</div>
-
-                                {{-- Loop --}}
-                                <div class="px-2 my-1">
-                                    {{-- Each Component --}}
-                                    <div
-                                        class="px-[4px] py-[1px] bg-slate-50 rounded-3xl border border-sky-600 border-opacity-50 flex-col justify-center items-center inline-flex text-sky-600 text-[10px] font-medium font-['Poppins'] capitalize leading-normal tracking-wide">
-                                        Pekerjaan
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="w-[393px] h-[852px] relative bg-white mx-auto">
+        <x-back-button></x-back-button>
+        <div class="absolute left-[74px] top-[86px] text-center text-neutral-600 text-2xl font-semibold font-['Poppins'] capitalize tracking-wide">Hai, Salam Kenal!</div>
+        <div class="absolute left-0 right-0 top-[327px] inline-flex items-start justify-start flex-col">
+        <div class="flex self-stretch items-start justify-start h-[52px] px-3 ml-1 rounded border border-black border-opacity-25 flex-col">
+                <div class="inline-flex self-stretch py-4 items-center justify-start">
+                    <div class="text-black text-opacity-90 text-xs font-normal font-['Roboto'] leading-tight tracking-wide">081385096058</div>
                 </div>
             </div>
-            <x-bottom-menu></x-bottom-menu>
+            <div class="absolute left-0 bottom-14">
+                <div class="inline-flex items-center justify-start gap-2.5 h-0.5 px-1 bg-white">
+                    <div class="text-black text-opacity-60 text-xs font-normal font-['Roboto'] leading-3 tracking-tight">Nomor Telepon</div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute left-[41px] top-[71px] w-[15px] h-[15px] px-[0.50px] py-0.5 origin-top-left rotate-180 inline-flex items-center justify-center"></div>
+        <div class="absolute left-[131px] top-[133px] w-[130px] h-[130px]">
+            <div class="absolute left-0 top-0 w-[130px] h-[130px] rounded-full bg-zinc-300"></div>
+            <img class="absolute left-[-37px] top-0 w-[181px] h-[154px]" src="https://images.unsplash.com/photo-1711887035871-36bcc533c19c?q=80&w=2237&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+        </div>
+        <button>
+            <div class="absolute left-[212px] top-[426px] w-[148px] h-[34px] bg-blue-300 rounded-[26px] shadow inline-flex items-center justify-center flex-col">
+                <div class="inline-flex items-center justify-center gap-2">
+                <div class="text-white text-xs font-medium font-['Poppins'] capitalize leading-normal tracking-wide text-center">Kirim</div>
+                </div>
+            </div>
+        <button>
+            <div class="absolute left-[33px] top-[426px] w-[148px] h-[34px] bg-red-400 rounded-[26px] shadow inline-flex items-center justify-center flex-col">
+                <div class="inline-flex items-center justify-center gap-2">
+                <div class="text-white text-xs font-medium font-['Poppins'] capitalize leading-normal tracking-wide text-center">Keluar</div>
+                </div>
+            </div>
+        </button>
+        </div>
+        <x-bottom-menu></x-bottom-menu>
         </main>
     </div>
 </body>
