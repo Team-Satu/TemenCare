@@ -31,3 +31,15 @@ Route::get('/login', function () {
     return view('login-igracias');
 });
 Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
+
+// Show lapor all
+Route::get('/Showlapor', function () {
+    return view('mobile-show-lapor-all');
+});
+Route::post('/Showlapor', [Showlapor::class, 'mobile-show-lapor-all']);
+
+// Show lapor all
+Route::get('/Showlaporankamu', function () {
+    return view('mobile-show-laporankamu');
+});
+Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
