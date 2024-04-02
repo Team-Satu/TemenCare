@@ -23,3 +23,8 @@ Route::get('/login', function () {
     return view('login-igracias');
 });
 Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
+
+// Show user profile
+Route::get('/user-profile', function () {
+    return view('mobile-profile');
+});
