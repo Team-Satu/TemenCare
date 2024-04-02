@@ -33,8 +33,8 @@ Route::get('/login', function () {
 Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
 
 // Show lapor all
-Route::get('/Showlapor', function () {
-    return view('mobile-show-lapor-all');
+Route::get('/reports', function () {
+    return view('mobile-reports');
 });
 Route::post('/Showlapor', [Showlapor::class, 'mobile-show-lapor-all']);
 
