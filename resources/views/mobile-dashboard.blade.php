@@ -17,7 +17,7 @@
 </head>
 
 <body class="bg-gray-100">
-    <div class="max-w-md mx-auto bg-green-50">
+    <div class="max-w-md mx-auto bg-green-50 relative">
         <!-- Content -->
         <main class="bg-white h-screen flex flex-col">
             <section class="w-full bg-gradient-to-r from-blue-400 to-blue-200 pt-14 pb-10 px-6 space-y-[6px]">
@@ -67,7 +67,7 @@
                 </div>
 
                 {{-- Main component --}}
-                <div class="my-6">
+                <div class="my-6 pb-20">
                     <h2 class="text-gray-800 text-base poppins-medium leading-normal tracking-wide px-6">Psikolog kami
                         akan setia membantu</h2>
                     <p class="text-gray-500 text-xs poppins-reguler leading-normal tracking-wide px-6">Bagi mereka yang butuh
@@ -100,8 +100,8 @@
                     </div>
                 </div>
             </div>
-            <x-bottom-menu></x-bottom-menu>
         </main>
+        <x-bottom-menu></x-bottom-menu>
     </div>
 </body>
 
