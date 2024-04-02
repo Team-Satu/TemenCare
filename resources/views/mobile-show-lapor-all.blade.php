@@ -209,5 +209,6 @@
     <footer class="text-center text-gray-500 text-sm mt-4">
       <p>&copy; 2024 Mobile View Footer</p>
     </footer>
+    <x-bottom-menu></x-bottom-menu>
 </body>
 </html>
