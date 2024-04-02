@@ -21,7 +21,7 @@
         <!-- Content -->
         <main class="bg-white h-screen flex flex-col">
             <section class="w-full bg-gradient-to-r from-blue-400 to-blue-200 pt-14 pb-10 px-6 space-y-[6px]">
-                <h1 class="poppins-semibold text-white text-xl">Halo {{$name}}!</h1>
+                <h1 class="poppins-semibold text-white text-xl">Halo {{ $name }}!</h1>
                 <h1 class="poppins-medium tracking-wide text-white text-lg">Bagaimana Kondisimu Hari ini?</h1>
             </section>
 
@@ -70,7 +70,8 @@
                 <div class="my-6 pb-20">
                     <h2 class="text-gray-800 text-base poppins-medium leading-normal tracking-wide px-6">Psikolog kami
                         akan setia membantu</h2>
-                    <p class="text-gray-500 text-xs poppins-reguler leading-normal tracking-wide px-6">Bagi mereka yang butuh
+                    <p class="text-gray-500 text-xs poppins-reguler leading-normal tracking-wide px-6">Bagi mereka yang
+                        butuh
                         pertolongan dengan segera.</p>
 
                     <div class="overflow-x-auto flex">
@@ -100,6 +101,10 @@
                     </div>
                 </div>
             </div>
+            {{-- Bottom Menu --}}
+            {{-- <div class="h-4 bg-red-100 ">
+
+            </div> --}}
         </main>
         <x-bottom-menu></x-bottom-menu>
     </div>
