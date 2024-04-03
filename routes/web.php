@@ -41,10 +41,15 @@ Route::get('/user-profile', function () {
 Route::get('/Showlapor', function () {
     return view('mobile-show-lapor-all');
 });
-Route::post('/Showlapor', [Showlapor::class, 'mobile-show-lapor-all']);
 
 // Show lapor all
 Route::get('/Showlaporankamu', function () {
     return view('mobile-show-laporankamu');
 });
+
+// Show articles
+Route::get('/articles', function () {
+    return view('mobile-articles');
+});
+
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
