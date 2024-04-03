@@ -3,6 +3,7 @@
 
 <head>
     @vite('resources/css/app.css')
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,6 +51,7 @@
             </form>
         </main>
     </div>
+    @include('sweetalert::alert')
 </body>
 
 </html>
