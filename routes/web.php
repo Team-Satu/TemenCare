@@ -18,6 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/template', function () {
+    return view('template-mobile-view');
+});
+
+Route::get('/dashboard', function () {
+    return view('mobile-dashboard', ["name" => "Howly"]);
+});
+
 // Login user
 Route::get('/login', function () {
     return view('login-igracias');
@@ -28,3 +36,15 @@ Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
 Route::get('/user-profile', function () {
     return view('mobile-profile');
 });
+
+// Show lapor all
+Route::get('/Showlapor', function () {
+    return view('mobile-show-lapor-all');
+});
+Route::post('/Showlapor', [Showlapor::class, 'mobile-show-lapor-all']);
+
+// Show lapor all
+Route::get('/Showlaporankamu', function () {
+    return view('mobile-show-laporankamu');
+});
+Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
