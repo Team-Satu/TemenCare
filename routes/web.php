@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginIgracias;
+use App\Http\Middleware\EnsureTemenTokenCookieIsValid;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,15 @@ Route::get('/login', function () {
     return view('login-igracias');
 });
 Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
+
+Route::get("/home", function () {
+    $userName = request()->cookie('temen_cookie');
+    return "User Name: $userName";
+});
+
+Route::get("/is-valid", function () {
+    return "Berhasil masuk";
+})->middleware(EnsureTemenTokenCookieIsValid::class);
 
 // Show user profile
 Route::get('/user-profile', function () {

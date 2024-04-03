@@ -6,6 +6,7 @@ use App\Models\Accounts;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RequestIgracias;
+use Illuminate\Support\Facades\Cookie;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginIgracias extends Controller
@@ -127,7 +128,9 @@ class LoginIgracias extends Controller
                 error_log($plainTextToken);
                 error_log($accessToken);
 
-                return $user;
+                $cookie = cookie('temen_cookie', $plainTextToken, 60);
+
+                return response($user)->cookie($cookie);
             } else {
                 Alert::error('Yah', 'Anda gagal masuk');
                 return redirect()->back();
