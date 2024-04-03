@@ -28,14 +28,25 @@
                     <p class="text-center text-neutral-600 text-sm poppins-medium">Senang bertemu kembali!</p>
                 </div>
 
-                <div class="space-y-4 mb-8 mt-16">
-                    <input class="rounded border border-[#C4C4C4] w-full py-4 px-4 poppins-regular"
-                        placeholder="Masukkan Username Igracias Anda" type="text" name="username" />
-                    <input class="rounded border border-[#C4C4C4] w-full py-4 px-4 poppins-regular"
-                        placeholder="Masukkan Password Igracias Anda" type="password" name="password" />
+                <div class="space-y-4 mb-8 mt-16 w-full">
+                    <div class="space-y-2">
+                        <h1
+                            class="text-neutral-600 text-base poppins-regular capitalize leading-normal tracking-wide text-left">
+                            Username</h1>
+                        <input class="rounded border border-[#C4C4C4] w-full py-4 px-4 poppins-regular"
+                            placeholder="Masukkan Username Igracias Anda" type="text" name="username" />
+                    </div>
+                    <div class="space-y-2">
+                        <h1
+                            class="text-neutral-600 text-base poppins-regular capitalize leading-normal tracking-wide text-left">
+                            Password</h1>
+                        <input class="rounded border border-[#C4C4C4] w-full py-4 px-4 poppins-regular"
+                            placeholder="Masukkan Password Igracias Anda" type="password" name="password" />
+                    </div>
                 </div>
 
-                <button class="bg-[#7EBAEB] py-4 w-full text-white poppins-semibold rounded hover:bg-[#65a7dd]">Masuk</button>
+                <button
+                    class="bg-[#7EBAEB] py-4 w-full text-white poppins-semibold rounded hover:bg-[#65a7dd]">Masuk</button>
             </form>
         </main>
     </div>
