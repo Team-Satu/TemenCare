@@ -28,13 +28,13 @@
                 </div>
 
                 <div class="space-y-4 mb-8 mt-16">
-                    <input class="rounded border border-[#C4C4C4] w-full h-10 px-4 poppins-regular"
+                    <input class="rounded border border-[#C4C4C4] w-full py-4 px-4 poppins-regular"
                         placeholder="Masukkan Username Igracias Anda" type="text" name="username" />
-                    <input class="rounded border border-[#C4C4C4] w-full h-10 px-4 poppins-regular"
+                    <input class="rounded border border-[#C4C4C4] w-full py-4 px-4 poppins-regular"
                         placeholder="Masukkan Password Igracias Anda" type="password" name="password" />
                 </div>
 
-                <button class="bg-[#7EBAEB] h-10 w-full text-white poppins-semibold rounded">Masuk</button>
+                <button class="bg-[#7EBAEB] py-4 w-full text-white poppins-semibold rounded">Masuk</button>
             </form>
         </main>
     </div>
