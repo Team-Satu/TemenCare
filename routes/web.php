@@ -32,11 +32,14 @@ Route::get('/DaftarKenalan', function () {
 });
 Route::post('/DaftarKenalan', [DaftarKenalan::class, 'mobile-daftar-fitur-kenalan']);
 
-//Temporari Route
-Route::get('/PopUpKenalan', function () {
-    return view('mobile-pop-up-kenalan');
+// Halaman Kenalan
+Route::get('/Halamankenalan', function () {
+    return view('mobile-halaman-kenalan');
 });
-Route::post('/PopUpKenalan', [DaftarKenalan::class, 'mobile-pop-up-kenalan']);
+
+Route::get('/Kenalankamu', function () {
+    return view('mobile-halaman-kenalankamu');
+});
 
 // Login user
 Route::get('/login', function () {
