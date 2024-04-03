@@ -22,7 +22,8 @@
         <main class="bg-white h-screen flex">
             <form method="POST" action="/login" class="items-center justify-center flex flex-col flex-1 px-6">
                 @csrf
-                <div class="space-y-4">
+                <img src="/img/vector.png" height="59" width="51" />
+                <div class="space-y-4 mt-3">
                     <h1 class="text-neutral-600 text-3xl poppins-semibold text-center">Selamat Datang!</h1>
                     <p class="text-center text-neutral-600 text-sm poppins-medium">Senang bertemu kembali!</p>
                 </div>
@@ -34,7 +35,7 @@
                         placeholder="Masukkan Password Igracias Anda" type="password" name="password" />
                 </div>
 
-                <button class="bg-[#7EBAEB] py-4 w-full text-white poppins-semibold rounded">Masuk</button>
+                <button class="bg-[#7EBAEB] py-4 w-full text-white poppins-semibold rounded hover:bg-[#65a7dd]">Masuk</button>
             </form>
         </main>
     </div>
