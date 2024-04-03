@@ -20,6 +20,11 @@ class LoginIgracias extends Controller
             $username = $credentials['username'];
             $password = $credentials['password'];
 
+            if (empty($username) || empty($password)) {
+                Alert::error('Ishh!', 'Username/passwordnya diisi dong!');
+                return redirect()->back();
+            }
+
             // Igracias Controller
             $requestIgracias = new RequestIgracias();
 
@@ -125,13 +130,10 @@ class LoginIgracias extends Controller
                 return $user;
             } else {
                 Alert::error('Yah', 'Anda gagal masuk');
-                // return response(false, 402);
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
-            Alert::error('Yah', 'Akun Anda tidak ditemukan!')->persistent(true);
-
-            error_log("masuk sini");
+            Alert::error('Yah', 'Akun Anda tidak ditemukan!');
             return redirect()->back();
         }
     }
