@@ -65,6 +65,7 @@ class LoginIgracias extends Controller
             $user = $requestIgracias->request("/index.php?pageid=" . $pageId, "GET", $cookiesString, null);
 
             $nim = trim(explode("<title>", explode('| Telkom University</title>', $user)[0])[1]);
+            error_log($nim);
             $fullName = trim(explode('</h5>', explode('<h5 class="centered" style="margin-bottom:5px !important;">', $user)[1])[0]);
             $email = trim(explode('>', explode('</span>', explode('Email Anda</b></span>', $user)[1])[0])[1]);
             $class = trim(explode('<', explode('Kelas :', $user)[1])[0]);
@@ -74,9 +75,14 @@ class LoginIgracias extends Controller
             $pageId = trim($pageId);
             $imageUrl = trim(explode('"', explode('<img class="" src="', $user)[1])[0]);
 
+            error_log($pageId);
+            error_log($nim);
+
             // Successfully login
             if ($pageId && $nim) {
                 $countUser = User::where("email", $email)->count();
+
+                error_log($countUser);
 
                 // Account existing
                 if ($countUser) {
@@ -100,12 +106,18 @@ class LoginIgracias extends Controller
                         'email' => $email,
                     ]);
                 } else {
+
+                    error_log("trbs");
+
                     // Create user data
-                    User::create([
+                    $user = User::create([
                         'name' => $fullName,
                         'email' => $email,
                         'password' => $username,
+                        'role' => 'user',
                     ]);
+
+                    error_log($user);
 
                     // Create account data
                     Accounts::create([
@@ -121,6 +133,8 @@ class LoginIgracias extends Controller
                         "image_url" => $imageUrl,
                     ]);
                 }
+
+                error_log("sini");
 
                 $user = User::where("email", $email)->first();
 
