@@ -28,6 +28,25 @@ Route::get('/template', function () {
 //     return view('mobile-dashboard', ["name" => "Howly"]);
 // });
 
+// Daftar Fitur Kenalan
+Route::get('/DaftarKenalan', function () {
+    return view('mobile-daftar-fitur-kenalan');
+});
+Route::post('/DaftarKenalan', [DaftarKenalan::class, 'mobile-daftar-fitur-kenalan']);
+
+// Halaman Kenalan
+Route::get('/Halamankenalan', function () {
+    return view('mobile-halaman-kenalan');
+});
+
+Route::get('/Kenalankamu', function () {
+    return view('mobile-halaman-kenalankamu');
+});
+
+// Login user
+Route::get('/login', function () {
+    return view('login-igracias');
+  
 Route::get("/home", function () {
     $userName = request()->cookie('temen_cookie');
     return "User Name: $userName";
@@ -68,8 +87,6 @@ Route::get('/articles', function () {
 });
 
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
-
-
 
 // User Routing - UnAuthenticated
 Route::get('/login', [LoginIgracias::class, 'login']);
