@@ -46,7 +46,8 @@ Route::get('/Kenalankamu', function () {
 // Login user
 Route::get('/login', function () {
     return view('login-igracias');
-  
+});
+
 Route::get("/home", function () {
     $userName = request()->cookie('temen_cookie');
     return "User Name: $userName";
@@ -69,7 +70,7 @@ Route::get('/reports', function () {
     return view('mobile-reports');
 });
 // Show your lapor
-Route::get('/your-reports', function () {
+Route::get('/your reports', function () {
     return view('mobile-your-reports');
 });
 
@@ -86,14 +87,23 @@ Route::get('/articles', function () {
     return view('mobile-articles');
 });
 
+// Show communities
+Route::get('/communities', function () {
+    return view('mobile-communities');
+});
+
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 
 // User Routing - UnAuthenticated
-Route::get('/login', [LoginIgracias::class, 'login']);
+Route::get('/login', [LoginIgracias::class, 'login'])->name("user.login");
 Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
 
 // User Routing - Authenticated
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
+    Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
+    Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
+
+    // Uncomment this if TemenController and isHome method exist and you want to use this route
     // Route::get("/is-home", [TemenController::class, 'isHome']);
-});
+}); 
