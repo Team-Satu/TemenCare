@@ -24,7 +24,7 @@
         <x-back-button></x-back-button>
             <div class="w-[344px] h-[118px] left-[24px] top-[101px] absolute bg-white rounded-[26px] shadow"></div>
             <div class="w-[344px] h-[118px] left-[25px] top-[303px] absolute flex justify-center items-center">
-              KAMU TAKDE KENALAN
+              KAMU TAKDE KENALAN HAHA
             </div>
             <div class="left-[120px] top-[52px] absolute text-neutral-600 text-base font-semibold font-['Poppins'] capitalize leading-normal tracking-wide">Halaman Kenalan</div>
             <div class="w-[102px] h-14 left-[53px] top-[130px] absolute">
