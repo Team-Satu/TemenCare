@@ -19,8 +19,9 @@
             {{-- Main --}}
             <div class="w-full h-screen bg-white relative">
                 <!-- Back Arrow and Title -->
+                <a href="{{ url('/communities') }}">
                     <div class="flex items-center mt-1">
-                        <button type="button" class="fa-solid fa-arrow-left-long text-gray-600 text-xl absolute left-6 top-6"></button>
+                        <button type="button" class="fa-solid fa-arrow-left-long text-gray-600 text-xl absolute left-6 top-6"></button></a>
                         <!-- Community Card -->
                         <div class="bg-white leading-normal tracking-wide pt-14 pb-10 space-y-[6px]">
                             <div class="flex items-center px-2">

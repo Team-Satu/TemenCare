@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginIgracias;
 use App\Http\Controllers\UserController;
+// use App\Http\Controllers\CommunityController;
 use App\Http\Middleware\EnsureTemenTokenCookieIsValid;
 use Illuminate\Support\Facades\Route;
 
@@ -88,11 +89,15 @@ Route::get('/articles', function () {
 });
 
 // Show communities
+// Route::get('/communities', [CommunityController::class, 'index'])
+//      ->name('communities.index');
 Route::get('/communities', function () {
     return view('mobile-communities');
 });
 
 // Show communities detail
+// Route::get('/communities/{community}', [CommunityController::class, 'show'])
+//      ->name('communities.show');
 Route::get('/communities-detail', function () {
     return view('mobile-communities-detail');
 });
