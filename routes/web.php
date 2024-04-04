@@ -46,7 +46,8 @@ Route::get('/Kenalankamu', function () {
 // Login user
 Route::get('/login', function () {
     return view('login-igracias');
-  
+});
+
 Route::get("/home", function () {
     $userName = request()->cookie('temen_cookie');
     return "User Name: $userName";
