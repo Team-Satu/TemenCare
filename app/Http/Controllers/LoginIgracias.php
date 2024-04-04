@@ -10,7 +10,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginIgracias extends Controller
 {
-    //
+    public function login()
+    {
+        return view('login-igracias');
+    }
+
     public function loginIgracias(Request $request)
     {
         try {
@@ -124,7 +128,7 @@ class LoginIgracias extends Controller
                 $plainTextToken = $token->plainTextToken;
                 $cookie = cookie('temen_cookie', $plainTextToken, 60 * 24 * 30);
 
-                return response($user)->cookie($cookie);
+                return redirect(route("user.dashboard"))->cookie($cookie);
             } else {
                 Alert::error('Yah', 'Anda gagal masuk');
                 return redirect()->back();

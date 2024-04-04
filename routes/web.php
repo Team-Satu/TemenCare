@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginIgracias;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureTemenTokenCookieIsValid;
 use Illuminate\Support\Facades\Route;
 
@@ -23,15 +24,9 @@ Route::get('/template', function () {
     return view('template-mobile-view');
 });
 
-Route::get('/dashboard', function () {
-    return view('mobile-dashboard', ["name" => "Howly"]);
-});
-
-// Login user
-Route::get('/login', function () {
-    return view('login-igracias');
-});
-Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
+// Route::get('/dashboard', function () {
+//     return view('mobile-dashboard', ["name" => "Howly"]);
+// });
 
 Route::get("/home", function () {
     $userName = request()->cookie('temen_cookie');
@@ -66,3 +61,15 @@ Route::get('/articles', function () {
 });
 
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
+
+
+
+// User Routing - UnAuthenticated
+Route::get('/login', [LoginIgracias::class, 'login']);
+Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
+
+// User Routing - Authenticated
+Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
+    Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
+    // Route::get("/is-home", [TemenController::class, 'isHome']);
+});
