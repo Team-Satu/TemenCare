@@ -17,50 +17,24 @@ class EnsureTemenTokenCookieIsValid
     public function handle(Request $request, Closure $next): Response
     {
         // Fetch temen_token cookie value
-        $temen_token = $request->cookie('temen_cookie');
-        $token = explode("|", $temen_token)[0];
-
-        if ($temen_token) {
-            $personalAccessToken = PersonalAccessToken::class;
-
-            error_log($temen_token);
-            error_log($token);
-            error_log(hash('sha256', $temen_token));
-            error_log(hash('sha256', $token));
-
-            // // Create a personal access token instance
-            // $accessToken = $personalAccessToken::where('token', hash('sha256', $temen_token))->first();
-            // // $accessToken = $personalAccessToken->findToken($temen_token);
-
-            // error_log("temen_Token");
-            // error_log($accessToken);
-            // error_log($accessToken['name']);
-            // error_log("temen_Token1");
-
-            $accessToken = PersonalAccessToken::findToken($temen_token);
-
-            error_log($accessToken);
-
-            if ($accessToken) {
+        $temenToken = $request->cookie('temen_cookie');
+        
+        if (!empty($temenToken)) {
+            $userToken = PersonalAccessToken::findToken($temenToken);
+            
+            if ($userToken) {
                 // Jika token ditemukan, dapatkan pengguna yang memiliki token tersebut
-                // $user = User::find($accessToken->tokenable_id);
+                $request->attributes->add(['temen_user' => $userToken]);
+                $request->attributes->add(['user_id' => $userToken->tokenable_id]);
+                $request->merge(['user_id', $userToken->tokenable_id]);
 
-                // if ($user) {
-                //     // Jika pengguna ditemukan, lakukan sesuatu
-                //     echo "User with ID $user->id has the token.";
-                // } else {
-                //     // Jika pengguna tidak ditemukan
-                //     echo "User not found for this token.";
-                // }
-                error_log("Token found.");
+                return $next($request);
             } else {
                 // Jika token tidak ditemukan
-                error_log("Token not found.");
+                return redirect('/');
             }
-
-            // return redirect('home');
         }
-
         return $next($request);
+
     }
 }

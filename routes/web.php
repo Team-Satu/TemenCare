@@ -39,7 +39,10 @@ Route::get("/home", function () {
 });
 
 Route::get("/is-valid", function () {
-    return "Berhasil masuk";
+    // $temenUser = request()->attributes->get('temen_user');
+    $userId = request()->attributes->get('user_id');
+
+    return "Berhasil masuk $userId";
 })->middleware(EnsureTemenTokenCookieIsValid::class);
 
 // Show user profile

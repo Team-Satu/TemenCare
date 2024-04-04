@@ -6,7 +6,6 @@ use App\Models\Accounts;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\RequestIgracias;
-use Illuminate\Support\Facades\Cookie;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class LoginIgracias extends Controller
@@ -123,12 +122,7 @@ class LoginIgracias extends Controller
 
                 $token = $user->createToken("temen_token");
                 $plainTextToken = $token->plainTextToken;
-                $accessToken = $token->accessToken;
-
-                error_log($plainTextToken);
-                error_log($accessToken);
-
-                $cookie = cookie('temen_cookie', $plainTextToken, 60);
+                $cookie = cookie('temen_cookie', $plainTextToken, 60 * 24 * 30);
 
                 return response($user)->cookie($cookie);
             } else {
