@@ -103,7 +103,5 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
-
-    // Uncomment this if TemenController and isHome method exist and you want to use this route
     // Route::get("/is-home", [TemenController::class, 'isHome']);
 }); 
