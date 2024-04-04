@@ -36,10 +36,11 @@ Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
 Route::get('/reports', function () {
     return view('mobile-reports');
 });
-Route::post('/Showlapor', [Showlapor::class, 'mobile-show-lapor-all']);
-
-// Show lapor all
-Route::get('/Showlaporankamu', function () {
-    return view('mobile-show-laporankamu');
+// Show your lapor
+Route::get('/your-reports', function () {
+    return view('mobile-your-reports');
 });
-Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
+
+Route::get('/articles', function () {
+    return view('articles');
+});

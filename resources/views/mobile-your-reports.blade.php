@@ -29,18 +29,17 @@
                         Halaman lapor</h1>
                     <div class="overflow-x-auto flex flex-1 flex-col mt-2">
                         <div class="grid grid-cols-2 w-full">
-                              <div class="col-span-1 text-center py-2 border-[#2196F3] border-b-2" id="semua-laporan">
-                                <h1 class=" text-xs poppins-medium leading-normal tracking-tight text-[#2196F3]">Semua
-                                    Laporan</h1>
-                              </div>
-                              <a href ="/yourreports" class="col-span-1 text-center py-2" id="laporan-kamu">
-                                <h1 class="text-xs poppins-medium leading-normal tracking-tight text-[#666666]">Laporan kamu</h1>
-                              </a>
+                            <a href ="/reports" class="col-span-1 text-center py-2">
+                                <h1 class="text-[#666666] text-xs poppins-medium leading-normal tracking-tight">Semua Laporan</h1>
+                            </a>
+                            <button class="col-span-1 text-center py-2 border-[#2196F3] border-b-2" id="laporan-kamu">
+                                    <h1 class="text-xs poppins-medium leading-normal tracking-tight text-[#2196F3]">Laporan kamu</h1>
+                            </button>
                         </div>
-                        <div class="flex flex-1 flex-col py-4 px-6">
+                        <div class="flex flex-1 flex-col py-4 px-6 ">
                             <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
                                 {{-- Three dots/ellipsis menu --}}
-                                <button class="w-full grid justify-items-end" onclick="showConfirm('block')">
+                                <button class="w-full grid justify-items-end"onclick="showConfirm('block')">
                                     <div
                                         class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
                                         <i class="fa-solid fa-ellipsis"></i>
@@ -61,37 +60,20 @@
                                 <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah Telkom depan gate 4, gua abis kena catcall</p>
                             </div>
                         </div>
-                        <div class="flex flex-1 flex-col py-4 px-6 ">
-                            <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
-                                {{-- Profile --}}
-                                <div class="flex w-full mt-[2px] items-center space-x-2 ">
-                                    {{-- Profile Image --}}
-                                    <div
-                                        class="w-9 h-9 bg-blue-300 rounded-full flex-col justify-center items-center inline-flex ">
-                                    </div>
-                                    {{-- Name --}}
-                                    <div>
-                                        <h2 class="text-black text-xs poppins-normal">H***</h2>
-                                        <p class="text-neutral-600 text-[10px] poppins-normal">Baru saja</p>
-                                    </div>
-                                </div>
-                                <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah Telkom depan gate 4, gua abis kena catcall</p>
-                            </div>
-                        </div>
                     </div>
-                    <div id="confirm" class="hidden w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[30px] top-[140px] absolute ">
+                </div>
+                <div id="confirm" class="hidden w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[30px] top-[140px] absolute ">
                     <div class="w-[125px] h-[46px] flex justify-center items-center">
                       <button class="w-full">
                       <p class="text-center py-3 border-b-2 border-gray-400 text-xs text-red-400 w-full">Hapus Laporan</p>
                       </button>
                     </div>
                     <div class="w-[125px] h-[46px] flex justify-center items-center">
-                      <button class="w-full">
+                      <button class="w-full" onclick="showDialog('block')">
                       <p class="text-center py-3 text-xs">Ubah Laporan</p>
                       </button>
                     </div>
                   </div>
-                </div>
                 <button onclick="showDialog('block')">
                     <div class="w-[56px] h-[56px] bg-blue-300 rounded-full absolute right-6 bottom-6 shadow-md">
                         <i class="fa-solid fa-plus absolute right-[21px] bottom-[20px]" style="color:#ffffff"></i>
@@ -99,7 +81,7 @@
                 <button>
                 </div>
               </div>
-            <div id= "dialog" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen">
+              <div id= "dialog" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen">
               <div class="w-96 h-80 absolute left-[580px] bottom-[50px] bg-white rounded-3xl shadow-2xl">
               <div class="w-full grid justify-items-end ">
                   <button class="right-[20px] top-[16px] absolute" onclick="showDialog('none')">
@@ -117,19 +99,20 @@
                   </div>
                 </button>
               </div>
+            <div>
+
             </div>
+            <script>
+                function showDialog(){
+                    var dialog = document.getElementById("dialog");
+                    dialog.style.display = dialog.style.display === 'none' ? 'block' : 'none';
+                }
+                function showConfirm(){
+                var confirm = document.getElementById("confirm");
+                confirm.style.display = confirm.style.display === 'none' ? 'block' : 'none';
+                }
+            </script>
         </main>
     </div>
-    <script>
-      function showDialog(){
-        var dialog = document.getElementById("dialog");
-        dialog.style.display = dialog.style.display === 'none' ? 'block' : 'none';
-      }
-      function showConfirm(){
-        var confirm = document.getElementById("confirm");
-        confirm.style.display = confirm.style.display === 'none' ? 'block' : 'none';
-      }
-    </script>
 </body>
-
-
+</html>
