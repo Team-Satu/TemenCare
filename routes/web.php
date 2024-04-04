@@ -87,6 +87,11 @@ Route::get('/articles', function () {
     return view('mobile-articles');
 });
 
+// Show communities
+Route::get('/communities', function () {
+    return view('mobile-communities');
+});
+
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 
 // User Routing - UnAuthenticated
@@ -99,4 +104,4 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
     // Route::get("/is-home", [TemenController::class, 'isHome']);
-});
+}); 
