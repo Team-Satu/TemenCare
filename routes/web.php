@@ -38,10 +38,17 @@ Route::get('/user-profile', function () {
 });
 
 // Show lapor all
-Route::get('/Showlapor', function () {
-    return view('mobile-show-lapor-all');
+Route::get('/reports', function () {
+    return view('mobile-reports');
+});
+// Show your lapor
+Route::get('/your-reports', function () {
+    return view('mobile-your-reports');
 });
 
+Route::get('/articles', function () {
+    return view('articles');
+});
 // Show lapor all
 Route::get('/Showlaporankamu', function () {
     return view('mobile-show-laporankamu');
@@ -51,5 +58,3 @@ Route::get('/Showlaporankamu', function () {
 Route::get('/articles', function () {
     return view('mobile-articles');
 });
-
-Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
