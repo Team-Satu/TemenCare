@@ -23,7 +23,7 @@
             <section class="w-full bg-gradient-to-r from-blue-400 to-blue-200 pt-14 pb-10 px-6 space-y-[6px]">
                 <h1 class="poppins-semibold text-white text-xl">Temukan Informasi</h1>
                 <h1 class="poppins-semibold text-white text-xl">Terkini dan Terlengkap</h1>
-                        <input type="text" placeholder="Cari artikel..." class="border-none bg-white rounded-2xl w-[340px] h-[36px] w-full p-2 text-sm font-normal"/>
+                        <input type="text" placeholder="Cari artikel mengenai bipolar" class="border-none bg-white rounded-2xl w-[340px] h-[36px] w-full p-2 text-sm font-normal"/>
                         <button type="submit" class="bg-transparent border-none">
                             {{-- <i class="fa-solid fa-magnifying-glass"></i> --}}
                         </button>
@@ -32,7 +32,7 @@
             <div class="flex flex-1 flex-col py-4 px-6">
                 <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
                 <div class="flex w-full items-center space-x-2">
-                    <h2 class="text-blue-300 text-[14px] font-normal font-poppins">Gangguan Kecemasan</h2>
+                    <h2 class="text-blue-300 text-[12px] font-medium font-poppins">Gangguan Kecemasan</h2>
                 <div>
                     <h2 class="text-gray-800 text-xs font-poppins">Senin 1 April 2024</h2>
                 </div>
@@ -41,14 +41,14 @@
                 {{-- <div class ="w-24 h-16 left-0 top-0 absolute bg-zinc-300 rounded"></div> --}}
                 <img class ="w-24 h-16 left-[250px] top-0 absolute bg-zinc-300 rounded" src="img/artikel1.png"/>
             </div>
-                <p class="text-[#000000] text-[14px] font-medium py-2 poppins-bold">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
+                <p class="text-[#000000] text-[16px] font-medium py-2 font-poppins">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
             </div>
             </div>
             <!-- Main Component -->
             <div class="flex flex-1 flex-col py-4 px-6">
                 <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
                 <div class="flex w-full items-center space-x-2">
-                    <h2 class="text-blue-300 text-[14px] font-normal font-poppins">Gangguan Kecemasan</h2>
+                    <h2 class="text-blue-300 text-[12px] font-medium font-poppins">Gangguan Kecemasan</h2>
                 <div>
                     <h2 class="text-gray-800 text-xs font-poppins">Senin 1 April 2024</h2>
                 </div>
@@ -57,14 +57,14 @@
                 {{-- <div class ="w-24 h-16 left-0 top-0 absolute bg-zinc-300 rounded"></div> --}}
                 <img class ="w-24 h-16 left-[250px] top-0 absolute bg-zinc-300 rounded" src="img/artikel1.png"/>
             </div>
-                <p class="text-[#000000] text-[14px] font-medium py-2 poppins-bold">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
+                <p class="text-[#000000] text-[16px] font-medium py-2 font-poppins">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
             </div>
             </div>
             <!-- Main Component -->
             <div class="flex flex-1 flex-col py-4 px-6">
                 <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
                 <div class="flex w-full items-center space-x-2">
-                    <h2 class="text-blue-300 text-[14px] font-normal font-poppins">Gangguan Kecemasan</h2>
+                    <h2 class="text-blue-300 text-[12px] font-medium font-poppins">Gangguan Kecemasan</h2>
                 <div>
                     <h2 class="text-gray-800 text-xs font-poppins">Senin 1 April 2024</h2>
                 </div>
@@ -73,9 +73,10 @@
                 {{-- <div class ="w-24 h-16 left-0 top-0 absolute bg-zinc-300 rounded"></div> --}}
                 <img class ="w-24 h-16 left-[250px] top-0 absolute bg-zinc-300 rounded" src="img/artikel1.png"/>
             </div>
-                <p class="text-[#000000] text-[14px] font-medium py-2 poppins-bold">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
+                <p class="text-[#000000] text-[16px] font-medium py-2 font-poppins">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
             </div>
             </div>
+            <x-bottom-menu></x-bottom-menu>
              {{-- <div class="flex flex-1 flex-col py-4 px-6 ">
                 <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4"> --}}
                     {{-- Profile --}}
@@ -106,3 +107,4 @@
 </body>
 
 </html>
+
