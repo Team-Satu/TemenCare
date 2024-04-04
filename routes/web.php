@@ -92,6 +92,11 @@ Route::get('/communities', function () {
     return view('mobile-communities');
 });
 
+// Show communities detail
+Route::get('/communities-detail', function () {
+    return view('mobile-communities-detail');
+});
+
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 
 // User Routing - UnAuthenticated
