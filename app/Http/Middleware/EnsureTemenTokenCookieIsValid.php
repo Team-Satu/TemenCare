@@ -35,7 +35,5 @@ class EnsureTemenTokenCookieIsValid
         } else {
             return redirect('/');
         }
-        return $next($request);
-
     }
 }
