@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -9,7 +10,9 @@ class UserController extends Controller
     // Display dashboard user
     public function dashboard()
     {
-        return view('mobile-dashboard', ["name" => "Howly"]);
+        $userId = request()->attributes->get('user_id');
+        $user = Accounts::where('id', $userId)->first();
+        return view('mobile-dashboard', ["name" => $user->name]);
     }
 
     /**
