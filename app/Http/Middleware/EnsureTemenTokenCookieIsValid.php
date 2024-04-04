@@ -26,15 +26,14 @@ class EnsureTemenTokenCookieIsValid
                 // Jika token ditemukan, dapatkan pengguna yang memiliki token tersebut
                 $request->attributes->add(['temen_user' => $userToken]);
                 $request->attributes->add(['user_id' => $userToken->tokenable_id]);
-                $request->merge(['user_id', $userToken->tokenable_id]);
 
                 return $next($request);
             } else {
                 // Jika token tidak ditemukan
                 return redirect('/');
             }
+        } else {
+            return redirect('/');
         }
-        return $next($request);
-
     }
 }

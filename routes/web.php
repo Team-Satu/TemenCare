@@ -90,11 +90,13 @@ Route::get('/articles', function () {
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 
 // User Routing - UnAuthenticated
-Route::get('/login', [LoginIgracias::class, 'login']);
+Route::get('/login', [LoginIgracias::class, 'login'])->name("user.login");
 Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
 
 // User Routing - Authenticated
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
+    Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
+    Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
     // Route::get("/is-home", [TemenController::class, 'isHome']);
 });
