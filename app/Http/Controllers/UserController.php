@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Accounts;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 class UserController extends Controller
 {
@@ -13,6 +14,21 @@ class UserController extends Controller
         $userId = request()->attributes->get('user_id');
         $user = Accounts::where('id', $userId)->first();
         return view('mobile-dashboard', ["name" => $user->name]);
+    }
+
+    // Display user profile
+    public function profile()
+    {
+        $userId = request()->attributes->get('user_id');
+        $user = Accounts::where('id', $userId)->first();
+        return view('mobile-profile', ["name" => $user->name, "email" => $user->email, "image_url" => $user->image_url]);
+    }
+
+    // User logout
+    public function logout()
+    {
+        // Redirect and remove cookie
+        return redirect(route("user.login"))->withCookie(Cookie::forget('temen_cookie'));
     }
 
     /**
