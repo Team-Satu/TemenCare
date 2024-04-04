@@ -42,7 +42,7 @@ Route::get('/reports', function () {
     return view('mobile-reports');
 });
 // Show your lapor
-Route::get('/your-reports', function () {
+Route::get('/your reports', function () {
     return view('mobile-your-reports');
 });
 
