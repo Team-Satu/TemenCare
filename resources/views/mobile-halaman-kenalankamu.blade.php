@@ -44,9 +44,11 @@
               <div class="w-[390px] flex-col justify-start items-start inline-flex">
                 <div class="self-stretch justify-start items-start inline-flex">
                   <div class="grow shrink basis-0 flex-col justify-center items-center inline-flex">
+                  <a href="halaman-kenalan" id="halamankenalan">
                     <div class="px-4 py-[9px] justify-center items-center gap-2 inline-flex">
                       <div class="text-black text-xs font-medium reading-normal tracking-tight">Semua Kenalan</div>
                     </div>
+                  </a>
                   </div>
                   <div class="grow shrink basis-0 flex-col justify-center items-center inline-flex">
                     <div class="px-4 py-[9px] justify-center items-center gap-2 inline-flex">

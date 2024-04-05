@@ -29,17 +29,17 @@ Route::get('/template', function () {
 // });
 
 // Daftar Fitur Kenalan
-Route::get('/DaftarKenalan', function () {
+Route::get('/daftar-kenalan', function () {
     return view('mobile-daftar-fitur-kenalan');
 });
-Route::post('/DaftarKenalan', [DaftarKenalan::class, 'mobile-daftar-fitur-kenalan']);
+Route::post('/daftar-kenalan', [DaftarKenalan::class, 'mobile-daftar-fitur-kenalan']);
 
 // Halaman Kenalan
-Route::get('/Halamankenalan', function () {
+Route::get('/halaman-kenalan', function () {
     return view('mobile-halaman-kenalan');
 });
 
-Route::get('/Kenalankamu', function () {
+Route::get('/kenalan-kamu', function () {
     return view('mobile-halaman-kenalankamu');
 });
 
