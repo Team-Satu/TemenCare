@@ -20,9 +20,7 @@
     <div class="max-w-md mx-auto bg-white">
         <!-- Content -->
         <main class="bg-white h-full flex flex-col">
-        <div class="w-[393px] h-[852px] relative left-6 bg-white">
-        <x-back-button></x-back-button>
-            <div class="w-[344px] h-[118px] left-[669px] top-[101px] fixed bg-white rounded-[26px] shadow"></div>
+        <div class="w-[393px] h-[950px] relative left-6 bg-white">
             <div class="w-[344px] h-[118px] left-[25px] top-[303px] absolute">
               <div class="w-[344px] h-[118px] left-0 top-0 absolute bg-white rounded-[26px] shadow"></div>
               <div class="left-[71px] top-[45px] absolute text-black text-xs font-normal font-['Poppins']">Sabitha Sabit</div>
@@ -95,7 +93,9 @@
                 </div>
               </div>
             </div>
-            <div class="fixed top-0 w-[400px] h-[118px] bg-blue-500">
+            <div class="fixed top-0 w-[400px] h-[273px] bg-white">
+            <div class="w-[344px] h-[118px] left-[669px] top-[101px] fixed bg-white rounded-[26px] shadow z-999"></div>
+            <x-back-button class="z-999"></x-back-button>
               <div class="left-[120px] top-[52px] absolute text-neutral-600 text-base font-semibold font-['Poppins'] capitalize leading-normal tracking-wide">Halaman Kenalan</div>
               <div class="w-[102px] h-14 left-[53px] top-[130px] absolute">
                 <div class="left-[62px] top-[13px] absolute text-black text-xs font-semibold font-['Poppins']">Holy

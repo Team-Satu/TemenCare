@@ -30,10 +30,15 @@ Route::get('/template', function () {
 // });
 
 // Daftar Fitur Kenalan
+Route::get('/persetujuan-kenalan', function () {
+    return view('mobile-kenalan-persetujuan');
+});
+Route::post('/persetujuan-kenalan', [persetujuankenalan::class, 'mobile-kenalan-persetujuan']);
+
 Route::get('/daftar-kenalan', function () {
     return view('mobile-daftar-fitur-kenalan');
 });
-Route::post('/daftar-kenalan', [DaftarKenalan::class, 'mobile-daftar-fitur-kenalan']);
+Route::post('/daftar-kenalan', [daftarkenalan::class, 'mobile-daftar-fitur-kenalan']);
 
 // Halaman Kenalan
 Route::get('/halaman-kenalan', function () {

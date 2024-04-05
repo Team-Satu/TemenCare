@@ -25,13 +25,14 @@
         <x-back-button></x-back-button>
         <div class="absolute left-[74px] top-[86px] text-center text-neutral-600 text-2xl font-semibold font-['Poppins'] capitalize tracking-wide">Hai, Salam Kenal!</div>
         <div class="absolute left-0 right-0 top-[327px] inline-flex items-start justify-start flex-col">
-        <div class="flex self-stretch items-start justify-start h-[52px] ml-1 rounded border border-black border-opacity-25 flex-col">
-                    <input type="text" id="message" name="message" class="w-full p-2 border-none focus:outline-none"></input>
-            </div>
-            <div class="absolute left-0 bottom-14">
-                <div class="inline-flex items-center justify-start gap-2.5 h-0.5 px-1 bg-white">
-                    <div class="text-black text-opacity-60 text-xs font-normal leading-3 tracking-tight">Nomor Telepon</div>
-                </div>
+        <div class="flex self-stretch items-start justify-start h-[52px] ml-1 flex-col">
+        <div class="space-y-2 absolute left-1 bottom-[0px]">
+                        <p1
+                            class="text-gray-400 text-sm poppins-regular capitalize leading-normal tracking-wide text-left px-2 bg-white absolute left-[15px] top-[-3px]">
+                            Nomor Telepon</p1>
+                        <input class="rounded border border-[#C4C4C4] w-[389px] py-4 px-4 poppins-regular"
+                            placeholder="Masukkan nomor telepon anda" type="text" name="username" />
+                    </div>
             </div>
         </div>
         <div class="absolute left-[41px] top-[71px] w-[15px] h-[15px] px-[0.50px] py-0.5 origin-top-left rotate-180 inline-flex items-center justify-center"></div>
