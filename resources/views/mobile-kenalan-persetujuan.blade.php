@@ -37,7 +37,7 @@
                 <div class="flex mt-4 justify-center items-center">
                 <img class="flex w-[152.72px] h-[152.42px] justify-center items-center" src="https://images.unsplash.com/photo-1712332918345-de25364b5d51?q=80&w=2237&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
                 </div>
-                <div class="w-[302px] h-[78px] left-[34px] top-[204px] absolute text-gray-900 text-2xl font-semibold leading-normal tracking-tight">Apakah kamu Setuju untuk menyebarkan informasi kamu?</div>
+                <div class="w-[302px] h-[78px] left-[34px] top-[204px] absolute text-gray-950 text-2xl font-semibold leading-normal tracking-tight">Apakah kamu Setuju untuk menyebarkan informasi kamu?</div>
                 <div class="w-[327px] left-[34px] top-[330px] absolute text-justify text-black text-sm font-semilight leading-normal tracking-tight">Hai! Sebelum melanjutkan, kami ingin memberitahu bahwa dengan bergabung di fitur Kenalan, profil kamu akan ditambahkan ke database kami dan akan terlihat oleh pengguna lain yang menggunakan fitur ini. Pastikan kamu setuju dan masukkan nomor telepon kamu untuk melanjutkan. Selamat berkenalan!</div>
                 <div class="w-[152.72px] h-[152.42px] left-[121px] top-[21px] absolute">
                     <div class="w-[130.35px] h-[73.16px] left-[19.78px] top-[7.85px] absolute">
