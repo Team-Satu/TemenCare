@@ -49,6 +49,10 @@ Route::get('/kenalan-kamu', function () {
     return view('mobile-halaman-kenalankamu');
 });
 
+Route::get('/berhenti-kenalan', function () {
+    return view('mobile-kenalan-berhentikenalan');
+});
+
 // Login user
 Route::get('/login', function () {
     return view('login-igracias');
