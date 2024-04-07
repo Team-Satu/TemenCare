@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
 use App\Http\Controllers\UserController;
 // use App\Http\Controllers\CommunityController;
@@ -113,6 +114,15 @@ Route::get('/communities-detail', function () {
 
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 
+// Admin & Psycholog Routing - UnAuthenticated
+Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
+Route::post('/admin', [AdminController::class, 'login'])->name("admin.login");
+
+// Admin & Psycholog Routing - Authenticated
+Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
+    Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
+});
+
 // User Routing - UnAuthenticated
 Route::get('/login', [LoginIgracias::class, 'login'])->name("user.login");
 Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
@@ -122,5 +132,4 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
-    // Route::get("/is-home", [TemenController::class, 'isHome']);
-}); 
+});
