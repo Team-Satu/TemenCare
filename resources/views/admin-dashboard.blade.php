@@ -200,7 +200,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $user->full_name }}</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle bg-gray-200" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -608,23 +608,22 @@
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="sbadmin/vendor/jquery/jquery.min.js"></script>
+    <script src="sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery.easing@1.4.1/dist/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="sbadmin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages -->
-    <script src="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.2.0/dist/js/sb-admin-2.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="sbadmin/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="sbadmin/vendor/chart.js/Chart.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.2.0/dist/js/demo/chart-area-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/startbootstrap-sb-admin-2@4.2.0/dist/js/demo/chart-pie-demo.js"></script>
-
+    <script src="sbadmin/js/demo/chart-area-demo.js"></script>
+    <script src="sbadmin/js/demo/chart-pie-demo.js"></script>
 
 </body>
 
