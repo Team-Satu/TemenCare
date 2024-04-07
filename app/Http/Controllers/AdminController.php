@@ -48,15 +48,14 @@ class AdminController extends Controller
                     Alert::error('Gagal', 'Akun tidak ditemukan!');
                     return redirect()->back();
                 }
-
-
-                // Create token
-                $token = $user->createToken("temen_token");
-                $plainTextToken = $token->plainTextToken;
-                $cookie = cookie('temen_cookie', $plainTextToken, 60 * 24 * 30);
-
-                return redirect(route("admin.dashboard"))->cookie($cookie);
             }
+
+            // Create token
+            $token = $user->createToken("temen_token");
+            $plainTextToken = $token->plainTextToken;
+            $cookie = cookie('temen_cookie', $plainTextToken, 60 * 24 * 30);
+
+            return redirect(route("admin.dashboard"))->cookie($cookie);
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Terjadi masalah dengan akun Anda!');
             return redirect()->back();

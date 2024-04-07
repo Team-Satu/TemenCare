@@ -114,8 +114,15 @@ Route::get('/communities-detail', function () {
 
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 
-// Admin Routing - UnAuthenticated
+// Admin & Psycholog Routing - UnAuthenticated
 Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
+
+// Admin & Psycholog Routing - Authenticated
+Route::prefix("admin")->group(function () {
+    Route::get("/dashboard", function(){
+        return view("admin-dashboard");
+    })->name("user.dashboard");
+});
 
 // User Routing - UnAuthenticated
 Route::get('/login', [LoginIgracias::class, 'login'])->name("user.login");
