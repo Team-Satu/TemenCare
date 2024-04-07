@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
 use App\Http\Controllers\UserController;
 // use App\Http\Controllers\CommunityController;
@@ -112,6 +113,9 @@ Route::get('/communities-detail', function () {
 });
 
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
+
+// Admin Routing - UnAuthenticated
+Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
 
 // User Routing - UnAuthenticated
 Route::get('/login', [LoginIgracias::class, 'login'])->name("user.login");
