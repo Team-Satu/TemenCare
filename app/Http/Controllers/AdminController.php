@@ -36,10 +36,7 @@ class AdminController extends Controller
             }
 
             // Admin/psycholog login
-            // $user = User::where(['email' => $email, 'password' => $password])->first();
             $user = Auth::attempt(['email' => $email, 'password' => $password]);
-
-            error_log($user);
 
             if ($user) {
                 $admin = Admin::where('email', $email)->count();
@@ -58,14 +55,9 @@ class AdminController extends Controller
                 return redirect()->back();
             }
 
-            error_log($user);
-
             // Membuat token
             $user = Auth::user();
             $token = $user->createToken("temen_token");
-
-            error_log($token->accessToken);
-            error_log($token->plainTextToken);
 
             $plainTextToken = $token->plainTextToken;
             $cookie = cookie('temen_cookie', $plainTextToken, 60 * 24 * 30);
