@@ -118,10 +118,8 @@ Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
 
 // Admin & Psycholog Routing - Authenticated
-Route::prefix("admin")->group(function () {
-    Route::get("/dashboard", function(){
-        return view("admin-dashboard");
-    })->name("user.dashboard");
+Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
+    Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("user.dashboard");
 });
 
 // User Routing - UnAuthenticated
@@ -133,5 +131,4 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
-    // Route::get("/is-home", [TemenController::class, 'isHome']);
-}); 
+});

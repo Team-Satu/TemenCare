@@ -105,7 +105,6 @@ class LoginIgracias extends Controller
                         'name' => $fullName,
                         'email' => $email,
                         'password' => $username,
-                        'role' => 'user',
                     ]);
 
                     // Create account data

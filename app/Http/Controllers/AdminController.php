@@ -35,11 +35,11 @@ class AdminController extends Controller
 
             $countAdmin = Admin::where('email', $email)->count();
 
-            // Check if admin exist
+            // Memeriksa apakah admin tersedia
             if ($countAdmin) {
                 $user = Admin::where("email", $email)->first();
             } else {
-                // Admin doesnt exist
+                // Admin tidak ditemukan
                 $countPsycholog = Psychologs::where('email', $email)->count();
 
                 if ($countPsycholog) {
@@ -50,7 +50,7 @@ class AdminController extends Controller
                 }
             }
 
-            // Create token
+            // Membuat token
             $token = $user->createToken("temen_token");
             $plainTextToken = $token->plainTextToken;
             $cookie = cookie('temen_cookie', $plainTextToken, 60 * 24 * 30);
@@ -62,12 +62,12 @@ class AdminController extends Controller
         }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function dashboard()
     {
-        //
+        $userId = request()->attributes->get('user_id');
+
+        // Pengecekan admin. Dengan aturan, admin hanya tersedia 1 akun dan memiliki nama "admin".
+        $admin = Admin::where('id', $userId)->first();
     }
 
     /**
