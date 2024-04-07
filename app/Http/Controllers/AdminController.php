@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Accounts;
 use App\Models\Admin;
 use App\Models\Psychologs;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Cookie;
 
 class AdminController extends Controller
 {
     public function index()
     {
         return view('admin-login');
+    }
+
+    // Admin logout
+    public function logout()
+    {
+        // Redirect and remove cookie
+        return redirect(route("admin.login"))->withCookie(Cookie::forget('temen_cookie'));
     }
 
     public function login(Request $request)
@@ -73,9 +82,28 @@ class AdminController extends Controller
     public function dashboard()
     {
         $userId = request()->attributes->get('user_id');
+        $user = User::where('id', $userId)->first();
+        $emailAdmin = env('ADMIN_EMAIL');
 
-        // Pengecekan admin. Dengan aturan, admin hanya tersedia 1 akun dan memiliki nama "admin".
-        $admin = Admin::where('id', $userId)->first();
+        $role = "psycholog";
+        $user;
+
+        if ($user->email === $emailAdmin) {
+            $role = "admin";
+
+            $user = Admin::where("email", $user->email)->first();
+        } else {
+            $user = Psychologs::where("email", $user->email)->first();
+        }
+
+        // Total akun
+        $accountTotal = User::count();
+        // Total Pengguna
+        $userTotal = Accounts::count();
+        // Total Psikolog
+        $psychologTotal = Psychologs::count();
+
+        return view("admin-dashboard", ["role" => $role, "user" => $user, "account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
     }
 
     /**

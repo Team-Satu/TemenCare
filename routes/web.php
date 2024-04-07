@@ -121,6 +121,7 @@ Route::post('/admin', [AdminController::class, 'login'])->name("admin.login");
 // Admin & Psycholog Routing - Authenticated
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
+    Route::get("/logout", [AdminController::class, 'logout'])->name("admin.logout");
 });
 
 // User Routing - UnAuthenticated
