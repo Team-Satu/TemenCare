@@ -9,12 +9,20 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Cookie;
 
 class AdminController extends Controller
 {
     public function index()
     {
         return view('admin-login');
+    }
+
+    // Admin logout
+    public function logout()
+    {
+        // Redirect and remove cookie
+        return redirect(route("admin.login"))->withCookie(Cookie::forget('temen_cookie'));
     }
 
     public function login(Request $request)
