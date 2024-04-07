@@ -116,10 +116,11 @@ Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 
 // Admin & Psycholog Routing - UnAuthenticated
 Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
+Route::post('/admin', [AdminController::class, 'login'])->name("admin.login");
 
 // Admin & Psycholog Routing - Authenticated
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
-    Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("user.dashboard");
+    Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
 });
 
 // User Routing - UnAuthenticated

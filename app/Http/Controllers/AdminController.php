@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use App\Models\Psychologs;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
@@ -33,30 +35,44 @@ class AdminController extends Controller
                 return redirect()->back();
             }
 
-            $countAdmin = Admin::where('email', $email)->count();
+            // Admin/psycholog login
+            // $user = User::where(['email' => $email, 'password' => $password])->first();
+            $user = Auth::attempt(['email' => $email, 'password' => $password]);
 
-            // Memeriksa apakah admin tersedia
-            if ($countAdmin) {
-                $user = Admin::where("email", $email)->first();
-            } else {
-                // Admin tidak ditemukan
-                $countPsycholog = Psychologs::where('email', $email)->count();
+            error_log($user);
 
-                if ($countPsycholog) {
-                    $user = Psychologs::where('email', $email)->first();
-                } else {
-                    Alert::error('Gagal', 'Akun tidak ditemukan!');
-                    return redirect()->back();
+            if ($user) {
+                $admin = Admin::where('email', $email)->count();
+
+                if (!$admin) {
+                    // Admin tidak ditemukan
+                    $countPsycholog = Psychologs::where('email', $email)->count();
+
+                    if (!$countPsycholog) {
+                        Alert::error('Gagal', 'Akun tidak ditemukan!');
+                        return redirect()->back();
+                    }
                 }
+            } else {
+                Alert::error('Gagal', 'Email/kata sandi Anda salah!');
+                return redirect()->back();
             }
 
+            error_log($user);
+
             // Membuat token
+            $user = Auth::user();
             $token = $user->createToken("temen_token");
+
+            error_log($token->accessToken);
+            error_log($token->plainTextToken);
+
             $plainTextToken = $token->plainTextToken;
             $cookie = cookie('temen_cookie', $plainTextToken, 60 * 24 * 30);
 
             return redirect(route("admin.dashboard"))->cookie($cookie);
         } catch (\Throwable $th) {
+            error_log($th);
             Alert::error('Gagal', 'Terjadi masalah dengan akun Anda!');
             return redirect()->back();
         }
