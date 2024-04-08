@@ -35,7 +35,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Temen Care <sup>admin</sup></div>
+                <div class="sidebar-brand-text mx-3">Temen Care <sup>{{ $role }}</sup></div>
             </a>
 
             <!-- Divider -->
@@ -51,26 +51,29 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Psikolog
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Psikolog</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Atur Psikolog:</h6>
-                        <a class="collapse-item" href="#" load="load/list-psycholog">Daftar Psikolog</a>
-                        <a class="collapse-item" href="#" load="load/create-psycholog">Buat Psikolog</a>
-                    </div>
+            @if ($role == 'admin')
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Psikolog
                 </div>
-            </li>
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Psikolog</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Atur Psikolog:</h6>
+                            <a class="collapse-item" href="#" load="load/list-psycholog">Daftar Psikolog</a>
+                            <a class="collapse-item" href="#" load="load/create-psycholog">Buat Psikolog</a>
+                        </div>
+                    </div>
+                </li>
+            @endif
+
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
@@ -226,7 +229,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; {{env("APP_NAME")}} | Template by SB Admin 2</span>
+                        <span>Copyright &copy; {{ env('APP_NAME') }} | Template by SB Admin 2</span>
                     </div>
                 </div>
             </footer>
