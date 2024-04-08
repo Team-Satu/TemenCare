@@ -16,6 +16,7 @@
                             <th scope="col">Nama Lengkap</th>
                             <th scope="col">Email</th>
                             <th scope="col">Nomor Telepon</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -25,6 +26,14 @@
                                 <td>{{ $psycholog->full_name }}</td>
                                 <td>{{ $psycholog->email }}</td>
                                 <td>{{ $psycholog->phone_number }}</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <button type="button" onclick="deleteAccount({{ $psycholog->id }})"
+                                            class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                        <button type="button" class="btn btn-warning"><i
+                                                class="fas fa-key"></i></button>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -33,3 +42,22 @@
         </div>
     </div>
 </div>
+
+<script>
+    function deleteAccount(psychologId) {
+        const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
+
+        return fetch(`/admin/load/delete-psycholog/${psychologId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrfToken // Mengirimkan token CSRF
+                },
+            }).then(data => {
+                window.location.href = '/admin/dashboard';
+            })
+            .catch(error => {
+                window.location.href = '/admin/dashboard';
+            });
+    }
+</script>
