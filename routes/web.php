@@ -45,6 +45,11 @@ Route::get('/halaman-kenalan', function () {
     return view('mobile-halaman-kenalan');
 });
 
+Route::get('/ubah-profile-kenalan', function () {
+    return view('mobile-halaman-kenalan-ubahprofile');
+});
+Route::post('/ubah-profile-kenalan', [daftarkenalan::class, 'mobile-halaman-kenalan-ubahprofile']);
+
 Route::get('/kenalan-kamu', function () {
     return view('mobile-halaman-kenalankamu');
 });
