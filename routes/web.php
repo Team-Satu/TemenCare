@@ -118,6 +118,10 @@ Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
 Route::post('/admin', [AdminController::class, 'login'])->name("admin.login");
 
+Route::get('/register-psycholog', function(){
+    return view("admin-register-psycholog");
+})->name("admin.register-psycholog");
+
 // Admin & Psycholog Routing - Authenticated
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
