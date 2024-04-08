@@ -126,9 +126,15 @@ Route::get('/register-psycholog', function () {
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
     Route::get("/logout", [AdminController::class, 'logout'])->name("admin.logout");
+});
+
+
+// Only admin load purpose - Authenticated
+Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin/load")->group(function () {
     Route::get("/create-psycholog", function () {
-        return view("adminload-register-psycholog");
+        return view("admin-load.register-psycholog");
     })->name("adminload.register-psycholog");
+    Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
 });
 
 // User Routing - UnAuthenticated

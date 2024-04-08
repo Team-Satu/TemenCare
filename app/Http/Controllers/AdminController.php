@@ -96,6 +96,10 @@ class AdminController extends Controller
             $user = Psychologs::where("email", $user->email)->first();
         }
 
+        return view("admin", ["role" => $role, "user" => $user]);
+    }
+
+    public function loadDashboard(){
         // Total akun
         $accountTotal = User::count();
         // Total Pengguna
@@ -103,7 +107,7 @@ class AdminController extends Controller
         // Total Psikolog
         $psychologTotal = Psychologs::count();
 
-        return view("admin-dashboard", ["role" => $role, "user" => $user, "account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
+        return view("admin-load.dashboard", ["account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
     }
 
     /**
