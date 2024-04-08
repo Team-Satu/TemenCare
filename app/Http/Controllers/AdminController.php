@@ -115,6 +115,13 @@ class AdminController extends Controller
         return view("admin-load.register-psycholog");
     }
 
+    public function showListPsycholog(Request $request)
+    {
+        $psychologList = Psychologs::get();
+
+        return view("admin-load.list-psycholog", ["psychologs" => $psychologList]);
+    }
+
     public function registerPsycholog(Request $request)
     {
         try {
