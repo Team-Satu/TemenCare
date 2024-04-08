@@ -141,6 +141,9 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin/load")->g
     
     // List psycholog
     Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");
+    
+    // Delete psycholog
+    Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
 });

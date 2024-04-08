@@ -122,6 +122,27 @@ class AdminController extends Controller
         return view("admin-load.list-psycholog", ["psychologs" => $psychologList]);
     }
 
+    public function deletePsycholog(Request $request, string $psycholog_id)
+    {
+        try {
+            $psycholog = Psychologs::where("id", $psycholog_id)->first();
+
+            // Hapus akun psikolog
+            Psychologs::where("id", $psycholog_id)->delete();
+
+            // Hapus akun login
+            User::where("email", $psycholog['email'])->delete();
+
+            Alert::success('Berhasil', 'Akun psikolog berhasil dihapus!');
+            return;
+            // return redirect()->route('admin.dashboard');
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah dengan akun Anda!');
+            return;
+            // return redirect()->route('admin.dashboard');
+        }
+    }
+
     public function registerPsycholog(Request $request)
     {
         try {
