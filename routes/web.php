@@ -118,7 +118,7 @@ Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
 Route::post('/admin', [AdminController::class, 'login'])->name("admin.login");
 
-Route::get('/register-psycholog', function(){
+Route::get('/register-psycholog', function () {
     return view("admin-register-psycholog");
 })->name("admin.register-psycholog");
 
@@ -126,6 +126,9 @@ Route::get('/register-psycholog', function(){
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
     Route::get("/logout", [AdminController::class, 'logout'])->name("admin.logout");
+    Route::get("/create-psycholog", function () {
+        return view("adminload-register-psycholog");
+    })->name("adminload.register-psycholog");
 });
 
 // User Routing - UnAuthenticated
