@@ -131,9 +131,10 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin")->group(
 
 // Only admin load purpose - Authenticated
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin/load")->group(function () {
-    Route::get("/create-psycholog", function () {
-        return view("admin-load.register-psycholog");
-    })->name("adminload.register-psycholog");
+    // Membuat akun psikolog
+    Route::get("/create-psycholog", [AdminController::class, 'showRegisterPsycholog'])->name("adminload.show-register-psycholog");
+    Route::post("/create-psycholog", [AdminController::class, 'registerPsycholog'])->name("adminload.register-psycholog");
+
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
 });
 

@@ -73,7 +73,6 @@ class AdminController extends Controller
 
             return redirect(route("admin.dashboard"))->cookie($cookie);
         } catch (\Throwable $th) {
-            error_log($th);
             Alert::error('Gagal', 'Terjadi masalah dengan akun Anda!');
             return redirect()->back();
         }
@@ -99,7 +98,8 @@ class AdminController extends Controller
         return view("admin", ["role" => $role, "user" => $user]);
     }
 
-    public function loadDashboard(){
+    public function loadDashboard()
+    {
         // Total akun
         $accountTotal = User::count();
         // Total Pengguna
@@ -110,12 +110,45 @@ class AdminController extends Controller
         return view("admin-load.dashboard", ["account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function showRegisterPsycholog(Request $request)
     {
-        //
+        return view("admin-load.register-psycholog");
+    }
+
+    public function registerPsycholog(Request $request)
+    {
+        try {
+            $credential = $request->only('email', 'password', 'full_name', 'phone_number');
+
+            $countPsycholog = Psychologs::where("email", $credential['email'])->count();
+
+            if ($countPsycholog) {
+                Alert::error('Gagal', 'Email sudah digunakan');
+                return redirect()->back();
+            } else {
+                // Membuat akun
+                User::create([
+                    'name' => $credential['full_name'],
+                    'email' => $credential['email'],
+                    'password' => $credential['password'],
+                ]);
+
+                Psychologs::create([
+                    "full_name" => $credential['full_name'],
+                    "email" => $credential['email'],
+                    "phone_number" => $credential['phone_number'],
+                    "status" => "success",
+                    "gender" => "-",
+                    "image_url" => ""
+                ]);
+
+                Alert::success('Berhasil', 'Akun psikolog berhasil dibuat!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return redirect()->back();
+        }
     }
 
     /**
