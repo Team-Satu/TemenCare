@@ -35,7 +35,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Temen Care <sup>admin</sup></div>
             </a>
 
             <!-- Divider -->
@@ -199,7 +199,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $user->full_name }}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $user->email }}</span>
                                 <img class="img-profile rounded-circle bg-gray-200" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -318,7 +318,7 @@
                         </div>
                     </div>
 
-                    <!-- Content Row -->
+                    {{-- <!-- Content Row -->
 
                     <div class="row">
 
@@ -551,7 +551,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
                 <!-- /.container-fluid -->
@@ -563,7 +563,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; {{env("APP_NAME")}}</span>
                     </div>
                 </div>
             </footer>
