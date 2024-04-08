@@ -101,6 +101,5 @@
                 </div> 
             </div>   
         </main>
-        <x-bottom-menu></x-bottom-menu>
     </div>
 </body>
