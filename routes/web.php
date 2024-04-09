@@ -32,6 +32,11 @@ Route::get('/login', function () {
 });
 Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
 
+// Show user profile
+Route::get('/user-profile', function () {
+    return view('mobile-profile');
+});
+
 // Show lapor all
 Route::get('/reports', function () {
     return view('mobile-reports');
@@ -43,4 +48,13 @@ Route::get('/your-reports', function () {
 
 Route::get('/articles', function () {
     return view('articles');
+});
+// Show lapor all
+Route::get('/Showlaporankamu', function () {
+    return view('mobile-show-laporankamu');
+});
+
+// Show articles
+Route::get('/articles', function () {
+    return view('mobile-articles');
 });
