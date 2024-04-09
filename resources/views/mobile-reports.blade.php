@@ -37,6 +37,7 @@
                                     Laporan</h1>
                               </div>
                               <a href ="/your-reports" class="col-span-1 text-center py-2" id="laporan-kamu">
+                              <a href ="/your reports" class="col-span-1 text-center py-2" id="laporan-kamu">
                                 <h1 class="text-xs poppins-medium leading-normal tracking-tight text-[#666666]">Laporan kamu</h1>
                               </a>
                         </div>
