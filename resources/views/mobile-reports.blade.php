@@ -33,10 +33,8 @@
                     <div class="overflow-x-auto flex flex-1 flex-col mt-2">
                         <div class="grid grid-cols-2 w-full">
                               <div class="col-span-1 text-center py-2 border-[#2196F3] border-b-2" id="semua-laporan">
-                                <h1 class=" text-xs poppins-medium leading-normal tracking-tight text-[#2196F3]">Semua
-                                    Laporan</h1>
+                                <h1 class=" text-xs poppins-medium leading-normal tracking-tight text-[#2196F3]">Semua Laporan</h1>
                               </div>
-                              <a href ="/your-reports" class="col-span-1 text-center py-2" id="laporan-kamu">
                               <a href ="/your reports" class="col-span-1 text-center py-2" id="laporan-kamu">
                                 <h1 class="text-xs poppins-medium leading-normal tracking-tight text-[#666666]">Laporan kamu</h1>
                               </a>
@@ -107,6 +105,8 @@
                 </div>
               </div>
               {{--Confirm Delete Report Modal--}}
+              <form class="card-body" action="" method="POST">
+              @csrf
                 <div id= "confirm" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-20">
                   <div class="w-96 h-80 relative m-auto mt-[220px] bg-white rounded-3xl shadow-2xl">
                   <i class="fa-solid fa-triangle-exclamation text-8xl justify-center items-center flex relative py-14" style="color: #f36464;"></i>
@@ -127,19 +127,46 @@
                         </button>
                   </div>
                 </div>
+              </form>
                 {{--Add Report Modal--}}
-            <div id= "dialog" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
-              <div class="w-96 h-80 relative m-auto mt-[400px] bg-white rounded-3xl shadow-2xl">
+                <div id= "dialog" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
+                  <div class="w-96 h-80 relative m-auto mt-[400px] bg-white rounded-3xl shadow-2xl">
+                    <div class="w-full grid justify-items-end ">
+                      <button class="right-[20px] top-[16px] absolute" onclick="showDialog('none')">
+                        <i class="fa-solid fa-xmark"></i>
+                      </button>
+                  <form class="card-body" action="" method="POST">
+                  @csrf
+                        <div class="w-80 h-44 left-[27px] top-[60px] absolute justify-start items-start inline-flex">
+                          <div class="grow shrink basis-0 self-stretch flex-col justify-start items-start inline-flex">
+                              <textarea placeholder="Tuliskan pengalamanmu di sini" class="self-stretch grow shrink basis-0 py-4 justify-start items-center inline-flex poppins-medium text-xs rounded-lg  border border-gray-300 w-full p-2.5" ></textarea>
+                          </div>
+                        </div>
+                        <div class="left-[120px] top-[20px] absolute text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">Tuliskan laporanmu</div>
+                        <button class="w-52 h-8 px-4 py-1.5 left-[85px] top-[260px] absolute bg-blue-300 rounded-3xl shadow flex-col justify-center items-center inline-flex">
+                          <div class="justify-center items-center gap-2 inline-flex">
+                            <div class="text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide">Kirim</div>
+                          </div>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                <form>
+          {{--Change Report Modal--}}
+          <div id= "change" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
+            <div class="w-96 h-80 relative m-auto mt-[400px] bg-white rounded-3xl shadow-2xl">
               <div class="w-full grid justify-items-end ">
-                  <button class="right-[20px] top-[16px] absolute" onclick="showDialog('none')">
-                      <i class="fa-solid fa-xmark"></i>
-                  </button>
+                <button class="right-[20px] top-[16px] absolute" onclick="showChange('none')">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+            <form class="card-body" action="" method="POST">
+            @csrf
                 <div class="w-80 h-44 left-[27px] top-[60px] absolute justify-start items-start inline-flex">
                   <div class="grow shrink basis-0 self-stretch flex-col justify-start items-start inline-flex">
-                      <textarea placeholder="Tuliskan pengalamanmu di sini" class="self-stretch grow shrink basis-0 py-4 justify-start items-center inline-flex poppins-medium text-xs rounded-lg  border border-gray-300 w-full p-2.5" ></textarea>
+                      <textarea class="text-left self-stretch grow shrink basis-0 py-4 justify-start items-center poppins-normal text-xs rounded-lg border border-gray-300 w-full p-2.5" >Hati-hati di daerah Telkom depan gate 4, gua abis kena catcall</textarea>
                   </div>
                 </div>
-                <div class="left-[120px] top-[20px] absolute text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">Tuliskan laporanmu</div>
+                <div class="left-[108px] top-[20px] absolute text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">Silahkan Ubah laporanmu</div>
                 <button class="w-52 h-8 px-4 py-1.5 left-[85px] top-[260px] absolute bg-blue-300 rounded-3xl shadow flex-col justify-center items-center inline-flex">
                   <div class="justify-center items-center gap-2 inline-flex">
                     <div class="text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide">Kirim</div>
@@ -147,28 +174,7 @@
                 </button>
               </div>
             </div>
-          </div>
-          {{--Change Report Modal--}}
-          <div id= "change" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
-            <div class="w-96 h-80 relative m-auto mt-[400px] bg-white rounded-3xl shadow-2xl">
-            <div class="w-full grid justify-items-end ">
-                <button class="right-[20px] top-[16px] absolute" onclick="showChange('none')">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-              <div class="w-80 h-44 left-[27px] top-[60px] absolute justify-start items-start inline-flex">
-                <div class="grow shrink basis-0 self-stretch flex-col justify-start items-start inline-flex">
-                    <textarea class="text-left self-stretch grow shrink basis-0 py-4 justify-start items-center poppins-normal text-xs rounded-lg border border-gray-300 w-full p-2.5" >Hati-hati di daerah Telkom depan gate 4, gua abis kena catcall</textarea>
-                </div>
-              </div>
-              <div class="left-[108px] top-[20px] absolute text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">Silahkan Ubah laporanmu</div>
-              <button class="w-52 h-8 px-4 py-1.5 left-[85px] top-[260px] absolute bg-blue-300 rounded-3xl shadow flex-col justify-center items-center inline-flex">
-                <div class="justify-center items-center gap-2 inline-flex">
-                  <div class="text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide">Kirim</div>
-                </div>
-              </button>
-            </div>
-          </div>
-          
+          </form>
         </main>
     </div>
     <script>
