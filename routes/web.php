@@ -158,3 +158,11 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
 });
+
+// show rating and feedback
+Route::get('/rating', function () {
+    return view('mobile-show-rating');
+});
+Route::get('/your rating', function () {
+    return view('mobile-your-rating');
+});

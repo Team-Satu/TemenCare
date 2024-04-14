@@ -24,22 +24,20 @@
             <div class="w-full h-screen bg-white relative">
                 {{-- Main component --}}
                 <div class="my-6 pb-10 bg-white">
-                    <h1
-                        class="text-neutral-600 text-center text-base poppins-semibold capitalize leading-normal tracking-wide">
-                        Halaman lapor</h1>
+                  <h1 class="text-neutral-600 text-center text-base poppins-semibold capitalize leading-normal tracking-wide">Halaman lapor</h1>
                   <a href="/dashboard" class="flex items-center left-[20px] top-[30px] absolute ">
-                    <i class="fa-solid fa-arrow-left"></i>
+                  <i class="fa-solid fa-arrow-left"></i>
                   </a>
                     <div class="overflow-x-auto flex flex-1 flex-col mt-2">
                         <div class="grid grid-cols-2 w-full">
-                              <div class="col-span-1 text-center py-2 border-[#2196F3] border-b-2" id="semua-laporan">
+                              <a href="" class="col-span-1 text-center py-2 border-[#2196F3] border-b-2" id="semua-laporan">
                                 <h1 class=" text-xs poppins-medium leading-normal tracking-tight text-[#2196F3]">Semua Laporan</h1>
-                              </div>
+                              </a>
                               <a href ="/your reports" class="col-span-1 text-center py-2" id="laporan-kamu">
                                 <h1 class="text-xs poppins-medium leading-normal tracking-tight text-[#666666]">Laporan kamu</h1>
                               </a>
                         </div>
-                        <div class="flex flex-1 flex-col py-4 px-6">
+                        <div class="flex flex-1 flex-col py-4 px-6 ">
                             <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
                                 {{-- Three dots/ellipsis menu --}}
                                 <button class="w-full grid justify-items-end" onclick="showOption('block')">
