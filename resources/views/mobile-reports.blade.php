@@ -18,44 +18,43 @@
 
 <body class="bg-gray-100">
     <div class="max-w-md bg-white mx-auto relative">
-        <main class="bg-white h-screen flex flex-col">
-            <div class="w-full h-screen bg-white relative">
+        <main class="bg-white h-screen flex flex-col w-full relative">
+            <div>
                 <x-header-component title="Lapor!"></x-header-component>
-                <div class="pb-10 bg-white">
-                    <div class="grid grid-cols-2 w-full text-xs poppins-medium leading-normal tracking-tight">
-                        <a href="#" class="col-span-1 text-center py-2 border-[#2196F3] border-b-2"
-                            id="semua-laporan">
-                            <h1 class="text-[#2196F3]">Semua
-                                Laporan</h1>
-                        </a>
-                        <a href ="#" class="col-span-1 text-center py-2" id="laporan-kamu">
-                            <h1 class="text-[#666666]">Laporan
-                                kamu</h1>
-                        </a>
-                    </div>
-                    <div class="overflow-y-auto flex flex-1 flex-col bg-pink-200 h-full">
-                        <div class="flex flex-1 flex-col py-4 px-6 ">
-                            <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
-                                <button class="w-full grid justify-items-end" onclick="showOption('block')">
-                                    <div
-                                        class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </div>
-                                </button>
-                                <div class="flex w-full mt-[2px] items-center space-x-2">
-                                    <div class="w-9 h-9 bg-blue-300 rounded-full">
-                                    </div>
-                                    <div class="poppins-normal">
-                                        <h2 class="text-black text-xs">H***</h2>
-                                        <p class="text-neutral-600 text-[10px]">Baru saja</p>
-                                    </div>
+                <div class="grid grid-cols-2 w-full text-xs poppins-medium leading-normal tracking-tight bg-green-300">
+                    <a href="#" class="col-span-1 text-center py-2 border-[#2196F3] border-b-2"
+                        id="semua-laporan">
+                        <h1 class="text-[#2196F3]">Semua
+                            Laporan</h1>
+                    </a>
+                    <a href ="#" class="col-span-1 text-center py-2" id="laporan-kamu">
+                        <h1 class="text-[#666666]">Laporan
+                            kamu</h1>
+                    </a>
+                </div>
+                <div class="overflow-y-auto flex flex-1 flex-col bg-pink-200 h-full">
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
                                 </div>
-                                <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
-                                    Telkom
-                                    depan gate 4, gua abis kena catcall</p>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
                             </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
                         </div>
-                        {{-- <div id="option"
+                    </div>
+                    {{-- <div id="option"
                                 class="hidden w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[30px] top-[140px] absolute ">
                                 <div class="w-[125px] h-[46px] flex justify-center items-center">
                                     <button class="w-full" onclick="showConfirm('block')">
@@ -71,14 +70,13 @@
                                     </button>
                                 </div>
                             </div> --}}
-                    </div>
-                    {{-- Tambah Laporan --}}
-                    <button onclick="showDialog('block')">
-                        <div class="w-[56px] h-[56px] bg-blue-300 rounded-full absolute right-6 bottom-6 shadow-md">
-                            <i class="fa-solid fa-plus absolute right-[21px] bottom-[20px]" style="color:#ffffff"></i>
-                        </div>
-                    </button>
                 </div>
+                {{-- Tambah Laporan --}}
+                <button onclick="showDialog('block')">
+                    <div class="w-[56px] h-[56px] bg-blue-300 rounded-full absolute right-6 bottom-6 shadow-md">
+                        <i class="fa-solid fa-plus absolute right-[21px] bottom-[20px]" style="color:#ffffff"></i>
+                    </div>
+                </button>
                 <form class="card-body" action="" method="POST">
                     @csrf
                     <div id= "confirm" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-20">
