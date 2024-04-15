@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
 use App\Http\Controllers\UserController;
 // use App\Http\Controllers\CommunityController;
+use App\Http\Middleware\EnsureAdminTemenTokenCookieIsValid;
 use App\Http\Middleware\EnsureTemenTokenCookieIsValid;
 use Illuminate\Support\Facades\Route;
 
@@ -128,22 +129,26 @@ Route::get('/register-psycholog', function () {
 })->name("admin.register-psycholog");
 
 // Admin & Psycholog Routing - Authenticated
-Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
+Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
     Route::get("/logout", [AdminController::class, 'logout'])->name("admin.logout");
 });
 
 // Only admin load purpose - Authenticated
-Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin/load")->group(function () {
+Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load")->group(function () {
     // Membuat akun psikolog
     Route::get("/create-psycholog", [AdminController::class, 'showRegisterPsycholog'])->name("adminload.show-register-psycholog");
     Route::post("/create-psycholog", [AdminController::class, 'registerPsycholog'])->name("adminload.register-psycholog");
-    
+
     // List psycholog
     Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");
-    
+
     // Delete psycholog
     Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
+
+    // Change psycholog password
+    Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
+    Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
 });

@@ -8,6 +8,7 @@ use App\Models\Psychologs;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Cookie;
 
@@ -23,6 +24,41 @@ class AdminController extends Controller
     {
         // Redirect and remove cookie
         return redirect(route("admin.login"))->withCookie(Cookie::forget('temen_cookie'));
+    }
+
+    // Get psycholog data
+    public function getPsychologData(Request $request, string $psycholog_id)
+    {
+        try {
+            $psycholog = Psychologs::where("id", $psycholog_id)->first();
+
+            return view("admin-load.change-password-psycholog", ["psycholog" => $psycholog]);
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Akun tidak ditemukan');
+            return redirect()->back();
+        }
+    }
+
+    // Post psycholog data
+    public function changePsychologPassword(Request $request)
+    {
+        try {
+            if ($request->new_password == $request->password) {
+                $user = User::where('email', $request->email)->first();
+
+                $user->password = Hash::make($request->password);
+                $user->save();
+
+                Alert::success('Berhasil', 'Kata sandi berhasil diubah');
+                return redirect()->back();
+            } else {
+                Alert::error('Gagal', 'Password tidak sama');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Akun tidak ditemukan');
+            return redirect()->back();
+        }
     }
 
     public function login(Request $request)
