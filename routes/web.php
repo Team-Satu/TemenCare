@@ -148,6 +148,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
 
     // Change psycholog password
     Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
+    Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
 });

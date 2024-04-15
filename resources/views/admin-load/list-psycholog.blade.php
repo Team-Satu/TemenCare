@@ -31,7 +31,7 @@
                                         <button type="button" onclick="deleteAccount({{ $psycholog->id }})"
                                             class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         <button type="button" class="btn btn-warning" id="changePasswordPsycholog"
-                                            admin-load="change-password-psycholog/{{ $psycholog->id }}"><i
+                                            onclick="changePage('change-password-psycholog/{{ $psycholog->id }}')"><i
                                                 class="fas fa-key"></i></button>
                                     </div>
                                 </td>
@@ -60,5 +60,11 @@
             .catch(error => {
                 window.location.href = '/admin/dashboard';
             });
+    }
+
+    function changePage(targetLoad) {
+        const loading = "<h2>Loading...</h2>";
+        $("#load-page").html(loading);
+        $("#load-page").load("/admin/load/" + targetLoad);
     }
 </script>

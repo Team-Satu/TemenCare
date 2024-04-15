@@ -9,12 +9,12 @@
         <!-- Area Chart -->
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
-                <form class="card-body" action="{{ route('adminload.register-psycholog') }}" method="POST">
+                <form class="card-body" action="{{ route('adminload.post-change-password-psycholog') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input type="text" class="form-control" placeholder="Email Psikolog" name="email"
-                            value="{{$psycholog->email}}" disabled>
+                            value="{{ $psycholog->email }}" readonly>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">New Password</label>
@@ -22,7 +22,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Confirm New Password</label>
-                        <input type="text" class="form-control" placeholder="Password Anda" name="password">
+                        <input type="text" class="form-control" placeholder="Password Anda" name="new_password">
                     </div>
 
                     <button type="submit" class="btn btn-primary">Ganti Password</button>
