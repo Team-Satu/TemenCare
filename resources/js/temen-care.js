@@ -8,4 +8,11 @@ $(document).ready(function () {
         var targetLoad = $(this).attr("load");
         $("#load-page").load("/admin/" + targetLoad);
     });
+
+    
+    $("#changePasswordPsycholog").on("click", function () {
+        $("#load-page").html(loading);
+        var targetLoad = $(this).attr("admin-load");
+        $("#load-page").load("/admin/load/" + targetLoad);
+    });
 });

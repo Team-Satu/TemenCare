@@ -14,7 +14,7 @@
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input type="text" class="form-control" placeholder="Email Psikolog" name="email"
-                            value="alfian" disabled>
+                            value="{{$psycholog->email}}" disabled>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">New Password</label>

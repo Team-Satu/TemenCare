@@ -146,6 +146,9 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // Delete psycholog
     Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
 
+    // Change psycholog password
+    Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
+
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
 });
 

@@ -25,6 +25,19 @@ class AdminController extends Controller
         return redirect(route("admin.login"))->withCookie(Cookie::forget('temen_cookie'));
     }
 
+    // Get psycholog data
+    public function getPsychologData(Request $request, string $psycholog_id)
+    {
+        try {
+            $psycholog = Psychologs::where("id", $psycholog_id)->first();
+
+            return view("admin-load.change-password-psycholog", ["psycholog" => $psycholog]);
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Akun tidak ditemukan');
+            return redirect()->back();
+        }
+    }
+
     public function login(Request $request)
     {
         try {
