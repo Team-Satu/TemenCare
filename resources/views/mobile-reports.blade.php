@@ -23,10 +23,11 @@
             {{-- Main --}}
             <div class="w-full h-screen bg-white relative">
                 {{-- Main component --}}
+                <x-header-component title="hohohoh"></x-header-component>
                 <div class="my-6 pb-10 bg-white">
-                  <h1 class="text-neutral-600 text-center text-base poppins-semibold capitalize leading-normal tracking-wide">Halaman lapor</h1>
-                  <a href="/dashboard" class="flex items-center left-[20px] top-[30px] absolute ">
-                  <i class="fa-solid fa-arrow-left"></i>
+                  {{-- <h1 class="text-neutral-600 text-center text-base poppins-semibold capitalize leading-normal tracking-wide">Halaman lapor</h1> --}}
+                  {{-- <a href="/dashboard" class="flex items-center left-[20px] top-[30px] absolute "> --}}
+                  {{-- <i class="fa-solid fa-arrow-left"></i> --}}
                   </a>
                     <div class="overflow-x-auto flex flex-1 flex-col mt-2">
                         <div class="grid grid-cols-2 w-full">

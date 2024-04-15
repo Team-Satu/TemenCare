@@ -1,3 +1,6 @@
-<div>
-    <!-- Life is available only in the present moment. - Thich Nhat Hanh -->
+<div class="flex flex-row flex-1 bg-white px-4 py-4 items-center w-full">
+    <i class="fa-solid fa-arrow-left"></i>
+    <h1
+        class="text-neutral-600 text-base poppins-semibold capitalize leading-normal tracking-wide flex flex-1 justify-center">
+        {{ $title }}</h1>
 </div>
