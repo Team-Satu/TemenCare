@@ -54,6 +54,258 @@
                                 depan gate 4, gua abis kena catcall</p>
                         </div>
                     </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-1 flex-col px-4 bg-teal-300 py-4">
+                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                <div
+                                    class="w-6 h-4 justify-center items-center flex relative bg-neutral-100 rounded-sm">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </div>
+                            </button>
+                            <div class="flex w-full mt-[2px] items-center space-x-2">
+                                <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                </div>
+                                <div class="poppins-normal">
+                                    <h2 class="text-black text-xs">H***</h2>
+                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                </div>
+                            </div>
+                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
+                                Telkom
+                                depan gate 4, gua abis kena catcall</p>
+                        </div>
+                    </div>
                     {{-- <div id="option"
                                 class="hidden w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[30px] top-[140px] absolute ">
                                 <div class="w-[125px] h-[46px] flex justify-center items-center">
@@ -72,14 +324,19 @@
                             </div> --}}
                 </div>
                 {{-- Tambah Laporan --}}
-                <button onclick="showDialog('block')">
-                    <div class="w-[56px] h-[56px] bg-blue-300 rounded-full absolute right-6 bottom-6 shadow-md">
-                        <i class="fa-solid fa-plus absolute right-[21px] bottom-[20px]" style="color:#ffffff"></i>
-                    </div>
-                </button>
+                <div class="max-w-md w-full fixed bottom-0 flex flex-1 px-4 mb-4">
+                    <div class="flex-auto"></div>
+                    <button onclick="showDialog('block')">
+                        <div
+                            class="w-[56px] h-[56px] bg-blue-300 rounded-full flex items-center justify-center shadow-md text-white self-end">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </button>
+                </div>
                 <form class="card-body" action="" method="POST">
                     @csrf
-                    <div id= "confirm" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-20">
+                    <div id= "confirm"
+                        class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-20">
                         <div class="w-96 h-80 relative m-auto mt-[220px] bg-white rounded-3xl shadow-2xl">
                             <i class="fa-solid fa-triangle-exclamation text-8xl justify-center items-center flex relative py-14"
                                 style="color: #f36464;"></i>
@@ -144,7 +401,8 @@
                 </div>
                 <form>
                     {{-- Change Report Modal --}}
-                    <div id= "change" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
+                    <div id= "change"
+                        class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
                         <div class="w-96 h-80 relative m-auto mt-[400px] bg-white rounded-3xl shadow-2xl">
                             <div class="w-full grid justify-items-end ">
                                 <button class="right-[20px] top-[16px] absolute" onclick="showChange('none')">
