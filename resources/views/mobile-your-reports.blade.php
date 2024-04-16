@@ -70,14 +70,14 @@
                         <button class="w-full" onclick="showConfirm('block')">
                           <p class="text-center py-3 border-b-2 border-gray-400 text-xs text-red-400 w-full">Hapus Laporan</p>
                         </button>
-                    </div>
+                      </div>
                     {{--Change Report Button--}}
                       <div class="w-[125px] h-[46px] flex justify-center items-center">
-                      <button class="w-full" onclick="showChange('block')">
-                      <p class="text-center py-3 text-xs">Ubah Laporan</p>
-                      </button>
+                        <button class="w-full" onclick="showChange('block')">
+                          <p class="text-center py-3 text-xs">Ubah Laporan</p>
+                        </button>
+                      </div>
                     </div>
-                  </div>
                 </div>
                 {{--Add Report Button--}}
                 <button onclick="showDialog('block')">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reports;
+use App\Models\Accounts;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -15,14 +16,18 @@ class ReportsController extends Controller
         // $userId = request()->attributes->get('user_id');
 
         $reports = Reports::all()->sortByDesc("report_id");
+        $reports = Reports::with('user')->get();
         return view('mobile-reports', ["reports" => $reports]);
     }
-
     public function addReport(Request $request)
     {
         try {
             $userId = $request->attributes->get('user_id');
-
+            $report = $request->attributes->get('report');
+            
+            if(strlen($report)>500){
+                return redirect()->back()->withErrors(['report' => "Maksimal 500 kata!"]);
+            }
             Reports::create([
                 "user_id" => $userId,
                 "report" => $request->get("report")
