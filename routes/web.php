@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserController;
 // use App\Http\Controllers\CommunityController;
 use App\Http\Middleware\EnsureAdminTemenTokenCookieIsValid;
@@ -162,6 +163,11 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
+    Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
+
+    // Reports
+    Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+    Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 });
 
 // show rating and feedback

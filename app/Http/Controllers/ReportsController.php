@@ -2,28 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reports;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ReportsController extends Controller
 {
-    public function addReports(Request $request)
+
+    // Display report
+    public function reports()
+    {
+        // $userId = request()->attributes->get('user_id');
+
+        $reports = Reports::all()->sortByDesc("report_id");
+        return view('mobile-reports', ["reports" => $reports]);
+    }
+
+    public function addReport(Request $request)
     {
         try {
-            $credential = $request->only('report_id', 'user_id', 'report');
+            $userId = $request->attributes->get('user_id');
 
-            // $countPsycholog = Psychologs::where("email", $credential['email'])->count();
+            Reports::create([
+                "user_id" => $userId,
+                "report" => $request->get("report")
+            ]);
 
-            if ('parameter') {
-                Alert::error('Gagal', 'Maksimal 500 kata!');
-                return redirect()->back();
-            } else {
-                // Membuat lapaoran
-                Reports::create([
-                ]);
-
-                Alert::success('Berhasil', 'Laporan berhasil dibuat!');
-                return redirect()->back();
-            }
+            return redirect(route("user.reports"));
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
