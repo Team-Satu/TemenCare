@@ -100,62 +100,33 @@
                     </div>
                 </form>
 
-                <div id="dialog" class="bg-black bg-opacity-50 w-screen h-screen z-50 bottom-0 left-0 fixed hidden flex-1 flex-col">
+                <div id="dialog"
+                    class="bg-black bg-opacity-50 w-screen h-screen z-50 bottom-0 left-0 fixed hidden flex-1 flex-col">
                     <div class="flex-auto"></div>
-                    <div class="w-full max-w-md py-8 m-auto bg-white rounded-3xl shadow-2xl flex flex-col p-4">
+                    <div
+                        class="w-full max-w-md m-auto bg-white rounded-tr-3xl rounded-tl-3xl shadow-2xl flex flex-col p-4 max-h-80">
                         <div class="w-full flex justify-end">
                             <button onclick="showDialog('none')">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
-                        <form class="card-body" action="" method="POST">
+                        <form class="card-body w-full" action="" method="POST">
                             @csrf
-                            <div class="w-full">
-                                <textarea placeholder="Tuliskan laporanmu di sini"
-                                class="poppins-medium text-xs rounded-lg border border-gray-300 w-full p-2.5 outline-none"></textarea>
+                            <h2
+                                class="text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide text-center mt-2 mb-4">
+                                Tuliskan laporanmu</h2>
+                            <div class="w-full mb-4">
+                                <textarea rows="8" placeholder="Tuliskan laporanmu di sini"
+                                    class="poppins-medium text-xs rounded-lg border border-gray-300 w-full p-2.5 outline-none"></textarea>
                             </div>
-                            {{-- <div
-                                class="left-[120px] top-[20px] absolute text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">
-                                Tuliskan laporanmu</div> --}}
-                            <button
-                                class="w-52 h-8 px-4 py-1.5 bg-blue-300 rounded-3xl shadow flex-col justify-center items-center inline-flex">
-                                <div class="justify-center items-center gap-2 inline-flex">
-                                    <div
-                                        class="text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide">
-                                        Kirim</div>
-                                </div>
-                            </button>
-                        </form>
-                        {{-- <div class="w-full grid justify-items-end bg-green-300">
-                            <button class="right-[20px] top-[16px] absolute" onclick="showDialog('none')">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                            <form class="card-body" action="" method="POST">
-                                @csrf
-                                <div
-                                    class="w-80 h-44 left-[27px] top-[60px] absolute justify-start items-start inline-flex">
-                                    <div
-                                        class="grow shrink basis-0 self-stretch flex-col justify-start items-start inline-flex">
-                                        <textarea placeholder="Tuliskan pengalamanmu di sini"
-                                            class="self-stretch grow shrink basis-0 py-4 justify-start items-center inline-flex poppins-medium text-xs rounded-lg  border border-gray-300 w-full p-2.5"></textarea>
-                                    </div>
-                                </div>
-                                <div
-                                    class="left-[120px] top-[20px] absolute text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">
-                                    Tuliskan laporanmu</div>
+                            <div class="w-full px-6">
                                 <button
-                                    class="w-52 h-8 px-4 py-1.5 bg-blue-300 rounded-3xl shadow flex-col justify-center items-center inline-flex">
-                                    <div class="justify-center items-center gap-2 inline-flex">
-                                        <div
-                                            class="text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide">
-                                            Kirim</div>
-                                    </div>
-                                </button>
-                        </div> --}}
+                                    class="bg-blue-300 rounded-3xl shadow text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide w-full py-2">Kirim</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <form>
-                    {{-- Change Report Modal --}}
+                {{-- <form>
                     <div id= "change" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
                         <div class="w-96 h-80 relative m-auto mt-[400px] bg-white rounded-3xl shadow-2xl">
                             <div class="w-full grid justify-items-end ">
@@ -185,7 +156,7 @@
                                     </button>
                             </div>
                         </div>
-                </form>
+                </form> --}}
             </div>
         </main>
     </div>
