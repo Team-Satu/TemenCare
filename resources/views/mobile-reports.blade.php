@@ -36,8 +36,7 @@
                     <div class="flex flex-1 flex-col px-4 py-4">
                         <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
                             <button class="w-full grid justify-items-end" onclick="showOption('block')">
-                                <div
-                                    class="w-6 h-4 justify-center items-center flex bg-neutral-100 rounded-sm">
+                                <div class="w-6 h-4 justify-center items-center flex bg-neutral-100 rounded-sm">
                                     <i class="fa-solid fa-ellipsis"></i>
                                 </div>
                             </button>
@@ -67,8 +66,7 @@
                 </div>
                 <form class="card-body" action="" method="POST">
                     @csrf
-                    <div id= "confirm"
-                        class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-20">
+                    <div id= "confirm" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-20">
                         <div class="w-96 h-80 relative m-auto mt-[220px] bg-white rounded-3xl shadow-2xl">
                             <i class="fa-solid fa-triangle-exclamation text-8xl justify-center items-center flex relative py-14"
                                 style="color: #f36464;"></i>
@@ -101,9 +99,34 @@
                         </div>
                     </div>
                 </form>
-                <div id= "dialog" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
-                    <div class="w-96 h-80 relative m-auto mt-[400px] bg-white rounded-3xl shadow-2xl">
-                        <div class="w-full grid justify-items-end ">
+
+                <div id="dialog" class="bg-black bg-opacity-50 w-screen h-screen z-50 bottom-0 left-0 fixed hidden flex-1 flex-col">
+                    <div class="flex-auto"></div>
+                    <div class="w-full max-w-md py-8 m-auto bg-white rounded-3xl shadow-2xl flex flex-col p-4">
+                        <div class="w-full flex justify-end">
+                            <button onclick="showDialog('none')">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <form class="card-body" action="" method="POST">
+                            @csrf
+                            <div class="w-full">
+                                <textarea placeholder="Tuliskan laporanmu di sini"
+                                class="poppins-medium text-xs rounded-lg border border-gray-300 w-full p-2.5 outline-none"></textarea>
+                            </div>
+                            {{-- <div
+                                class="left-[120px] top-[20px] absolute text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">
+                                Tuliskan laporanmu</div> --}}
+                            <button
+                                class="w-52 h-8 px-4 py-1.5 bg-blue-300 rounded-3xl shadow flex-col justify-center items-center inline-flex">
+                                <div class="justify-center items-center gap-2 inline-flex">
+                                    <div
+                                        class="text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide">
+                                        Kirim</div>
+                                </div>
+                            </button>
+                        </form>
+                        {{-- <div class="w-full grid justify-items-end bg-green-300">
                             <button class="right-[20px] top-[16px] absolute" onclick="showDialog('none')">
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
@@ -121,20 +144,19 @@
                                     class="left-[120px] top-[20px] absolute text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">
                                     Tuliskan laporanmu</div>
                                 <button
-                                    class="w-52 h-8 px-4 py-1.5 left-[85px] top-[260px] absolute bg-blue-300 rounded-3xl shadow flex-col justify-center items-center inline-flex">
+                                    class="w-52 h-8 px-4 py-1.5 bg-blue-300 rounded-3xl shadow flex-col justify-center items-center inline-flex">
                                     <div class="justify-center items-center gap-2 inline-flex">
                                         <div
                                             class="text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide">
                                             Kirim</div>
                                     </div>
                                 </button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <form>
                     {{-- Change Report Modal --}}
-                    <div id= "change"
-                        class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
+                    <div id= "change" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
                         <div class="w-96 h-80 relative m-auto mt-[400px] bg-white rounded-3xl shadow-2xl">
                             <div class="w-full grid justify-items-end ">
                                 <button class="right-[20px] top-[16px] absolute" onclick="showChange('none')">
@@ -171,7 +193,7 @@
         // Add Report
         function showDialog() {
             var dialog = document.getElementById("dialog");
-            dialog.style.display = dialog.style.display === 'none' ? 'block' : 'none';
+            dialog.style.display = dialog.style.display === 'none' ? 'flex' : 'none';
         }
         // Options
         function showOption() {
