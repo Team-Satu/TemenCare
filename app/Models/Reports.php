@@ -12,4 +12,9 @@ class Reports extends Model
     protected $table = "reports";
     protected $primaryKey = "report_id";
     protected $fillable = ["user_id", "report"];
+    
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
+

@@ -22,12 +22,11 @@
             <div>
                 <x-header-component title="Lapor!"></x-header-component>
                 <div class="grid grid-cols-2 w-full text-xs poppins-medium leading-normal tracking-tight">
-                    <a href="#" class="col-span-1 text-center py-2 border-[#2196F3] border-b-2"
-                        id="semua-laporan">
+                    <a href="#" class="col-span-1 text-center py-2 border-[#2196F3] border-b-2"id="semua-laporan">
                         <h1 class="text-[#2196F3]">Semua
                             Laporan</h1>
                     </a>
-                    <a href ="#" class="col-span-1 text-center py-2" id="laporan-kamu">
+                    <a href ="/your reports" class="col-span-1 text-center py-2" id="laporan-kamu">
                         <h1 class="text-[#666666]">Laporan
                             kamu</h1>
                     </a>
@@ -44,9 +43,9 @@
                                 <div class="flex w-full mt-[2px] items-center space-x-2">
                                     <div class="w-9 h-9 bg-blue-300 rounded-full">
                                     </div>
-                                    <div class="poppins-normal">
-                                        <h2 class="text-black text-xs">H***</h2>
-                                        <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                    <div class="">
+                                        <h2 class="text-black text-xs poppins-medium">{{ $report->user->name}}</h2>
+                                        <p class="text-neutral-600 text-[10px]">{{ $report->created_at}}</p>
                                     </div>
                                 </div>
                                 <p class="text-neutral-600 text-[12px] poppins-medium py-2">{{ $report->report }}</p>
@@ -63,6 +62,20 @@
                             <i class="fa-solid fa-plus"></i>
                         </div>
                     </button>
+                </div>
+                <div id="option" class="hidden w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[30px] top-[140px] absolute ">
+                {{--Delete Report Button--}}
+                    <div class="w-[125px] h-[46px] flex justify-center items-center">
+                    <button class="w-full" onclick="showConfirm('block')">
+                        <p class="text-center py-3 border-b-2 border-gray-400 text-xs text-red-400 w-full">Hapus Laporan</p>
+                    </button>
+                    </div>
+                {{--Change Report Button--}}
+                    <div class="w-[125px] h-[46px] flex justify-center items-center">
+                    <button class="w-full" onclick="showChange('block')">
+                        <p class="text-center py-3 text-xs">Ubah Laporan</p>
+                    </button>
+                    </div>
                 </div>
                 {{-- <form class="card-body" action="" method="POST">
                     @csrf
