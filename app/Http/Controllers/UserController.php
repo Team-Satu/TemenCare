@@ -16,14 +16,6 @@ class UserController extends Controller
         return view('mobile-dashboard', ["name" => $user->name]);
     }
 
-    // Display report
-    public function reports()
-    {
-        // $userId = request()->attributes->get('user_id');
-        // $user = Accounts::where('id', $userId)->first();
-        return view('mobile-reports');
-    }
-
     // Display user profile
     public function profile()
     {

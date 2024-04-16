@@ -33,25 +33,25 @@
                     </a>
                 </div>
                 <div class="overflow-y-auto flex flex-1 flex-col h-full">
-                    <div class="flex flex-1 flex-col px-4 py-4">
-                        <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
-                            <button class="w-full grid justify-items-end" onclick="showOption('block')">
-                                <div class="w-6 h-4 justify-center items-center flex bg-neutral-100 rounded-sm">
-                                    <i class="fa-solid fa-ellipsis"></i>
+                    <div class="flex flex-1 flex-col px-4 py-4 space-y-4">
+                        @foreach ($reports as $report)
+                            <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
+                                <button class="w-full grid justify-items-end" onclick="showOption('block')">
+                                    <div class="w-6 h-4 justify-center items-center flex bg-neutral-100 rounded-sm">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                    </div>
+                                </button>
+                                <div class="flex w-full mt-[2px] items-center space-x-2">
+                                    <div class="w-9 h-9 bg-blue-300 rounded-full">
+                                    </div>
+                                    <div class="poppins-normal">
+                                        <h2 class="text-black text-xs">H***</h2>
+                                        <p class="text-neutral-600 text-[10px]">Baru saja</p>
+                                    </div>
                                 </div>
-                            </button>
-                            <div class="flex w-full mt-[2px] items-center space-x-2">
-                                <div class="w-9 h-9 bg-blue-300 rounded-full">
-                                </div>
-                                <div class="poppins-normal">
-                                    <h2 class="text-black text-xs">H***</h2>
-                                    <p class="text-neutral-600 text-[10px]">Baru saja</p>
-                                </div>
+                                <p class="text-neutral-600 text-[12px] poppins-medium py-2">{{ $report->report }}</p>
                             </div>
-                            <p class="text-neutral-600 text-[12px] poppins-medium py-2">Hati-hati di daerah
-                                Telkom
-                                depan gate 4, gua abis kena catcall</p>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 {{-- Tambah Laporan --}}
@@ -64,7 +64,7 @@
                         </div>
                     </button>
                 </div>
-                <form class="card-body" action="" method="POST">
+                {{-- <form class="card-body" action="" method="POST">
                     @csrf
                     <div id= "confirm" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-20">
                         <div class="w-96 h-80 relative m-auto mt-[220px] bg-white rounded-3xl shadow-2xl">
@@ -98,11 +98,11 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form> --}}
 
                 <div id="dialog"
                     class="bg-black bg-opacity-50 w-screen h-screen z-50 bottom-0 left-0 fixed hidden flex-1 flex-col">
-                    <div class="flex-auto"></div>
+                    <div class="flex-auto" onclick="showDialog('none')"></div>
                     <div
                         class="w-full max-w-md m-auto bg-white rounded-tr-3xl rounded-tl-3xl shadow-2xl flex flex-col p-4 max-h-80">
                         <div class="w-full flex justify-end">
@@ -110,17 +110,17 @@
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
-                        <form class="card-body w-full" action="" method="POST">
+                        <form class="card-body w-full" action="{{ route('user.post-report') }}" method="POST">
                             @csrf
                             <h2
                                 class="text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide text-center mt-2 mb-4">
                                 Tuliskan laporanmu</h2>
                             <div class="w-full mb-4">
                                 <textarea rows="8" placeholder="Tuliskan laporanmu di sini"
-                                    class="poppins-medium text-xs rounded-lg border border-gray-300 w-full p-2.5 outline-none"></textarea>
+                                    class="poppins-medium text-xs rounded-lg border border-gray-300 w-full p-2.5 outline-none" name="report"></textarea>
                             </div>
                             <div class="w-full px-6">
-                                <button
+                                <button type="submit"
                                     class="bg-blue-300 rounded-3xl shadow text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide w-full py-2">Kirim</button>
                             </div>
                         </form>
