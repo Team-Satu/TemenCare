@@ -163,6 +163,12 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
+});
+
+// Show Landing Page Mobile
+Route::get('/lpmobile', function () {
+    return view('mobile-landing-page');
+});
     Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
 
     // Reports
