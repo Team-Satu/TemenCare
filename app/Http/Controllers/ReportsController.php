@@ -22,15 +22,21 @@ class ReportsController extends Controller
     public function addReport(Request $request)
     {
         try {
+            // User id diambil menggunakan attribute karena dia di set di middleware ke attribute
             $userId = $request->attributes->get('user_id');
-            $report = $request->attributes->get('report');
-            
-            if(strlen($report)>500){
-                return redirect()->back()->withErrors(['report' => "Maksimal 500 kata!"]);
+
+            // Report bisa langsung diambil dari $request karena dia merupakan data yang langsung ditembak sebagai post data
+            $report = $request->get("report");
+
+            if (strlen($report) > 500) {
+                // Pake kode di bawah ini kalo misalkan make show error, jangan pake withError (approach kita beda soalnya).
+                Alert::error('Gagal', 'Maksimal karakter laporan adalah 500!');
+                return redirect()->back();
             }
+
             Reports::create([
                 "user_id" => $userId,
-                "report" => $request->get("report")
+                "report" => $report
             ]);
 
             return redirect(route("user.reports"));
