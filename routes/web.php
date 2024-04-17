@@ -138,7 +138,7 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->prefix("admin/load")->g
     // Membuat akun psikolog
     Route::get("/create-psycholog", [AdminController::class, 'showRegisterPsycholog'])->name("adminload.show-register-psycholog");
     Route::post("/create-psycholog", [AdminController::class, 'registerPsycholog'])->name("adminload.register-psycholog");
-    
+
     // List psycholog
     Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");
 
@@ -154,4 +154,9 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
+});
+
+// Show Landing Page Mobile
+Route::get('/lpmobile', function () {
+    return view('mobile-landing-page');
 });
