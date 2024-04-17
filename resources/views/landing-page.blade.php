@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile View Temencare Dashboard</title>
+    <title>Temen Care</title>
     @vite('resources/css/app.css')
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
@@ -12,7 +12,7 @@
 <body class="bg-gray-100">
     <div class="max-w-md mx-auto h-screen">
         <!-- Header -->
-        <header class="flex justify-between py-4 pl-6 pr-5">
+        <header class="flex justify-between py-4 pl-6 pr-5 bg-white w-full sticky top-0 z-50">
             <img src="./img/temencare-logo.svg" alt="temencare" class="w-48 h-6">
 
             <img src="./img/menu.svg" >
@@ -105,13 +105,13 @@
                 <h3 class="poppins-medium text-[#4A4E50] text-center text-3.5">Profil Psikolog <span class="poppins-bold text-[#7EBAEB]">Temen</span> <span class="poppins-bold text-[#F36464]">Care</span></h3>
                 <p class="poppins-light text-[#4A4E50] text-xs text-center mb-5">Semua Psikolog dan Konselor terbaik siap <br> mendengarkan dan mengatasi setiap masalah <br> seputar:</p>
 
-                <div class="grid grid-cols-3 gap-3 w-[262px] mx-auto mb-8">
-                    <button class="poppins-medium text-[#0288D1] text-[10px] rounded-3xl py-2.5 bg-[#2196F3] bg-opacity-5 border border-[#2196F3]" >Pendidikan</button>
-                    <button class="poppins-medium text-[#0288D1] text-[10px] rounded-3xl py-2.5 bg-[#2196F3] bg-opacity-5 border border-[#2196F3]" >Kesepian</button>
-                    <button class="poppins-medium text-[#0288D1] text-[10px] rounded-3xl py-2.5 bg-[#2196F3] bg-opacity-5 border border-[#2196F3]" >Hubungan</button>
-                    <button class="poppins-medium text-[#0288D1] text-[10px] rounded-3xl py-2.5 bg-[#2196F3] bg-opacity-5 border border-[#2196F3]" >Keluarga</button>
-                    <button class="poppins-medium text-[#0288D1] text-[10px] rounded-3xl py-2.5 bg-[#2196F3] bg-opacity-5 border border-[#2196F3]" >Pekerjaan</button>
-                    <button class="poppins-medium text-[#0288D1] text-[10px] rounded-3xl py-2.5 bg-[#2196F3] bg-opacity-5 border border-[#2196F3]" >Lainnya</button>
+                <div class="grid grid-cols-3 gap-3 w-[262px] mx-auto mb-8 poppins-medium text-[#0288D1] text-[10px] rounded-3xl py-2.5 bg-[#2196F3] bg-opacity-5 border border-[#2196F3]">
+                    <button>Pendidikan</button>
+                    <button>Kesepian</button>
+                    <button>Hubungan</button>
+                    <button>Keluarga</button>
+                    <button>Pekerjaan</button>
+                    <button>Lainnya</button>
                 </div>
 
                 <div class="w-full overflow-hidden">

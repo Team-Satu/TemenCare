@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
+use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserController;
 // use App\Http\Controllers\CommunityController;
@@ -155,8 +156,9 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
 });
 
 // User Routing - UnAuthenticated
+Route::get('/', [PublicController::class, 'index'])->name("public.landing");
 Route::get('/login', [LoginIgracias::class, 'login'])->name("user.login");
-Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
+Route::post('/login', [LoginIgracias::class, 'loginIgracias'])->name("user.login-igracias");
 
 // User Routing - Authenticated
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
@@ -169,11 +171,11 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
 Route::get('/lpmobile', function () {
     return view('mobile-landing-page');
 });
-    Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
+Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
 
-    // Reports
-    Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
-    Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+// Reports
+Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 
 // show rating and feedback
 Route::get('/rating', function () {
