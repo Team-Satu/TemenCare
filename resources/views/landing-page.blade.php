@@ -35,7 +35,7 @@
                     <div class="relative flex justify-end">
                         <img src="./img/doctorimage-mobile.svg" alt="doctor-image" class="w-full">
                         <p
-                            class="bg-white rounded-tl-xl rounded-bl-xl text-xs text-[#0288D1] p-3.5 poppins-semibold absolute right-0 bottom-8">
+                            class="bg-white rounded-tl-xl rounded-bl-xl text-[10px] text-[#0288D1] min-[320px]:p-3.5 min-[320px]:text-xs p-2 poppins-semibold absolute right-0 bottom-8">
                             Holy Alin, M. Psi. Psikologi Hewan</p>
                     </div>
                 </div>
