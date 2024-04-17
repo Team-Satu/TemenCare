@@ -9,7 +9,12 @@ class Reports extends Model
 {
     use HasFactory;
 
-    protected $table = "report_id";
-    protected $primaryKey = "acquaintance_id";
+    protected $table = "reports";
+    protected $primaryKey = "report_id";
     protected $fillable = ["user_id", "report"];
+    
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
+
