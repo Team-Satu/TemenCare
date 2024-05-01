@@ -174,6 +174,8 @@ Route::get('/lpmobile', function () {
     // Reports
     Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
     Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+    // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
+    // Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
 
 // show rating and feedback
 Route::get('/rating', function () {
@@ -182,7 +184,9 @@ Route::get('/rating', function () {
 Route::get('/your rating', function () {
     return view('mobile-your-rating');
 });
-
+Route::get('/add rating', function () {
+    return view('mobile-add-rating');
+});
 // Show Landing Page Desktop
 Route::get('/lpdesktop', function () {
     return view('desktop-landing-page');

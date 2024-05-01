@@ -72,9 +72,61 @@
                     </div>
                 {{--Change Report Button--}}
                     <div class="w-[125px] h-[46px] flex justify-center items-center">
-                    <button class="w-full" onclick="showChange('block')">
+                    <button class="" onclick="showChange('block')">
                         <p class="text-center py-3 text-xs">Ubah Laporan</p>
                     </button>
+                    </div>
+                </div>
+                <div id="dialog"
+                    class="bg-black bg-opacity-50 w-screen h-screen z-50 bottom-0 left-0 fixed hidden flex-1 flex-col">
+                    <div class="flex-auto" onclick="showDialog('none')"></div>
+                    <div
+                        class="w-full max-w-md m-auto bg-white rounded-tr-3xl rounded-tl-3xl shadow-2xl flex flex-col p-4 max-h-80">
+                        <div class="w-full flex justify-end">
+                            <button onclick="showDialog('none')">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <form class="card-body w-full" action="{{ route('user.post-report') }}" method="POST">
+                            @csrf
+                            <h2
+                                class="text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide text-center mt-2 mb-4">
+                                Tuliskan laporanmu</h2>
+                            <div class="w-full mb-4">
+                                <textarea rows="8" placeholder="Tuliskan laporanmu di sini"
+                                    class="poppins-medium text-xs rounded-lg border border-gray-300 w-full p-2.5 outline-none" name="report"></textarea>
+                            </div>
+                            <div class="w-full px-6">
+                                <button type="submit"
+                                    class="bg-blue-300 rounded-3xl shadow text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide w-full py-2">Kirim</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div id="change"
+                    class="bg-black bg-opacity-50 w-screen h-screen z-50 bottom-0 left-0 hidden fixed flex-1 flex-col">
+                    <div class="flex-auto" onclick="showChange('none')"></div>
+                    <div
+                        class="w-full max-w-md mt-[426px] ml-[536px] bg-white rounded-tr-3xl rounded-tl-3xl shadow-2xl flex flex-col p-4 max-h-80">
+                        <div class="w-full flex justify-end">
+                            <button onclick="showChange('none')">
+                                <i class="fa-solid fa-xmark"></i>
+                            </button>
+                        </div>
+                        <form class="card-body w-full" action="" method="POST">
+                            @csrf
+                            <h2
+                                class="text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide text-center mt-2 mb-4">
+                                Silahkan Ubah laporanmu</h2>
+                            <div class="w-full mb-4">
+                                <textarea rows="8" placeholder="Ubah laporanmu di sini"
+                                    class="poppins-medium text-xs rounded-lg border border-gray-300 w-full p-2.5 outline-none" name="report"></textarea>
+                            </div>
+                            <div class="w-full px-6">
+                                <button type="submit"
+                                    class="bg-blue-300 rounded-3xl shadow text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide w-full py-2">Kirim</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 {{-- <form class="card-body" action="" method="POST">
@@ -112,64 +164,6 @@
                         </div>
                     </div>
                 </form> --}}
-
-                <div id="dialog"
-                    class="bg-black bg-opacity-50 w-screen h-screen z-50 bottom-0 left-0 fixed hidden flex-1 flex-col">
-                    <div class="flex-auto" onclick="showDialog('none')"></div>
-                    <div
-                        class="w-full max-w-md m-auto bg-white rounded-tr-3xl rounded-tl-3xl shadow-2xl flex flex-col p-4 max-h-80">
-                        <div class="w-full flex justify-end">
-                            <button onclick="showDialog('none')">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
-                        </div>
-                        <form class="card-body w-full" action="{{ route('user.post-report') }}" method="POST">
-                            @csrf
-                            <h2
-                                class="text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide text-center mt-2 mb-4">
-                                Tuliskan laporanmu</h2>
-                            <div class="w-full mb-4">
-                                <textarea rows="8" placeholder="Tuliskan laporanmu di sini"
-                                    class="poppins-medium text-xs rounded-lg border border-gray-300 w-full p-2.5 outline-none" name="report"></textarea>
-                            </div>
-                            <div class="w-full px-6">
-                                <button type="submit"
-                                    class="bg-blue-300 rounded-3xl shadow text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide w-full py-2">Kirim</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                {{-- <form>
-                    <div id= "change" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-10">
-                        <div class="w-96 h-80 relative m-auto mt-[400px] bg-white rounded-3xl shadow-2xl">
-                            <div class="w-full grid justify-items-end ">
-                                <button class="right-[20px] top-[16px] absolute" onclick="showChange('none')">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </button>
-                                <form class="card-body" action="" method="POST">
-                                    @csrf
-                                    <div
-                                        class="w-80 h-44 left-[27px] top-[60px] absolute justify-start items-start inline-flex">
-                                        <div
-                                            class="grow shrink basis-0 self-stretch flex-col justify-start items-start inline-flex">
-                                            <textarea
-                                                class="text-left self-stretch grow shrink basis-0 py-4 justify-start items-center poppins-normal text-xs rounded-lg border border-gray-300 w-full p-2.5">Hati-hati di daerah Telkom depan gate 4, gua abis kena catcall</textarea>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="left-[108px] top-[20px] absolute text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">
-                                        Silahkan Ubah laporanmu</div>
-                                    <button
-                                        class="w-52 h-8 px-4 py-1.5 left-[85px] top-[260px] absolute bg-blue-300 rounded-3xl shadow flex-col justify-center items-center inline-flex">
-                                        <div class="justify-center items-center gap-2 inline-flex">
-                                            <div
-                                                class="text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide">
-                                                Kirim</div>
-                                        </div>
-                                    </button>
-                            </div>
-                        </div>
-                </form> --}}
             </div>
         </main>
     </div>
@@ -196,3 +190,4 @@
         }
     </script>
 </body>
+</html>
