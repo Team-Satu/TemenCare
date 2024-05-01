@@ -33,6 +33,7 @@
                             {{-- Profile Image --}}
                             <div
                                 class="w-16 h-16 bg-blue-300 rounded-2xl flex-col justify-center items-center inline-flex ">
+                                <img src="./img/winter.jpg.png" alt="doctor-image" class="w-16 h-16 rounded-2xl">
                             </div>
                             {{-- rate --}}
                             <div>
