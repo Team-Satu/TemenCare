@@ -160,6 +160,8 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     Route::get("/schedules", [AdminController::class, 'showSchedule'])->name("adminload.schedules");
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
+
+    Route::get("/communities", [AdminController::class, 'showCommunities'])->name("adminload.communities");
 });
 
 // User Routing - UnAuthenticated
@@ -199,9 +201,6 @@ Route::get('/add rating', function () {
 Route::get('/lpdesktop', function () {
     return view('desktop-landing-page');
 });
-
-
-
 // Show Komunitas Psikolog Desktop
 Route::get('/komunitas-psikolog', function () {
     return view('desktop-psikolog-komunitas');

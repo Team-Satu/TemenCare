@@ -151,6 +151,11 @@ class AdminController extends Controller
         return view("admin-load.psycholog-schedules");
     }
 
+    public function showCommunities()
+    {
+        return view("admin-load.communities-psycholog");
+    }
+    
     public function showRegisterPsycholog(Request $request)
     {
         return view("admin-load.register-psycholog");
