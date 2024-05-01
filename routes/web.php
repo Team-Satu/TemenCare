@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UserController;
 // use App\Http\Controllers\CommunityController;
 use App\Http\Middleware\EnsureAdminTemenTokenCookieIsValid;
@@ -129,6 +130,11 @@ Route::get('/register-psycholog', function () {
     return view("admin-register-psycholog");
 })->name("admin.register-psycholog");
 
+// Psycholog Schedules
+Route::get('/psycholog_schedules', function () {
+    return view('admin-load.psycholog-schedules');
+})->name("admin-load.psycholog-schedules");
+
 // Admin & Psycholog Routing - Authenticated
 Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
@@ -150,6 +156,8 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // Change psycholog password
     Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
     Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
+
+    Route::get("/schedules", [AdminController::class, 'showSchedule'])->name("adminload.schedules");
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
 });
