@@ -187,3 +187,4 @@ Route::get('/your rating', function () {
 Route::get('/lpdesktop', function () {
     return view('desktop-landing-page');
 });
+
