@@ -199,4 +199,7 @@ Route::get('/add rating', function () {
 Route::get('/lpdesktop', function () {
     return view('desktop-landing-page');
 });
-
+// Show Communities Desktop
+Route::get('/dcommunities', function () {
+    return view('desktop-communities');
+});
