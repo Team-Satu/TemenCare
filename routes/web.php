@@ -126,7 +126,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
 Route::post('/admin', [AdminController::class, 'login'])->name("admin.login");
 
 Route::get('/register-psycholog', function () {
-    return view("admin-register-psycholog");
+    return view("admin-load.register-psycholog");
 })->name("admin.register-psycholog");
 
 // Admin & Psycholog Routing - Authenticated
@@ -186,4 +186,9 @@ Route::get('/your rating', function () {
 // Show Landing Page Desktop
 Route::get('/lpdesktop', function () {
     return view('desktop-landing-page');
+});
+
+// Show Komunitas Psikolog Desktop
+Route::get('/komunitas-psikolog', function () {
+    return view('desktop-psikolog-komunitas');
 });
