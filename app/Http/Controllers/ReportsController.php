@@ -28,6 +28,10 @@ class ReportsController extends Controller
             // Report bisa langsung diambil dari $request karena dia merupakan data yang langsung ditembak sebagai post data
             $report = $request->get("report");
 
+            error_log($report);
+            error_log(strlen($report));
+            error_log($userId);
+
             if (strlen($report) > 500) {
                 // Pake kode di bawah ini kalo misalkan make show error, jangan pake withError (approach kita beda soalnya).
                 Alert::error('Gagal', 'Maksimal karakter laporan adalah 500!');
