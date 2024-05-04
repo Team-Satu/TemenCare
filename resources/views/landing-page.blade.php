@@ -12,9 +12,9 @@
 </head>
 
 <body class="bg-gray-100">
-    <div class="max-w-md mx-auto h-screen">
+    <div class="max-w-md mx-auto h-full">
         <!-- Header -->
-        <header class="flex justify-between p-4 bg-white w-full sticky top-0 z-50 items-center">
+        <header class="flex justify-between p-4 bg-white w-full sticky top-0 z-50 items-center shadow">
             <a href="/">
                 <img src="./img/temencare-logo.svg" alt="temencare" class="w-48 h-6">
             </a>
@@ -41,14 +41,13 @@
                 </div>
             </section>
 
-            <div class="py-4">
+            <section class="py-6">
                 <div class="text-center space-y-2">
                     <h1 class="text-blue-300 text-sm poppins-bold leading-normal tracking-wide">Langkah Awal
                         Menuju Bahagia</h1>
                     <div class="px-12 leading-none"><span class="text-neutral-600 text-xs poppins-light">Akses layanan
                         </span><span class="text-blue-300 text-xs poppins-bold">Temen</span><span
-                            class="text-neutral-600 text-xs poppins-bold"> </span><span
-                            class="text-red-400 text-xs poppins-bold">Care</span><span
+                            class="text-red-400 text-xs poppins-bold"> Care</span><span
                             class="text-neutral-600 text-xs poppins-light">, buka pintu solusi untuk
                             setiap tanya hatimu. #WaktunyaBahagia dan tingkatkan kualitas hidupmu!</span></div>
                 </div>
@@ -66,112 +65,109 @@
                         </span><span class="text-red-400">Care</span>
                     </div>
                 </div>
-            </div>
+                <div class="px-4 mt-3">
+                    <button
+                        class="px-4 py-1.5 bg-sky-500/opacity-5 rounded-3xl border border-sky-500/opacity-50 flex-col justify-center items-center inline-flex hover:shadow">
+                        <h1 class="text-sky-500 text-xs poppins-medium capitalize leading-normal tracking-wide">
+                            Mulai Tes</h1>
+                    </button>
+                </div>
+            </section>
             <hr class="mx-4 border-b border-gray-200">
 
-            <section class="py-6 bg-green-400">
-                <h3 class="poppins-bold text-[#7EBAEB] mb-2 text-center text-sm">Langkah Awal Menuju Bahagia</h3>
-                <p class="text-xs poppins-light mb-2 text-center text-[#4A4E50]">Akses layanan <span
-                        class="poppins-bold text-[#7EBAEB]">Temen</span> <span
-                        class="poppins-bold text-[#F36464]">Care</span>, buka pintu solusi<br>untuk setiap tanya hatimu.
-                    #WaktunyaBahagia<br>dan tingkatkan kualitas hidupmu!</p>
-                <img src="./img/cuate.svg" alt="cuate" class="mx-auto mb-6">
-
-                <div class="px-6">
-                    <div>
-                        <div class="flex items-center">
-                            <img src="./img/pencil.svg" alt="pencil">
-                            <p class="poppins-medium text-[#4A4E50] text-xs ml-2.5">Belum Tahu Kondisi Mentalmu?</p>
-                        </div>
-
-                        <p class="poppins-light text-xs text-[#4A4E50] mt-2 mb-4">Pelajari kondisi mentalmu dan pahami
-                            apa yang<br> dibutuhkan untuk mencapai mental sehat dengan<br> mengikuti tes yang disiapkan
-                            oleh <span class="poppins-bold text-[#7EBAEB]">Temen</span> <span
-                                class="poppins-bold text-[#F36464]">Care</span>.</p>
-                        <button
-                            class="poppins-medium text-[#2196F3] text-[8px] px-6 rounded-3xl py-2.5 bg-[#2196F3] bg-opacity-5 border border-[#2196F3] mb-8">Mulai
-                            Tes</button>
+            <section class="py-6">
+                <img src="./img/cuate-2.svg" alt="image" class="mx-auto my-4">
+                <div class="px-4">
+                    <div class="inline-flex w-full space-x-2">
+                        <img src="./img/note.svg" alt="Note Icon" class="h-4 relative">
+                        <p class="text-neutral-600 text-xs poppins-medium leading-normal tracking-wide">Cari Komunitas
+                            Terkait <i>Mental Health</i>?</p>
+                    </div>
+                    <div class="text-xs poppins-light leading-relaxed">
+                        <span class="text-neutral-600">Komunitas yang disediakan oleh Psikolog dari </span><span
+                            class="text-blue-300">Temen</span><span class="text-red-400"> Care</span><span
+                            class="text-neutral-600"> untuk sharing dan mendapat insight baru mengenai kesehatan
+                            mental</span>
                     </div>
                 </div>
-                <hr class="mx-4 border-b border-gray-200">
+                <div class="px-4 mt-3">
+                    <button
+                        class="px-4 py-1.5 bg-sky-500/opacity-5 rounded-3xl border border-sky-500/opacity-50 flex-col justify-center items-center inline-flex hover:shadow">
+                        <h1 class="text-sky-500 text-xs poppins-medium capitalize leading-normal tracking-wide">
+                            Mulai Tes</h1>
+                    </button>
+                </div>
             </section>
+            <hr class="mx-4 border-b border-gray-200">
 
-            <section class="my-6">
-                <img src="./img/cuate-2.svg" alt="cuate-2" class="mx-auto mb-5">
-                <div class="px-6">
-                    <div class="">
-                        <div class="flex items-center">
-                            <img src="./img/note.svg" alt="note">
-                            <p class="poppins-medium text-[#4A4E50] text-xs ml-2.5">Cari Komunitas Terkait <i>Mental
-                                    Health</i>?</p>
+            <section class="py-5 space-y-2">
+                <h1 class="text-center px-4 text-blue-300 text-sm poppins-bold leading-normal tracking-wide">Pilih Ruang
+                    Konseling Sesuai Kebutuhanmu</h1>
+                <div class="text-center px-12 leading-none"><span class="text-blue-300 text-xs poppins-bold">Temen
+                    </span><span class="text-red-400 text-xs poppins-bold">Care</span><span
+                        class="text-neutral-600 text-xs poppins-light"> menyediakan beragam pilihan ruang aman untuk
+                        ceritakan masalahmu, pilih yang paling nyaman menurut kamu:</span></div>
+
+                <div class="overflow-x-auto flex space-x-8 relative py-4 px-12">
+                    <div
+                        class="flex-none py-8 px-2 space-y-2 max-w-60 bg-white text-center items-center rounded-3xl shadow border border-gray-100 hover:shadow-lg">
+                        <h3 class="text-neutral-600 text-xs poppins-semibold leading-normal tracking-wide">Online</h3>
+                        <img src="./img/cuate-3.svg" alt="cuate-3" class="mx-auto">
+                        <div><span class="text-neutral-600 text-xs poppins-light">Sesi
+                                konseling menggunakan </span><span
+                                class="text-neutral-600 text-xs poppins-medium">metode
+                                call</span><span class="text-neutral-600 text-xs poppins-light"> dengan Psikolog</span>
                         </div>
-
-                        <p class="poppins-light text-xs text-[#4A4E50] mt-2 mb-4">Komunitas yang disediakan oleh
-                            Psikolog dari <span class="poppins-bold text-[#7EBAEB]">Temen</span> <br> <span
-                                class="poppins-bold text-[#F36464]">Care </span>untuk <i>sharing</i> dan mendapat
-                            <i>insight</i> baru mengenai <br> kesehatan mental
-                        </p>
-                        <button
-                            class="poppins-medium text-[#2196F3] text-[8px] px-6 rounded-3xl py-2.5 bg-[#2196F3] bg-opacity-5 border border-[#2196F3] mb-8">Mulai
-                            Cari</button>
+                    </div>
+                    <div
+                        class="flex-none py-8 px-2 space-y-2 max-w-60 bg-white text-center items-center rounded-3xl shadow border border-gray-100 hover:shadow-lg">
+                        <h3 class="text-neutral-600 text-xs poppins-semibold leading-normal tracking-wide">Online</h3>
+                        <img src="./img/cuate-3.svg" alt="cuate-3" class="mx-auto">
+                        <div><span class="text-neutral-600 text-xs poppins-light">Sesi
+                                konseling menggunakan </span><span
+                                class="text-neutral-600 text-xs poppins-medium">metode
+                                call</span><span class="text-neutral-600 text-xs poppins-light"> dengan Psikolog</span>
+                        </div>
                     </div>
                 </div>
-                <hr class="mx-auto w-[416px] border-b border-gray-200">
             </section>
+            <hr class="mx-4 border-b border-gray-200">
 
-            <section class="my-6">
-                <h3 class="poppins-bold text-[#7EBAEB] mb-1 text-center text-sm">Pilih Ruang Konseling Sesuai
-                    Kebutuhanmu</h3>
-                <p class="text-xs poppins-light mb-2 text-center text-[#4A4E50] mb-8"><span
-                        class="poppins-bold text-[#7EBAEB]">Temen</span> <span
-                        class="poppins-bold text-[#F36464]">Care</span> menyediakan beragam pilihan ruang <br> aman
-                    untuk ceritakan masalahmu, pilih yang paling <br> nyaman menurut kamu:</p>
-
-                <div class="w-full overflow-hidden">
-                    <div class="flex">
-                        <div class="pl-24 pb-5 ">
-                            <div class="h-56 w-52 shadow-md rounded-3xl">
-                                <h4 class="poppins-semibold text-xs text-center text-[#4A4E50] pt-6">Online</h4>
-                                <img src="./img/cuate-3.svg" alt="cuate-3" class="mx-auto mt-1.5 mb-3">
-                                <p class="text-[10px] poppins-light pl-4">Sesi konseling menggunakan <br> <span
-                                        class="poppins-medium">metode call</span> dengan Psikolog</p>
-                            </div>
-                        </div>
-
-                        <div class="pl-10 pb-5">
-                            <div class="h-56 w-52 shadow-md rounded-3xl">
-                                <h4 class="poppins-semibold text-xs text-center text-[#4A4E50] pt-6 pb-1">Onsite</h4>
-                                <img src="./img/cuate-4.svg" alt="cuate-4" class="mx-auto mb-5">
-                                <p class="text-[10px] poppins-light pl-4">Sesi konseling <br> <span
-                                        class="poppins-medium">tatap muka</span> dengan Psikolog</p>
-                            </div>
-                        </div>
+            <section class="py-6">
+                <div class="text-center">
+                    <span class="text-neutral-600 text-sm poppins-medium tracking-wide">Profil Psikolog </span><span
+                        class="text-blue-400 text-sm poppins-bold tracking-wide">Temen </span><span
+                        class="text-red-400 text-sm poppins-bold tracking-wide">Care</span>
+                </div>
+                <div class="px-12 mt-2 text-center text-neutral-600 text-xs poppins-light leading-normal">Semua
+                    Psikolog dan Konselor terbaik siap mendengarkan dan mengatasi setiap masalah seputar:</div>
+                <div class="grid grid-rows-2 px-12 gap-2">
+                    <div class="grid grid-flow-col gap-4">
+                        <p
+                            class="text-sky-600 text-xs poppins-medium capitalize leading-normal tracking-wide shrink py-1 px-1 rounded-3xl border border-sky-600 justify-center items-center text-center">
+                            Pendidikan</p>
+                        <p
+                            class="text-sky-600 text-xs poppins-medium capitalize leading-normal tracking-wide shrink py-1 px-1 rounded-3xl border border-sky-600 justify-center items-center text-center">
+                            Kesepian</p>
+                        <p
+                            class="text-sky-600 text-xs poppins-medium capitalize leading-normal tracking-wide shrink py-1 px-1 rounded-3xl border border-sky-600 justify-center items-center text-center">
+                            Hubungan</p>
+                    </div>
+                    <div class="grid grid-flow-col gap-4">
+                        <p
+                            class="text-sky-600 text-xs poppins-medium capitalize leading-normal tracking-wide shrink py-1 px-1 rounded-3xl border border-sky-600 justify-center items-center text-center">
+                            Keluarga</p>
+                        <p
+                            class="text-sky-600 text-xs poppins-medium capitalize leading-normal tracking-wide shrink py-1 px-1 rounded-3xl border border-sky-600 justify-center items-center text-center">
+                            Pekerjaan</p>
+                        <p
+                            class="text-sky-600 text-xs poppins-medium capitalize leading-normal tracking-wide shrink py-1 px-1 rounded-3xl border border-sky-600 justify-center items-center text-center">
+                            Lainnya</p>
                     </div>
                 </div>
-
-                <div class="flex justify-center">
-                    <img src="./img/dot-active.svg" alt="active" class="pr-1">
-                    <img src="./img/dot-inactive.svg" alt="inactive">
-                </div>
-                <hr class="mx-auto w-[416px] border-b border-gray-200 mt-7 mb-6">
             </section>
 
             <section>
-                <h3 class="poppins-medium text-[#4A4E50] text-center text-3.5">Profil Psikolog <span
-                        class="poppins-bold text-[#7EBAEB]">Temen</span> <span
-                        class="poppins-bold text-[#F36464]">Care</span></h3>
-                <p class="poppins-light text-[#4A4E50] text-xs text-center mb-5">Semua Psikolog dan Konselor terbaik
-                    siap <br> mendengarkan dan mengatasi setiap masalah <br> seputar:</p>
-
-                <div
-                    class="grid grid-cols-3 gap-3 w-[262px] mx-auto mb-8 poppins-medium text-[#0288D1] text-[10px] rounded-3xl py-2.5 bg-[#2196F3] bg-opacity-5 border border-[#2196F3]">
-                    <button>Pendidikan</button>
-                    <button>Kesepian</button>
-                    <button>Hubungan</button>
-                    <button>Keluarga</button>
-                    <button>Pekerjaan</button>
-                    <button>Lainnya</button>
-                </div>
 
                 <div class="w-full overflow-hidden">
                     <div class="flex">
