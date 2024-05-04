@@ -31,7 +31,7 @@
                     <button class="bg-[#F36464] rounded-3xl py-2 px-6 poppins-medium text-xs">Mulai Konseling</button>
                 </div>
 
-                <div class="w-full -mt-8">
+                <div class="w-full">
                     <div class="relative flex justify-end">
                         <img src="./img/doctorimage-mobile.svg" alt="doctor-image" class="w-full">
                         <p
@@ -41,8 +41,36 @@
                 </div>
             </section>
 
-            <section class="my-6">
-                <h3 class="poppins-bold text-[#7EBAEB] mb-1 text-center text-sm">Langkah Awal Menuju Bahagia</h3>
+            <div class="py-4">
+                <div class="text-center space-y-2">
+                    <h1 class="text-blue-300 text-sm poppins-bold leading-normal tracking-wide">Langkah Awal
+                        Menuju Bahagia</h1>
+                    <div class="px-12 leading-none"><span class="text-neutral-600 text-xs poppins-light">Akses layanan
+                        </span><span class="text-blue-300 text-xs poppins-bold">Temen</span><span
+                            class="text-neutral-600 text-xs poppins-bold"> </span><span
+                            class="text-red-400 text-xs poppins-bold">Care</span><span
+                            class="text-neutral-600 text-xs poppins-light">, buka pintu solusi untuk
+                            setiap tanya hatimu. #WaktunyaBahagia dan tingkatkan kualitas hidupmu!</span></div>
+                </div>
+                <img src="./img/cuate.svg" alt="image" class="mx-auto my-4">
+                <div class="px-4">
+                    <div class="inline-flex w-full space-x-2">
+                        <img src="./img/pencil.svg" alt="Pencil Icon" class="h-4 relative">
+                        <p class="text-neutral-600 text-xs poppins-medium leading-normal tracking-wide">Belum Tahu
+                            Kondisi Mentalmu?</p>
+                    </div>
+                    <div class="text-xs poppins-light leading-relaxed">
+                        <span class="text-neutral-600">Pelajari kondisi mentalmu dan
+                            pahami apa yang dibutuhkan untuk mencapai mental sehat dengan mengikuti tes yang disiapkan
+                            oleh </span><span class="text-blue-300">Temen</span><span class="text-neutral-600">
+                        </span><span class="text-red-400">Care</span>
+                    </div>
+                </div>
+            </div>
+            <hr class="mx-4 border-b border-gray-200">
+
+            <section class="py-6 bg-green-400">
+                <h3 class="poppins-bold text-[#7EBAEB] mb-2 text-center text-sm">Langkah Awal Menuju Bahagia</h3>
                 <p class="text-xs poppins-light mb-2 text-center text-[#4A4E50]">Akses layanan <span
                         class="poppins-bold text-[#7EBAEB]">Temen</span> <span
                         class="poppins-bold text-[#F36464]">Care</span>, buka pintu solusi<br>untuk setiap tanya hatimu.
@@ -50,7 +78,7 @@
                 <img src="./img/cuate.svg" alt="cuate" class="mx-auto mb-6">
 
                 <div class="px-6">
-                    <div class="">
+                    <div>
                         <div class="flex items-center">
                             <img src="./img/pencil.svg" alt="pencil">
                             <p class="poppins-medium text-[#4A4E50] text-xs ml-2.5">Belum Tahu Kondisi Mentalmu?</p>
@@ -65,7 +93,7 @@
                             Tes</button>
                     </div>
                 </div>
-                <hr class="mx-auto w-[416px] border-b border-gray-200">
+                <hr class="mx-4 border-b border-gray-200">
             </section>
 
             <section class="my-6">
