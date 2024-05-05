@@ -28,7 +28,7 @@
                     <h2 class="poppins-bold text-lg">Sahabat Setia di Setiap Langkah <br> Menuju Mental Sehat</h2>
                     <p class="my-4 text-xs">Butuh teman cerita? Psikolog berpengalaman,<br> siap dengarkan dan
                         ringankan bebanmu</p>
-                    <button class="bg-[#F36464] rounded-3xl py-2 px-6 poppins-medium text-xs">Mulai Konseling</button>
+                    <button class="bg-[#F36464] rounded-3xl py-2 px-6 poppins-medium text-xs hover:shadow">Mulai Konseling</button>
                 </div>
 
                 <div class="w-full">
@@ -141,7 +141,7 @@
                 </div>
                 <div class="px-12 mt-2 text-center text-neutral-600 text-xs poppins-light leading-normal">Semua
                     Psikolog dan Konselor terbaik siap mendengarkan dan mengatasi setiap masalah seputar:</div>
-                <div class="grid grid-rows-2 px-12 gap-2">
+                <div class="grid grid-rows-2 px-12 gap-2 my-4">
                     <div class="grid grid-flow-col gap-4">
                         <p
                             class="text-sky-600 text-xs poppins-medium capitalize leading-normal tracking-wide shrink py-1 px-1 rounded-3xl border border-sky-600 justify-center items-center text-center">
@@ -165,64 +165,64 @@
                             Lainnya</p>
                     </div>
                 </div>
-            </section>
 
-            <section>
-
-                <div class="w-full overflow-hidden">
-                    <div class="flex">
-                        <div class="pl-24 pb-5 ">
-                            <div class="h-56 w-52 shadow-md rounded-3xl bg-[#72A8D4] bg-opacity-50">
-                                <img src="./img/doctorimage-template.svg" alt="doctor-image" class="mx-auto mt-1.2">
-                                <div class="bg-white text-center pb-3 rounded-b-3xl shadow-md">
-                                    <p class="poppins-semibold text-xs text-[#0288D1] mb-2 pt-4">Insan Daud, M. Psi.
-                                    </p>
-                                    <p class="poppins-regular text-[10px] text-[#4A4E50]">Psikolog Industri &
-                                        Organisasi <br>Spesialis Karir</p>
-                                </div>
-                            </div>
+                <div class="overflow-x-auto flex space-x-8 relative py-4 px-20">
+                    <div
+                        class="flex-none space-y-2 w-52 bg-white text-center items-center rounded-3xl shadow border border-gray-100 hover:shadow-lg">
+                        <div class="bg-[#72A8D4] bg-opacity-50 w-full rounded-t-3xl pt-2">
+                            <img src="./img/doctorimage-template.svg" alt="doctor-image" class="mx-auto">
                         </div>
-
-                        <div class="pl-10 pb-5">
-                            <div class="h-56 w-52 shadow-md rounded-3xl bg-[#72A8D4] bg-opacity-50">
-                                <img src="./img/doctorimage-template2.svg" alt="doctor-image" class="mx-auto mt-1.2">
-                                <div class="bg-white text-center pb-3 rounded-b-3xl shadow-md">
-                                    <p class="poppins-semibold text-xs text-[#0288D1] mb-2 pt-4">Bulan Sabit, M. Psi.
-                                    </p>
-                                    <p class="poppins-regular text-[10px] text-[#4A4E50]">Konselor <br>Spesialis
-                                        Hubungan Sosial</p>
-                                </div>
-                            </div>
+                        <div class="space-y-1 pt-1 pb-3 px-2">
+                            <h1 class="text-sky-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">
+                                Insan Daud, M. Psi. </h1>
+                            <p class="text-center text-neutral-600 text-xs poppins-regular capitalize tracking-wide">
+                                Psikolog Industri & Organisasi <br />Spesialis Karir</p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex-none space-y-2 w-52 bg-white text-center items-center rounded-3xl shadow border border-gray-100 hover:shadow-lg">
+                        <div class="bg-[#72A8D4] bg-opacity-50 w-full rounded-t-3xl pt-2">
+                            <img src="./img/doctorimage-template.svg" alt="doctor-image" class="mx-auto">
+                        </div>
+                        <div class="space-y-1 pt-1 pb-3 px-2">
+                            <h1 class="text-sky-600 text-xs poppins-semibold capitalize leading-normal tracking-wide">
+                                Insan Daud, M. Psi. </h1>
+                            <p class="text-center text-neutral-600 text-xs poppins-regular capitalize tracking-wide">
+                                Psikolog Industri & Organisasi <br />Spesialis Karir</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="flex justify-center">
-                    <img src="./img/dot-active.svg" alt="active">
-                    <img src="./img/dot-inactive.svg" alt="inactive" class="px-1">
-                    <img src="./img/dot-inactive.svg" alt="inactive" class="pr-1">
-                    <img src="./img/dot-inactive.svg" alt="inactive">
-                </div>
-                <hr class="mx-auto w-[416px] border-b border-gray-200 mt-7 mb-4">
             </section>
+            <hr class="mx-4 border-b border-gray-200">
         </main>
 
-        <!-- Footer -->
-        <footer class="pl-7 pb-12">
+        <footer class="bg-white px-6 pt-4 pb-6">
             <img src="./img/temencare-logo.svg" alt="temencare-logo" class="mb-6 w-24 h-5">
-            <div class="grid grid-cols-3 gap-1 pr-7 mb-8">
-                <h2 class="poppins-bold text-sm text-[#7EBAEB]">Layanan Kami</h2>
-                <h2 class="poppins-bold text-sm text-[#7EBAEB]">Lainnya</h2>
-                <h2 class="poppins-bold text-sm text-[#7EBAEB]">Tentang Kami</h2>
-                <a href="" class="poppins-regular text-[10px] text-[#4A4E50]">Psikotes</a>
-                <a href="" class="poppins-regular text-[10px] text-[#4A4E50]">Syarat dan Ketentuan</a>
-                <a href="" class="poppins-regular text-[10px] text-[#4A4E50]">Blog</a>
-                <a href="" class="poppins-regular text-[10px] text-[#4A4E50]">Forum Diskusi</a>
-                <a href="" class="poppins-regular text-[10px] text-[#4A4E50]">Kebijakan Privasi</a>
-                <a href="" class="poppins-regular text-[10px] text-[#4A4E50]">Kontak Kami</a>
-                <a href="" class="poppins-regular text-[10px] text-[#4A4E50]">Konseling</a>
-                <a href="" class="poppins-regular text-[10px] text-[#4A4E50]">FAQ</a>
-                <a href="" class="poppins-regular text-[10px] text-[#4A4E50]">Gabung Sebagai Konselor</a>
+            <div class="grid grid-flow-col">
+                <div class="grid grid-flow-row gap-2">
+                    <h2 class="text-blue-300 text-xs poppins-bold leading-normal tracking-wide">Layanan Kami</h2>
+                    <div class="space-y-1 flex-col flex text-neutral-600 text-xs poppins-reguler leading-normal tracking-wide">
+                        <a href="#" class="hover:underline">Psikotes</a>
+                        <a href="#" class="hover:underline">Forum Diskusi</a>
+                        <a href="#" class="hover:underline">Konseling</a>
+                    </div>
+                </div>
+                <div class="grid grid-flow-row gap-2">
+                    <h2 class="text-blue-300 text-xs poppins-bold leading-normal tracking-wide">Tentang Kami</h2>
+                    <div class="space-y-1 flex-col flex text-neutral-600 text-xs poppins-reguler leading-normal tracking-wide">
+                        <a href="#" class="hover:underline">Blog</a>
+                        <a href="#" class="hover:underline">Kontak Kami</a>
+                        <a href="#" class="hover:underline">Gabung Sebagai<br />Psikolog</a>
+                    </div>
+                </div>
+                <div class="grid grid-flow-row gap-2">
+                    <h2 class="text-blue-300 text-xs poppins-bold leading-normal tracking-wide">Lainnya</h2>
+                    <div class="space-y-1 flex-col flex text-neutral-600 text-xs poppins-reguler leading-normal tracking-wide">
+                        <a href="#" class="hover:underline">Syarat dan Ketentuan</a>
+                        <a href="#" class="hover:underline">Kebijakan Privasi</a>
+                        <a href="#" class="hover:underline">FAQ</a>
+                    </div>
+                </div>
             </div>
         </footer>
     </div>
