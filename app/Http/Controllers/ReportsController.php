@@ -47,10 +47,15 @@ class ReportsController extends Controller
     public function changeReports(Request $request)
     {
         try {
-            $credential = $request->only('report_id', 'user_id', 'report');
+            // $credential = $request->only('report_id', 'user_id', 'report');
 
             // $countPsycholog = Psychologs::where("email", $credential['email'])->count();
 
+            // User id diambil menggunakan attribute karena dia di set di middleware ke attribute
+            $userId = $request->attributes->get('user_id');
+
+            // Report bisa langsung diambil dari $request karena dia merupakan data yang langsung ditembak sebagai post data
+            $report = $request->get("report");
             if ('parameter') {
                 Alert::error('Gagal', 'Maksimal 500 kata!');
                 return redirect()->back();
@@ -70,9 +75,15 @@ class ReportsController extends Controller
     public function deleteReports(Request $request)
     {
         try {
-            $credential = $request->only('report_id', 'user_id', 'report');
+            // $credential = $request->only('report_id', 'user_id', 'report');
 
             // $countPsycholog = Psychologs::where("email", $credential['email'])->count();
+
+             // User id diambil menggunakan attribute karena dia di set di middleware ke attribute
+             $userId = $request->attributes->get('user_id');
+
+             // Report bisa langsung diambil dari $request karena dia merupakan data yang langsung ditembak sebagai post data
+             $report = $request->get("report");
 
             if ('parameter') {
                 Alert::error('Gagal', 'Maksimal 500 kata!');
