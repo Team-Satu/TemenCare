@@ -18,7 +18,7 @@
 
 <body class="bg-gray-100">
     <div class="max-w-md bg-white mx-auto relative">
-        <main class="bg-white h-screen flex flex-col w-full relative">
+        <main class="bg-white h-max flex flex-col w-full relative">
             <div>
                 <x-header-component title="Lapor!"></x-header-component>
                 <div class="grid grid-cols-2 w-full text-xs poppins-medium leading-normal tracking-tight">
@@ -44,8 +44,11 @@
                                     <div class="w-9 h-9 bg-blue-300 rounded-full">
                                     </div>
                                     <div class="">
-                                        <h2 class="text-black text-xs poppins-medium">{{ $report->user->name}}</h2>
-                                        <p class="text-neutral-600 text-[10px]">{{ $report->created_at}}</p>
+                                        <h2 class="text-black text-xs poppins-medium">{{ $report->user->name }}</h2>
+                                        <p class="text-neutral-600 text-[10px]">
+                                            {{-- Kode menambahkan GMT +7 --}}
+                                            {{ date('Y-m-d H:i:s', strtotime($report->created_at) + 7 * 3600) }}
+                                        </p>
                                     </div>
                                 </div>
                                 <p class="text-neutral-600 text-[12px] poppins-medium py-2">{{ $report->report }}</p>
@@ -63,14 +66,16 @@
                         </div>
                     </button>
                 </div>
-                <div id="option" class="hidden w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[30px] top-[140px] absolute ">
-                {{--Delete Report Button--}}
+                <div id="option"
+                    class="hidden w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[30px] top-[140px] absolute ">
+                    {{-- Delete Report Button --}}
                     <div class="w-[125px] h-[46px] flex justify-center items-center">
-                    <button class="w-full" onclick="showConfirm('block')">
-                        <p class="text-center py-3 border-b-2 border-gray-400 text-xs text-red-400 w-full">Hapus Laporan</p>
-                    </button>
+                        <button class="w-full" onclick="showConfirm('block')">
+                            <p class="text-center py-3 border-b-2 border-gray-400 text-xs text-red-400 w-full">Hapus
+                                Laporan</p>
+                        </button>
                     </div>
-                {{--Change Report Button--}}
+                    {{-- Change Report Button --}}
                     <div class="w-[125px] h-[46px] flex justify-center items-center">
                     <button class="" onclick="showChange('block')">
                         <p class="text-center py-3 text-xs">Ubah Laporan</p>

@@ -13,12 +13,10 @@ class ReportsController extends Controller
     // Display report
     public function reports()
     {
-        // $userId = request()->attributes->get('user_id');
-
-        $reports = Reports::all()->sortByDesc("report_id");
-        $reports = Reports::with('user')->get();
+        $reports = Reports::orderBy('report_id', 'desc')->get();
         return view('mobile-reports', ["reports" => $reports]);
     }
+
     public function addReport(Request $request)
     {
         try {
