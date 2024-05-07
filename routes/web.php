@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
+use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UserController;
 // use App\Http\Controllers\CommunityController;
 use App\Http\Middleware\EnsureAdminTemenTokenCookieIsValid;
@@ -95,10 +97,6 @@ Route::get('/your reports', function () {
 Route::get('/articles', function () {
     return view('articles');
 });
-// Show lapor all
-Route::get('/Showlaporankamu', function () {
-    return view('mobile-show-laporankamu');
-});
 
 // Show articles
 Route::get('/articles', function () {
@@ -129,6 +127,11 @@ Route::get('/register-psycholog', function () {
     return view("admin-register-psycholog");
 })->name("admin.register-psycholog");
 
+// Psycholog Schedules
+Route::get('/psycholog_schedules', function () {
+    return view('admin-load.psycholog-schedules');
+})->name("admin-load.psycholog-schedules");
+
 // Admin & Psycholog Routing - Authenticated
 Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
@@ -151,18 +154,25 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
     Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
 
+    Route::get("/schedules", [AdminController::class, 'showSchedule'])->name("adminload.schedules");
+
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
 });
 
 // User Routing - UnAuthenticated
+Route::get('/', [PublicController::class, 'index'])->name("public.landing");
 Route::get('/login', [LoginIgracias::class, 'login'])->name("user.login");
-Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
+Route::post('/login', [LoginIgracias::class, 'loginIgracias'])->name("user.login-igracias");
 
 // User Routing - Authenticated
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
+
+    // Reports
+    Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+    Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 });
 
 // Show Landing Page Mobile
@@ -171,11 +181,20 @@ Route::get('/lpmobile', function () {
 });
     Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
 
+
     // Reports
     Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
     Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
     // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-    // Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
+    Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
+
+
+// Reports
+Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+// Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
+// Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
+
 
 // show rating and feedback
 Route::get('/rating', function () {
@@ -192,7 +211,14 @@ Route::get('/lpdesktop', function () {
     return view('desktop-landing-page');
 });
 
+
 //Show Psycholog Profile
 Route::get('/psycholog-profile', function () {
     return view('mobile-psychologs-expertise');
 });
+=======
+// Show Communities Desktop
+Route::get('/dcommunities', function () {
+    return view('desktop-communities');
+});
+

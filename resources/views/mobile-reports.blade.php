@@ -18,7 +18,7 @@
 
 <body class="bg-gray-100">
     <div class="max-w-md bg-white mx-auto relative">
-        <main class="bg-white h-screen flex flex-col w-full relative">
+        <main class="bg-white h-max flex flex-col w-full relative">
             <div>
                 <x-header-component title="Lapor!"></x-header-component>
                 <div class="grid grid-cols-2 w-full text-xs poppins-medium leading-normal tracking-tight">
@@ -44,8 +44,11 @@
                                     <div class="w-9 h-9 bg-blue-300 rounded-full">
                                     </div>
                                     <div class="">
-                                        <h2 class="text-black text-xs poppins-medium">{{ $report->user->name}}</h2>
-                                        <p class="text-neutral-600 text-[10px]">{{ $report->created_at}}</p>
+                                        <h2 class="text-black text-xs poppins-medium">{{ $report->user->name }}</h2>
+                                        <p class="text-neutral-600 text-[10px]">
+                                            {{-- Kode menambahkan GMT +7 --}}
+                                            {{ date('Y-m-d H:i:s', strtotime($report->created_at) + 7 * 3600) }}
+                                        </p>
                                     </div>
                                 </div>
                                 <p class="text-neutral-600 text-[12px] poppins-medium py-2">{{ $report->report }}</p>
@@ -63,14 +66,16 @@
                         </div>
                     </button>
                 </div>
-                <div id="option" class="hidden w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[30px] top-[140px] absolute ">
-                {{--Delete Report Button--}}
+                <div id="option"
+                    class="hidden w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[30px] top-[140px] absolute ">
+                    {{-- Delete Report Button --}}
                     <div class="w-[125px] h-[46px] flex justify-center items-center">
-                    <button class="w-full" onclick="showConfirm('block')">
-                        <p class="text-center py-3 border-b-2 border-gray-400 text-xs text-red-400 w-full">Hapus Laporan</p>
-                    </button>
+                        <button class="w-full" onclick="showConfirm('block')">
+                            <p class="text-center py-3 border-b-2 border-gray-400 text-xs text-red-400 w-full">Hapus
+                                Laporan</p>
+                        </button>
                     </div>
-                {{--Change Report Button--}}
+                    {{-- Change Report Button --}}
                     <div class="w-[125px] h-[46px] flex justify-center items-center">
                     <button class="" onclick="showChange('block')">
                         <p class="text-center py-3 text-xs">Ubah Laporan</p>
@@ -129,8 +134,6 @@
                         </form>
                     </div>
                 </div>
-                {{-- <form class="card-body" action="" method="POST">
-                    @csrf
                     <div id= "confirm" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-20">
                         <div class="w-96 h-80 relative m-auto mt-[220px] bg-white rounded-3xl shadow-2xl">
                             <i class="fa-solid fa-triangle-exclamation text-8xl justify-center items-center flex relative py-14"
@@ -144,14 +147,21 @@
                                     Setelah
                                     dihapus laporan hilang permanen loh..</p>
                             </div>
-                            <button
-                                class="w-32 h-8 left-[48px] top-[248px] absolute rounded-3xl border border-blue-300 flex-col justify-center items-center inline-flex">
-                                <div class="justify-center items-center gap-2 inline-flex">
-                                    <div
-                                        class="text-center text-blue-300 text-xs poppins-medium capitalize leading-normal tracking-wide">
-                                        Yakin</div>
-                                </div>
-                            </button>
+                        @foreach ($reports as $report)
+                        <form class="my-2 mx-1" action="{{ route('user.delete-report', $report->report_id )}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                                <button
+                                    class="w-32 h-8 left-[48px] top-[248px] absolute rounded-3xl border border-blue-300 flex-col justify-center items-center 
+                                    inline-flex" type="submit" id="delete-{{$report->report_id}}">
+                                    <div class="justify-center items-center gap-2 inline-flex">
+                                        <div
+                                            class="text-center text-blue-300 text-xs poppins-medium capitalize leading-normal tracking-wide">
+                                            Yakin</div>
+                                    </div>
+                                </button>
+                        </form>
+                        @endforeach
                             <a href="/reports"
                                 class="w-32 h-8 left-[216px] top-[248px] absolute bg-blue-300 rounded-3xl flex-col justify-center items-center inline-flex">
                                 <div class="justify-center items-center gap-2 inline-flex">
@@ -163,7 +173,6 @@
                             </button>
                         </div>
                     </div>
-                </form> --}}
             </div>
         </main>
     </div>
