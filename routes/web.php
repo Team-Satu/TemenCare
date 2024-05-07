@@ -96,10 +96,6 @@ Route::get('/your reports', function () {
 Route::get('/articles', function () {
     return view('articles');
 });
-// Show lapor all
-Route::get('/Showlaporankamu', function () {
-    return view('mobile-show-laporankamu');
-});
 
 // Show articles
 Route::get('/articles', function () {
@@ -183,7 +179,8 @@ Route::get('/lpmobile', function () {
     Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
     Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
     // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-    // Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
+    Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
+
 
 // show rating and feedback
 Route::get('/rating', function () {

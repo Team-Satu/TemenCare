@@ -129,8 +129,6 @@
                         </form>
                     </div>
                 </div>
-                {{-- <form class="card-body" action="" method="POST">
-                    @csrf
                     <div id= "confirm" class="hidden fixed left-0 top-0 bg-black bg-opacity-50 w-screen h-screen z-20">
                         <div class="w-96 h-80 relative m-auto mt-[220px] bg-white rounded-3xl shadow-2xl">
                             <i class="fa-solid fa-triangle-exclamation text-8xl justify-center items-center flex relative py-14"
@@ -144,14 +142,21 @@
                                     Setelah
                                     dihapus laporan hilang permanen loh..</p>
                             </div>
+                        @foreach ($reports as $report)
+                        <form class="my-2 mx-1" action="{{ route('user.delete-report', $report->report_id )}}" method="POST">
+                            @csrf
+                            @method('DELETE')
                             <button
-                                class="w-32 h-8 left-[48px] top-[248px] absolute rounded-3xl border border-blue-300 flex-col justify-center items-center inline-flex">
+                                class="w-32 h-8 left-[48px] top-[248px] absolute rounded-3xl border border-blue-300 flex-col justify-center items-center 
+                                inline-flex" type="submit" id="delete-{{$report->report_id}}">
                                 <div class="justify-center items-center gap-2 inline-flex">
                                     <div
                                         class="text-center text-blue-300 text-xs poppins-medium capitalize leading-normal tracking-wide">
                                         Yakin</div>
                                 </div>
                             </button>
+                        </form>
+                        @endforeach
                             <a href="/reports"
                                 class="w-32 h-8 left-[216px] top-[248px] absolute bg-blue-300 rounded-3xl flex-col justify-center items-center inline-flex">
                                 <div class="justify-center items-center gap-2 inline-flex">
@@ -163,7 +168,6 @@
                             </button>
                         </div>
                     </div>
-                </form> --}}
             </div>
         </main>
     </div>
