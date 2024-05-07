@@ -77,9 +77,9 @@ class ReportsController extends Controller
     public function deleteReports(Request $request)
     {
         try {
-            $reportId = $request->attributes->get('report_id');
-            $reports = Reports::find($reportId);
+            $reportId = $request->get('report_id');
             dd($reportId);
+            $reports = Reports::find($reportId);
             if ($reports) {
                 $reports->delete();
                 return redirect()->route('route.name');

@@ -146,15 +146,15 @@
                         <form class="my-2 mx-1" action="{{ route('user.delete-report', $report->report_id )}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button
-                                class="w-32 h-8 left-[48px] top-[248px] absolute rounded-3xl border border-blue-300 flex-col justify-center items-center 
-                                inline-flex" type="submit" id="delete-{{$report->report_id}}">
-                                <div class="justify-center items-center gap-2 inline-flex">
-                                    <div
-                                        class="text-center text-blue-300 text-xs poppins-medium capitalize leading-normal tracking-wide">
-                                        Yakin</div>
-                                </div>
-                            </button>
+                                <button
+                                    class="w-32 h-8 left-[48px] top-[248px] absolute rounded-3xl border border-blue-300 flex-col justify-center items-center 
+                                    inline-flex" type="submit" id="delete-{{$report->report_id}}">
+                                    <div class="justify-center items-center gap-2 inline-flex">
+                                        <div
+                                            class="text-center text-blue-300 text-xs poppins-medium capitalize leading-normal tracking-wide">
+                                            Yakin</div>
+                                    </div>
+                                </button>
                         </form>
                         @endforeach
                             <a href="/reports"
