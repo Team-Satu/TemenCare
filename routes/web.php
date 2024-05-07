@@ -211,7 +211,15 @@ Route::get('/add rating', function () {
 Route::get('/lpdesktop', function () {
     return view('desktop-landing-page');
 });
+
+
+//Show Psycholog Profile
+Route::get('/psycholog-profile', function () {
+    return view('mobile-psychologs-expertise');
+});
+=======
 // Show Communities Desktop
 Route::get('/dcommunities', function () {
     return view('desktop-communities');
 });
+
