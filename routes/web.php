@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
+use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UserController;
@@ -96,10 +97,6 @@ Route::get('/your reports', function () {
 Route::get('/articles', function () {
     return view('articles');
 });
-// Show lapor all
-Route::get('/Showlaporankamu', function () {
-    return view('mobile-show-laporankamu');
-});
 
 // Show articles
 Route::get('/articles', function () {
@@ -163,14 +160,19 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
 });
 
 // User Routing - UnAuthenticated
+Route::get('/', [PublicController::class, 'index'])->name("public.landing");
 Route::get('/login', [LoginIgracias::class, 'login'])->name("user.login");
-Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
+Route::post('/login', [LoginIgracias::class, 'loginIgracias'])->name("user.login-igracias");
 
 // User Routing - Authenticated
 Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
+
+    // Reports
+    Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+    Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 });
 
 // Show Landing Page Mobile
@@ -179,11 +181,20 @@ Route::get('/lpmobile', function () {
 });
     Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
 
+
     // Reports
     Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
     Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
     // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-    // Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
+    Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
+
+
+// Reports
+Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+// Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
+// Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
+
 
 // show rating and feedback
 Route::get('/rating', function () {
@@ -199,10 +210,7 @@ Route::get('/add rating', function () {
 Route::get('/lpdesktop', function () {
     return view('desktop-landing-page');
 });
-
-
-
-// Show Komunitas Psikolog Desktop
-Route::get('/komunitas-psikolog', function () {
-    return view('desktop-psikolog-komunitas');
+// Show Communities Desktop
+Route::get('/dcommunities', function () {
+    return view('desktop-communities');
 });
