@@ -24,6 +24,7 @@
                         <input type="location" class="form-control" placeholder="Lokasi (Onsite/Online)" name="location">
                     </div>
 
+
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
             </div>
