@@ -155,6 +155,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
 
     Route::get("/schedules", [AdminController::class, 'showSchedule'])->name("adminload.schedules");
+    Route::get("/view-schedules", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
 });
@@ -179,14 +180,14 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
 Route::get('/lpmobile', function () {
     return view('mobile-landing-page');
 });
-    Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
+Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
 
 
-    // Reports
-    Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
-    Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
-    // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-    Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
+// Reports
+Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+// Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
+Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
 
 
 // Reports

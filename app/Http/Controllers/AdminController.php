@@ -146,6 +146,15 @@ class AdminController extends Controller
         return view("admin-load.dashboard", ["account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
     }
 
+    public function viewSchedules(){
+        return view("admin-load.view-schedules");
+    }
+
+
+
+
+
+
     public function showSchedule()
     {
         return view("admin-load.psycholog-schedules");
