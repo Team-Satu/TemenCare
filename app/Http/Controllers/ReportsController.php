@@ -13,12 +13,10 @@ class ReportsController extends Controller
     // Display report
     public function reports()
     {
-        // $userId = request()->attributes->get('user_id');
-
-        $reports = Reports::all()->sortByDesc("report_id");
-        $reports = Reports::with('user')->get();
+        $reports = Reports::orderBy('report_id', 'desc')->get();
         return view('mobile-reports', ["reports" => $reports]);
     }
+
     public function addReport(Request $request)
     {
         try {
@@ -77,26 +75,14 @@ class ReportsController extends Controller
     public function deleteReports(Request $request)
     {
         try {
-            // $credential = $request->only('report_id', 'user_id', 'report');
-
-            // $countPsycholog = Psychologs::where("email", $credential['email'])->count();
-
-             // User id diambil menggunakan attribute karena dia di set di middleware ke attribute
-             $userId = $request->attributes->get('user_id');
-
-             // Report bisa langsung diambil dari $request karena dia merupakan data yang langsung ditembak sebagai post data
-             $report = $request->get("report");
-
-            if ('parameter') {
-                Alert::error('Gagal', 'Maksimal 500 kata!');
-                return redirect()->back();
+            $reportId = $request->attributes->get('report_id');
+            $reports = Reports::find($reportId);
+            dd($reportId);
+            if ($reports) {
+                $reports->delete();
+                return redirect()->route('route.name');
             } else {
-                // Membuat lapaoran
-                Reports::create([
-                ]);
-
-                Alert::success('Berhasil', 'Laporan berhasil dihapus!');
-                return redirect()->back();
+                return redirect()->back()->with('error', 'Report not found');
             }
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Terjadi masalah!');
