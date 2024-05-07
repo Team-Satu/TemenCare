@@ -17,39 +17,39 @@
 </head>
 
 <body class="bg-gray-100">
-    <div class="max-w-md bg-white p-4 mx-auto relative">
+    
     <div class="max-w-md bg-white p-4 mx-auto relative">
         <main class="bg-white-200 h-full flex flex-col w-full relative">
             <div>
                 <x-header-component title="Psikolog Insan"></x-header-component>
             </div>
-            <div class= "mt-[100px]">
-                <div class="w-48 h-48 ml-[90px] mb-4 bg-gray-200 rounded-3xl shadow">
+            <div class= "mt-[20px]">
+                <div class="w-48 h-48 ml-[118px] mb-4 bg-gray-200 rounded-3xl shadow">
                     <img src="./img/Doctorfullbody.svg" alt="doctor-image" class="mx-auto mt-1.2 ml-[-2px]">
                 </div>
                 <div class="left-[66px] top-[236px] text-center text-neutral-600 text-xs font-normal font-['Poppins'] capitalize tracking-wide">Psikolog Industri & Organisasi </div>
                 <div class="left-[100px] top-[215px] text-center text-neutral-600 text-xs font-semibold font-['Poppins'] capitalize leading-normal tracking-wide">Insan Daud, M. Psi. </div>
             </div>
-            <div class="grid grid-cols-3 gap-3 mt-8">
-                <button class="w-20 h-5 rounded-3xl ml-[40px] border border-blue-400 flex-col justify-center items-center inline-flex">
+            <div class="grid grid-cols-3 gap-3 mt-4 mb-4">
+                <button class="w-20 h-5 rounded-3xl ml-[60px] border border-blue-400 flex-col justify-center items-center inline-flex">
                     <div class="justify-center items-center gap-2 inline-flex">
                         <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
                             Pekerjaan</div>
                     </div>
                 </button>
-                <button class="w-36 h-5 rounded-3xl border ml-[0px] border-blue-400 flex-col justify-center items-center inline-flex">
+                <button class="w-36 h-5 rounded-3xl border ml-[5px] border-blue-400 flex-col justify-center items-center inline-flex">
                     <div class="justify-center items-center gap-2 inline-flex">
                         <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
                             Pengembangan Diri</div>
                     </div>
                 </button>
-                <button class="w-14 h-5 rounded-3xl ml-[20px] border border-blue-400 flex-col justify-center items-center inline-flex">
+                <button class="w-14 h-5 rounded-3xl ml-[15px] border border-blue-400 flex-col justify-center items-center inline-flex">
                     <div class="justify-center items-center gap-2 inline-flex">
                         <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
                             Depresi</div>
                     </div>
                 </button>
-                <button class="w-20 h-5 rounded-3xl ml-[150px] border border-blue-400 flex-col justify-center items-center inline-flex">
+                <button class="w-20 h-5 rounded-3xl ml-[170px] border border-blue-400 flex-col justify-center items-center inline-flex">
                     <div class="justify-center items-center gap-2 inline-flex">
                         <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
                             +3 Lainnya</div>
@@ -64,28 +64,28 @@
                         <h1 class="text-xs poppins-medium leading-normal tracking-tight text-[#666666]">Jadwal</h1>
                     </a>
                 </div>
-          <div class="grid grid-cols-2 w-full py-6">
+                <div class="grid grid-cols-2 w-full py-6 ml-[-50px]">
                     <i class="fa-solid fa-graduation-cap text-5xl py-3 ml-20" style="color: #7ebaeb;"></i>
                         <div class="grid grid-cols-1 mt-4">
                             <h1 class="poppins-medium">Alumnus</h1>
                             <p class="text-xs">Universitas Bojongsoang Bandung, 2014 </p>
                         </div>
                 </div>
-                <div class="grid grid-cols-2 w-full py-6">
+                <div class="grid grid-cols-2 w-full py-6 ml-[-50px]">
                 <i class="fa-solid fa-suitcase text-5xl py-3 ml-20" style="color: #7ebaeb;"></i>
                         <div class="grid grid-cols-1 mt-4">
                             <h1 class="poppins-medium">Pengalaman Kerja</h1>
                             <p class="text-xs">4 Tahun </p>
                         </div>
                 </div>
-                <div class="grid grid-cols-2 w-full py-6">
+                <div class="grid grid-cols-2 w-full py-6 ml-[-50px]">
                     <i class="fa-solid fa-hospital text-5xl py-3 ml-20" style="color: #7ebaeb;"></i>
                         <div class="grid grid-cols-1 mt-4">
                             <h1 class="poppins-medium">Tempat Praktek</h1>
                             <p class="text-xs">Rumah Sakit Halmahera Siaga </p>
                         </div>
                 </div>
-                <div class="grid grid-cols-2 w-full py-6">
+                <div class="grid grid-cols-2 w-full py-6 ml-[-50px]">
                     <i class="fa-solid fa-building-columns text-5xl py-3 ml-20" style="color: #7ebaeb;"></i>
                         <div class="grid grid-cols-1 mt-4">
                             <h1 class="poppins-medium">Nomor STR</h1>
