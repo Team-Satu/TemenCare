@@ -1,6 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
+use App\Http\Controllers\PublicController;
+use App\Http\Controllers\ReportsController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\UserController;
+// use App\Http\Controllers\CommunityController;
+use App\Http\Middleware\EnsureAdminTemenTokenCookieIsValid;
+use App\Http\Middleware\EnsureTemenTokenCookieIsValid;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,15 +30,55 @@ Route::get('/template', function () {
     return view('template-mobile-view');
 });
 
-Route::get('/dashboard', function () {
-    return view('mobile-dashboard', ["name" => "Howly"]);
+// Route::get('/dashboard', function () {
+//     return view('mobile-dashboard', ["name" => "Howly"]);
+// });
+
+// Daftar Fitur Kenalan
+Route::get('/persetujuan-kenalan', function () {
+    return view('mobile-kenalan-persetujuan');
+});
+Route::post('/persetujuan-kenalan', [persetujuankenalan::class, 'mobile-kenalan-persetujuan']);
+
+Route::get('/daftar-kenalan', function () {
+    return view('mobile-daftar-fitur-kenalan');
+});
+Route::post('/daftar-kenalan', [daftarkenalan::class, 'mobile-daftar-fitur-kenalan']);
+
+// Halaman Kenalan
+Route::get('/halaman-kenalan', function () {
+    return view('mobile-halaman-kenalan');
+});
+
+Route::get('/ubah-profile-kenalan', function () {
+    return view('mobile-halaman-kenalan-ubahprofile');
+});
+Route::post('/ubah-profile-kenalan', [daftarkenalan::class, 'mobile-halaman-kenalan-ubahprofile']);
+
+Route::get('/kenalan-kamu', function () {
+    return view('mobile-halaman-kenalankamu');
+});
+
+Route::get('/berhenti-kenalan', function () {
+    return view('mobile-kenalan-berhentikenalan');
 });
 
 // Login user
 Route::get('/login', function () {
     return view('login-igracias');
 });
-Route::post('/login', [LoginIgracias::class, 'loginIgracias']);
+
+Route::get("/home", function () {
+    $userName = request()->cookie('temen_cookie');
+    return "User Name: $userName";
+});
+
+Route::get("/is-valid", function () {
+    // $temenUser = request()->attributes->get('temen_user');
+    $userId = request()->attributes->get('user_id');
+
+    return "Berhasil masuk $userId";
+})->middleware(EnsureTemenTokenCookieIsValid::class);
 
 // Show user profile
 Route::get('/user-profile', function () {
@@ -38,13 +86,16 @@ Route::get('/user-profile', function () {
 });
 
 // Show lapor all
-Route::get('/Showlapor', function () {
-    return view('mobile-show-lapor-all');
+Route::get('/reports', function () {
+    return view('mobile-reports');
+});
+// Show your lapor
+Route::get('/your reports', function () {
+    return view('mobile-your-reports');
 });
 
-// Show lapor all
-Route::get('/Showlaporankamu', function () {
-    return view('mobile-show-laporankamu');
+Route::get('/articles', function () {
+    return view('articles');
 });
 
 // Show articles
@@ -52,4 +103,125 @@ Route::get('/articles', function () {
     return view('mobile-articles');
 });
 
+// Show communities
+// Route::get('/communities', [CommunityController::class, 'index'])
+//      ->name('communities.index');
+Route::get('/communities', function () {
+    return view('mobile-communities');
+});
+
+// Show communities detail
+// Route::get('/communities/{community}', [CommunityController::class, 'show'])
+//      ->name('communities.show');
+Route::get('/communities-detail', function () {
+    return view('mobile-communities-detail');
+});
+
 Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
+
+// Admin & Psycholog Routing - UnAuthenticated
+Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
+Route::post('/admin', [AdminController::class, 'login'])->name("admin.login");
+
+Route::get('/register-psycholog', function () {
+    return view("admin-register-psycholog");
+})->name("admin.register-psycholog");
+
+// Psycholog Schedules
+Route::get('/psycholog_schedules', function () {
+    return view('admin-load.psycholog-schedules');
+})->name("admin-load.psycholog-schedules");
+
+// Admin & Psycholog Routing - Authenticated
+Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
+    Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
+    Route::get("/logout", [AdminController::class, 'logout'])->name("admin.logout");
+});
+
+// Only admin load purpose - Authenticated
+Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load")->group(function () {
+    // Membuat akun psikolog
+    Route::get("/create-psycholog", [AdminController::class, 'showRegisterPsycholog'])->name("adminload.show-register-psycholog");
+    Route::post("/create-psycholog", [AdminController::class, 'registerPsycholog'])->name("adminload.register-psycholog");
+
+    // List psycholog
+    Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");
+
+    // Delete psycholog
+    Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
+
+    // Change psycholog password
+    Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
+    Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
+
+    Route::get("/schedules", [AdminController::class, 'showSchedule'])->name("adminload.schedules");
+    Route::get("/view-schedules", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");
+    Route::get("/change-schedules", [AdminController::class, 'changeSchedule'])->name("adminload.change-schedules");
+
+    Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
+
+    Route::get("/desktop-communities", [AdminController::class, 'showCommunities'])->name("adminload.desktop-communities");
+});
+
+// User Routing - UnAuthenticated
+Route::get('/', [PublicController::class, 'index'])->name("public.landing");
+Route::get('/login', [LoginIgracias::class, 'login'])->name("user.login");
+Route::post('/login', [LoginIgracias::class, 'loginIgracias'])->name("user.login-igracias");
+
+// User Routing - Authenticated
+Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
+    Route::get("/dashboard", [UserController::class, 'dashboard'])->name("user.dashboard");
+    Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
+    Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
+
+    // Reports
+    Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+    Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+});
+
+// Show Landing Page Mobile
+Route::get('/lpmobile', function () {
+    return view('mobile-landing-page');
+});
+Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
+
+
+// Reports
+Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+// Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
+Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
+
+
+// Reports
+Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+// Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
+// Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
+
+
+// show rating and feedback
+Route::get('/rating', function () {
+    return view('mobile-show-rating');
+});
+Route::get('/your rating', function () {
+    return view('mobile-your-rating');
+});
+Route::get('/add rating', function () {
+    return view('mobile-add-rating');
+});
+// Show Landing Page Desktop
+Route::get('/lpdesktop', function () {
+    return view('desktop-landing-page');
+});
+
+
+//Show Psycholog Profile
+Route::get('/psycholog-profile', function () {
+    return view('mobile-psychologs-expertise');
+});
+// Show Communities Desktop
+Route::get('/dcommunities', function () {
+    return view('desktop-communities');
+});
+
