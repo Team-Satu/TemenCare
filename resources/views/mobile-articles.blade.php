@@ -31,20 +31,78 @@
             <!-- Main Component -->
             <div class="flex flex-1 flex-col py-4 px-6">
                 <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
-                <div class="flex w-full items-center space-x-2">
-                    <h2 class="text-blue-300 text-[12px] font-medium font-poppins">Gangguan Kecemasan</h2>
+                    <div class="grid grid-cols-2">
+                        <h2 class="text-blue-300 text-[12px] font-small font-poppins">Gangguan Kecemasan</h2>
+                        <h2 class="text-gray-800 text-xs font-poppins ml-[-50px]">Senin 1 April 2024</h2>
+                    <div>
+                    <div class="w-[400px] grid grid-cols-2">
+                    <p class="text-[#000000] text-[16px] font-medium py-2 font-poppins">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
+                    <img class ="w-32 h-20 bg-zinc-300 ml-[30px] mt-2 rounded" src="img/artikel1.png"/>
+                    </div>
+                </div>
                 <div>
-                    <h2 class="text-gray-800 text-xs font-poppins">Senin 1 April 2024</h2>
                 </div>
             </div>
-            <div class ="w-24 h-16 relative">
+
                 {{-- <div class ="w-24 h-16 left-0 top-0 absolute bg-zinc-300 rounded"></div> --}}
-                <img class ="w-24 h-16 left-[250px] top-0 absolute bg-zinc-300 rounded" src="img/artikel1.png"/>
             </div>
-                <p class="text-[#000000] text-[16px] font-medium py-2 font-poppins">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
+            </div>
+             <!-- Main Component -->
+             <div class="flex flex-1 flex-col py-4 px-6">
+                <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
+                    <div class="grid grid-cols-2">
+                        <h2 class="text-blue-300 text-[12px] font-small font-poppins">Gangguan Kecemasan</h2>
+                        <h2 class="text-gray-800 text-xs font-poppins ml-[-50px]">Senin 1 April 2024</h2>
+                    <div>
+                    <div class="w-[400px] grid grid-cols-2">
+                    <p class="text-[#000000] text-[16px] font-medium py-2 font-poppins">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
+                    <img class ="w-32 h-20 bg-zinc-300 ml-[30px] mt-2 rounded" src="img/artikel1.png"/>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+
+            </div>
+            </div>
+             <!-- Main Component -->
+             <div class="flex flex-1 flex-col py-4 px-6">
+                <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
+                    <div class="grid grid-cols-2">
+                        <h2 class="text-blue-300 text-[12px] font-small font-poppins">Gangguan Kecemasan</h2>
+                        <h2 class="text-gray-800 text-xs font-poppins ml-[-50px]">Senin 1 April 2024</h2>
+                    <div>
+                    <div class="w-[400px] grid grid-cols-2">
+                    <p class="text-[#000000] text-[16px] font-medium py-2 font-poppins">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
+                    <img class ="w-32 h-20 bg-zinc-300 ml-[30px] mt-2 rounded" src="img/artikel1.png"/>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+
             </div>
             </div>
             <!-- Main Component -->
+            <div class="flex flex-1 flex-col py-4 px-6">
+                <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
+                    <div class="grid grid-cols-2">
+                        <h2 class="text-blue-300 text-[12px] font-small font-poppins">Gangguan Kecemasan</h2>
+                        <h2 class="text-gray-800 text-xs font-poppins ml-[-50px]">Senin 1 April 2024</h2>
+                    <div>
+                    <div class="w-[400px] grid grid-cols-2">
+                    <p class="text-[#000000] text-[16px] font-medium py-2 font-poppins">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
+                    <img class ="w-32 h-20 bg-zinc-300 ml-[30px] mt-2 rounded" src="img/artikel1.png"/>
+                    </div>
+                </div>
+                <div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <x-bottom-menu></x-bottom-menu>
+            {{-- <!-- Main Component -->
             <div class="flex flex-1 flex-col py-4 px-6">
                 <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
                 <div class="flex w-full items-center space-x-2">
@@ -55,13 +113,13 @@
             </div>
             <div class ="w-24 h-16 relative">
                 {{-- <div class ="w-24 h-16 left-0 top-0 absolute bg-zinc-300 rounded"></div> --}}
-                <img class ="w-24 h-16 left-[250px] top-0 absolute bg-zinc-300 rounded" src="img/artikel1.png"/>
+                {{-- <img class ="w-24 h-16 left-[250px] top-0 absolute bg-zinc-300 rounded" src="img/artikel1.png"/>
             </div>
                 <p class="text-[#000000] text-[16px] font-medium py-2 font-poppins">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
             </div>
-            </div>
+            </div> --}}
             <!-- Main Component -->
-            <div class="flex flex-1 flex-col py-4 px-6">
+            {{-- <div class="flex flex-1 flex-col py-4 px-6">
                 <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
                 <div class="flex w-full items-center space-x-2">
                     <h2 class="text-blue-300 text-[12px] font-medium font-poppins">Gangguan Kecemasan</h2>
@@ -69,14 +127,13 @@
                     <h2 class="text-gray-800 text-xs font-poppins">Senin 1 April 2024</h2>
                 </div>
             </div>
-            <div class ="w-24 h-16 relative">
+            <div class ="w-24 h-16 relative"> --}}
                 {{-- <div class ="w-24 h-16 left-0 top-0 absolute bg-zinc-300 rounded"></div> --}}
-                <img class ="w-24 h-16 left-[250px] top-0 absolute bg-zinc-300 rounded" src="img/artikel1.png"/>
+                {{-- <img class ="w-24 h-16 left-[250px] top-0 absolute bg-zinc-300 rounded" src="img/artikel1.png"/>
             </div>
                 <p class="text-[#000000] text-[16px] font-medium py-2 font-poppins">Kesehatan Mental (Mental Health): Penyebab & Cara Menjaganya</p>
             </div>
-            </div>
-            <x-bottom-menu></x-bottom-menu>
+            </div> --}}
              {{-- <div class="flex flex-1 flex-col py-4 px-6 ">
                 <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4"> --}}
                     {{-- Profile --}}
