@@ -28,7 +28,7 @@
                     <div class="input-group mb-3">
                         <label class="form-label">Lokasi</label>
                         <select class="form-select form-control rounded" style="width: 100%" id="inputGroupSelect01">
-                          <option selected>Lokasi</option>
+                          <option selected>Pilih Lokasi</option>
                           <option value="1">Onsite</option>
                           <option value="2">Online</option>
                         </select>
