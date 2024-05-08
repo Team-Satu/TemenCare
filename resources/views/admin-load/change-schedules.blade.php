@@ -2,14 +2,14 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Jadwal Konsultasi Anda</h1>
+        <h1 class="h3 mb-0 text-gray-800">Ganti Jadwal Psikolog</h1>
     </div>
 
     <div class="row">
         <!-- Area Chart -->
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
-                <form class="card-body" action="{{ route('adminload.register-psycholog') }}" method="POST">
+                <form class="card-body" action="{{ route('adminload.view-schedules') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Hari</label>
@@ -23,7 +23,8 @@
                         <label class="form-label">Lokasi (Onsite/Online)</label>
                         <input type="location" class="form-control" placeholder="Lokasi (Onsite/Online)" name="location">
                     </div>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </form>
             </div>
         </div>
