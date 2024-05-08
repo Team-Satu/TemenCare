@@ -156,6 +156,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
 
     Route::get("/schedules", [AdminController::class, 'showSchedule'])->name("adminload.schedules");
     Route::get("/view-schedules", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");
+    Route::get("/change-schedules", [AdminController::class, 'changeSchedule'])->name("adminload.change-schedules");
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
 
@@ -219,7 +220,6 @@ Route::get('/lpdesktop', function () {
 Route::get('/psycholog-profile', function () {
     return view('mobile-psychologs-expertise');
 });
-=======
 // Show Communities Desktop
 Route::get('/dcommunities', function () {
     return view('desktop-communities');

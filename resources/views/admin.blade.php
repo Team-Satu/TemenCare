@@ -92,6 +92,7 @@
                             <h6 class="collapse-header">Atur Jadwal:</h6>
                             <a class="collapse-item" href="#" load="load/view-schedules">Lihat Jadwal</a>
                             <a class="collapse-item" href="#" load="load/schedules">Buat Jadwal</a>
+                            <a class="collapse-item" href="#" load="load/change-schedules">Ubah Jadwal</a>
                         </div>
                     </div>
                 </li>

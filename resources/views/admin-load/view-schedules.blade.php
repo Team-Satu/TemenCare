@@ -28,7 +28,7 @@
                             <td>
                                 <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                     <button type="button" onclick="deleteAccount(1)" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                    <button type="button" class="btn btn-warning" id="changePasswordPsycholog" onclick="changePage('change-schedules/1')"><i class="fas fa-pencil-alt"></i></button>
+                                    <button type="button" class="btn btn-warning" id="changePasswordPsycholog" onclick="changePage('change-schedules')"><i class="fas fa-pencil-alt"></i></button>
                                 </div>
                             </td>
                         </tr>
