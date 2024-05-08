@@ -149,19 +149,21 @@ class AdminController extends Controller
     public function showCommunities()
     {
         return view("admin-load.desktop-communities");
-
-    public function viewSchedules(){
-        return view("admin-load.view-schedules");
     }
 
-
-
-
-
+    public function viewSchedules()
+    {
+        return view("admin-load.view-schedules");
+    }
 
     public function showSchedule()
     {
         return view("admin-load.psycholog-schedules");
+    }
+
+    public function changeSchedule()
+    {
+        return view("admin-load.change-schedules");
     }
 
     public function showRegisterPsycholog(Request $request)
