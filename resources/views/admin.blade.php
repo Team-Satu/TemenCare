@@ -69,6 +69,7 @@
                             <h6 class="collapse-header">Atur Psikolog:</h6>
                             <a class="collapse-item" href="#" load="load/list-psycholog">Daftar Psikolog</a>
                             <a class="collapse-item" href="#" load="load/create-psycholog">Buat Psikolog</a>
+                            <a class="collapse-item" href="#" load="load/desktop-communities">Lihat Komunitas</a>
                         </div>
                     </div>
                 </li>

@@ -158,6 +158,8 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     Route::get("/view-schedules", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
+
+    Route::get("/desktop-communities", [AdminController::class, 'showCommunities'])->name("adminload.desktop-communities");
 });
 
 // User Routing - UnAuthenticated
