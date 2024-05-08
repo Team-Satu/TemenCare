@@ -13,17 +13,25 @@
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Hari</label>
-                        <input type="text" class="form-control" placeholder="Hari" name="day">
+                        <input type="date" class="form-control" placeholder="Hari" name="day">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Jam</label>
                         <input type="jam" class="form-control" placeholder="Jam" name="jam">
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label class="form-label">Lokasi (Onsite/Online)</label>
                         <input type="location" class="form-control" placeholder="Lokasi (Onsite/Online)" name="location">
-                    </div>
+                    </div> --}}
 
+                    <div class="input-group mb-3">
+                        <label class="form-label">Lokasi</label>
+                        <select class="form-select form-control rounded" style="width: 100%" id="inputGroupSelect01">
+                          <option selected>Lokasi</option>
+                          <option value="1">Onsite</option>
+                          <option value="2">Online</option>
+                        </select>
+                      </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>
