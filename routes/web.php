@@ -157,6 +157,8 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     Route::get("/schedules", [AdminController::class, 'showSchedule'])->name("adminload.schedules");
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
+
+    Route::get("/add-psycholog-profile", [AdminController::class, 'showAddProfile'])->name("adminload.add-psycholog-profile");
 });
 
 // User Routing - UnAuthenticated
