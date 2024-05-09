@@ -2,7 +2,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Jadwal Konsultasi Anda</h1>
+        <h1 class="h3 mb-0 text-gray-800">Ubah Jadwal Konsultasi Anda</h1>
     </div>
 
     <div class="row">
@@ -33,7 +33,7 @@
                           <option value="2">Online</option>
                         </select>
                       </div>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </form>
             </div>
         </div>

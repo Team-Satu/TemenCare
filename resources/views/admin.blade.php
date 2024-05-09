@@ -70,6 +70,7 @@
                             <a class="collapse-item" href="#" load="load/list-psycholog">Daftar Psikolog</a>
                             <a class="collapse-item" href="#" load="load/create-psycholog">Buat Psikolog</a>
                             <a class="collapse-item" href="#" load="load/add-psycholog-profile">Tambah Profile</a>
+                            <a class="collapse-item" href="#" load="load/desktop-communities">Lihat Komunitas</a>
                         </div>
                     </div>
                 </li>
@@ -90,7 +91,9 @@
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Atur Jadwal:</h6>
+                            <a class="collapse-item" href="#" load="load/view-schedules">Lihat Jadwal</a>
                             <a class="collapse-item" href="#" load="load/schedules">Buat Jadwal</a>
+                            <a class="collapse-item" href="#" load="load/change-schedules">Ubah Jadwal</a>
                         </div>
                     </div>
                 </li>
