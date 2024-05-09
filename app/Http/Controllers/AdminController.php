@@ -178,6 +178,11 @@ class AdminController extends Controller
         return view("admin-load.list-psycholog", ["psychologs" => $psychologList]);
     }
 
+    public function showAddProfile()
+    {
+        return view("admin-load.add-psycholog-profile");
+    }
+    
     public function deletePsycholog(Request $request, string $psycholog_id)
     {
         try {

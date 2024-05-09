@@ -69,6 +69,7 @@
                             <h6 class="collapse-header">Atur Psikolog:</h6>
                             <a class="collapse-item" href="#" load="load/list-psycholog">Daftar Psikolog</a>
                             <a class="collapse-item" href="#" load="load/create-psycholog">Buat Psikolog</a>
+                            <a class="collapse-item" href="#" load="load/add-psycholog-profile">Tambah Profile</a>
                             <a class="collapse-item" href="#" load="load/desktop-communities">Lihat Komunitas</a>
                         </div>
                     </div>
@@ -227,7 +228,12 @@
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal"
+                                <a class="dropdown-item" href="#" load="load/add-psycholog-profile">
+                                    <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Tambah Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" load="load/add-psycholog-profile" data-toggle="modal"
                                     data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
