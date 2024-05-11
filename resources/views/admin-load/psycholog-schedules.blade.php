@@ -17,7 +17,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Jam</label>
-                        <input type="jam" class="form-control" placeholder="Jam" name="jam">
+                        <input type="time" class="form-control" placeholder="Jam" name="time">
                     </div>
                     {{-- <div class="mb-3">
                         <label class="form-label">Lokasi (Onsite/Online)</label>
