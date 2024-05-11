@@ -6,6 +6,7 @@ use App\Models\Accounts;
 use App\Models\Admin;
 use App\Models\Psychologs;
 use App\Models\User;
+use App\Models\Jadwal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
