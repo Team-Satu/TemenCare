@@ -215,6 +215,7 @@ Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("us
 
 // Reports
 Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+Route::get("/your reports", [ReportsController::class, 'yourReports'])->name("user.reports");
 Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
 // Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
