@@ -102,22 +102,21 @@
                 Jadwal
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                    aria-expanded="true" aria-controls="collapseThree">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Jadwal</span>
-                </a>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Atur Jadwal:</h6>
-                        <a class="collapse-item" href="#" load="load/view-schedules">Lihat Jadwal</a>
-                        <a class="collapse-item" href="#" load="load/schedules">Buat Jadwal</a>
-                        <a class="collapse-item" href="#" load="load/change-schedules">Ubah Jadwal</a>
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                        aria-expanded="true" aria-controls="collapseThree">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Jadwal</span>
+                    </a>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Atur Jadwal:</h6>
+                            <a class="collapse-item" href="#" load="load/schedules">Lihat Jadwal</a>
+                            <a class="collapse-item" href="#" load="load/schedules/add">Buat Jadwal</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
 
 
             <!-- Nav Item - Utilities Collapse Menu -->

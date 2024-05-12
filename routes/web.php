@@ -158,10 +158,17 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // Change psycholog password
     Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
     Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
-    // Membuat schedule
-    Route::get("/schedules", [AdminController::class, 'showSchedule'])->name("adminload.schedules");
-    Route::get("/view-schedules", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");
-    Route::get("/change-schedules", [AdminController::class, 'changeSchedule'])->name("adminload.change-schedules");
+
+    Route::group(['prefix' => 'schedules'], function(){
+        Route::get("/", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");
+        Route::get("/add", [AdminController::class, 'addSchedule'])->name("adminload.add-schedule");
+        Route::get("/edit/{id}", [AdminController::class, 'editSchedule'])->name("adminload.edit-schedule");
+
+        Route::post('/', [AdminController::class, 'createSchedule'])->name('adminload.create-schedule');
+        Route::put('/{id}', [AdminController::class, 'updateSchedule'])->name('adminload.update-schedule');
+        Route::delete('/{id}', [AdminController::class ,'deleteSchedule'])->name('adminload.delete-schedule');
+
+    });
 
     Route::get('/psycholog-schedules', [AdminController::class, 'index'])->name('psycholog-schedules.index');
     Route::get('/psycholog-schedules/create', [AdminController::class, 'create'])->name('psycholog-schedules.create');

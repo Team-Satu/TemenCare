@@ -8,6 +8,7 @@ use App\Models\Communities;
 use App\Models\Psychologs;
 use App\Models\User;
 use App\Models\Jadwal;
+use App\Models\PsychologSchedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -207,17 +208,19 @@ class AdminController extends Controller
 
     public function viewSchedules()
     {
-        return view("admin-load.view-schedules");
+        $schedules = PsychologSchedule::all();
+        return view("admin-load.schedules.view-schedules")->with('schedules', $schedules);
     }
 
-    public function showSchedule()
+    public function addSchedule()
     {
-        return view("admin-load.psycholog-schedules");
+        return view("admin-load.schedules.add-schedules");
     }
 
-    public function changeSchedule()
+    public function editSchedule($id)
     {
-        return view("admin-load.change-schedules");
+        $schedule = PsychologSchedule::where("psycholog_id", $id)->first();
+        return view("admin-load.schedules.edit-schedules")->with('schedule', $schedule);
     }
 
     public function showRegisterPsycholog(Request $request)
@@ -299,6 +302,48 @@ class AdminController extends Controller
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
+        }
+    }
+
+    public function createSchedule(Request $req){
+        try{
+            $cred = $req->only('psycholog_id','date', 'start_hour', 'end_hour', 'location');
+            // dd($cred);
+            PsychologSchedule::create($cred);
+            Alert::success('Berhasil', 'Jadwal psikolog berhasil dibuat!');
+            return redirect()->back();
+        }catch(\Exception $e){
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return redirect()->back();
+        }
+    }
+
+    public function updateSchedule(Request $req, $id){
+        try{
+            $schedule = PsychologSchedule::where('schedule_id', $id)->first();
+            $schedule->date = $req->date;
+            $schedule->start_hour = $req->start_hour;
+            $schedule->end_hour = $req->end_hour;
+            $schedule->location = $req->location;
+            $schedule->save();
+            Alert::success('Berhasil', 'Jadwal psikolog berhasil diubah!');
+            return redirect()->back();
+        }catch(\Exception $e){
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return redirect()->back();
+        }
+        
+    }
+
+    public function deleteSchedule($id){
+        try{
+            PsychologSchedule::where('schedule_id', $id)->delete();
+            Alert::success('Berhasil', 'Jadwal psikolog berhasil dihapus!');
+            return;
+        }catch(\Exception $e){
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return;
+            // return redirect()->back();
         }
     }
 
