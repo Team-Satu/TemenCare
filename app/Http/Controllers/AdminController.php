@@ -27,17 +27,18 @@ class AdminController extends Controller
             $community = $request->only('name', 'short_description', 'description', 'image_url');
 
             $name = trim($community['name']);
-            $short_description = $community['short_description'];
-            $description = $community['description'];
-            $image_url = $community['image_url'];
+            $shortDescription = trim($community['short_description']);
+            $description = trim($community['description']);
+            $imageUrl = trim($community['image_url']);
 
-            if ($name && $short_description && $description && $image_url) {
+            if ($name && $shortDescription && $description && $imageUrl) {
                 $communityByName = Communities::where("name", $name)->count();
                 if (!$communityByName) {
                     Communities::create([
-                        "status" => "success",
-                        "gender" => "-",
-                        "image_url" => ""
+                        "name" => $name,
+                        "short_description" => $shortDescription,
+                        "description" => $description,
+                        "image_url" => $imageUrl,
                     ]);
                     Alert::success('Berhasil', 'Komunitas ' . $name . ' berhasil dibuat!');
                     return redirect()->back();

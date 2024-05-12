@@ -12,8 +12,8 @@
                 <form class="card-body" action="{{ route('adminload.register-psycholog') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label">Nama Lengkap</label>
-                        <input type="text" class="form-control" placeholder="Nama Lengkap" name="full_name">
+                        <label class="form-label">Nama Komunitas</label>
+                        <input type="text" class="form-control" placeholder="Nama Lengkap" name="name">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Email</label>
