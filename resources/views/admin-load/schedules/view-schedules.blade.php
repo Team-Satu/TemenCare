@@ -13,25 +13,27 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Hari</th>
+                            <th scope="col">Tanggal</th>
                             <th scope="col">Jam</th>
                             <th scope="col">Lokasi</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Senin</td>
-                            <td>08.00-10.00</td>
-                            <td>Online</td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    <button type="button" onclick="deleteAccount(1)" class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                    <button type="button" class="btn btn-warning" id="changePasswordPsycholog" onclick="changePage('change-schedules')"><i class="fas fa-pencil-alt"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach($schedules as $schedule)
+                            <tr>
+                                <th scope="row">{{$loop->iteration}}</th>
+                                <td>{{$schedule->date}}</td>
+                                <td>{{join(' - ', [$schedule->start_hour, $schedule->end_hour])}}</td>
+                                <td>{{$schedule->location}}</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <button type="button" onclick="deleteSchedule({{$schedule->schedule_id}})" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                        <button type="button" class="btn btn-warning" id="changePasswordPsycholog" onclick="changePage('schedules/edit/{{$schedule->psycholog_id}}')"><i class="fas fa-pencil-alt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -40,10 +42,10 @@
 </div>
 
 <script>
-    function deleteAccount(psychologId) {
+    function deleteSchedule(scheduleID) {
         const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
 
-        return fetch(`/admin/load/delete-psycholog/${psychologId}`, {
+        return fetch(`/admin/load/schedules/${scheduleID}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
