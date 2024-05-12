@@ -40,7 +40,8 @@ class AdminController extends Controller
             $name = trim($request['name']);
             $shortDescription = trim($request['short_description']);
             $description = trim($request['description']);
-            $imageName = time().'.'.$request->file('image')->extension();;
+            $imageName = time() . '.' . $request->file('image')->extension();
+            ;
 
             $request->image->move(public_path('images'), $imageName);
 
@@ -229,6 +230,14 @@ class AdminController extends Controller
         $psychologList = Psychologs::get();
 
         return view("admin-load.list-psycholog", ["psychologs" => $psychologList]);
+    }
+
+    public function showListCommunity(Request $request)
+    {
+        $userId = $request->attributes->get("user_id");
+        $communityList = Communities::where("user_id", $userId)->get();
+
+        return view("admin-load.list-community", ["communities" => $communityList]);
     }
 
     public function showAddProfile()
