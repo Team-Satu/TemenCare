@@ -92,6 +92,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Atur Komunitas:</h6>
                         <a class="collapse-item" href="#" load="load/create-community">Buat Komunitas</a>
+                        <a class="collapse-item" href="#" load="load/list-community">Daftar Komunitas</a>
                     </div>
                 </div>
             </li>
