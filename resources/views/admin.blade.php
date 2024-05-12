@@ -54,27 +54,45 @@
             @if ($role == 'admin')
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Psikolog
+                    Admin
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                        aria-expanded="true" aria-controls="collapseTwo">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePsycholog"
+                        aria-expanded="true" aria-controls="collapsePsycholog">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Psikolog</span>
                     </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div id="collapsePsycholog" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Atur Psikolog:</h6>
                             <a class="collapse-item" href="#" load="load/list-psycholog">Daftar Psikolog</a>
                             <a class="collapse-item" href="#" load="load/create-psycholog">Buat Psikolog</a>
-                            <a class="collapse-item" href="#" load="load/add-psycholog-profile">Tambah Profile</a>
-                            <a class="collapse-item" href="#" load="load/desktop-communities">Lihat Komunitas</a>
                         </div>
                     </div>
                 </li>
             @endif
+
+            <!-- Psikolog: Heading -->
+            <div class="sidebar-heading">
+                Psikolog
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCommunity"
+                    aria-expanded="true" aria-controls="collapseCommunity">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Komunitas</span>
+                </a>
+                <div id="collapseCommunity" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Atur Komunitas:</h6>
+                        <a class="collapse-item" href="#" load="load/list-psycholog">Buat Komunitas</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Heading -->
                 <div class="sidebar-heading">

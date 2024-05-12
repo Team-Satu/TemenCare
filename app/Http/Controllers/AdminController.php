@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Accounts;
 use App\Models\Admin;
+use App\Models\Communities;
 use App\Models\Psychologs;
 use App\Models\User;
 use App\Models\Jadwal;
@@ -18,6 +19,40 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin-login');
+    }
+
+    public function createCommunity(Request $request)
+    {
+        try {
+            $community = $request->only('name', 'short_description', 'description', 'image_url');
+
+            $name = trim($community['name']);
+            $short_description = $community['short_description'];
+            $description = $community['description'];
+            $image_url = $community['image_url'];
+
+            if ($name && $short_description && $description && $image_url) {
+                $communityByName = Communities::where("name", $name)->count();
+                if (!$communityByName) {
+                    Communities::create([
+                        "status" => "success",
+                        "gender" => "-",
+                        "image_url" => ""
+                    ]);
+                    Alert::success('Berhasil', 'Komunitas ' . $name . ' berhasil dibuat!');
+                    return redirect()->back();
+                } else {
+                    Alert::error('Gagal', 'Komunitas ' . $name . ' gagal dibuat!');
+                    return redirect()->back();
+                }
+            } else {
+                Alert::error('Gagal', 'harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
     }
 
     // Admin logout
@@ -71,7 +106,7 @@ class AdminController extends Controller
              */
 
             // Admin
-            $credential = $request->only('email', 'password', '_token');
+            $credential = $request->only('email', 'password');
 
             $email = $credential['email'];
             $password = $credential['password'];
@@ -183,7 +218,7 @@ class AdminController extends Controller
     {
         return view("admin-load.add-psycholog-profile");
     }
-    
+
     public function deletePsycholog(Request $request, string $psycholog_id)
     {
         try {
