@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Accounts;
 use App\Models\Admin;
+use App\Models\Communities;
 use App\Models\Psychologs;
 use App\Models\User;
 use App\Models\Jadwal;
@@ -18,6 +19,57 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin-login');
+    }
+
+    public function showCreateCommunity()
+    {
+        return view("admin-load.create-community");
+    }
+
+    public function createCommunity(Request $request)
+    {
+        try {
+            $request->validate([
+                'name' => 'required|string',
+                'description' => 'required|string',
+                'short_description' => 'required|string',
+                // 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // validasi hanya untuk gambar
+            ]);
+            $userId = $request->attributes->get('user_id');
+
+            $name = trim($request['name']);
+            $shortDescription = trim($request['short_description']);
+            $description = trim($request['description']);
+            $imageName = time().'.'.$request->file('image')->extension();;
+
+            $request->image->move(public_path('images'), $imageName);
+
+            if ($name && $shortDescription && $description && $imageName) {
+                $communityByName = Communities::where("name", $name)->count();
+                if (!$communityByName) {
+                    Communities::create([
+                        "user_id" => $userId,
+                        "name" => $name,
+                        "short_description" => $shortDescription,
+                        "description" => $description,
+                        "image_url" => $imageName,
+                    ]);
+                    Alert::success('Berhasil', 'Komunitas ' . $name . ' berhasil dibuat!');
+                    return redirect()->back();
+                } else {
+                    Alert::error('Gagal', 'Komunitas ' . $name . ' gagal dibuat!');
+                    return redirect()->back();
+                }
+            } else {
+                Alert::error('Gagal', 'harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            dd($request);
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
     }
 
     // Admin logout
@@ -71,7 +123,7 @@ class AdminController extends Controller
              */
 
             // Admin
-            $credential = $request->only('email', 'password', '_token');
+            $credential = $request->only('email', 'password');
 
             $email = $credential['email'];
             $password = $credential['password'];
@@ -183,7 +235,7 @@ class AdminController extends Controller
     {
         return view("admin-load.add-psycholog-profile");
     }
-    
+
     public function deletePsycholog(Request $request, string $psycholog_id)
     {
         try {
