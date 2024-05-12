@@ -59,7 +59,7 @@
                                 <h1 class="text-xs poppins-medium leading-normal tracking-tight text-[#666666]">Ulasan Kamu</h1>
                             </a>
                         </div>
-                </div>
+                    </div>
                 <div class="flex flex-1 flex-col py-4 px-6 ">
                     <div class="w-full bg-white shadow-md border rounded-3xl py-3 px-4">
                         {{--rating and Three dots menu --}}

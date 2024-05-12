@@ -17,46 +17,45 @@
 </head>
 
 <body class="bg-gray-100">
-    <div class="max-w-md bg-white mx-auto relative">
-        <main class="bg-blue-200 h-screen flex flex-col w-full relative">
+    <div class="max-w-md bg-white p-4 mx-auto relative">
+        <main class="bg-white h-screen flex flex-col w-full relative">
             <div>
                 <x-header-component title="Detail Konsultasi"></x-header-component>
-                <div class="bg-white w-[448px] h-[680px] left-0 top-[296px] absolute"></div>
-                    <div class= "left-[120px] top-[365px] absolute">
-                        <div class="left-[66px] top-[236px] text-center text-neutral-600 text-xs font-normal font-['Poppins'] capitalize tracking-wide">Psikolog Industri & Organisasi </div>
-                        <div class="left-[100px] top-[215px] text-center text-neutral-600 text-xs font-semibold font-['Poppins'] capitalize leading-normal tracking-wide">Insan Daud, M. Psi. </div>
-                    </div>
-                    <div class="w-48 h-48 left-[120px] top-[160px] absolute">
-                        <div class="w-48 h-48 left-0 top-0 absolute bg-gray-200 rounded-3xl shadow">
-                        <img src="./img/Doctorfullbody.svg" alt="doctor-image" class="mx-auto mt-1.2 ml-[-2px]">
-                    </div>
-                <div class="grid grid-cols-3 gap-3 mt-64">
-                    <button class="w-20 h-5 rounded-3xl ml-[-40px] border border-blue-400 flex-col justify-center items-center inline-flex">
-                        <div class="justify-center items-center gap-2 inline-flex">
-                            <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
-                                Pekerjaan</div>
-                        </div>
-                    </button>
-                    <button class="w-36 h-5 rounded-3xl border ml-[-20px] border-blue-400 flex-col justify-center items-center inline-flex">
-                        <div class="justify-center items-center gap-2 inline-flex">
-                            <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
-                                Pengembangan Diri</div>
-                        </div>
-                    </button>
-                    <button class="w-14 h-5 rounded-3xl ml-[64px] border border-blue-400 flex-col justify-center items-center inline-flex">
-                        <div class="justify-center items-center gap-2 inline-flex">
-                            <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
-                                Depresi</div>
-                        </div>
-                    </button>
-                    <button class="w-20 h-5 rounded-3xl ml-16 border border-blue-400 flex-col justify-center items-center inline-flex">
-                        <div class="justify-center items-center gap-2 inline-flex">
-                            <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
-                                +3 Lainnya</div>
-                        </div>
-                    </button>
+            </div>
+            <div class= "mt-[20px]">
+                <div class="w-48 h-48 ml-[118px] mb-4 bg-gray-200 rounded-3xl shadow">
+                    <img src="./img/Doctorfullbody.svg" alt="doctor-image" class="mx-auto mt-1.2 ml-[-2px]">
                 </div>
-                <div class="left-[-80px] top-[380px] absolute">
+                <div class="left-[66px] top-[236px] text-center text-neutral-600 text-xs font-normal font-['Poppins'] capitalize tracking-wide">Psikolog Industri & Organisasi </div>
+                <div class="left-[100px] top-[215px] text-center text-neutral-600 text-xs font-semibold font-['Poppins'] capitalize leading-normal tracking-wide">Insan Daud, M. Psi. </div>
+            </div>
+            <div class="grid grid-cols-3 gap-3 mt-4 mb-4">
+                <button class="w-20 h-5 rounded-3xl ml-[60px] border border-blue-400 flex-col justify-center items-center inline-flex">
+                    <div class="justify-center items-center gap-2 inline-flex">
+                        <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
+                            Pekerjaan</div>
+                    </div>
+                </button>
+                <button class="w-36 h-5 rounded-3xl border ml-[5px] border-blue-400 flex-col justify-center items-center inline-flex">
+                    <div class="justify-center items-center gap-2 inline-flex">
+                        <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
+                            Pengembangan Diri</div>
+                    </div>
+                </button>
+                <button class="w-14 h-5 rounded-3xl ml-[15px] border border-blue-400 flex-col justify-center items-center inline-flex">
+                    <div class="justify-center items-center gap-2 inline-flex">
+                        <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
+                            Depresi</div>
+                    </div>
+                </button>
+                <button class="w-20 h-5 rounded-3xl ml-[170px] border border-blue-400 flex-col justify-center items-center inline-flex">
+                    <div class="justify-center items-center gap-2 inline-flex">
+                        <div class="text-center text-blue-400 text-xs poppins-medium capitalize leading-normal tracking-wide">
+                            +3 Lainnya</div>
+                    </div>
+                </button>                
+            </div>
+                <div class="ml-8">
                     <p class="text-gray-800 text-s font-semibold font-['Poppins'] leading-normal tracking-wide mb-2">Status</p>
                     <p class="text-green-600 text-s font-semibold font-['Poppins'] leading-normal tracking-wide mb-2">Selesai</p>
                     <p class="text-gray-800 text-s font-semibold font-['Poppins'] leading-normal tracking-wide">Jadwal</p>
@@ -67,15 +66,15 @@
                     <p class="text-neutral-700 text-s font-normal font-['Poppins'] leading-normal tracking-tight">Saya akhir-akhir ini gabisa tidur terus setiap hari ngerasa cape terus gamau berkegiatan apa-apa</p>
                 </div>
             
-            <div class="left-[-100px] top-[500px] absolute">
-                <button class="w-40 h-8 left-[18px] top-[248px] absolute bg-sky-600 rounded-3xl border flex-col justify-center items-center inline-flex">
+            <div class="mt-16 grid grid-cols-2">
+                <button class="w-40 h-8 ml-4 bg-sky-600 rounded-3xl border flex-col justify-center items-center inline-flex">
                     <div class="justify-center items-center gap-2 inline-flex">
                         <div
                             class="text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide">
                             Catatan Psikolog</div>
                     </div>
                 </button>
-                <button class="w-40 h-8 left-[236px] top-[248px] absolute rounded-3xl border border-sky-600 flex-col justify-center items-center inline-flex" onclick="showDialog('block')">
+                <button class="w-40 h-8 ml-8 rounded-3xl border border-sky-600 flex-col justify-center items-center inline-flex" onclick="showDialog('block')">
                     <div class="justify-center items-center gap-2 inline-flex">
                         <div
                             class="text-center text-sky-600 text-xs poppins-medium capitalize leading-normal tracking-wide">
