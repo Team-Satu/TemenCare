@@ -21,24 +21,38 @@ class AdminController extends Controller
         return view('admin-login');
     }
 
+    public function showCreateCommunity()
+    {
+        return view("admin-load.create-community");
+    }
+
     public function createCommunity(Request $request)
     {
         try {
-            $community = $request->only('name', 'short_description', 'description', 'image_url');
+            $request->validate([
+                'name' => 'required|string',
+                'description' => 'required|string',
+                'short_description' => 'required|string',
+                // 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // validasi hanya untuk gambar
+            ]);
+            $userId = $request->attributes->get('user_id');
 
-            $name = trim($community['name']);
-            $shortDescription = trim($community['short_description']);
-            $description = trim($community['description']);
-            $imageUrl = trim($community['image_url']);
+            $name = trim($request['name']);
+            $shortDescription = trim($request['short_description']);
+            $description = trim($request['description']);
+            $imageName = time().'.'.$request->file('image')->extension();;
 
-            if ($name && $shortDescription && $description && $imageUrl) {
+            $request->image->move(public_path('images'), $imageName);
+
+            if ($name && $shortDescription && $description && $imageName) {
                 $communityByName = Communities::where("name", $name)->count();
                 if (!$communityByName) {
                     Communities::create([
+                        "user_id" => $userId,
                         "name" => $name,
                         "short_description" => $shortDescription,
                         "description" => $description,
-                        "image_url" => $imageUrl,
+                        "image_url" => $imageName,
                     ]);
                     Alert::success('Berhasil', 'Komunitas ' . $name . ' berhasil dibuat!');
                     return redirect()->back();
@@ -51,6 +65,8 @@ class AdminController extends Controller
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
+            dd($request);
+            dd($th);
             Alert::error('Gagal', 'Terjadi masalah');
             return redirect()->back();
         }

@@ -4,9 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ReportsController;
-use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UserController;
-// use App\Http\Controllers\CommunityController;
 use App\Http\Middleware\EnsureAdminTemenTokenCookieIsValid;
 use App\Http\Middleware\EnsureTemenTokenCookieIsValid;
 use Illuminate\Support\Facades\Route;
@@ -143,6 +141,10 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // Membuat akun psikolog
     Route::get("/create-psycholog", [AdminController::class, 'showRegisterPsycholog'])->name("adminload.show-register-psycholog");
     Route::post("/create-psycholog", [AdminController::class, 'registerPsycholog'])->name("adminload.register-psycholog");
+
+    // Membuat komunitas
+    Route::get("/create-community", [AdminController::class, 'showCreateCommunity'])->name('admin-load.show-create-community');
+    Route::post("/create-community", [AdminController::class, 'createCommunity'])->name('admin-load.create-community');
 
     // List psycholog
     Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");
