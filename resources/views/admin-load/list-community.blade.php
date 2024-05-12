@@ -42,11 +42,11 @@
                                 <td>{{ $community->description }}</td>
                                 <td><img src="/images/{{ $community->image_url }}" alt="{{ $community->name }}" class="img-thumbnail cover-image"></td>
                                 <td>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    <div class="btn-group" role="group">
                                         <button type="button" onclick="deleteAccount({{ $community->community_id }})"
                                             class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         <button type="button" class="btn btn-info" id="changePasswordPsycholog"
-                                            onclick="changePage('change-password-psycholog/{{ $community->community_id }}')"><i class="fas fa-edit"></i></button>
+                                            onclick="editPage('edit-community/{{ $community->community_id }}')"><i class="fas fa-edit"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -76,7 +76,7 @@
             });
     }
 
-    function changePage(targetLoad) {
+    function editPage(targetLoad) {
         const loading = "<h2>Loading...</h2>";
         $("#load-page").html(loading);
         $("#load-page").load("/admin/load/" + targetLoad);

@@ -94,6 +94,75 @@ class AdminController extends Controller
         }
     }
 
+    // Update community data
+    public function editCommunityData(Request $request)
+    {
+        try {
+            $request->validate([
+                'community_id' => 'required|string',
+                'name' => 'required|string',
+                'description' => 'required|string',
+                'short_description' => 'required|string',
+            ]);
+            $userId = $request->attributes->get('user_id');
+
+            $communityId = trim($request['community_id']);
+            $name = trim($request['name']);
+            $shortDescription = trim($request['short_description']);
+            $description = trim($request['description']);
+
+            if ($name && $shortDescription && $description && $communityId) {
+                $communityById = Communities::where("community_id", $communityId)->first();
+                if ($communityById && $communityById['user_id'] == $userId) {
+                    Communities::update([
+                        "name" => $name,
+                        "short_description" => $shortDescription,
+                        "description" => $description,
+                    ], [
+                        "community_id" => $communityId
+                    ]);
+
+                    if ($request->image) {
+                        $imageName = time() . '.' . $request->file('image')->extension();
+                        $request->image->move(public_path('images'), $imageName);
+
+                        Communities::update([
+                            "image_url" => $imageName
+                        ], [
+                            "community_id" => $communityId
+                        ]);
+                    }
+                    Alert::success('Berhasil', 'Komunitas ' . $name . ' berhasil dibuat!');
+                    return redirect()->back();
+                } else {
+                    Alert::error('Gagal', 'Komunitas ' . $name . ' gagal dibuat!');
+                    return redirect()->back();
+                }
+            } else {
+                Alert::error('Gagal', 'harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            dd($request);
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // Get community data
+    public function getCommunityData(Request $request, string $community_id)
+    {
+        try {
+            $community = Communities::where("community_id", $community_id)->first();
+
+            return view("admin-load.edit-community", ["community" => $community]);
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Akun tidak ditemukan');
+            return redirect()->back();
+        }
+    }
+
     // Post psycholog data
     public function changePsychologPassword(Request $request)
     {
@@ -305,21 +374,23 @@ class AdminController extends Controller
         }
     }
 
-    public function createSchedule(Request $req){
-        try{
-            $cred = $req->only('psycholog_id','date', 'start_hour', 'end_hour', 'location');
+    public function createSchedule(Request $req)
+    {
+        try {
+            $cred = $req->only('psycholog_id', 'date', 'start_hour', 'end_hour', 'location');
             // dd($cred);
             PsychologSchedule::create($cred);
             Alert::success('Berhasil', 'Jadwal psikolog berhasil dibuat!');
             return redirect()->back();
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
         }
     }
 
-    public function updateSchedule(Request $req, $id){
-        try{
+    public function updateSchedule(Request $req, $id)
+    {
+        try {
             $schedule = PsychologSchedule::where('schedule_id', $id)->first();
             $schedule->date = $req->date;
             $schedule->start_hour = $req->start_hour;
@@ -328,19 +399,20 @@ class AdminController extends Controller
             $schedule->save();
             Alert::success('Berhasil', 'Jadwal psikolog berhasil diubah!');
             return redirect()->back();
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
         }
-        
+
     }
 
-    public function deleteSchedule($id){
-        try{
+    public function deleteSchedule($id)
+    {
+        try {
             PsychologSchedule::where('schedule_id', $id)->delete();
             Alert::success('Berhasil', 'Jadwal psikolog berhasil dihapus!');
             return;
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             Alert::error('Gagal', 'Terjadi masalah!');
             return;
             // return redirect()->back();
