@@ -17,6 +17,13 @@ class ReportsController extends Controller
         return view('mobile-reports', ["reports" => $reports]);
     }
 
+    public function yourReports()
+    {
+    $reports = Reports::orderBy('report_id', 'desc')->get();
+    return view('mobile-your-reports', ["reports" => $reports]);
+    }
+
+
     public function addReport(Request $request)
     {
         try {

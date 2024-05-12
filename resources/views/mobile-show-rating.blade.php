@@ -41,7 +41,7 @@
                                 <p class="text-neutral-600 text-[12px] poppins-normal">100+ rating</p>
                             </div>
                             {{-- star --}}
-                            <div class="left-[240px] absolute">
+                            <div class="px-8">
                                 <i class="fa-solid fa-star text-2xl" style="color: #7ebaeb;"></i>
                                 <i class="fa-solid fa-star text-2xl" style="color: #7ebaeb;"></i>
                                 <i class="fa-solid fa-star text-2xl" style="color: #7ebaeb;"></i>
@@ -113,18 +113,18 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-1 flex-col px-4 py-4 space-y-4">
+            <div class="hidden flex flex-1 flex-col px-4 py-4 space-y-4">
             <div id="option" class=" w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[50px] top-[300px] absolute ">
             {{--Delete Report Button--}}
                 <div class="w-[125px] h-[46px] flex justify-center items-center">
                 <button class="w-full" onclick="showConfirm('block')">
-                    <p class="text-center py-3 border-b-2 border-gray-400 text-xs text-red-400 w-full">Hapus Laporan</p>
+                    <p class="text-center py-3 border-b-2 border-gray-400 text-xs text-red-400 w-full">Hapus Ulasan</p>
                 </button>
                 </div>
             {{--Change Report Button--}}
                 <div class="w-[125px] h-[46px] flex justify-center items-center">
                 <button class="" onclick="showChange('block')">
-                    <p class="text-center py-3 text-xs">Ubah Laporan</p>
+                    <p class="text-center py-3 text-xs">Ubah Ulasan</p>
                 </button>
                 </div>
             </div>
@@ -132,17 +132,17 @@
                 <div class="w-96 h-80 relative m-auto mt-[220px] bg-white rounded-3xl shadow-2xl">
                     <i class="fa-solid fa-triangle-exclamation text-8xl justify-center items-center flex relative py-14"
                         style="color: #f36464;"></i>
-                    <div class="left-[62px] top-[178px] absolute">
+                    <div class="mt-[-30px]">
                         <h2
                             class="text-center text-neutral-600 text-base poppins-medium leading-tight tracking-tight py-2">
-                            Yakin ingin hapus laporanmu?</h2>
+                            Yakin ingin hapus Ulasanmu?</h2>
                         <p
                             class="text-center text-neutral-600 text-xs poppins-light leading-none tracking-tight">
                             Setelah
-                            dihapus laporan hilang permanen loh..</p>
+                            dihapus ulasan hilang permanen loh..</p>
                     </div>
                     <button
-                        class="w-32 h-8 left-[48px] top-[248px] absolute rounded-3xl border border-blue-300 flex-col justify-center items-center inline-flex">
+                        class="w-32 h-8 mt-6 ml-10 rounded-3xl border border-blue-300 flex-col justify-center items-center inline-flex">
                         <div class="justify-center items-center gap-2 inline-flex">
                             <div
                                 class="text-center text-blue-300 text-xs poppins-medium capitalize leading-normal tracking-wide">
@@ -150,7 +150,7 @@
                         </div>
                     </button>
                     <a href="/rating"
-                        class="w-32 h-8 left-[216px] top-[248px] absolute bg-blue-300 rounded-3xl flex-col justify-center items-center inline-flex">
+                        class="w-32 h-8 ml-12 bg-blue-300 rounded-3xl flex-col justify-center items-center inline-flex">
                         <div class="justify-center items-center gap-2 inline-flex">
                             <div
                                 class="text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide">
