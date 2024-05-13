@@ -158,6 +158,10 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // Change psycholog password
     Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
     Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
+    
+    // Edit community detail
+    Route::get("/edit-community/{community_id}", [AdminController::class, 'getCommunityData'])->name("admin-load.show-edit-community");
+    Route::post("/edit-community", [AdminController::class, 'editCommunityData'])->name("admin-load.edit-community");
 
     Route::group(['prefix' => 'schedules'], function(){
         Route::get("/", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");

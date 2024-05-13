@@ -11,6 +11,8 @@ class Communities extends Model
     // Specify the table if it's not the plural of your model name
     protected $table = 'communities';
 
+    protected $primaryKey = 'community_id';
+
     // Specify the fields that are mass assignable
     protected $fillable = [
         'user_id',

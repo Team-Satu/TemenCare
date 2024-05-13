@@ -93,7 +93,9 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Atur Komunitas:</h6>
-                        <a class="collapse-item" href="#" load="load/create-community">Buat Komunitas</a>
+                        @if ($role == 'psycholog')
+                            <a class="collapse-item" href="#" load="load/create-community">Buat Komunitas</a>
+                        @endif
                         <a class="collapse-item" href="#" load="load/list-community">Daftar Komunitas</a>
                     </div>
                 </div>
@@ -104,21 +106,21 @@
                 Jadwal
             </div>
 
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                        aria-expanded="true" aria-controls="collapseThree">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Jadwal</span>
-                    </a>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Atur Jadwal:</h6>
-                            <a class="collapse-item" href="#" load="load/schedules">Lihat Jadwal</a>
-                            <a class="collapse-item" href="#" load="load/schedules/add">Buat Jadwal</a>
-                        </div>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Jadwal</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Atur Jadwal:</h6>
+                        <a class="collapse-item" href="#" load="load/schedules">Lihat Jadwal</a>
+                        <a class="collapse-item" href="#" load="load/schedules/add">Buat Jadwal</a>
                     </div>
-                </li>
+                </div>
+            </li>
 
 
             <!-- Nav Item - Utilities Collapse Menu -->
