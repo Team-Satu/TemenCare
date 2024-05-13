@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Accounts;
 use App\Models\Admin;
+use App\Models\Communities;
 use App\Models\Psychologs;
 use App\Models\User;
+use App\Models\Jadwal;
+use App\Models\PsychologSchedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -17,6 +20,58 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin-login');
+    }
+
+    public function showCreateCommunity()
+    {
+        return view("admin-load.create-community");
+    }
+
+    public function createCommunity(Request $request)
+    {
+        try {
+            $request->validate([
+                'name' => 'required|string',
+                'description' => 'required|string',
+                'short_description' => 'required|string',
+                // 'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // validasi hanya untuk gambar
+            ]);
+            $userId = $request->attributes->get('user_id');
+
+            $name = trim($request['name']);
+            $shortDescription = trim($request['short_description']);
+            $description = trim($request['description']);
+            $imageName = time() . '.' . $request->file('image')->extension();
+            ;
+
+            $request->image->move(public_path('images'), $imageName);
+
+            if ($name && $shortDescription && $description && $imageName) {
+                $communityByName = Communities::where("name", $name)->count();
+                if (!$communityByName) {
+                    Communities::create([
+                        "user_id" => $userId,
+                        "name" => $name,
+                        "short_description" => $shortDescription,
+                        "description" => $description,
+                        "image_url" => $imageName,
+                    ]);
+                    Alert::success('Berhasil', 'Komunitas ' . $name . ' berhasil dibuat!');
+                    return redirect()->back();
+                } else {
+                    Alert::error('Gagal', 'Komunitas ' . $name . ' gagal dibuat!');
+                    return redirect()->back();
+                }
+            } else {
+                Alert::error('Gagal', 'harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            dd($request);
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
     }
 
     // Admin logout
@@ -70,7 +125,7 @@ class AdminController extends Controller
              */
 
             // Admin
-            $credential = $request->only('email', 'password', '_token');
+            $credential = $request->only('email', 'password');
 
             $email = $credential['email'];
             $password = $credential['password'];
@@ -146,9 +201,26 @@ class AdminController extends Controller
         return view("admin-load.dashboard", ["account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
     }
 
-    public function showSchedule()
+    public function showCommunities()
     {
-        return view("admin-load.psycholog-schedules");
+        return view("admin-load.desktop-communities");
+    }
+
+    public function viewSchedules()
+    {
+        $schedules = PsychologSchedule::all();
+        return view("admin-load.schedules.view-schedules")->with('schedules', $schedules);
+    }
+
+    public function addSchedule()
+    {
+        return view("admin-load.schedules.add-schedules");
+    }
+
+    public function editSchedule($id)
+    {
+        $schedule = PsychologSchedule::where("psycholog_id", $id)->first();
+        return view("admin-load.schedules.edit-schedules")->with('schedule', $schedule);
     }
 
     public function showRegisterPsycholog(Request $request)
@@ -161,6 +233,19 @@ class AdminController extends Controller
         $psychologList = Psychologs::get();
 
         return view("admin-load.list-psycholog", ["psychologs" => $psychologList]);
+    }
+
+    public function showListCommunity(Request $request)
+    {
+        $userId = $request->attributes->get("user_id");
+        $communityList = Communities::where("user_id", $userId)->get();
+
+        return view("admin-load.list-community", ["communities" => $communityList]);
+    }
+
+    public function showAddProfile()
+    {
+        return view("admin-load.add-psycholog-profile");
     }
 
     public function deletePsycholog(Request $request, string $psycholog_id)
@@ -217,6 +302,48 @@ class AdminController extends Controller
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
+        }
+    }
+
+    public function createSchedule(Request $req){
+        try{
+            $cred = $req->only('psycholog_id','date', 'start_hour', 'end_hour', 'location');
+            // dd($cred);
+            PsychologSchedule::create($cred);
+            Alert::success('Berhasil', 'Jadwal psikolog berhasil dibuat!');
+            return redirect()->back();
+        }catch(\Exception $e){
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return redirect()->back();
+        }
+    }
+
+    public function updateSchedule(Request $req, $id){
+        try{
+            $schedule = PsychologSchedule::where('schedule_id', $id)->first();
+            $schedule->date = $req->date;
+            $schedule->start_hour = $req->start_hour;
+            $schedule->end_hour = $req->end_hour;
+            $schedule->location = $req->location;
+            $schedule->save();
+            Alert::success('Berhasil', 'Jadwal psikolog berhasil diubah!');
+            return redirect()->back();
+        }catch(\Exception $e){
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return redirect()->back();
+        }
+        
+    }
+
+    public function deleteSchedule($id){
+        try{
+            PsychologSchedule::where('schedule_id', $id)->delete();
+            Alert::success('Berhasil', 'Jadwal psikolog berhasil dihapus!');
+            return;
+        }catch(\Exception $e){
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return;
+            // return redirect()->back();
         }
     }
 

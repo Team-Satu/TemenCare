@@ -28,7 +28,8 @@
                     <h2 class="poppins-bold text-lg">Sahabat Setia di Setiap Langkah <br> Menuju Mental Sehat</h2>
                     <p class="my-4 text-xs">Butuh teman cerita? Psikolog berpengalaman,<br> siap dengarkan dan
                         ringankan bebanmu</p>
-                    <button class="bg-[#F36464] rounded-3xl py-2 px-6 poppins-medium text-xs hover:shadow">Mulai Konseling</button>
+                    <button class="bg-[#F36464] rounded-3xl py-2 px-6 poppins-medium text-xs hover:shadow">Mulai
+                        Konseling</button>
                 </div>
 
                 <div class="w-full">
@@ -201,7 +202,8 @@
             <div class="grid grid-flow-col">
                 <div class="grid grid-flow-row gap-2">
                     <h2 class="text-blue-300 text-xs poppins-bold leading-normal tracking-wide">Layanan Kami</h2>
-                    <div class="space-y-1 flex-col flex text-neutral-600 text-xs poppins-reguler leading-normal tracking-wide">
+                    <div
+                        class="space-y-1 flex-col flex text-neutral-600 text-xs poppins-reguler leading-normal tracking-wide">
                         <a href="#" class="hover:underline">Psikotes</a>
                         <a href="#" class="hover:underline">Forum Diskusi</a>
                         <a href="#" class="hover:underline">Konseling</a>
@@ -209,7 +211,8 @@
                 </div>
                 <div class="grid grid-flow-row gap-2">
                     <h2 class="text-blue-300 text-xs poppins-bold leading-normal tracking-wide">Tentang Kami</h2>
-                    <div class="space-y-1 flex-col flex text-neutral-600 text-xs poppins-reguler leading-normal tracking-wide">
+                    <div
+                        class="space-y-1 flex-col flex text-neutral-600 text-xs poppins-reguler leading-normal tracking-wide">
                         <a href="#" class="hover:underline">Blog</a>
                         <a href="#" class="hover:underline">Kontak Kami</a>
                         <a href="#" class="hover:underline">Gabung Sebagai<br />Psikolog</a>
@@ -217,7 +220,8 @@
                 </div>
                 <div class="grid grid-flow-row gap-2">
                     <h2 class="text-blue-300 text-xs poppins-bold leading-normal tracking-wide">Lainnya</h2>
-                    <div class="space-y-1 flex-col flex text-neutral-600 text-xs poppins-reguler leading-normal tracking-wide">
+                    <div
+                        class="space-y-1 flex-col flex text-neutral-600 text-xs poppins-reguler leading-normal tracking-wide">
                         <a href="#" class="hover:underline">Syarat dan Ketentuan</a>
                         <a href="#" class="hover:underline">Kebijakan Privasi</a>
                         <a href="#" class="hover:underline">FAQ</a>

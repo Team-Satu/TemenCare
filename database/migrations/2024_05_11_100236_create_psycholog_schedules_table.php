@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('psycholog_schedules', function (Blueprint $table) {
             $table->id('schedule_id');
             $table->integer('psycholog_id');
-            $table->enum('day', ['SENIN', 'SELASA', 'RABU', 'KAMIS', 'JUMAT', 'SABTU']);
-            $table->integer('start_hour');
-            $table->enum('type', ['ONLINE', 'OFFLINE']);
-            $table->integer('status');
+            $table->date('date');
+            $table->time('start_hour');
+            $table->time('end_hour');
+            $table->enum('location', ['Online', 'Onsite']);
             $table->timestamps();
         });
     }
