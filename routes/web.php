@@ -161,7 +161,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     
     // Edit community detail
     Route::get("/edit-community/{community_id}", [AdminController::class, 'getCommunityData'])->name("admin-load.show-edit-community");
-    Route::get("/edit-community", [AdminController::class, 'editCommunityData'])->name("admin-load.edit-community");
+    Route::post("/edit-community", [AdminController::class, 'editCommunityData'])->name("admin-load.edit-community");
 
     Route::group(['prefix' => 'schedules'], function(){
         Route::get("/", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");

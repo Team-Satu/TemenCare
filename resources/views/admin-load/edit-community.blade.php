@@ -12,6 +12,7 @@
                 <form class="card-body" action="{{ route('admin-load.edit-community') }}" method="POST"
                     enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="community_id" value="{{ $community->community_id }}">
                     <div class="mb-3">
                         <label class="form-label">Nama Komunitas</label>
                         <input type="text" class="form-control" placeholder="Nama Komunitas" name="name"
@@ -25,15 +26,14 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Deskripsi</label>
-                        <textarea class="form-control" name="description" placeholder="Masukan deskripsi komunitas Anda"
-                            value="{{ $community->description }}"></textarea>
+                        <textarea class="form-control" name="description" placeholder="Masukan deskripsi komunitas Anda">{{ $community->description }}</textarea>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Gambar Komunitas</label>
                         <input type="file" name="image" class="form-control">
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Buat Komunitas</button>
+                    <button type="submit" class="btn btn-primary">Perbarui</button>
                 </form>
             </div>
         </div>

@@ -67,8 +67,8 @@ class AdminController extends Controller
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
-            dd($request);
-            dd($th);
+            // dd($request);
+            // dd($th);
             Alert::error('Gagal', 'Terjadi masalah');
             return redirect()->back();
         }
@@ -112,30 +112,25 @@ class AdminController extends Controller
             $description = trim($request['description']);
 
             if ($name && $shortDescription && $description && $communityId) {
-                $communityById = Communities::where("community_id", $communityId)->first();
-                if ($communityById && $communityById['user_id'] == $userId) {
-                    Communities::update([
-                        "name" => $name,
-                        "short_description" => $shortDescription,
-                        "description" => $description,
-                    ], [
-                        "community_id" => $communityId
-                    ]);
+                $community = Communities::where("community_id", $communityId)->first();
+                if ($community && $community['user_id'] == $userId) {
+                    $community->name = $name;
+                    $community->short_description = $shortDescription;
+                    $community->description = $description;
 
                     if ($request->image) {
                         $imageName = time() . '.' . $request->file('image')->extension();
                         $request->image->move(public_path('images'), $imageName);
 
-                        Communities::update([
-                            "image_url" => $imageName
-                        ], [
-                            "community_id" => $communityId
-                        ]);
+                        $community->image_url = $imageName;
                     }
-                    Alert::success('Berhasil', 'Komunitas ' . $name . ' berhasil dibuat!');
+
+                    $community->save();
+
+                    Alert::success('Berhasil', 'Komunitas ' . $name . ' berhasil diperbarui!');
                     return redirect()->back();
                 } else {
-                    Alert::error('Gagal', 'Komunitas ' . $name . ' gagal dibuat!');
+                    Alert::error('Gagal', 'Komunitas ' . $name . ' gagal diperbarui!');
                     return redirect()->back();
                 }
             } else {
@@ -143,7 +138,7 @@ class AdminController extends Controller
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
-            dd($request);
+            // dd($request);
             dd($th);
             Alert::error('Gagal', 'Terjadi masalah');
             return redirect()->back();
