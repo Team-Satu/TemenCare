@@ -4,9 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginIgracias;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ReportsController;
-use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\UserController;
-// use App\Http\Controllers\CommunityController;
 use App\Http\Middleware\EnsureAdminTemenTokenCookieIsValid;
 use App\Http\Middleware\EnsureTemenTokenCookieIsValid;
 use Illuminate\Support\Facades\Route;
@@ -144,8 +142,15 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     Route::get("/create-psycholog", [AdminController::class, 'showRegisterPsycholog'])->name("adminload.show-register-psycholog");
     Route::post("/create-psycholog", [AdminController::class, 'registerPsycholog'])->name("adminload.register-psycholog");
 
+    // Membuat komunitas
+    Route::get("/create-community", [AdminController::class, 'showCreateCommunity'])->name('admin-load.show-create-community');
+    Route::post("/create-community", [AdminController::class, 'createCommunity'])->name('admin-load.create-community');
+
     // List psycholog
     Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");
+
+    // List community
+    Route::get("/list-community", [AdminController::class, 'showListCommunity'])->name("adminload.show-list-community");
 
     // Delete psycholog
     Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
@@ -154,11 +159,28 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
     Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
 
-    Route::get("/schedules", [AdminController::class, 'showSchedule'])->name("adminload.schedules");
+    Route::group(['prefix' => 'schedules'], function(){
+        Route::get("/", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");
+        Route::get("/add", [AdminController::class, 'addSchedule'])->name("adminload.add-schedule");
+        Route::get("/edit/{id}", [AdminController::class, 'editSchedule'])->name("adminload.edit-schedule");
+
+        Route::post('/', [AdminController::class, 'createSchedule'])->name('adminload.create-schedule');
+        Route::put('/{id}', [AdminController::class, 'updateSchedule'])->name('adminload.update-schedule');
+        Route::delete('/{id}', [AdminController::class ,'deleteSchedule'])->name('adminload.delete-schedule');
+
+    });
+
+    Route::get('/psycholog-schedules', [AdminController::class, 'index'])->name('psycholog-schedules.index');
+    Route::get('/psycholog-schedules/create', [AdminController::class, 'create'])->name('psycholog-schedules.create');
+    Route::post('/psycholog-schedules', [AdminController::class, 'store'])->name('psycholog-schedules.store');
+    Route::get('/psycholog-schedules/{id}/edit', [AdminController::class, 'edit'])->name('psycholog-schedules.edit');
+    Route::put('/psycholog-schedules/{id}', [AdminController::class, 'update'])->name('psycholog-schedules.update');
+    Route::delete('/psycholog-schedules/{id}', [AdminController::class, 'destroy'])->name('psycholog-schedules.destroy');
+
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
-
-    Route::get("/communities", [AdminController::class, 'showCommunities'])->name("adminload.communities");
+    Route::get("/add-psycholog-profile", [AdminController::class, 'showAddProfile'])->name("adminload.add-psycholog-profile");
+    Route::get("/desktop-communities", [AdminController::class, 'showCommunities'])->name("adminload.desktop-communities");
 });
 
 // User Routing - UnAuthenticated
@@ -181,18 +203,19 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
 Route::get('/lpmobile', function () {
     return view('mobile-landing-page');
 });
-    Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
-
-
-    // Reports
-    Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
-    Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
-    // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-    Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
+Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
 
 
 // Reports
 Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+// Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
+Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
+
+
+// Reports
+Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+Route::get("/your reports", [ReportsController::class, 'yourReports'])->name("user.reports");
 Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
 // Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
@@ -212,7 +235,14 @@ Route::get('/add rating', function () {
 Route::get('/lpdesktop', function () {
     return view('desktop-landing-page');
 });
+
+
+//Show Psycholog Profile
+Route::get('/psycholog-profile', function () {
+    return view('mobile-psychologs-expertise');
+});
 // Show Communities Desktop
 Route::get('/dcommunities', function () {
     return view('desktop-communities');
 });
+

@@ -9,12 +9,16 @@ class Communities extends Model
 {
     use HasFactory;
     // Specify the table if it's not the plural of your model name
-    // protected $table = 'communities';
+    protected $table = 'communities';
 
     // Specify the fields that are mass assignable
-    // protected $fillable = [
-    //     'community_id', 'user_id', 'name', 'short_description', 'description', 'image_url', // Add all the fillable fields from your migration
-    // ];
+    protected $fillable = [
+        'user_id',
+        'name',
+        'short_description',
+        'description',
+        'image_url',
+    ];
 
     // Define the relationship with CommunityPosts if you have a related model
     // public function posts() {

@@ -54,17 +54,18 @@
             @if ($role == 'admin')
                 <!-- Heading -->
                 <div class="sidebar-heading">
-                    Psikolog
+                    Admin
                 </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                        aria-expanded="true" aria-controls="collapseTwo">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePsycholog"
+                        aria-expanded="true" aria-controls="collapsePsycholog">
                         <i class="fas fa-fw fa-cog"></i>
                         <span>Psikolog</span>
                     </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div id="collapsePsycholog" class="collapse" aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Atur Psikolog:</h6>
                             <a class="collapse-item" href="#" load="load/list-psycholog">Daftar Psikolog</a>
@@ -74,10 +75,32 @@
                 </li>
             @endif
 
-            <!-- Heading -->
-                <div class="sidebar-heading">
-                    Jadwal
+            <!-- Psikolog: Heading -->
+            <div class="sidebar-heading">
+                Psikolog
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCommunity"
+                    aria-expanded="true" aria-controls="collapseCommunity">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Komunitas</span>
+                </a>
+                <div id="collapseCommunity" class="collapse" aria-labelledby="headingTwo"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Atur Komunitas:</h6>
+                        <a class="collapse-item" href="#" load="load/create-community">Buat Komunitas</a>
+                        <a class="collapse-item" href="#" load="load/list-community">Daftar Komunitas</a>
+                    </div>
                 </div>
+            </li>
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Jadwal
+            </div>
 
                 <!-- Nav Item - Pages Collapse Menu -->
                 <li class="nav-item">
@@ -89,7 +112,8 @@
                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Atur Jadwal:</h6>
-                            <a class="collapse-item" href="#" load="load/schedules">Buat Jadwal</a>
+                            <a class="collapse-item" href="#" load="load/schedules">Lihat Jadwal</a>
+                            <a class="collapse-item" href="#" load="load/schedules/add">Buat Jadwal</a>
                         </div>
                     </div>
                 </li>
@@ -148,7 +172,8 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.html">Login</a>
@@ -243,8 +268,13 @@
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal"
-                                    data-target="#logoutModal">
+                                <a class="dropdown-item" href="#" load="load/add-psycholog-profile">
+                                    <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Tambah Profile
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" load="load/add-psycholog-profile"
+                                    data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

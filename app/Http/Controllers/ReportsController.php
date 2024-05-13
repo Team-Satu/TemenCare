@@ -17,6 +17,13 @@ class ReportsController extends Controller
         return view('mobile-reports', ["reports" => $reports]);
     }
 
+    public function yourReports()
+    {
+    $reports = Reports::orderBy('report_id', 'desc')->get();
+    return view('mobile-your-reports', ["reports" => $reports]);
+    }
+
+
     public function addReport(Request $request)
     {
         try {
@@ -25,6 +32,10 @@ class ReportsController extends Controller
 
             // Report bisa langsung diambil dari $request karena dia merupakan data yang langsung ditembak sebagai post data
             $report = $request->get("report");
+
+            error_log($report);
+            error_log(strlen($report));
+            error_log($userId);
 
             if (strlen($report) > 500) {
                 // Pake kode di bawah ini kalo misalkan make show error, jangan pake withError (approach kita beda soalnya).
@@ -75,9 +86,9 @@ class ReportsController extends Controller
     public function deleteReports(Request $request)
     {
         try {
-            $reportId = $request->attributes->get('report_id');
-            $reports = Reports::find($reportId);
+            $reportId = $request->get('report_id');
             dd($reportId);
+            $reports = Reports::find($reportId);
             if ($reports) {
                 $reports->delete();
                 return redirect()->route('route.name');
