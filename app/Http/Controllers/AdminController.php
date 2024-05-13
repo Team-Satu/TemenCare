@@ -6,6 +6,7 @@ use App\Models\Accounts;
 use App\Models\Admin;
 use App\Models\Communities;
 use App\Models\Psychologs;
+use App\Models\CommunityPost;
 use App\Models\User;
 use App\Models\Jadwal;
 use App\Models\PsychologSchedule;
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Validator;
+
 
 class AdminController extends Controller
 {
@@ -201,10 +204,39 @@ class AdminController extends Controller
         return view("admin-load.dashboard", ["account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
     }
 
-    public function showCommunities()
+    public function showCommunitiesDetail()
     {
-        return view("admin-load.desktop-communities");
+        return view("admin-load.psycholog-communities");
     }
+
+    public function createCommunityPost(Request $request)
+    {
+        try {
+            // Validate data
+            $validator = Validator::make($request->all(), [
+                'post' => 'required|string',
+            ]);
+
+            // Check if validation fails
+            if ($validator->fails()) {
+                return response()->json(['errors' => $validator->errors()], 400);
+            }
+
+            // Create community post
+            $communityPost = CommunityPost::create([
+                'post' => $request->post,
+            ]);
+
+            // Return success response
+            Alert::success('Berhasil', 'Post berhasil dibuat!');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            // Set error flash message
+            Alert::error('Gagal', 'Post gagal dibuat!');
+            return redirect()->back();
+        }
+    }
+
 
     public function viewSchedules()
     {
@@ -221,11 +253,6 @@ class AdminController extends Controller
     {
         $schedule = PsychologSchedule::where("psycholog_id", $id)->first();
         return view("admin-load.schedules.edit-schedules")->with('schedule', $schedule);
-    }
-
-    public function showCommunities()
-    {
-        return view("admin-load.communities-psycholog");
     }
     
     public function showRegisterPsycholog(Request $request)

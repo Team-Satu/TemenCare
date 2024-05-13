@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureAdminTemenTokenCookieIsValid;
 use App\Http\Middleware\EnsureTemenTokenCookieIsValid;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,6 +147,11 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     Route::get("/create-community", [AdminController::class, 'showCreateCommunity'])->name('admin-load.show-create-community');
     Route::post("/create-community", [AdminController::class, 'createCommunity'])->name('admin-load.create-community');
 
+    // // Membuat postingan komunitas
+    // Route::post("/psycholog-communities", [AdminController::class, 'createCommunityPost'])->name('admin-load.createCommunityPost');
+    // Route::get('/psycholog-communities', [AdminController::class, 'showCreateForm'])->name('community-posts.create');
+    Route::post('/psycholog-communities', [AdminController::class, 'createCommunityPost'])->name('community-posts.store');
+
     // List psycholog
     Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");
 
@@ -180,7 +186,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
 
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
     Route::get("/add-psycholog-profile", [AdminController::class, 'showAddProfile'])->name("adminload.add-psycholog-profile");
-    Route::get("/desktop-communities", [AdminController::class, 'showCommunities'])->name("adminload.desktop-communities");
+    Route::get("/psycholog-communities", [AdminController::class, 'showCommunitiesDetail'])->name("adminload.psycholog-communities");
 });
 
 // User Routing - UnAuthenticated
@@ -242,7 +248,7 @@ Route::get('/psycholog-profile', function () {
     return view('mobile-psychologs-expertise');
 });
 // Show Communities Desktop
-Route::get('/dcommunities', function () {
-    return view('desktop-communities');
+Route::get('/psycholog-communities', function () {
+    return view('psycholog-communities');
 });
 

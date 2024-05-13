@@ -118,26 +118,6 @@
                     </div>
                 </li>
 
-                <!-- Punya INSANBRUT -->
-                <div class="sidebar-heading">
-                    Komunitas
-                </div>
-
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
-                        aria-expanded="true" aria-controls="collapseFour">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Komunitas</span>
-                    </a>
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Atur Komunitas:</h6>
-                            <a class="collapse-item" href="#" load="load/communities">Buat Komunitas</a>
-                        </div>
-                    </div>
-                </li>
-
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
