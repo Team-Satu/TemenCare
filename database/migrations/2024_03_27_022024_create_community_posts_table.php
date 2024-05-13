@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('community_posts', function (Blueprint $table) {
             $table->id('post_id');
             $table->string('post');
+            $table->id('psycholog_id');
+            $table->string('description');
             $table->timestamps();
         });
     }
