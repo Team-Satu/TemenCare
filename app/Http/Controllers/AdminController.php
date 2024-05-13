@@ -247,6 +247,10 @@ class AdminController extends Controller
     {
         return view("admin-load.add-psycholog-profile");
     }
+    public function changeProfile()
+    {
+        return view("admin-load.change-psycholog-profile");
+    }
 
     public function deletePsycholog(Request $request, string $psycholog_id)
     {
