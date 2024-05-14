@@ -61,7 +61,7 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePsycholog"
                         aria-expanded="true" aria-controls="collapsePsycholog">
-                        <i class="fas fa-fw fa-cog"></i>
+                        <i class="fas fa-fw fa-user"></i>
                         <span>Psikolog</span>
                     </a>
                     <div id="collapsePsycholog" class="collapse" aria-labelledby="headingTwo"
@@ -86,7 +86,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCommunity"
                     aria-expanded="true" aria-controls="collapseCommunity">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-comment"></i>
                     <span>Komunitas</span>
                 </a>
                 <div id="collapseCommunity" class="collapse" aria-labelledby="headingTwo"
