@@ -21,9 +21,4 @@ class Communities extends Model
         'description',
         'image_url',
     ];
-
-    // Define the relationship with CommunityPosts if you have a related model
-    // public function posts() {
-    //     return $this->hasMany(CommunityPost::class);
-    // }
 }
