@@ -40,13 +40,15 @@
                                 <td>{{ $community->name }}</td>
                                 <td>{{ $community->short_description }}</td>
                                 <td>{{ $community->description }}</td>
-                                <td><img src="/images/{{ $community->image_url }}" alt="{{ $community->name }}" class="img-thumbnail cover-image"></td>
+                                <td><img src="/images/{{ $community->image_url }}" alt="{{ $community->name }}"
+                                        class="img-thumbnail cover-image"></td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" onclick="deleteAccount({{ $community->community_id }})"
+                                        <button type="button" onclick="deleteCommunity({{ $community->community_id }})"
                                             class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                        <button type="button" class="btn btn-info" id="changePasswordPsycholog"
-                                            onclick="editPage('edit-community/{{ $community->community_id }}')"><i class="fas fa-edit"></i></button>
+                                        <button type="button" class="btn btn-info"
+                                            onclick="editPage('edit-community/{{ $community->community_id }}')"><i
+                                                class="fas fa-edit"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -59,10 +61,10 @@
 </div>
 
 <script>
-    function deleteAccount(psychologId) {
+    function deleteCommunity(communityId) {
         const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
 
-        return fetch(`/admin/load/delete-psycholog/${psychologId}`, {
+        return fetch(`/admin/load/delete-community/${communityId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

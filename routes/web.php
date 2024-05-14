@@ -155,6 +155,9 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // Delete psycholog
     Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
 
+    // Delete community
+    Route::delete("/delete-community/{community_id}", [AdminController::class, 'deleteCommunity'])->name("adminload.delete-community");
+
     // Change psycholog password
     Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
     Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
