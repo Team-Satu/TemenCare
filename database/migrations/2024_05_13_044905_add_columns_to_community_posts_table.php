@@ -12,8 +12,7 @@ class AddColumnsToCommunityPostsTable extends Migration
     public function up(): void
     {
         Schema::table('community_posts', function (Blueprint $table) {
-            $table->bigInteger('psycholog_id')->after('post_id')->nullable();
-            $table->string('description')->after('psycholog_id')->nullable();
+            $table->integer('community_id')->after('post_id')->nullable();
         });
     }
 
