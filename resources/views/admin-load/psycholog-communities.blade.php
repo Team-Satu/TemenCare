@@ -80,7 +80,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Postingan</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -96,9 +96,6 @@
         </form>
         <!-- End of Form -->
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
     </div>
   </div>
 </div>
@@ -110,7 +107,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle">Edit Postingan</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -123,12 +120,9 @@
               <label for="post">Post:</label>
               <textarea class="form-control" id="post" name="update" required>{{$community_post -> post}}</textarea>
           </div>
-          <button type="submit" class="btn btn-primary mt-4">Create Post</button>
+          <button type="submit" class="btn btn-primary mt-4">Save Post</button>
         </form>
         <!-- End of Form -->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
