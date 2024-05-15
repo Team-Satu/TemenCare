@@ -193,7 +193,9 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
     Route::get("/add-psycholog-profile", [AdminController::class, 'showAddProfile'])->name("adminload.add-psycholog-profile");
     Route::get('/psycholog-communities/{community_id}', [AdminController::class, 'showCommunitiesDetail'])->name("adminload.psycholog-communities");
-    Route::post('/psycholog-communities', [AdminController::class, 'createCommunityPost'])->name('community-posts.store');
+    Route::post('/psycholog-communities/{community_id}', [AdminController::class, 'createCommunityPost'])->name('adminload.psycholog-communities.store');
+    Route::put('/psycholog-communities/{post_id}', [AdminController::class, 'updateCommunityPost'])->name('adminload.psycholog-communities.update');
+    Route::delete('/psycholog-communities/{post_id}', [AdminController::class, 'deleteCommunityPost'])->name('adminload.psycholog-communities.delete');
     Route::get("/change-psycholog-profile", [AdminController::class, 'changeProfile'])->name("adminload.change-psycholog-profile");
     Route::get("/desktop-communities", [AdminController::class, 'showCommunities'])->name("adminload.desktop-communities");
 });

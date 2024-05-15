@@ -37,7 +37,7 @@
                         @foreach ($communities as $community)
                             <tr>
                                 <th scope="row">{{ $i++ }}</th>
-                                <td><a class="collapse-item" href="#" onclick="changePage('psycholog-communities/{{ $community->community_id }}')">{{ $community->name }}</a></td>
+                                <td><a class="collapse-item" onclick="changePage('psycholog-communities/{{ $community->community_id }}')">{{ $community->name }}</a></td>
                                 <td>{{ $community->short_description }}</td>
                                 <td>{{ $community->description }}</td>
                                 <td><img src="/images/{{ $community->image_url }}" alt="{{ $community->name }}"
