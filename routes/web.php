@@ -146,6 +146,10 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // Membuat komunitas
     Route::get("/create-community", [AdminController::class, 'showCreateCommunity'])->name('admin-load.show-create-community');
     Route::post("/create-community", [AdminController::class, 'createCommunity'])->name('admin-load.create-community');
+    
+    // Tambah expertise
+    Route::get("/create-expertise", [AdminController::class, 'showCreateExpertise'])->name('admin-load.show-create-expertise');
+    Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.create-expertise');
 
     // // Membuat postingan komunitas
     // Route::post("/psycholog-communities", [AdminController::class, 'createCommunityPost'])->name('admin-load.createCommunityPost');
@@ -161,9 +165,16 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // Delete psycholog
     Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
 
+    // Delete community
+    Route::delete("/delete-community/{community_id}", [AdminController::class, 'deleteCommunity'])->name("adminload.delete-community");
+
     // Change psycholog password
     Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
     Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
+    
+    // Edit community detail
+    Route::get("/edit-community/{community_id}", [AdminController::class, 'getCommunityData'])->name("admin-load.show-edit-community");
+    Route::post("/edit-community", [AdminController::class, 'editCommunityData'])->name("admin-load.edit-community");
 
     Route::group(['prefix' => 'schedules'], function(){
         Route::get("/", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");
@@ -187,6 +198,8 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
     Route::get("/add-psycholog-profile", [AdminController::class, 'showAddProfile'])->name("adminload.add-psycholog-profile");
     Route::get("/psycholog-communities", [AdminController::class, 'showCommunitiesDetail'])->name("adminload.psycholog-communities");
+    Route::get("/change-psycholog-profile", [AdminController::class, 'changeProfile'])->name("adminload.change-psycholog-profile");
+    Route::get("/desktop-communities", [AdminController::class, 'showCommunities'])->name("adminload.desktop-communities");
 });
 
 // User Routing - UnAuthenticated

@@ -32,9 +32,9 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="./dashboard">
-                <div class="sidebar-brand-icon rotate-n-15">
+                {{-- <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
-                </div>
+                </div> --}}
                 <div class="sidebar-brand-text mx-3">Temen Care <sup>{{ $role }}</sup></div>
             </a>
 
@@ -61,7 +61,7 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePsycholog"
                         aria-expanded="true" aria-controls="collapsePsycholog">
-                        <i class="fas fa-fw fa-cog"></i>
+                        <i class="fas fa-fw fa-user"></i>
                         <span>Psikolog</span>
                     </a>
                     <div id="collapsePsycholog" class="collapse" aria-labelledby="headingTwo"
@@ -70,6 +70,8 @@
                             <h6 class="collapse-header">Atur Psikolog:</h6>
                             <a class="collapse-item" href="#" load="load/list-psycholog">Daftar Psikolog</a>
                             <a class="collapse-item" href="#" load="load/create-psycholog">Buat Psikolog</a>
+                            <a class="collapse-item" href="#" load="load/add-psycholog-profile">Tambah Profile</a>
+                            <a class="collapse-item" href="#" load="load/change-psycholog-profile">Profile</a>
                         </div>
                     </div>
                 </li>
@@ -84,39 +86,58 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCommunity"
                     aria-expanded="true" aria-controls="collapseCommunity">
-                    <i class="fas fa-fw fa-cog"></i>
+                    <i class="fas fa-fw fa-comment"></i>
                     <span>Komunitas</span>
                 </a>
                 <div id="collapseCommunity" class="collapse" aria-labelledby="headingTwo"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Atur Komunitas:</h6>
-                        <a class="collapse-item" href="#" load="load/create-community">Buat Komunitas</a>
+                        @if ($role == 'psycholog')
+                            <a class="collapse-item" href="#" load="load/create-community">Buat Komunitas</a>
+                        @endif
                         <a class="collapse-item" href="#" load="load/list-community">Daftar Komunitas</a>
                     </div>
                 </div>
             </li>
+            @if ($role == 'psycholog')
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpertise"
+                        aria-expanded="true" aria-controls="collapseExpertise">
+                        <i class="fas fa-fw fa-compass"></i>
+                        <span>Expertise</span>
+                    </a>
+                    <div id="collapseExpertise" class="collapse" aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Atur Expertise:</h6>
+                            <a class="collapse-item" href="#" load="load/create-expertise">Tambah Expertise</a>
+                        </div>
+                    </div>
+                </li>
+            @endif
 
             <!-- Heading -->
             <div class="sidebar-heading">
                 Jadwal
             </div>
 
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                        aria-expanded="true" aria-controls="collapseThree">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Jadwal</span>
-                    </a>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Atur Jadwal:</h6>
-                            <a class="collapse-item" href="#" load="load/schedules">Lihat Jadwal</a>
-                            <a class="collapse-item" href="#" load="load/schedules/add">Buat Jadwal</a>
-                        </div>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Jadwal</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Atur Jadwal:</h6>
+                        <a class="collapse-item" href="#" load="load/schedules">Lihat Jadwal</a>
+                        <a class="collapse-item" href="#" load="load/schedules/add">Buat Jadwal</a>
                     </div>
-                </li>
+                </div>
+            </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
