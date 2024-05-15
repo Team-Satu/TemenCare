@@ -43,8 +43,8 @@ class AdminController extends Controller
             $userId = $request->attributes->get('user_id');
 
             if ($expertise) {
-                $expertise = Expertise::where("expertise", $expertise)->count();
-                if (!$expertise) {
+                $expertiseData = Expertise::where("expertise", $expertise)->count();
+                if (!$expertiseData) {
                     Expertise::create([
                         "psycholog_id" => $userId,
                         "expertise" => $expertise
