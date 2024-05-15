@@ -304,10 +304,33 @@ class AdminController extends Controller
         return view("admin-load.dashboard", ["account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
     }
 
-    public function showCommunitiesDetail()
+    public function showCommunitiesDetail(Request $request, string $community_id)
+    {
+        try {
+            $community = Communities::where("community_id", $community_id)->first();
+
+            if (!$community) {
+                // Log error message
+                \Log::error("Community not found with ID: $community_id");
+                // Return a response indicating failure
+                return response()->json(['error' => 'Community not found'], 404);
+            }
+
+            return view("admin-load.psycholog-communities", ["community" => $community]);
+        } catch (\Throwable $th) {
+            // Log detailed exception message
+            \Log::error("Exception occurred: " . $th->getMessage());
+            // Return a response indicating failure
+            return response()->json(['error' => 'Internal server error'], 500);
+        }
+    }
+
+
+    public function showCommunitiesDetailnoID()
     {
         return view("admin-load.psycholog-communities");
     }
+
 
     public function createCommunityPost(Request $request)
     {

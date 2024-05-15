@@ -12,6 +12,13 @@ class CommunityPost extends Model
 
     // Specify the fields that are mass assignable
     protected $fillable = [
-        'post',
+        'community_id',
+        'post'
     ];
+
+    // Relationships
+    public function community()
+    {
+        return $this->belongsTo(Community::class, 'community_id', 'community_id');
+    }
 }

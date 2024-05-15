@@ -37,14 +37,14 @@
                         @foreach ($communities as $community)
                             <tr>
                                 <th scope="row">{{ $i++ }}</th>
-                                <td><a class="collapse-item" href="#" onclick="changePage('psycholog-communities')">{{ $community->name }}</a></td>
+                                <td><a class="collapse-item" href="#" onclick="changePage('psycholog-communities/{{ $community->community_id }}')">{{ $community->name }}</a></td>
                                 <td>{{ $community->short_description }}</td>
                                 <td>{{ $community->description }}</td>
                                 <td><img src="/images/{{ $community->image_url }}" alt="{{ $community->name }}"
                                         class="img-thumbnail cover-image"></td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" onclick="deleteCommunity({{ $community->community_id }})"
+                                        <button type="button" onclick="deleteCommunity('/psycholog-communites{{ $community->community_id }}')"
                                             class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         <button type="button" class="btn btn-info"
                                             onclick="editPage('edit-community/{{ $community->community_id }}')"><i
@@ -79,6 +79,12 @@
     }
 
     function editPage(targetLoad) {
+        const loading = "<h2>Loading...</h2>";
+        $("#load-page").html(loading);
+        $("#load-page").load("/admin/load/" + targetLoad);
+    }
+
+    function changePage(targetLoad) {
         const loading = "<h2>Loading...</h2>";
         $("#load-page").html(loading);
         $("#load-page").load("/admin/load/" + targetLoad);

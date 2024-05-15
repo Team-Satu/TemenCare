@@ -25,15 +25,16 @@
 
 <div class="container-fluid">
     <p class="text-start">Komunitas</p>
-    <p class="h1">placeholder</p>
+    <p class="h1">{{ $community->name }}</p>
     <div class="d-grid gap-4">
         <div>
             <div style="width: 530px; height: 271px; position: relative">
                 <img style="width: 758.02px; height: 348.55px; left: -104.77px; top: -24.11px" src="https://via.placeholder.com/758x349" />
             </div>
         </div>
-        <div style="padding-top: 60px; width: 550px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-        <div class="pt-1"><h1>placeholder</h1>
+        <div style="padding-top: 60px; width: 550px;">{{ $community->description }}</div>
+        <div class="pt-1"><h1>Postingan</h1>
+        @foreach ($posts as $post)
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Tambah Postingan
         </button></div>
@@ -96,5 +97,5 @@
     </div>
   </div>
 </div>
-
+@endsection
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
