@@ -9,7 +9,7 @@
         <!-- Area Chart -->
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
-                <form class="card-body" action="{{ route('admin-load.create-community') }}" method="POST">
+                <form class="card-body" action="{{ route('admin-load.create-expertise') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Expertise</label>

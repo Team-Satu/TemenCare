@@ -148,6 +148,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     
     // Tambah expertise
     Route::get("/create-expertise", [AdminController::class, 'showCreateExpertise'])->name('admin-load.show-create-expertise');
+    Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.create-expertise');
 
     // List psycholog
     Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");
