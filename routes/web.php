@@ -145,6 +145,9 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // Membuat komunitas
     Route::get("/create-community", [AdminController::class, 'showCreateCommunity'])->name('admin-load.show-create-community');
     Route::post("/create-community", [AdminController::class, 'createCommunity'])->name('admin-load.create-community');
+    
+    // Tambah expertise
+    Route::get("/create-expertise", [AdminController::class, 'showCreateExpertise'])->name('admin-load.show-create-expertise');
 
     // List psycholog
     Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");

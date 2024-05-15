@@ -27,6 +27,11 @@ class AdminController extends Controller
         return view("admin-load.create-community");
     }
 
+    public function showCreateExpertise()
+    {
+        return view("admin-load.create-expertise");
+    }
+
     public function createCommunity(Request $request)
     {
         try {
@@ -42,7 +47,6 @@ class AdminController extends Controller
             $shortDescription = trim($request['short_description']);
             $description = trim($request['description']);
             $imageName = time() . '.' . $request->file('image')->extension();
-            ;
 
             $request->image->move(public_path('images'), $imageName);
 
