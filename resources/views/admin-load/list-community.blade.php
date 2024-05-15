@@ -37,16 +37,18 @@
                         @foreach ($communities as $community)
                             <tr>
                                 <th scope="row">{{ $i++ }}</th>
-                                <td>{{ $community->name }}</td>
+                                <td><a class="collapse-item" onclick="changePage('psycholog-communities/{{ $community->community_id }}')">{{ $community->name }}</a></td>
                                 <td>{{ $community->short_description }}</td>
                                 <td>{{ $community->description }}</td>
-                                <td><img src="/images/{{ $community->image_url }}" alt="{{ $community->name }}" class="img-thumbnail cover-image"></td>
+                                <td><img src="/images/{{ $community->image_url }}" alt="{{ $community->name }}"
+                                        class="img-thumbnail cover-image"></td>
                                 <td>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <button type="button" onclick="deleteAccount({{ $community->community_id }})"
+                                    <div class="btn-group" role="group">
+                                        <button type="button" onclick="deleteCommunity('/psycholog-communites{{ $community->community_id }}')"
                                             class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                        <button type="button" class="btn btn-info" id="changePasswordPsycholog"
-                                            onclick="changePage('change-password-psycholog/{{ $community->community_id }}')"><i class="fas fa-edit"></i></button>
+                                        <button type="button" class="btn btn-info"
+                                            onclick="editPage('edit-community/{{ $community->community_id }}')"><i
+                                                class="fas fa-edit"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -59,10 +61,10 @@
 </div>
 
 <script>
-    function deleteAccount(psychologId) {
+    function deleteCommunity(communityId) {
         const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
 
-        return fetch(`/admin/load/delete-psycholog/${psychologId}`, {
+        return fetch(`/admin/load/delete-community/${communityId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -74,6 +76,12 @@
             .catch(error => {
                 window.location.href = '/admin/dashboard';
             });
+    }
+
+    function editPage(targetLoad) {
+        const loading = "<h2>Loading...</h2>";
+        $("#load-page").html(loading);
+        $("#load-page").load("/admin/load/" + targetLoad);
     }
 
     function changePage(targetLoad) {
