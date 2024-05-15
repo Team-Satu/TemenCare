@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class CommunityPost extends Model
 {
     use HasFactory;
-    // protected $fillable = ['community_id', 'title', 'content'];
+    protected $table = 'community_posts';
 
-    // Define the relationship with the Community model
-    // public function community()
-    // {
-    //     return $this->belongsTo(Community::class);
-    // }
+    // Specify the fields that are mass assignable
+    protected $fillable = [
+        'post',
+    ];
 }
