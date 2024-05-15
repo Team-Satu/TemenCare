@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Accounts;
 use App\Models\Admin;
 use App\Models\Communities;
+use App\Models\Expertise;
 use App\Models\Psychologs;
 use App\Models\User;
 use App\Models\Jadwal;
@@ -27,6 +28,44 @@ class AdminController extends Controller
         return view("admin-load.create-community");
     }
 
+    public function showCreateExpertise()
+    {
+        return view("admin-load.create-expertise");
+    }
+
+    public function createExpertise(Request $request)
+    {
+        try {
+            $request->validate([
+                'expertise' => 'required|string',
+            ]);
+            $expertise = trim($request['expertise']);
+            $userId = $request->attributes->get('user_id');
+
+            if ($expertise) {
+                $expertiseData = Expertise::where("expertise", $expertise)->count();
+                if (!$expertiseData) {
+                    Expertise::create([
+                        "psycholog_id" => $userId,
+                        "expertise" => $expertise
+                    ]);
+
+                    Alert::success('Berhasil', 'Expertise ' . $expertise . ' berhasil dibuat!');
+                    return redirect()->back();
+                } else {
+                    Alert::error('Gagal', 'Expertise ' . $expertise . ' sudah ada!');
+                    return redirect()->back();
+                }
+            } else {
+                Alert::error('Gagal', 'Expertise ' . $expertise . ' gagal dibuat!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
     public function createCommunity(Request $request)
     {
         try {
@@ -42,7 +81,6 @@ class AdminController extends Controller
             $shortDescription = trim($request['short_description']);
             $description = trim($request['description']);
             $imageName = time() . '.' . $request->file('image')->extension();
-            ;
 
             $request->image->move(public_path('images'), $imageName);
 
@@ -67,8 +105,6 @@ class AdminController extends Controller
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
-            // dd($request);
-            // dd($th);
             Alert::error('Gagal', 'Terjadi masalah');
             return redirect()->back();
         }

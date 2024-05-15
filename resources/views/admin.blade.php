@@ -100,6 +100,22 @@
                     </div>
                 </div>
             </li>
+            @if ($role == 'psycholog')
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpertise"
+                        aria-expanded="true" aria-controls="collapseExpertise">
+                        <i class="fas fa-fw fa-compass"></i>
+                        <span>Expertise</span>
+                    </a>
+                    <div id="collapseExpertise" class="collapse" aria-labelledby="headingTwo"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Atur Expertise:</h6>
+                            <a class="collapse-item" href="#" load="load/create-expertise">Tambah Expertise</a>
+                        </div>
+                    </div>
+                </li>
+            @endif
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -113,7 +129,8 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Jadwal</span>
                 </a>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                    data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Atur Jadwal:</h6>
                         <a class="collapse-item" href="#" load="load/schedules">Lihat Jadwal</a>
