@@ -304,12 +304,95 @@ class AdminController extends Controller
         return view("admin-load.dashboard", ["account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
     }
 
-    public function showCommunitiesDetail()
+    public function updateCommunityPost(Request $request, $post_id)
+    {
+        // dd($request);
+        try {
+            // Validasi data
+            // $request->validate([
+            //     'post' => 'required|string',
+            // ]);
+            
+            // $post_id = Auth::id();  // Mendapatkan ID pengguna yang sedang login
+            
+            // dd($post_id);
+            // Ambil data dari request
+            $postContent = trim($request->input('update'));
+            
+            if ($postContent && $post_id) {
+                // Cari postingan berdasarkan ID
+                $community_post = CommunityPost::where("post_id", $post_id)->first();
+                
+                if ($community_post && $community_post->post_id == $post_id) {
+                    // Update data
+                    CommunityPost::where('post_id', $post_id)->update(['post' => $postContent]);
+                    // $community_post->post = $postContent;
+                    // $community_post->save();
+                    
+                    Alert::success('Berhasil', 'Postingan berhasil diperbarui!');
+                    return redirect()->back();
+                } else {
+                    Alert::error('Gagal', 'Postingan gagal diperbarui!');
+                    return redirect()->back();
+                }
+            } else {
+                Alert::error('Gagal', 'Harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            // Log error
+            \Log::error($th);
+            Alert::error($th->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    public function deleteCommunityPost($post_id)
+    {
+        try {
+            // Delete the community post by its ID using the destroy method
+            CommunityPost::where('post_id', $post_id)->delete(['post_id' => $post_id]);
+            
+            // Optionally, you can redirect back with a success message
+            Alert::success('Berhasil', 'Postingan berhasil dihapus!');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            // Handle errors, maybe redirect back with an error message
+            Alert::error($th->getMessage());
+            return redirect()->back();
+        }
+    }
+    
+
+    public function showCommunitiesDetail(Request $request, string $community_id)
+    {
+        try {
+            $community = Communities::where("community_id", $community_id)->first();
+            $community_posts = CommunityPost::where('community_id', $community_id)->get();
+            if (!$community) {
+                // Log error message
+                \Log::error("Community not found with ID: $community_id");
+                // Return a response indicating failure
+                return response()->json(['error' => 'Community not found'], 404);
+            }
+            
+            return view("admin-load.psycholog-communities", ["community" => $community, 'community_posts' => $community_posts, 'community_id' => $community_id]);
+        } catch (\Throwable $th) {
+            // Log detailed exception message
+            \Log::error("Exception occurred: " . $th->getMessage());
+            // Return a response indicating failure
+            return response()->json(['error' => 'Internal server error'], 500);
+        }
+    }
+
+
+    public function showCommunitiesDetailnoID()
     {
         return view("admin-load.psycholog-communities");
     }
 
-    public function createCommunityPost(Request $request)
+
+    public function createCommunityPost(Request $request, string $community_id)
     {
         try {
             // Validate data
@@ -325,6 +408,7 @@ class AdminController extends Controller
             // Create community post
             $communityPost = CommunityPost::create([
                 'post' => $request->post,
+                'community_id' => $community_id
             ]);
 
             // Return success response
