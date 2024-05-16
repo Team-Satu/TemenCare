@@ -29,8 +29,9 @@ Route::get('/template', function () {
     return view('template-mobile-view');
 });
 
+
 // Route::get('/dashboard', function () {
-//     return view('mobile-dashboard', ["name" => "Howly"]);
+    //     return view('mobile-dashboard', ["name" => "Howly"]);
 // });
 
 // Daftar Fitur Kenalan
@@ -274,4 +275,9 @@ Route::get('/consultation-detail', function () {
 Route::get('/psycholog-communities', function () {
     return view('psycholog-communities');
 });
+
+Route::post('/cancel-consultation', [PsychologController::class, 'cancelConsultation'])->name('consultation.cancel');
+use App\Http\Controllers\PsychologController;
+
+
 
