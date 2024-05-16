@@ -163,6 +163,9 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // Delete psycholog
     Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
 
+    // Delete expertise
+    Route::delete("/delete-expertise/{expertise_id}", [AdminController::class, 'deleteExpertise'])->name("adminload.delete-expertise");
+
     // Delete community
     Route::delete("/delete-community/{community_id}", [AdminController::class, 'deleteCommunity'])->name("adminload.delete-community");
 

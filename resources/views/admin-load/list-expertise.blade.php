@@ -37,11 +37,8 @@
                                 <td>{{ $expertise->expertise }}</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" onclick="deleteCommunity('/psycholog-communites{{ $expertise->expertise_id }}')"
+                                        <button type="button" onclick="deleteExpertise({{ $expertise->expertise_id }})"
                                             class="btn btn-danger"><i class="fas fa-trash"></i></button>
-                                        <button type="button" class="btn btn-info"
-                                            onclick="editPage('edit-community/{{ $expertise->expertise_id }}')"><i
-                                                class="fas fa-edit"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -54,10 +51,10 @@
 </div>
 
 <script>
-    function deleteCommunity(communityId) {
+    function deleteExpertise(expertiseId) {
         const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
 
-        return fetch(`/admin/load/delete-community/${communityId}`, {
+        return fetch(`/admin/load/delete-expertise/${expertiseId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -69,12 +66,6 @@
             .catch(error => {
                 window.location.href = '/admin/dashboard';
             });
-    }
-
-    function editPage(targetLoad) {
-        const loading = "<h2>Loading...</h2>";
-        $("#load-page").html(loading);
-        $("#load-page").load("/admin/load/" + targetLoad);
     }
 
     function changePage(targetLoad) {

@@ -44,7 +44,7 @@
                                         class="img-thumbnail cover-image"></td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" onclick="deleteCommunity('/psycholog-communites{{ $community->community_id }}')"
+                                        <button type="button" onclick="deleteCommunity({{ $community->community_id }})"
                                             class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         <button type="button" class="btn btn-info"
                                             onclick="editPage('edit-community/{{ $community->community_id }}')"><i
