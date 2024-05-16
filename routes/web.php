@@ -157,6 +157,9 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
     // List community
     Route::get("/list-community", [AdminController::class, 'showListCommunity'])->name("adminload.show-list-community");
 
+    // List expertise
+    Route::get("/list-expertise", [AdminController::class, 'showListExpertise'])->name("adminload.show-list-expertise");
+
     // Delete psycholog
     Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
 

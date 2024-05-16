@@ -459,6 +459,14 @@ class AdminController extends Controller
         return view("admin-load.list-community", ["communities" => $communityList]);
     }
 
+    public function showListExpertise(Request $request)
+    {
+        $userId = $request->attributes->get("user_id");
+        $expertiseList = Expertise::where("psycholog_id", $userId)->get();
+
+        return view("admin-load.list-expertise", ["expertises" => $expertiseList]);
+    }
+
     public function showAddProfile()
     {
         return view("admin-load.add-psycholog-profile");
