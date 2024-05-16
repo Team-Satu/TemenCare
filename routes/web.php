@@ -258,6 +258,12 @@ Route::get('/lpdesktop', function () {
 Route::get('/psycholog-profile', function () {
     return view('mobile-psychologs-expertise');
 });
+
+//Show Psycholog Profile
+Route::get('/consultation-detail', function () {
+    return view('mobile-consultation-detail');
+});
+
 // Show Communities Desktop
 Route::get('/psycholog-communities', function () {
     return view('psycholog-communities');
