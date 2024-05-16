@@ -1,12 +1,24 @@
 /* Import harus berada paling atas */
-@import '@fortawesome/fontawesome-free/css/fontawesome.css';
-@import '@fortawesome/fontawesome-free/css/regular.css';
-@import '@fortawesome/fontawesome-free/css/solid.css';
-@import '@fortawesome/fontawesome-free/css/brands.css';
+@import "@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "@fortawesome/fontawesome-free/css/regular.css";
+@import "@fortawesome/fontawesome-free/css/solid.css";
+@import "@fortawesome/fontawesome-free/css/brands.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}
 
 .poppins-thin {
     font-family: "Poppins", sans-serif;

@@ -112,6 +112,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Atur Expertise:</h6>
                             <a class="collapse-item" href="#" load="load/create-expertise">Tambah Expertise</a>
+                            <a class="collapse-item" href="#" load="load/list-expertise">Daftar Expertise</a>
                         </div>
                     </div>
                 </li>
@@ -269,11 +270,11 @@
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" load="load/add-psycholog-profile">
+                                {{-- <a class="dropdown-item" href="#" load="load/add-psycholog-profile">
                                     <i class="fas fa-plus fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Tambah Profile
                                 </a>
-                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-divider"></div> --}}
                                 <a class="dropdown-item" href="#" load="load/add-psycholog-profile"
                                     data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

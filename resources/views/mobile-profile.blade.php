@@ -19,8 +19,6 @@
         <main class="h-screen flex flex-1 flex-col w-full px-6">
             <!-- Arrow Icon -->
             <div class="flex items-center justify-center">
-                <button type="button"
-                    class="fa-solid fa-arrow-left-long text-gray-600 text-xl absolute left-6 top-6"></button>
                 <h1 class="text-[24px] text-[#4A4E50] font-semibold text-center my-6">
                     Profil Anda
                 </h1>

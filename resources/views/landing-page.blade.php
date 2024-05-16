@@ -18,7 +18,7 @@
             <a href="/">
                 <img src="./img/temencare-logo.svg" alt="temencare" class="w-48 h-6">
             </a>
-            <button class="bg-[#7EBAEB] py-2 px-4 text-sm text-white poppins-medium rounded-md">Masuk</button>
+            <a href="/login" class="bg-[#7EBAEB] py-2 px-4 text-sm text-white poppins-medium rounded-md">Masuk</a>
         </header>
 
         <!-- Content -->
@@ -28,8 +28,8 @@
                     <h2 class="poppins-bold text-lg">Sahabat Setia di Setiap Langkah <br> Menuju Mental Sehat</h2>
                     <p class="my-4 text-xs">Butuh teman cerita? Psikolog berpengalaman,<br> siap dengarkan dan
                         ringankan bebanmu</p>
-                    <button class="bg-[#F36464] rounded-3xl py-2 px-6 poppins-medium text-xs hover:shadow">Mulai
-                        Konseling</button>
+                    <a href="/login" class="bg-[#F36464] rounded-3xl py-2 px-6 poppins-medium text-xs hover:shadow">Mulai
+                        Konseling</a>
                 </div>
 
                 <div class="w-full">
@@ -109,7 +109,7 @@
                         class="text-neutral-600 text-xs poppins-light"> menyediakan beragam pilihan ruang aman untuk
                         ceritakan masalahmu, pilih yang paling nyaman menurut kamu:</span></div>
 
-                <div class="overflow-x-auto flex space-x-8 relative py-4 px-12">
+                <div class="overflow-x-auto flex space-x-8 relative py-4 px-12 no-scrollbar">
                     <div
                         class="flex-none py-8 px-2 space-y-2 max-w-60 bg-white text-center items-center rounded-3xl shadow border border-gray-100 hover:shadow-lg">
                         <h3 class="text-neutral-600 text-xs poppins-semibold leading-normal tracking-wide">Online</h3>
@@ -167,7 +167,7 @@
                     </div>
                 </div>
 
-                <div class="overflow-x-auto flex space-x-8 relative py-4 px-20">
+                <div class="overflow-x-auto flex space-x-8 relative py-4 px-20 no-scrollbar">
                     <div
                         class="flex-none space-y-2 w-52 bg-white text-center items-center rounded-3xl shadow border border-gray-100 hover:shadow-lg">
                         <div class="bg-[#72A8D4] bg-opacity-50 w-full rounded-t-3xl pt-2">
