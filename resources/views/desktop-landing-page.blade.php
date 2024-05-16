@@ -72,7 +72,7 @@
 
         <section class="mt-28">
             <h3 class="poppins-bold text-[#7EBAEB] mb-8 text-center text-5xl">Pilih Ruang Konseling Sesuai Kebutuhanmu</h3>
-            <p class="text-2xl poppins-light mb-2 text-center text-[#4A4E50] mb-20"><span class="poppins-bold text-[#7EBAEB]">Temen</span> <span class="poppins-bold text-[#F36464]">Care</span> menyediakan beragam pilihan ruang aman untuk ceritakan <br> masalahmu, pilih yang paling nyaman menurut kamu:</p>
+            <p class="text-2xl poppins-light text-center text-[#4A4E50] mb-20"><span class="poppins-bold text-[#7EBAEB]">Temen</span> <span class="poppins-bold text-[#F36464]">Care</span> menyediakan beragam pilihan ruang aman untuk ceritakan <br> masalahmu, pilih yang paling nyaman menurut kamu:</p>
 
             <div class="w-full mb-28">
                 <div class="flex justify-center">
