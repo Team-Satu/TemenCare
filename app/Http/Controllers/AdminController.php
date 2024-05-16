@@ -489,6 +489,19 @@ class AdminController extends Controller
         }
     }
 
+    public function deleteExpertise(Request $request, string $expertise_id)
+    {
+        try {
+            Expertise::where("expertise_id", $expertise_id)->delete();
+
+            Alert::success('Berhasil', 'Expertise berhasil dihapus!');
+            return;
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah dengan akun Anda!');
+            return;
+        }
+    }
+
     public function deletePsycholog(Request $request, string $psycholog_id)
     {
         try {
