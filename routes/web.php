@@ -210,6 +210,10 @@ Route::get('/add rating', function () {
 Route::get('/lpdesktop', function () {
     return view('desktop-landing-page');
 });
+// Show Landing Page Desktop
+Route::get('/dpconsuldetails', function () {
+    return view('desktop-consultation-details');
+});
 // Show Communities Desktop
 Route::get('/dcommunities', function () {
     return view('desktop-communities');
