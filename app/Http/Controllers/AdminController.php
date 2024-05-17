@@ -53,6 +53,8 @@ class AdminController extends Controller
                         "expertise" => $expertise
                     ]);
 
+                    error_log($request->headers->get('referer'));
+
                     Alert::success('Berhasil', 'Expertise ' . $expertise . ' berhasil dibuat!');
                     return redirect()->back();
                 } else {
