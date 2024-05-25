@@ -1,3 +1,7 @@
+@php
+    $i = 1;
+@endphp
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -22,7 +26,7 @@
                     <tbody>
                         @foreach ($psychologs as $psycholog)
                             <tr>
-                                <th scope="row">{{ $psycholog->id }}</th>
+                                <th scope="row">{{ $i++ }}</th>
                                 <td>{{ $psycholog->full_name }}</td>
                                 <td>{{ $psycholog->email }}</td>
                                 <td>{{ $psycholog->phone_number }}</td>
