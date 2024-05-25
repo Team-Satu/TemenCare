@@ -289,7 +289,7 @@ class AdminController extends Controller
             $user = Psychologs::where("email", $user->email)->first();
         }
 
-        return view("admin", ["role" => $role, "user" => $user]);
+        return view("admin.dashboard", ["role" => $role, "user" => $user]);
     }
 
     public function loadDashboard()
