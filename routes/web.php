@@ -136,11 +136,12 @@ Route::get('/psycholog_schedules', function () {
 Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
     Route::get("/dashboard", [AdminController::class, 'dashboard'])->name("admin.dashboard");
     Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("admin.show-list-psycholog");
-    Route::get("/change-password-psycholog", [AdminController::class, 'showListPsycholog'])->name("admin.show-list-psycholog");
-
-    Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
-
     Route::get("/logout", [AdminController::class, 'logout'])->name("admin.logout");
+    
+    Route::get("/change-password-psycholog", [AdminController::class, 'showListPsycholog'])->name("admin.show-list-psycholog");
+    Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
+    Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
+    Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("admin.post-change-password-psycholog");
 });
 
 // Only admin load purpose - Authenticated
@@ -180,8 +181,6 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     Route::delete("/delete-community/{community_id}", [AdminController::class, 'deleteCommunity'])->name("adminload.delete-community");
 
     // Change psycholog password
-    Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
-    Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("adminload.post-change-password-psycholog");
     
     // Edit community detail
     Route::get("/edit-community/{community_id}", [AdminController::class, 'getCommunityData'])->name("admin-load.show-edit-community");

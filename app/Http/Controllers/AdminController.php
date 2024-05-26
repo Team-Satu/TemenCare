@@ -196,7 +196,7 @@ class AdminController extends Controller
         }
     }
 
-    // Post psycholog data
+    // PASSED
     public function changePsychologPassword(Request $request)
     {
         try {

@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
-                <form class="card-body" action="{{ route('adminload.post-change-password-psycholog') }}" method="POST">
+                <form class="card-body" action="{{ route('admin.post-change-password-psycholog') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Email</label>
