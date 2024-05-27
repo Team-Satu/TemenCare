@@ -171,6 +171,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
 
     // Psycholog -> Community -> Community Post -> Create Post
     Route::get("/community-post/{community_id}/create-post", [AdminController::class, 'showCreateCommunityPost'])->name("admin.create-community-post");
+    Route::post("/community-post/{community_id}/create-post", [AdminController::class, 'createPostCommunity'])->name("admin.post-create-community-post");
 });
 
 // Only admin load purpose - Authenticated

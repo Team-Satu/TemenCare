@@ -70,6 +70,7 @@ class AdminController extends Controller
         }
     }
 
+    // PASSED
     public function createCommunity(Request $request)
     {
         try {
@@ -104,6 +105,35 @@ class AdminController extends Controller
                     Alert::error('Gagal', 'Komunitas ' . $name . ' gagal dibuat!');
                     return redirect()->back();
                 }
+            } else {
+                Alert::error('Gagal', 'harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
+    public function createPostCommunity(Request $request, string $community_id)
+    {
+        try {
+            $request->validate([
+                'title' => 'required|string',
+                'description' => 'required|string',
+            ]);
+            $title = trim($request['title']);
+            $description = trim($request['description']);
+
+            if ($title && $description) {
+                CommunityPost::create([
+                    "community_id" => $community_id,
+                    "title" => $title,
+                    "post" => $description,
+                ]);
+                Alert::success('Berhasil', 'Postingan baru berhasil dibuat!');
+                return redirect()->route('admin.show-list-community-post', ["community_id" => $community_id]);
             } else {
                 Alert::error('Gagal', 'harap isi semua!');
                 return redirect()->back();
@@ -435,9 +465,10 @@ class AdminController extends Controller
     }
 
     // PASSED
-    public function showCreateCommunityPost(Request $request)
+    public function showCreateCommunityPost(Request $request, string $community_id)
     {
-        return view("admin.create-community-post");
+        $community = Communities::where('community_id', $community_id)->first();
+        return view("admin.create-community-post", compact("community"));
     }
 
     // PASSED

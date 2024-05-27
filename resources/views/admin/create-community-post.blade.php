@@ -4,13 +4,13 @@
 
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Buat Post Komunitas</h1>
+        <h1 class="h3 mb-0 text-gray-800">Buat Post Komunitas [{{$community->name}}]</h1>
     </div>
 
     <div class="row">
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
-                <form class="card-body" action="{{ route('admin.create-community') }}" method="POST">
+                <form class="card-body" action="{{ route('admin.post-create-community-post', ['community_id' => $community->community_id]) }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Judul Post</label>

@@ -32,8 +32,8 @@
                         @foreach ($posts as $post)
                             <tr>
                                 <th scope="row">{{ $i++ }}</th>
-                                <td>{{ $psycholog->title }}</td>
-                                <td>{{ $psycholog->post }}</td>
+                                <td>{{ $post->title }}</td>
+                                <td>{{ $post->post }}</td>
                                 {{-- <td>
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                         <button type="button" onclick="deleteAccount({{ $psycholog->id }})"
