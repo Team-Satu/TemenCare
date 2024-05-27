@@ -26,37 +26,34 @@
             <div id="collapsePsycholog" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Atur Psikolog:</h6>
-                    <a class="collapse-item" href="./list-psycholog">Daftar Psikolog</a>
-                    <a class="collapse-item" href="./create-psycholog">Buat Psikolog</a>
-                    <a class="collapse-item" href="#" load="load/add-psycholog-profile">Tambah Profile</a>
-                    <a class="collapse-item" href="#" load="load/change-psycholog-profile">Profile</a>
+                    <a class="collapse-item" href="{{ route('admin.show-list-psycholog') }}">Daftar Psikolog</a>
+                    <a class="collapse-item" href="{{ route('admin.show-register-psycholog') }}">Buat Psikolog</a>
+                    {{-- <a class="collapse-item" href="#" load="load/add-psycholog-profile">Tambah Profile</a>
+                    <a class="collapse-item" href="#" load="load/change-psycholog-profile">Profile</a> --}}
                 </div>
             </div>
         </li>
     @endif
 
-    <div class="sidebar-heading">
-        Psikolog
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCommunity"
-            aria-expanded="true" aria-controls="collapseCommunity">
-            <i class="fas fa-fw fa-comment"></i>
-            <span>Komunitas</span>
-        </a>
-        <div id="collapseCommunity" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Atur Komunitas:</h6>
-                @if ($role == 'psycholog')
-                    <a class="collapse-item" href="#" load="load/create-community">Buat Komunitas</a>
-                @endif
-                <a class="collapse-item" href="#" load="load/list-community">Daftar Komunitas</a>
-            </div>
-        </div>
-    </li>
     @if ($role == 'psycholog')
+        <div class="sidebar-heading">
+            Psikolog
+        </div>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCommunity"
+                aria-expanded="true" aria-controls="collapseCommunity">
+                <i class="fas fa-fw fa-comment"></i>
+                <span>Komunitas</span>
+            </a>
+            <div id="collapseCommunity" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Atur Komunitas:</h6>
+                    <a class="collapse-item" href="{{ route('admin.show-list-community') }}">Daftar Komunitas</a>
+                    <a class="collapse-item" href="{{ route('admin.show-create-community') }}">Buat Komunitas</a>
+                </div>
+            </div>
+        </li>
+
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseExpertise"
                 aria-expanded="true" aria-controls="collapseExpertise">

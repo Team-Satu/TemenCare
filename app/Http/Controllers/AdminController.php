@@ -26,9 +26,10 @@ class AdminController extends Controller
         return view('admin-login');
     }
 
+    // PASSED
     public function showCreateCommunity()
     {
-        return view("admin-load.create-community");
+        return view("admin.create-community");
     }
 
     public function showCreateExpertise()
@@ -132,7 +133,7 @@ class AdminController extends Controller
         }
     }
 
-    // Update community data
+    // PASSED
     public function editCommunityData(Request $request)
     {
         try {
@@ -143,7 +144,6 @@ class AdminController extends Controller
                 'short_description' => 'required|string',
             ]);
             $userId = $request->attributes->get('user_id');
-
             $communityId = trim($request['community_id']);
             $name = trim($request['name']);
             $shortDescription = trim($request['short_description']);
@@ -176,20 +176,18 @@ class AdminController extends Controller
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
-            // dd($request);
             dd($th);
             Alert::error('Gagal', 'Terjadi masalah');
             return redirect()->back();
         }
     }
 
-    // Get community data
+    // PASSED
     public function getCommunityData(Request $request, string $community_id)
     {
         try {
             $community = Communities::where("community_id", $community_id)->first();
-
-            return view("admin-load.edit-community", ["community" => $community]);
+            return view("admin.edit-community", ["community" => $community]);
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Akun tidak ditemukan');
             return redirect()->back();
@@ -446,12 +444,13 @@ class AdminController extends Controller
         return view("admin.list-psycholog", ["psychologs" => $psychologList, "role" => $role, "user" => $user]);
     }
 
+    // PASSED
     public function showListCommunity(Request $request)
     {
         $userId = $request->attributes->get("user_id");
         $communityList = Communities::where("user_id", $userId)->get();
-
-        return view("admin-load.list-community", ["communities" => $communityList]);
+        error_log($communityList);
+        return view("admin.list-community", ["communities" => $communityList]);
     }
 
     public function showListExpertise(Request $request)
