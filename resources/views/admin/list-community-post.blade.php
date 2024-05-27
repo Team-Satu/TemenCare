@@ -39,8 +39,8 @@
                                         <button type="button" onclick="deletePost({{ $post->post_id }})"
                                             class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         <a type="button" class="btn btn-warning" id="changePasswordPsycholog"
-                                            href="change-password-psycholog/{{ $post->post_id }}"><i
-                                                class="fas fa-key"></i></a>
+                                            href="{{ route('admin.show-change-community-post', ['community_id' => $community->community_id, 'post_id' => $post->post_id]) }}"><i
+                                                class="fas fa-edit"></i></a>
                                     </div>
                                 </td>
                             </tr>

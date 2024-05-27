@@ -246,6 +246,29 @@ class AdminController extends Controller
         }
     }
 
+    // PASSED
+    public function changeCommunityPost(Request $request, string $community_id, string $post_id)
+    {
+        try {
+            if ($post_id) {
+                $communityPost = CommunityPost::where('post_id', $post_id)->first();
+
+                $communityPost->title = $request->title;
+                $communityPost->post = $request->description;
+                $communityPost->save();
+
+                Alert::success('Berhasil', 'Postingan berhasil diubah');
+                return redirect()->back();
+            } else {
+                Alert::error('Gagal', 'Bermasalah');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Postingan tidak ditemukan');
+            return redirect()->back();
+        }
+    }
+
     public function login(Request $request)
     {
         try {
@@ -466,6 +489,13 @@ class AdminController extends Controller
     {
         $community = Communities::where('community_id', $community_id)->first();
         return view("admin.create-community-post", compact("community"));
+    }
+
+    // PASSED
+    public function showChangeCommunityPost(Request $request, string $community_id, string $post_id)
+    {
+        $communityPost = CommunityPost::where('post_id', $post_id)->first();
+        return view("admin.change-community-post", ["post" => $communityPost, "post_id" => $post_id, "community_id" => $community_id]);
     }
 
     // PASSED
