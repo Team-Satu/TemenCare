@@ -366,19 +366,16 @@ class AdminController extends Controller
         }
     }
 
-    public function deleteCommunityPost($post_id)
+    // PASSED
+    public function deleteCommunityPost(string $post_id)
     {
         try {
-            // Delete the community post by its ID using the destroy method
-            CommunityPost::where('post_id', $post_id)->delete(['post_id' => $post_id]);
-
-            // Optionally, you can redirect back with a success message
+            CommunityPost::where('post_id', $post_id)->delete();
             Alert::success('Berhasil', 'Postingan berhasil dihapus!');
-            return redirect()->back();
+            return;
         } catch (\Throwable $th) {
-            // Handle errors, maybe redirect back with an error message
             Alert::error($th->getMessage());
-            return redirect()->back();
+            return;
         }
     }
 
