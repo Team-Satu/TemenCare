@@ -8,7 +8,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureAdminTemenTokenCookieIsValid;
 use App\Http\Middleware\EnsureTemenTokenCookieIsValid;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -138,10 +137,17 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("admin.show-list-psycholog");
     Route::get("/logout", [AdminController::class, 'logout'])->name("admin.logout");
     
-    Route::get("/change-password-psycholog", [AdminController::class, 'showListPsycholog'])->name("admin.show-list-psycholog");
-    Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
-    Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
+
+    // Admin -> Psycholog -> Change Psycholog Password
     Route::post("/change-password-psycholog", [AdminController::class, 'changePsychologPassword'])->name("admin.post-change-password-psycholog");
+    Route::get("/change-password-psycholog/{psycholog_id}", [AdminController::class, 'getPsychologData'])->name("adminload.show-change-password-psycholog");
+    
+    // Admin -> Psycholog -> Delete Psycholog
+    Route::delete("/delete-psycholog/{psycholog_id}", [AdminController::class, 'deletePsycholog'])->name("adminload.delete-psycholog");
+    
+    // Admin -> Psycholog -> Create Psycholog
+    Route::get("/create-psycholog", [AdminController::class, 'showRegisterPsycholog'])->name("admin.show-register-psycholog");
+    Route::post("/create-psycholog", [AdminController::class, 'registerPsycholog'])->name("admin.register-psycholog");
 });
 
 // Only admin load purpose - Authenticated
@@ -152,8 +158,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
 
 
     // Membuat akun psikolog
-    Route::get("/create-psycholog", [AdminController::class, 'showRegisterPsycholog'])->name("adminload.show-register-psycholog");
-    Route::post("/create-psycholog", [AdminController::class, 'registerPsycholog'])->name("adminload.register-psycholog");
+    
 
     // Membuat komunitas
     Route::get("/create-community", [AdminController::class, 'showCreateCommunity'])->name('admin-load.show-create-community');

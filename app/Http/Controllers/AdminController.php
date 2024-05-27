@@ -430,9 +430,10 @@ class AdminController extends Controller
         return view("admin-load.schedules.edit-schedules")->with('schedule', $schedule);
     }
 
+    // PASSED
     public function showRegisterPsycholog(Request $request)
     {
-        return view("admin-load.register-psycholog");
+        return view("admin.create-psycholog");
     }
 
     // PASSED
@@ -511,18 +512,17 @@ class AdminController extends Controller
         }
     }
 
+    // PASSED
     public function registerPsycholog(Request $request)
     {
         try {
             $credential = $request->only('email', 'password', 'full_name', 'phone_number');
-
             $countPsycholog = Psychologs::where("email", $credential['email'])->count();
 
             if ($countPsycholog) {
                 Alert::error('Gagal', 'Email sudah digunakan');
                 return redirect()->back();
             } else {
-                // Membuat akun
                 User::create([
                     'name' => $credential['full_name'],
                     'email' => $credential['email'],
