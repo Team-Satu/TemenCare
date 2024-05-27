@@ -9,16 +9,11 @@ class CommunityPost extends Model
 {
     use HasFactory;
     protected $table = 'community_posts';
-
-    // Specify the fields that are mass assignable
+    protected $primaryKey = 'post_id';
     protected $fillable = [
         'community_id',
-        'post'
+        'post',
+        'title',
     ];
 
-    // Relationships
-    public function community()
-    {
-        return $this->belongsTo(Community::class, 'community_id', 'community_id');
-    }
 }

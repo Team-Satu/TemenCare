@@ -435,13 +435,26 @@ class AdminController extends Controller
     }
 
     // PASSED
+    public function showCreateCommunityPost(Request $request)
+    {
+        return view("admin.create-community-post");
+    }
+
+    // PASSED
     public function showListPsycholog(Request $request)
     {
         $psychologList = Psychologs::get();
         $role = $request->attributes->get('role');
         $user = $request->attributes->get('user');
-
         return view("admin.list-psycholog", ["psychologs" => $psychologList, "role" => $role, "user" => $user]);
+    }
+
+    // PASSED
+    public function showCommunityPost(Request $request, string $community_id)
+    {
+        $communityPostList = CommunityPost::where('community_id', $community_id)->get();
+        $community = Communities::where('community_id', $community_id)->first();
+        return view("admin.list-community-post", ["posts" => $communityPostList, 'community' => $community]);
     }
 
     // PASSED
@@ -449,7 +462,6 @@ class AdminController extends Controller
     {
         $userId = $request->attributes->get("user_id");
         $communityList = Communities::where("user_id", $userId)->get();
-        error_log($communityList);
         return view("admin.list-community", ["communities" => $communityList]);
     }
 

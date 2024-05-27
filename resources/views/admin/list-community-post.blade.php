@@ -1,0 +1,73 @@
+@extends('layouts.app')
+
+@section('title', 'Daftar Postingan Komunitas')
+
+@section('content')
+    @php
+        $i = 1;
+    @endphp
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Daftar Postingan Komunitas [{{ $community->name }}]</h1>
+        <a class="btn btn-primary"
+            href="{{ route('admin.create-community-post', ['community_id' => $community->community_id]) }}"
+            role="button">Buat Post</a>
+    </div>
+
+    <div class="row">
+        <!-- Area Chart -->
+        <div class="col-xl-12 col-lg-7">
+            <div class="card shadow mb-4">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Judul</th>
+                            <th scope="col">Deskripsi Post</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($posts as $post)
+                            <tr>
+                                <th scope="row">{{ $i++ }}</th>
+                                <td>{{ $psycholog->title }}</td>
+                                <td>{{ $psycholog->post }}</td>
+                                {{-- <td>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <button type="button" onclick="deleteAccount({{ $psycholog->id }})"
+                                            class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                        <a type="button" class="btn btn-warning" id="changePasswordPsycholog"
+                                            href="change-password-psycholog/{{ $psycholog->id }}"><i
+                                                class="fas fa-key"></i></a>
+                                    </div>
+                                </td> --}}
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function deleteAccount(psychologId) {
+            const csrfToken = '{{ csrf_token() }}';
+
+            return fetch(`/admin/delete-psycholog/${psychologId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                })
+                .then(data => {
+                    window.location.href = '/admin/list-psycholog';
+                })
+                .catch(error => {
+                    window.location.href = '/admin/list-psycholog';
+                });
+        }
+    </script>
+@endsection

@@ -165,6 +165,12 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     
     // Psycholog -> Community -> Delete Community
     Route::delete("/delete-community/{community_id}", [AdminController::class, 'deleteCommunity'])->name("admin.delete-community");
+
+    // Psycholog -> Community -> Community Post -> List Post
+    Route::get("/community-post/{community_id}", [AdminController::class, 'showCommunityPost'])->name("admin.show-list-community-post");
+
+    // Psycholog -> Community -> Community Post -> Create Post
+    Route::get("/community-post/{community_id}/create-post", [AdminController::class, 'showCreateCommunityPost'])->name("admin.create-community-post");
 });
 
 // Only admin load purpose - Authenticated

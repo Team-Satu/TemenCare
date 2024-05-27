@@ -30,7 +30,7 @@
                             <tr>
                                 <th scope="row">{{ $i++ }}</th>
                                 <td><a class="collapse-item"
-                                        onclick="changePage('psycholog-communities/{{ $community->community_id }}')">{{ $community->name }}</a>
+                                        href="/admin/community-post/{{ $community->community_id }}">{{ $community->name }}</a>
                                 </td>
                                 <td>{{ $community->short_description }}</td>
                                 <td>{{ $community->description }}</td>
