@@ -12,7 +12,6 @@
     </div>
 
     <div class="row">
-        <!-- Area Chart -->
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
                 <table class="table">
@@ -57,10 +56,10 @@
     </div>
 
     <script>
-        function deleteAccount(psychologId) {
+        function deleteCommunity(communityId) {
             const csrfToken = '{{ csrf_token() }}';
 
-            return fetch(`/admin/delete-psycholog/${psychologId}`, {
+            return fetch(`/admin/delete-community/${communityId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
@@ -68,10 +67,10 @@
                     },
                 })
                 .then(data => {
-                    window.location.href = '/admin/list-psycholog';
+                    window.location.href = '/admin/list-community';
                 })
                 .catch(error => {
-                    window.location.href = '/admin/list-psycholog';
+                    window.location.href = '/admin/list-community';
                 });
         }
     </script>

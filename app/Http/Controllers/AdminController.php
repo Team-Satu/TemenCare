@@ -470,11 +470,11 @@ class AdminController extends Controller
         return view("admin-load.change-psycholog-profile");
     }
 
+    // PASSED
     public function deleteCommunity(Request $request, string $community_id)
     {
         try {
             Communities::where("community_id", $community_id)->delete();
-
             Alert::success('Berhasil', 'Komunitas berhasil dihapus!');
             return;
         } catch (\Throwable $th) {
