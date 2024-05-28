@@ -64,7 +64,7 @@
             <div id="collapseArticles" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Atur Artikel:</h6>
-                    {{-- <a class="collapse-item" href="{{ route('admin.show-list-article') }}">Daftar Artikel Anda</a> --}}
+                    <a class="collapse-item" href="{{ route('admin.show-list-article') }}">Daftar Artikel Anda</a>
                     <a class="collapse-item" href="{{ route('admin.show-create-article') }}">Buat Artikel</a>
                 </div>
             </div>

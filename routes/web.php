@@ -183,6 +183,13 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     // Psycholog -> Articles -> Create Article
     Route::get("/create-article", [AdminController::class, 'showCreateArticle'])->name("admin.show-create-article");
     Route::post("/create-article", [AdminController::class, 'createArticle'])->name("admin.create-article");
+    
+    // Psycholog -> Articles -> Show List Article
+    Route::get("/articles", [AdminController::class, 'showListArticle'])->name("admin.show-list-article");
+
+    // Psycholog -> Articles -> Edit Article
+    Route::get("/edit/article/{article_id}", [AdminController::class, 'showEditArticle'])->name("admin.show-edit-article");
+    Route::post("/edit/article/{article_id}", [AdminController::class, 'updateArticle'])->name("admin.edit-article");
 });
 
 // Only admin load purpose - Authenticated

@@ -499,6 +499,57 @@ class AdminController extends Controller
         return view("admin.create-article");
     }
 
+    // PASSED
+    public function showListArticle(Request $request)
+    {
+        $userId = $request->attributes->get('user_id');
+        $listArticle = Articles::where('user_id', $userId)->get();
+
+        return view("admin.list-article", ['articles' => $listArticle]);
+    }
+
+    // PASSED
+    public function updateArticle(Request $request, string $article_id)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $title = trim($request['title']);
+            $category = trim($request['category']);
+            $url = trim($request['url']);
+
+            if ($title && $category && $url) {
+                $article = Articles::where("article_id", $article_id)->first();
+                if ($article && $article['user_id'] == $userId) {
+                    $article->title = $title;
+                    $article->category = $category;
+                    $article->url = $url;
+
+                    if ($request->image) {
+                        $imageName = time() . '.' . $request->file('image')->extension();
+                        $request->image->move(public_path('images'), $imageName);
+
+                        $article->image_url = $imageName;
+                    }
+
+                    $article->save();
+                    Alert::success('Berhasil', 'Artikel ' . $title . ' berhasil diperbarui!');
+                    return redirect()->back();
+                } else {
+                    Alert::error('Error', 'Artikel ' . $title . ' gagal diperbarui!');
+                    return redirect()->back();
+                }
+            } else {
+                Alert::error('Gagal', 'Harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            error_log($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
     public function createArticle(Request $request)
     {
         try {
@@ -528,6 +579,13 @@ class AdminController extends Controller
             Alert::error('Gagal', 'Terjadi masalah');
             return redirect()->back();
         }
+    }
+
+    // PASSED
+    public function showEditArticle(Request $request, string $article_id)
+    {
+        $article = Articles::where('article_id', $article_id)->first();
+        return view('admin.edit-article', compact('article'));
     }
 
     // PASSED
