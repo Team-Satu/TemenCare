@@ -638,6 +638,19 @@ class AdminController extends Controller
     }
 
     // PASSED
+    public function deleteArticle(Request $request, string $article_id)
+    {
+        try {
+            Articles::where("article_id", $article_id)->delete();
+            Alert::success('Berhasil', 'Artikel berhasil dihapus!');
+            return;
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah dengan akun Anda!');
+            return;
+        }
+    }
+
+    // PASSED
     public function deleteCommunity(Request $request, string $community_id)
     {
         try {

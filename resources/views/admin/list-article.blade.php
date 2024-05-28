@@ -30,15 +30,15 @@
                             <tr>
                                 <th scope="row">{{ $i++ }}</th>
                                 <td>{{ $article->title }}</td>
-                                <td>{{ $article->category }}</td>
-                                <td>{{ $article->url }}</td>
+                                <td class="text-capitalize">{{ $article->category }}</td>
+                                <td><a href="{{ $article->url }}">{{ $article->url }}</a></td>
                                 <td>
                                     <img src="/images/{{ $article->image_url }}" alt="{{ $article->title }}"
                                         class="img-thumbnail" width="50" height="50">
                                 </td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <button type="button" onclick="deleteCommunity({{ $article->article_id }})"
+                                        <button type="button" onclick="deleteArticle({{ $article->article_id }})"
                                             class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         <a type="button" class="btn btn-info"
                                             href="{{ route('admin.show-edit-article', ['article_id' => $article->article_id]) }}"><i
@@ -54,10 +54,10 @@
     </div>
 
     <script>
-        function deleteCommunity(communityId) {
+        function deleteArticle(articleId) {
             const csrfToken = '{{ csrf_token() }}';
 
-            return fetch(`/admin/delete-community/${communityId}`, {
+            return fetch(`/admin/delete-article/${articleId}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
@@ -65,10 +65,10 @@
                     },
                 })
                 .then(data => {
-                    window.location.href = '/admin/list-community';
+                    window.location.href = '/admin/articles';
                 })
                 .catch(error => {
-                    window.location.href = '/admin/list-community';
+                    window.location.href = '/admin/articles';
                 });
         }
     </script>

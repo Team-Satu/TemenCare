@@ -24,8 +24,13 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Kategori Artikel</label>
-                        <input type="text" class="form-control" placeholder="Kategori Artikel" name="category"
-                            value="{{ $article->category }}" />
+                        <select class="form-control" aria-label="Default select example" name="category">
+                            <option value="{{ $article->category }}" selected class="text-capitalize">{{ $article->category }}</option>
+                            <option value="mental">Mental</option>
+                            <option value="remaja">Remaja</option>
+                            <option value="pendidikan">Pendidikan</option>
+                            <option value="pekerjaan">Pekerjaan</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Link Artikel</label>
