@@ -39,6 +39,7 @@
         <div class="sidebar-heading">
             Psikolog
         </div>
+
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCommunity"
                 aria-expanded="true" aria-controls="collapseCommunity">
@@ -48,8 +49,23 @@
             <div id="collapseCommunity" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Atur Komunitas:</h6>
-                    <a class="collapse-item" href="{{ route('admin.show-list-community') }}">Daftar Komunitas</a>
+                    <a class="collapse-item" href="{{ route('admin.show-list-community') }}">Daftar Komunitas Anda</a>
                     <a class="collapse-item" href="{{ route('admin.show-create-community') }}">Buat Komunitas</a>
+                </div>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseArticles"
+                aria-expanded="true" aria-controls="collapseArticles">
+                <i class="fas fa-fw fa-plus"></i>
+                <span>Artikel</span>
+            </a>
+            <div id="collapseArticles" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Atur Artikel:</h6>
+                    {{-- <a class="collapse-item" href="{{ route('admin.show-list-article') }}">Daftar Artikel Anda</a> --}}
+                    <a class="collapse-item" href="{{ route('admin.show-create-article') }}">Buat Artikel</a>
                 </div>
             </div>
         </li>

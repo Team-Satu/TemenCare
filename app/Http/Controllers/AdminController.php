@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Accounts;
 use App\Models\Admin;
+use App\Models\Articles;
 use App\Models\Communities;
 use App\Models\Expertise;
 use App\Models\Psychologs;
@@ -269,6 +270,7 @@ class AdminController extends Controller
         }
     }
 
+    // PASSED
     public function login(Request $request)
     {
         try {
@@ -431,34 +433,34 @@ class AdminController extends Controller
     }
 
 
-    public function createCommunityPost(Request $request, string $community_id)
-    {
-        try {
-            // Validate data
-            $validator = Validator::make($request->all(), [
-                'post' => 'required|string',
-            ]);
+    // public function createCommunityPost(Request $request, string $community_id)
+    // {
+    //     try {
+    //         // Validate data
+    //         $validator = Validator::make($request->all(), [
+    //             'post' => 'required|string',
+    //         ]);
 
-            // Check if validation fails
-            if ($validator->fails()) {
-                return response()->json(['errors' => $validator->errors()], 400);
-            }
+    //         // Check if validation fails
+    //         if ($validator->fails()) {
+    //             return response()->json(['errors' => $validator->errors()], 400);
+    //         }
 
-            // Create community post
-            $communityPost = CommunityPost::create([
-                'post' => $request->post,
-                'community_id' => $community_id
-            ]);
+    //         // Create community post
+    //         $communityPost = CommunityPost::create([
+    //             'post' => $request->post,
+    //             'community_id' => $community_id
+    //         ]);
 
-            // Return success response
-            Alert::success('Berhasil', 'Post berhasil dibuat!');
-            return redirect()->back();
-        } catch (\Throwable $th) {
-            // Set error flash message
-            Alert::error('Gagal', 'Post gagal dibuat!');
-            return redirect()->back();
-        }
-    }
+    //         // Return success response
+    //         Alert::success('Berhasil', 'Post berhasil dibuat!');
+    //         return redirect()->back();
+    //     } catch (\Throwable $th) {
+    //         // Set error flash message
+    //         Alert::error('Gagal', 'Post gagal dibuat!');
+    //         return redirect()->back();
+    //     }
+    // }
 
 
     public function viewSchedules()
@@ -489,6 +491,43 @@ class AdminController extends Controller
     {
         $community = Communities::where('community_id', $community_id)->first();
         return view("admin.create-community-post", compact("community"));
+    }
+
+    // PASSED
+    public function showCreateArticle(Request $request)
+    {
+        return view("admin.create-article");
+    }
+
+    public function createArticle(Request $request)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $title = trim($request['title']);
+            $category = trim($request['category']);
+            $url = trim($request['url']);
+            $imageName = time() . '.' . $request->file('image')->extension();
+
+            $request->image->move(public_path('images'), $imageName);
+
+            if ($title && $category && $url && $imageName) {
+                Articles::create([
+                    "user_id" => $userId,
+                    "title" => $title,
+                    "url" => $url,
+                    "category" => $category,
+                    "image_url" => $imageName,
+                ]);
+                Alert::success('Berhasil', 'Artikel ' . $title . ' berhasil dibuat!');
+                return redirect()->back();
+            } else {
+                Alert::error('Gagal', 'Harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
     }
 
     // PASSED

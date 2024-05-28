@@ -168,7 +168,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
 
     // Psycholog -> Community -> Community Post -> List Post
     Route::get("/community-post/{community_id}", [AdminController::class, 'showCommunityPost'])->name("admin.show-list-community-post");
-
+    
     // Psycholog -> Community -> Community Post -> Create Post
     Route::get("/community-post/{community_id}/create-post", [AdminController::class, 'showCreateCommunityPost'])->name("admin.create-community-post");
     Route::post("/community-post/{community_id}/create-post", [AdminController::class, 'createPostCommunity'])->name("admin.post-create-community-post");
@@ -179,6 +179,10 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     // Psycholog -> Community -> Community Post -> Change Post
     Route::get("/community-post/{community_id}/post/{post_id}", [AdminController::class, 'showChangeCommunityPost'])->name("admin.show-change-community-post");
     Route::post("/community-post/{community_id}/post/{post_id}", [AdminController::class, 'changeCommunityPost'])->name("admin.change-community-post");
+    
+    // Psycholog -> Articles -> Create Article
+    Route::get("/create-article", [AdminController::class, 'showCreateArticle'])->name("admin.show-create-article");
+    Route::post("/create-article", [AdminController::class, 'createArticle'])->name("admin.create-article");
 });
 
 // Only admin load purpose - Authenticated
@@ -239,7 +243,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     // Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
     Route::get("/add-psycholog-profile", [AdminController::class, 'showAddProfile'])->name("adminload.add-psycholog-profile");
     Route::get('/psycholog-communities/{community_id}', [AdminController::class, 'showCommunitiesDetail'])->name("adminload.psycholog-communities");
-    Route::post('/psycholog-communities/{community_id}', [AdminController::class, 'createCommunityPost'])->name('adminload.psycholog-communities.store');
+    // Route::post('/psycholog-communities/{community_id}', [AdminController::class, 'createCommunityPost'])->name('adminload.psycholog-communities.store');
     Route::put('/psycholog-communities/{post_id}', [AdminController::class, 'updateCommunityPost'])->name('adminload.psycholog-communities.update');
     Route::delete('/psycholog-communities/{post_id}', [AdminController::class, 'deleteCommunityPost'])->name('adminload.psycholog-communities.delete');
     Route::get("/change-psycholog-profile", [AdminController::class, 'changeProfile'])->name("adminload.change-psycholog-profile");
