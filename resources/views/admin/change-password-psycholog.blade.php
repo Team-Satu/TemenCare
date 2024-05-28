@@ -1,15 +1,16 @@
-<div class="container-fluid">
+@extends('layouts.app')
 
-    <!-- Page Heading -->
+@section('title', 'Daftar Psikolog')
+
+@section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Ganti Password Psikolog</h1>
     </div>
 
     <div class="row">
-        <!-- Area Chart -->
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
-                <form class="card-body" action="{{ route('adminload.post-change-password-psycholog') }}" method="POST">
+                <form class="card-body" action="{{ route('admin.post-change-password-psycholog') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Email</label>
@@ -30,4 +31,4 @@
             </div>
         </div>
     </div>
-</div>
+@endsection

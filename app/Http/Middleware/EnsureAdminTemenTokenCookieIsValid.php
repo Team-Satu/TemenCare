@@ -33,10 +33,20 @@ class EnsureAdminTemenTokenCookieIsValid
                     $countPsycholog = Psychologs::where("email", $user->email)->count();
                     $countAdmin = Admin::where("email", $user->email)->count();
 
+                    $user = User::where('id', $userToken->tokenable_id)->first();
+                    $emailAdmin = env('ADMIN_EMAIL');
+
+                    $role = "psycholog";
+                    if ($user->email === $emailAdmin) {
+                        $role = "admin";
+                    }
+
                     if ($countAdmin || $countPsycholog) {
                         // Jika token ditemukan, dapatkan pengguna yang memiliki token tersebut
                         $request->attributes->add(['temen_user' => $userToken]);
                         $request->attributes->add(['user_id' => $userToken->tokenable_id]);
+                        $request->attributes->add(['role' => $role]);
+                        $request->attributes->add(['user' => $user]);
 
                         return $next($request);
                     } else {

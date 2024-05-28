@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Accounts;
 use App\Models\Admin;
+use App\Models\Articles;
 use App\Models\Communities;
 use App\Models\Expertise;
 use App\Models\Psychologs;
@@ -26,9 +27,10 @@ class AdminController extends Controller
         return view('admin-login');
     }
 
+    // PASSED
     public function showCreateCommunity()
     {
-        return view("admin-load.create-community");
+        return view("admin.create-community");
     }
 
     public function showCreateExpertise()
@@ -69,6 +71,7 @@ class AdminController extends Controller
         }
     }
 
+    // PASSED
     public function createCommunity(Request $request)
     {
         try {
@@ -113,6 +116,35 @@ class AdminController extends Controller
         }
     }
 
+    // PASSED
+    public function createPostCommunity(Request $request, string $community_id)
+    {
+        try {
+            $request->validate([
+                'title' => 'required|string',
+                'description' => 'required|string',
+            ]);
+            $title = trim($request['title']);
+            $description = trim($request['description']);
+
+            if ($title && $description) {
+                CommunityPost::create([
+                    "community_id" => $community_id,
+                    "title" => $title,
+                    "post" => $description,
+                ]);
+                Alert::success('Berhasil', 'Postingan baru berhasil dibuat!');
+                return redirect()->route('admin.show-list-community-post', ["community_id" => $community_id]);
+            } else {
+                Alert::error('Gagal', 'harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
     // Admin logout
     public function logout()
     {
@@ -120,20 +152,19 @@ class AdminController extends Controller
         return redirect(route("admin.login"))->withCookie(Cookie::forget('temen_cookie'));
     }
 
-    // Get psycholog data
+    // PASSED
     public function getPsychologData(Request $request, string $psycholog_id)
     {
         try {
             $psycholog = Psychologs::where("id", $psycholog_id)->first();
-
-            return view("admin-load.change-password-psycholog", ["psycholog" => $psycholog]);
+            return view("admin.change-password-psycholog", ["psycholog" => $psycholog]);
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Akun tidak ditemukan');
             return redirect()->back();
         }
     }
 
-    // Update community data
+    // PASSED
     public function editCommunityData(Request $request)
     {
         try {
@@ -144,7 +175,6 @@ class AdminController extends Controller
                 'short_description' => 'required|string',
             ]);
             $userId = $request->attributes->get('user_id');
-
             $communityId = trim($request['community_id']);
             $name = trim($request['name']);
             $shortDescription = trim($request['short_description']);
@@ -177,27 +207,25 @@ class AdminController extends Controller
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
-            // dd($request);
             dd($th);
             Alert::error('Gagal', 'Terjadi masalah');
             return redirect()->back();
         }
     }
 
-    // Get community data
+    // PASSED
     public function getCommunityData(Request $request, string $community_id)
     {
         try {
             $community = Communities::where("community_id", $community_id)->first();
-
-            return view("admin-load.edit-community", ["community" => $community]);
+            return view("admin.edit-community", ["community" => $community]);
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Akun tidak ditemukan');
             return redirect()->back();
         }
     }
 
-    // Post psycholog data
+    // PASSED
     public function changePsychologPassword(Request $request)
     {
         try {
@@ -219,6 +247,30 @@ class AdminController extends Controller
         }
     }
 
+    // PASSED
+    public function changeCommunityPost(Request $request, string $community_id, string $post_id)
+    {
+        try {
+            if ($post_id) {
+                $communityPost = CommunityPost::where('post_id', $post_id)->first();
+
+                $communityPost->title = $request->title;
+                $communityPost->post = $request->description;
+                $communityPost->save();
+
+                Alert::success('Berhasil', 'Postingan berhasil diubah');
+                return redirect()->back();
+            } else {
+                Alert::error('Gagal', 'Bermasalah');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Postingan tidak ditemukan');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
     public function login(Request $request)
     {
         try {
@@ -272,36 +324,28 @@ class AdminController extends Controller
         }
     }
 
-    public function dashboard()
+    // PASSED
+    public function dashboard(Request $request)
     {
-        $userId = request()->attributes->get('user_id');
+        $userId = $request->attributes->get('user_id');
         $user = User::where('id', $userId)->first();
         $emailAdmin = env('ADMIN_EMAIL');
+
+        $accountTotal = User::count();
+        $userTotal = Accounts::count();
+        $psychologTotal = Psychologs::count();
 
         $role = "psycholog";
         $user;
 
         if ($user->email === $emailAdmin) {
             $role = "admin";
-
             $user = Admin::where("email", $user->email)->first();
         } else {
             $user = Psychologs::where("email", $user->email)->first();
         }
 
-        return view("admin", ["role" => $role, "user" => $user]);
-    }
-
-    public function loadDashboard()
-    {
-        // Total akun
-        $accountTotal = User::count();
-        // Total Pengguna
-        $userTotal = Accounts::count();
-        // Total Psikolog
-        $psychologTotal = Psychologs::count();
-
-        return view("admin-load.dashboard", ["account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
+        return view("admin.dashboard", ["role" => $role, "user" => $user, "account_total" => $accountTotal, "user_total" => $userTotal, "psycholog_total" => $psychologTotal]);
     }
 
     public function updateCommunityPost(Request $request, $post_id)
@@ -312,23 +356,23 @@ class AdminController extends Controller
             // $request->validate([
             //     'post' => 'required|string',
             // ]);
-            
+
             // $post_id = Auth::id();  // Mendapatkan ID pengguna yang sedang login
-            
+
             // dd($post_id);
             // Ambil data dari request
             $postContent = trim($request->input('update'));
-            
+
             if ($postContent && $post_id) {
                 // Cari postingan berdasarkan ID
                 $community_post = CommunityPost::where("post_id", $post_id)->first();
-                
+
                 if ($community_post && $community_post->post_id == $post_id) {
                     // Update data
                     CommunityPost::where('post_id', $post_id)->update(['post' => $postContent]);
                     // $community_post->post = $postContent;
                     // $community_post->save();
-                    
+
                     Alert::success('Berhasil', 'Postingan berhasil diperbarui!');
                     return redirect()->back();
                 } else {
@@ -347,22 +391,19 @@ class AdminController extends Controller
         }
     }
 
-    public function deleteCommunityPost($post_id)
+    // PASSED
+    public function deleteCommunityPost(string $post_id)
     {
         try {
-            // Delete the community post by its ID using the destroy method
-            CommunityPost::where('post_id', $post_id)->delete(['post_id' => $post_id]);
-            
-            // Optionally, you can redirect back with a success message
+            CommunityPost::where('post_id', $post_id)->delete();
             Alert::success('Berhasil', 'Postingan berhasil dihapus!');
-            return redirect()->back();
+            return;
         } catch (\Throwable $th) {
-            // Handle errors, maybe redirect back with an error message
             Alert::error($th->getMessage());
-            return redirect()->back();
+            return;
         }
     }
-    
+
 
     public function showCommunitiesDetail(Request $request, string $community_id)
     {
@@ -375,7 +416,7 @@ class AdminController extends Controller
                 // Return a response indicating failure
                 return response()->json(['error' => 'Community not found'], 404);
             }
-            
+
             return view("admin-load.psycholog-communities", ["community" => $community, 'community_posts' => $community_posts, 'community_id' => $community_id]);
         } catch (\Throwable $th) {
             // Log detailed exception message
@@ -392,34 +433,34 @@ class AdminController extends Controller
     }
 
 
-    public function createCommunityPost(Request $request, string $community_id)
-    {
-        try {
-            // Validate data
-            $validator = Validator::make($request->all(), [
-                'post' => 'required|string',
-            ]);
+    // public function createCommunityPost(Request $request, string $community_id)
+    // {
+    //     try {
+    //         // Validate data
+    //         $validator = Validator::make($request->all(), [
+    //             'post' => 'required|string',
+    //         ]);
 
-            // Check if validation fails
-            if ($validator->fails()) {
-                return response()->json(['errors' => $validator->errors()], 400);
-            }
+    //         // Check if validation fails
+    //         if ($validator->fails()) {
+    //             return response()->json(['errors' => $validator->errors()], 400);
+    //         }
 
-            // Create community post
-            $communityPost = CommunityPost::create([
-                'post' => $request->post,
-                'community_id' => $community_id
-            ]);
+    //         // Create community post
+    //         $communityPost = CommunityPost::create([
+    //             'post' => $request->post,
+    //             'community_id' => $community_id
+    //         ]);
 
-            // Return success response
-            Alert::success('Berhasil', 'Post berhasil dibuat!');
-            return redirect()->back();
-        } catch (\Throwable $th) {
-            // Set error flash message
-            Alert::error('Gagal', 'Post gagal dibuat!');
-            return redirect()->back();
-        }
-    }
+    //         // Return success response
+    //         Alert::success('Berhasil', 'Post berhasil dibuat!');
+    //         return redirect()->back();
+    //     } catch (\Throwable $th) {
+    //         // Set error flash message
+    //         Alert::error('Gagal', 'Post gagal dibuat!');
+    //         return redirect()->back();
+    //     }
+    // }
 
 
     public function viewSchedules()
@@ -438,25 +479,145 @@ class AdminController extends Controller
         $schedule = PsychologSchedule::where("psycholog_id", $id)->first();
         return view("admin-load.schedules.edit-schedules")->with('schedule', $schedule);
     }
-    
+
+    // PASSED
     public function showRegisterPsycholog(Request $request)
     {
-        return view("admin-load.register-psycholog");
+        return view("admin.create-psycholog");
     }
 
+    // PASSED
+    public function showCreateCommunityPost(Request $request, string $community_id)
+    {
+        $community = Communities::where('community_id', $community_id)->first();
+        return view("admin.create-community-post", compact("community"));
+    }
+
+    // PASSED
+    public function showCreateArticle(Request $request)
+    {
+        return view("admin.create-article");
+    }
+
+    // PASSED
+    public function showListArticle(Request $request)
+    {
+        $userId = $request->attributes->get('user_id');
+        $listArticle = Articles::where('user_id', $userId)->get();
+
+        return view("admin.list-article", ['articles' => $listArticle]);
+    }
+
+    // PASSED
+    public function updateArticle(Request $request, string $article_id)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $title = trim($request['title']);
+            $category = trim($request['category']);
+            $url = trim($request['url']);
+
+            if ($title && $category && $url) {
+                $article = Articles::where("article_id", $article_id)->first();
+                if ($article && $article['user_id'] == $userId) {
+                    $article->title = $title;
+                    $article->category = $category;
+                    $article->url = $url;
+
+                    if ($request->image) {
+                        $imageName = time() . '.' . $request->file('image')->extension();
+                        $request->image->move(public_path('images'), $imageName);
+
+                        $article->image_url = $imageName;
+                    }
+
+                    $article->save();
+                    Alert::success('Berhasil', 'Artikel ' . $title . ' berhasil diperbarui!');
+                    return redirect()->back();
+                } else {
+                    Alert::error('Error', 'Artikel ' . $title . ' gagal diperbarui!');
+                    return redirect()->back();
+                }
+            } else {
+                Alert::error('Gagal', 'Harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            error_log($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
+    public function createArticle(Request $request)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $title = trim($request['title']);
+            $category = trim($request['category']);
+            $url = trim($request['url']);
+            $imageName = time() . '.' . $request->file('image')->extension();
+
+            $request->image->move(public_path('images'), $imageName);
+
+            if ($title && $category && $url && $imageName) {
+                Articles::create([
+                    "user_id" => $userId,
+                    "title" => $title,
+                    "url" => $url,
+                    "category" => $category,
+                    "image_url" => $imageName,
+                ]);
+                Alert::success('Berhasil', 'Artikel ' . $title . ' berhasil dibuat!');
+                return redirect()->back();
+            } else {
+                Alert::error('Gagal', 'Harap isi semua!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
+    public function showEditArticle(Request $request, string $article_id)
+    {
+        $article = Articles::where('article_id', $article_id)->first();
+        return view('admin.edit-article', compact('article'));
+    }
+
+    // PASSED
+    public function showChangeCommunityPost(Request $request, string $community_id, string $post_id)
+    {
+        $communityPost = CommunityPost::where('post_id', $post_id)->first();
+        return view("admin.change-community-post", ["post" => $communityPost, "post_id" => $post_id, "community_id" => $community_id]);
+    }
+
+    // PASSED
     public function showListPsycholog(Request $request)
     {
         $psychologList = Psychologs::get();
-
-        return view("admin-load.list-psycholog", ["psychologs" => $psychologList]);
+        $role = $request->attributes->get('role');
+        $user = $request->attributes->get('user');
+        return view("admin.list-psycholog", ["psychologs" => $psychologList, "role" => $role, "user" => $user]);
     }
 
+    // PASSED
+    public function showCommunityPost(Request $request, string $community_id)
+    {
+        $communityPostList = CommunityPost::where('community_id', $community_id)->get();
+        $community = Communities::where('community_id', $community_id)->first();
+        return view("admin.list-community-post", ["posts" => $communityPostList, 'community' => $community]);
+    }
+
+    // PASSED
     public function showListCommunity(Request $request)
     {
         $userId = $request->attributes->get("user_id");
         $communityList = Communities::where("user_id", $userId)->get();
-
-        return view("admin-load.list-community", ["communities" => $communityList]);
+        return view("admin.list-community", ["communities" => $communityList]);
     }
 
     public function showListExpertise(Request $request)
@@ -476,11 +637,24 @@ class AdminController extends Controller
         return view("admin-load.change-psycholog-profile");
     }
 
+    // PASSED
+    public function deleteArticle(Request $request, string $article_id)
+    {
+        try {
+            Articles::where("article_id", $article_id)->delete();
+            Alert::success('Berhasil', 'Artikel berhasil dihapus!');
+            return;
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah dengan akun Anda!');
+            return;
+        }
+    }
+
+    // PASSED
     public function deleteCommunity(Request $request, string $community_id)
     {
         try {
             Communities::where("community_id", $community_id)->delete();
-
             Alert::success('Berhasil', 'Komunitas berhasil dihapus!');
             return;
         } catch (\Throwable $th) {
@@ -502,39 +676,32 @@ class AdminController extends Controller
         }
     }
 
+    // PASSED
     public function deletePsycholog(Request $request, string $psycholog_id)
     {
         try {
             $psycholog = Psychologs::where("id", $psycholog_id)->first();
-
-            // Hapus akun psikolog
             Psychologs::where("id", $psycholog_id)->delete();
-
-            // Hapus akun login
             User::where("email", $psycholog['email'])->delete();
-
             Alert::success('Berhasil', 'Akun psikolog berhasil dihapus!');
             return;
-            // return redirect()->route('admin.dashboard');
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Terjadi masalah dengan akun Anda!');
             return;
-            // return redirect()->route('admin.dashboard');
         }
     }
 
+    // PASSED
     public function registerPsycholog(Request $request)
     {
         try {
             $credential = $request->only('email', 'password', 'full_name', 'phone_number');
-
             $countPsycholog = Psychologs::where("email", $credential['email'])->count();
 
             if ($countPsycholog) {
                 Alert::error('Gagal', 'Email sudah digunakan');
                 return redirect()->back();
             } else {
-                // Membuat akun
                 User::create([
                     'name' => $credential['full_name'],
                     'email' => $credential['email'],
