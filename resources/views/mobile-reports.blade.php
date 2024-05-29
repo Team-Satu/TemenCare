@@ -14,6 +14,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+        <style>
+        /* Custom CSS */
+        #menu-toggle:checked + label + .menu-content {
+            display: block;
+        }
+    </style>
 </head>
 
 <body class="bg-gray-100">
@@ -34,12 +40,53 @@
                 <div class="overflow-y-auto flex flex-1 flex-col h-full">
                     <div class="flex flex-1 flex-col px-4 py-4 space-y-4">
                         @foreach ($reports as $report)
-                            <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
-                                <button class="w-full grid justify-items-end" onclick="showOption('block')">
-                                    <div class="w-6 h-4 justify-center items-center flex bg-neutral-100 rounded-sm">
-                                        <i class="fa-solid fa-ellipsis"></i>
+                            <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">     
+                            <div class="relative flex items-center justify-center bg-neutral-100 rounded-sm w-6 h-4 ml-[350px]">
+                                <input type="checkbox" id="menu-toggle" class="hidden">
+                                <label for="menu-toggle" class="cursor-pointer">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                </label>
+                                <div class="menu-content hidden absolute mt-[130px] mr-[50px] w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                    <div class="py-1" role="none">
+                                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Hapus Laporan</a>
+                                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Ubah Laporan</a>
                                     </div>
-                                </button>
+                                </div>
+                            </div>
+                                <!-- <div class="w-6 h-4 justify-center items-center flex bg-neutral-100 rounded-sm ml-[350px]">
+                                        <button type="button" class=" " id="menu-button" aria-expanded="false" aria-haspopup="true">
+                                            <i class="fa-solid fa-ellipsis"></i>
+                                        </button>
+                                    <div class=" hidden mt-[130px] w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                        <div class="py-1" role="none"> -->
+                                            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                                            <!-- <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Hapus Laporan</a>
+                                            <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Ubah Laporan</a>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                    <!-- <div class="dropdown w-6 h-4 justify-center items-center flex bg-neutral-100 rounded-sm ml-[350px]">
+                                        <button type="button" class="" id="menu-button">
+                                            <i class="fa-solid fa-ellipsis"></i>
+                                        </button>
+                                        <div id="option" class=" hidden dropdown-content">
+                                            <div class="w-[125px] h-[92px] bg-white shadow-md border rounded-xl mt-[100px]">
+                                                {{-- Delete Report Button --}}
+                                                <div class="w-[125px] h-[46px] flex justify-center items-center">
+                                                    <button class="w-full" onclick="showConfirm('block')">
+                                                        <p class="text-center py-3 border-b-2 border-gray-400 text-xs text-red-400 w-full">Hapus
+                                                            Laporan</p>
+                                                    </button>
+                                                </div>
+                                                {{-- Change Report Button --}}
+                                                <div class="w-[125px] h-[46px] flex justify-center items-center">
+                                                    <button class="" onclick="showChange('block')">
+                                                        <p class="text-center py-3 text-xs">Ubah Laporan</p>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
                                 <div class="flex w-full mt-[2px] items-center space-x-2">
                                     <div class="w-9 h-9 bg-blue-300 rounded-full">
                                     </div>
@@ -66,8 +113,7 @@
                         </div>
                     </button>
                 </div>
-                <div id="option"
-                    class="hidden w-[125px] h-[92px] bg-white shadow-md border rounded-xl right-[30px] top-[140px] absolute ">
+                <div id="option" class="hidden">
                     {{-- Delete Report Button --}}
                     <div class="w-[125px] h-[46px] flex justify-center items-center">
                         <button class="w-full" onclick="showConfirm('block')">
@@ -118,18 +164,18 @@
                                 <i class="fa-solid fa-xmark"></i>
                             </button>
                         </div>
-                        <form class="card-body w-full" action="" method="POST">
+                        <form class="card-body w-full" action="{{ route('user.update', $report->report_id) }}" method="PUT">
                             @csrf
                             <h2
                                 class="text-neutral-600 text-xs poppins-semibold capitalize leading-normal tracking-wide text-center mt-2 mb-4">
                                 Silahkan Ubah laporanmu</h2>
                             <div class="w-full mb-4">
                                 <textarea rows="8" placeholder="Ubah laporanmu di sini"
-                                    class="poppins-medium text-xs rounded-lg border border-gray-300 w-full p-2.5 outline-none" name="report"></textarea>
+                                    class="poppins-medium text-xs rounded-lg border border-gray-300 w-full p-2.5 outline-none" name="report">{{ $report->report }}</textarea>
                             </div>
                             <div class="w-full px-6">
                                 <button type="submit"
-                                    class="bg-blue-300 rounded-3xl shadow text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide w-full py-2">Kirim</button>
+                                    class="bg-blue-300 rounded-3xl shadow text-center text-white text-xs poppins-medium capitalize leading-normal tracking-wide w-full py-2">Ubah</button>
                             </div>
                         </form>
                     </div>
@@ -151,6 +197,8 @@
                         <form class="my-2 mx-1" action="{{ route('user.delete-report', $report->report_id )}}" method="POST">
                             @csrf
                             @method('DELETE')
+                            <div>
+                                <input type="hidden" value="{{$report->report_id}}" name="report_id" />
                                 <button
                                     class="w-32 h-8 left-[48px] top-[248px] absolute rounded-3xl border border-blue-300 flex-col justify-center items-center 
                                     inline-flex" type="submit" id="delete-{{$report->report_id}}">
@@ -160,6 +208,7 @@
                                             Yakin</div>
                                     </div>
                                 </button>
+                            </div>
                         </form>
                         @endforeach
                             <a href="/reports"

@@ -54,50 +54,42 @@ class ReportsController extends Controller
             return redirect()->back();
         }
     }
-
-    public function changeReports(Request $request)
+    public function changeReports($report_id)
     {
-        try {
-            // $credential = $request->only('report_id', 'user_id', 'report');
-
-            // $countPsycholog = Psychologs::where("email", $credential['email'])->count();
-
-            // User id diambil menggunakan attribute karena dia di set di middleware ke attribute
-            $userId = $request->attributes->get('user_id');
-
-            // Report bisa langsung diambil dari $request karena dia merupakan data yang langsung ditembak sebagai post data
-            $report = $request->get("report");
-            if ('parameter') {
-                Alert::error('Gagal', 'Maksimal 500 kata!');
-                return redirect()->back();
-            } else {
-                // Membuat lapaoran
-                Reports::create([
-                ]);
-
-                Alert::success('Berhasil', 'Laporan berhasil diubah!');
-                return redirect()->back();
-            }
-        } catch (\Throwable $th) {
-            Alert::error('Gagal', 'Terjadi masalah!');
-            return redirect()->back();
-        }
+        $report = Report::findOrFail($report_id);
+        return view('reports.edit', compact('report'));
     }
-    public function deleteReports(Request $request)
+
+    public function updateReports(Request $request, $report_id)
     {
-        try {
-            $reportId = $request->get('report_id');
-            dd($reportId);
-            $reports = Reports::find($reportId);
-            if ($reports) {
-                $reports->delete();
-                return redirect()->route('route.name');
-            } else {
-                return redirect()->back()->with('error', 'Report not found');
-            }
-        } catch (\Throwable $th) {
-            Alert::error('Gagal', 'Terjadi masalah!');
-            return redirect()->back();
-        }
+        $report = Report::findOrFail($report_id);
+        $report->report = $request->input('report');
+        $report->save();
+        return redirect()->route('reports.index')->with('success', 'Report updated successfully');
     }
+   public function deleteReports(Request $request)
+   {
+       try {
+           $reportId = $request->route('report_id');
+
+           error_log($reportId);
+
+           if (is_null($reportId)) {
+               error_log('Report ID is required');
+               return redirect()->back()->with('error', 'Report ID is required');
+           }
+           $reports = Reports::find($reportId);
+           if (is_null($reports)) {
+               error_log('Report not found');
+               return redirect()->back()->with('error', 'Report not found');
+           }
+           $reports->delete();
+           return redirect()->route('user.reports');
+
+       } catch (\Throwable $th) {
+           error_log($th);
+           Alert::error('Gagal', 'Terjadi masalah!');
+           return redirect()->back();
+       }
+   }
 }

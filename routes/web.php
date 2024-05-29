@@ -185,7 +185,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin/load
 });
 
 // User Routing - UnAuthenticated
-Route::get('/', [PublicController::class, 'index'])->name("public.landing");
+Route::get('/', [PublicController::class, 'index'])->name("public.landing"); 
 Route::get('/login', [LoginIgracias::class, 'login'])->name("user.login");
 Route::post('/login', [LoginIgracias::class, 'loginIgracias'])->name("user.login-igracias");
 
@@ -210,16 +210,17 @@ Route::get("/reports", [UserController::class, 'reports'])->name("user.reports")
 // Reports
 Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
 Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
-// Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
+Route::get('/reports/{report_id}/edit', 'ReportController@changeReports')->name('user.edit');
+Route::put('/reports/{report_id}', 'ReportController@updateReports')->name('user.update');
+Route::delete("/reports/{report_id}", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
 
 
-// Reports
-Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
-Route::get("/your reports", [ReportsController::class, 'yourReports'])->name("user.reports");
-Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
-// Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-// Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
+// // Reports
+// Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+// Route::get("/your reports", [ReportsController::class, 'yourReports'])->name("user.reports");
+// Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+// // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
+// // Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
 
 
 // show rating and feedback
