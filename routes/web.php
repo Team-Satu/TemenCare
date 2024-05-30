@@ -332,5 +332,8 @@ Route::get('/psycholog-communities', function () {
 Route::post('/cancel-consultation', [PsychologController::class, 'cancelConsultation'])->name('consultation.cancel');
 use App\Http\Controllers\PsychologController;
 
+Route::get('/assessment', function () {
+    return view('mobile-assessment');
+});
 
 
