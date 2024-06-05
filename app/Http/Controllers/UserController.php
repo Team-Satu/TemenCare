@@ -23,8 +23,9 @@ class UserController extends Controller
     public function profile()
     {
         $userId = request()->attributes->get('user_id');
-        $user = Accounts::where('id', $userId)->first();
-        return view('mobile-profile', ["name" => $user->name, "email" => $user->email, "image_url" => $user->image_url]);
+        $user = User::where('id', $userId)->first();
+        $account = Accounts::where('email', $user->email)->first();
+        return view('mobile-profile', ["name" => $account->name, "email" => $account->email, "image_url" => $account->image_url]);
     }
 
     // User logout
