@@ -332,7 +332,7 @@ class AdminController extends Controller
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
         }
-        
+
     }
 
     public function deleteSchedule($id){
