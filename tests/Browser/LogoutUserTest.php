@@ -19,7 +19,9 @@ class LogoutUserTest extends DuskTestCase
                     ->type('username', 'amalinalin')
                     ->type('password', '5tr@yKids')
                     ->press('Masuk')
-                    ->assertPathIs('/dashboard');
+                    ->assertPathIs('/dashboard')
+                    ->visit('/profile')
+                    ->press('Keluar');
         });
     }
 }
