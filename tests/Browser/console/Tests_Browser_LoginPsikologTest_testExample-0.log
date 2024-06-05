@@ -1,0 +1,44 @@
+[
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/127.0.0.1:8000\/vendor\/jquery\/jquery.min.js - Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "source": "network",
+        "timestamp": 1717595976761
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/127.0.0.1:8000\/vendor\/bootstrap\/js\/bootstrap.bundle.min.js - Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "source": "network",
+        "timestamp": 1717595976928
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/127.0.0.1:8000\/vendor\/jquery-easing\/jquery.easing.min.js - Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "source": "network",
+        "timestamp": 1717595977080
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/127.0.0.1:8000\/js\/sb-admin-2.min.js - Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "source": "network",
+        "timestamp": 1717595977235
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/127.0.0.1:8000\/admin\/img\/undraw_profile.svg - Failed to load resource: the server responded with a status of 404 (Not Found)",
+        "source": "network",
+        "timestamp": 1717595981795
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/127.0.0.1:8000\/sbadmin\/vendor\/chart.js\/Chart.min.js 6:86073 Uncaught TypeError: Cannot read properties of null (reading 'length')",
+        "source": "javascript",
+        "timestamp": 1717595981968
+    },
+    {
+        "level": "SEVERE",
+        "message": "http:\/\/127.0.0.1:8000\/sbadmin\/vendor\/chart.js\/Chart.min.js 6:86073 Uncaught TypeError: Cannot read properties of null (reading 'length')",
+        "source": "javascript",
+        "timestamp": 1717595981968
+    }
+]
