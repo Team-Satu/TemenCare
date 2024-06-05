@@ -209,7 +209,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     
     
     // Tambah expertise
-    Route::get("/create-expertise", [AdminController::class, 'showCreateExpertise'])->name('admin-load.show-create-expertise');
+    Route::get("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.show-create-expertise');
     Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.create-expertise');
 
     // // List psycholog
@@ -218,7 +218,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     // List community
 
     // List expertise
-    Route::get("/list-expertise", [AdminController::class, 'showListExpertise'])->name("adminload.show-list-expertise");
+    Route::get("/list-expertise", [AdminController::class, 'showListExpertise'])->name("admin-load.show-list-expertise");
 
     // Delete psycholog
 
