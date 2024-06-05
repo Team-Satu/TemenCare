@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accounts;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
@@ -12,8 +13,10 @@ class UserController extends Controller
     public function dashboard()
     {
         $userId = request()->attributes->get('user_id');
-        $user = Accounts::where('id', $userId)->first();
-        return view('mobile-dashboard', ["name" => $user->name]);
+        $user = User::where('id', $userId)->first();
+        $account = Accounts::where('email', $user->email)->first();
+
+        return view('mobile-dashboard', ["name" => $account->name]);
     }
 
     // Display user profile
