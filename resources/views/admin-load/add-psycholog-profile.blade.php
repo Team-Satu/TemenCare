@@ -9,26 +9,28 @@
         <!-- Area Chart -->
         <div class="col-xl-12 col-lg-7">
             <!-- <div class="card shadow mb-4"> -->
+               <!-- TemenCare/resources/views/admin-load/add-psycholog-profile.blade.php -->
+            <form action="{{ route('expertise.store') }}" method="POST">
+                @csrf
                 <div class="mb-3">
-                    <label class="form-label">Type</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                    <option class="mystyle" value="1">Alumnus</option>
-                    <option class="mystyle" value="2">Pengalaman Kerja</option>
-                    <option class="mystyle" value="3">Tempat Praktek</option>
-                    <option class="mystyle" value="4">Nomor STR</option>
+                    <label for="type" class="form-label">Type</label>
+                    <select class="form-control" id="type" name="type">
+                        <option value="Alumnus">Alumnus</option>
+                        <option value="Pengalaman Kerja">Pengalaman Kerja</option>
+                        <option value="Tempat Praktek">Tempat Praktek</option>
+                        <option value="Nomor STR">Nomor STR</option>
                     </select>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Title</label>
-                    <input type="email" class="form-control" placeholder="" name="title">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" required>
                 </div>
                 <div class="mb-3">
-                    <label class="form-label">Subtitle</label>
-                    <input type="tel" class="form-control" placeholder="" name="subtitle">
+                    <label for="subtitle" class="form-label">Subtitle</label>
+                    <input type="text" class="form-control" id="subtitle" name="subtitle" required>
                 </div>
-
-                </div>
-            <button type="submit" class="btn btn-primary ml-2">Tambah</button>
+                <button type="submit" class="btn btn-primary">Tambah</button>
+            </form>
         </div>
     </div>
 </div>

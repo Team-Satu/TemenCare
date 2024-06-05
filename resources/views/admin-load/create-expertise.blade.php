@@ -12,10 +12,22 @@
                 <form class="card-body" action="{{ route('admin-load.create-expertise') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label class="form-label">Expertise</label>
-                        <input type="text" class="form-control" placeholder="Expertise Anda" name="expertise">
+                        <label for="type" class="form-label">Type</label>
+                        <select class="form-control" id="type" name="type">
+                            <option value="Alumnus">Alumnus</option>
+                            <option value="Pengalaman Kerja">Pengalaman Kerja</option>
+                            <option value="Tempat Praktek">Tempat Praktek</option>
+                            <option value="Nomor STR">Nomor STR</option>
+                        </select>
                     </div>
-
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subtitle" class="form-label">Subtitle</label>
+                        <input type="text" class="form-control" id="subtitle" name="subtitle" required>
+                    </div>
                     <button type="submit" class="btn btn-primary">Tambah Expertise</button>
                 </form>
             </div>
