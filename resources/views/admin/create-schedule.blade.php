@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Daftar Psikolog')
+@section('title', 'Buat Jadwal')
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -8,10 +8,9 @@
 </div>
 
 <div class="row">
-    <!-- Area Chart -->
     <div class="col-xl-12 col-lg-7">
         <div class="card shadow mb-4">
-            <form class="card-body" action="{{ route('adminload.create-schedule') }}" method="POST">
+            <form class="card-body" action="{{ route('admin.create-schedule') }}" method="POST">
                 @csrf
                 <input type="hidden" name="psycholog_id" value="1">
                 <div class="mb-3">
@@ -26,11 +25,6 @@
                     <label class="form-label">Sampai Jam</label>
                     <input type="time" class="form-control" placeholder="Sampai Jam" name="end_hour">
                 </div>
-                {{-- <div class="mb-3">
-                    <label class="form-label">Lokasi (Onsite/Online)</label>
-                    <input type="location" class="form-control" placeholder="Lokasi (Onsite/Online)" name="location">
-                </div>
-                </div> --}}
 
                 <div class="input-group mb-3">
                     <label class="form-label">Lokasi</label>

@@ -466,19 +466,19 @@ class AdminController extends Controller
     public function viewSchedules()
     {
         $schedules = PsychologSchedule::all();
-        return view("admin-load.schedules.view-schedules")->with('schedules', $schedules);
+        return view("admin.show-schedule")->with('schedules', $schedules);
     }
 
-    public function addSchedule()
-    {
-        return view("admin-load.schedules.add-schedules");
-    }
+    // public function addSchedule()
+    // {
+    //     return view("admin.create-schedule");
+    // }
 
-    public function editSchedule($id)
-    {
-        $schedule = PsychologSchedule::where("psycholog_id", $id)->first();
-        return view("admin-load.schedules.edit-schedules")->with('schedule', $schedule);
-    }
+    // public function editSchedule($id)
+    // {
+    //     $schedule = PsychologSchedule::where("psycholog_id", $id)->first();
+    //     return view("admin-load.schedules.edit-schedules")->with('schedule', $schedule);
+    // }
 
     // PASSED
     public function showRegisterPsycholog(Request $request)
