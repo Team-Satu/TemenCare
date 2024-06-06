@@ -134,6 +134,7 @@ class LoginIgracias extends Controller
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
+            error_log($th);
             Alert::error('Yah', 'Akun Anda tidak ditemukan!');
             return redirect()->back();
         }
