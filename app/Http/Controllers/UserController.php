@@ -14,7 +14,9 @@ class UserController extends Controller
     {
         $userId = request()->attributes->get('user_id');
         $user = User::where('id', $userId)->first();
+        error_log($user);
         $account = Accounts::where('email', $user->email)->first();
+        error_log($account);
 
         return view('mobile-dashboard', ["name" => $account->name]);
     }
