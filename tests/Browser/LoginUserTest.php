@@ -20,8 +20,8 @@ class LoginUserTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
-                    ->type('username', 'amalinalin')
-                    ->type('password', '5tr@yKids')
+                    ->type('username', 'sabithaaulia')
+                    ->type('password', 'Bulans@b1t')
                     ->press('Masuk')
                     ->assertPathIs('/dashboard');
         });

@@ -93,8 +93,8 @@
             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Atur Jadwal:</h6>
-                    <a class="collapse-item" href="#" load="load/schedules">Lihat Jadwal</a>
-                    <a class="collapse-item" href="#" load="load/schedules/add">Buat Jadwal</a>
+                    <a class="collapse-item" href="{{ route('admin.show-schedule') }}">Lihat Jadwal</a>
+                    <a class="collapse-item" href="{{ route('admin.create-schedule') }}">Buat Jadwal</a>
                 </div>
             </div>
         </li>
