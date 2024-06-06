@@ -21,7 +21,7 @@
             </div>
             <p class="poppins-medium text-black text-xs text-center">Lapor!</p>
         </a>
-        <a href="#" class="col-span-1 space-y-1 flex-col items-center flex">
+        <a href="/community" class="col-span-1 space-y-1 flex-col items-center flex">
             <div class="h-8 w-8 border-2 border-[#7EBAEB] rounded-lg flex">
                 <img src="/img/community.svg" class="self-center m-auto" />
             </div>
@@ -33,7 +33,7 @@
             </div>
             <p class="poppins-medium text-black text-xs text-center">Kenalan</p>
         </a>
-        <a href="#" class="col-span-1 space-y-1 flex-col items-center flex">
+        <a href="/article" class="col-span-1 space-y-1 flex-col items-center flex">
             <div class="h-8 w-8 border-2 border-[#7EBAEB] rounded-lg flex">
                 <img src="/img/news.svg" class="self-center m-auto" />
             </div>

@@ -14,7 +14,7 @@
             <img class="rounded-full h-28 w-28 object-cover" src="{{ $image_url }}" alt="profile image">
         </div>
 
-        <form class="flex flex-col flex-1 justify-between pb-20 px-4" action="/logout" method="GET">
+        <form class="flex flex-col flex-1 justify-between pb-20 px-6" action="/logout" method="GET">
             <div class="flex flex-1 flex-col space-y-4">
                 <div class="space-y-2">
                     <h1

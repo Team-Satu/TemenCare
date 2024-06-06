@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\LoginIgracias;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ReportsController;
@@ -253,9 +255,12 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
 
-    // Reports
-    Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
-    Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+    Route::get("/community", [CommunityController::class, 'index'])->name("user.community");
+    Route::get("/article", [ArticleController::class, 'index'])->name("user.article");
+
+    // // Reports
+    // Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+    // Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 });
 
 Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
