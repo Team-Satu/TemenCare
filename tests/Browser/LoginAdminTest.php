@@ -15,8 +15,8 @@ class LoginAdminTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/admin')
-                    ->type('email','windykurniawan@email.com')
-                    ->type('password','windy123')
+                    ->type('email','admin@email.com')
+                    ->type('password','adminLOGIN')
                     ->press('Login')
                     ->assertPathIs('/admin/dashboard');
         });
