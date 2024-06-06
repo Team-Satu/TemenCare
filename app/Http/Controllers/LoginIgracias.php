@@ -12,7 +12,7 @@ class LoginIgracias extends Controller
 {
     public function login()
     {
-        return view('login-igracias');
+        return view('mobile.login');
     }
 
     public function loginIgracias(Request $request)
@@ -134,6 +134,7 @@ class LoginIgracias extends Controller
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
+            error_log($th);
             Alert::error('Yah', 'Akun Anda tidak ditemukan!');
             return redirect()->back();
         }

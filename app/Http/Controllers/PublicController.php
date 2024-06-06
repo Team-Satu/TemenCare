@@ -9,6 +9,6 @@ class PublicController extends Controller
     //
     public function index(Request $request)
     {
-        return view("landing-page");
+        return view("mobile.landing-page");
     }
 }

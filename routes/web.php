@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\LoginIgracias;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ReportsController;
@@ -28,21 +30,14 @@ Route::get('/template', function () {
     return view('template-mobile-view');
 });
 
-
-// Route::get('/dashboard', function () {
-    //     return view('mobile-dashboard', ["name" => "Howly"]);
-// });
-
 // Daftar Fitur Kenalan
 Route::get('/persetujuan-kenalan', function () {
     return view('mobile-kenalan-persetujuan');
 });
-Route::post('/persetujuan-kenalan', [persetujuankenalan::class, 'mobile-kenalan-persetujuan']);
 
 Route::get('/daftar-kenalan', function () {
     return view('mobile-daftar-fitur-kenalan');
 });
-Route::post('/daftar-kenalan', [daftarkenalan::class, 'mobile-daftar-fitur-kenalan']);
 
 // Halaman Kenalan
 Route::get('/halaman-kenalan', function () {
@@ -52,7 +47,6 @@ Route::get('/halaman-kenalan', function () {
 Route::get('/ubah-profile-kenalan', function () {
     return view('mobile-halaman-kenalan-ubahprofile');
 });
-Route::post('/ubah-profile-kenalan', [daftarkenalan::class, 'mobile-halaman-kenalan-ubahprofile']);
 
 Route::get('/kenalan-kamu', function () {
     return view('mobile-halaman-kenalankamu');
@@ -73,7 +67,6 @@ Route::get("/home", function () {
 });
 
 Route::get("/is-valid", function () {
-    // $temenUser = request()->attributes->get('temen_user');
     $userId = request()->attributes->get('user_id');
 
     return "Berhasil masuk $userId";
@@ -102,21 +95,14 @@ Route::get('/articles', function () {
     return view('mobile-articles');
 });
 
-// Show communities
-// Route::get('/communities', [CommunityController::class, 'index'])
-//      ->name('communities.index');
 Route::get('/communities', function () {
     return view('mobile-communities');
 });
 
-// Show communities detail
-// Route::get('/communities/{community}', [CommunityController::class, 'show'])
-//      ->name('communities.show');
 Route::get('/communities-detail', function () {
     return view('mobile-communities-detail');
 });
 
-Route::post('/Showlaporankamu', [Showlapor::class, 'mobile-show-laporankamu']);
 
 // Admin & Psycholog Routing - UnAuthenticated
 Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
@@ -229,20 +215,14 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     // Delete expertise
     Route::delete("/delete-expertise/{expertise_id}", [AdminController::class, 'deleteExpertise'])->name("adminload.delete-expertise");
 
-    // Delete community
-
-    // Change psycholog password
-
-    // Edit community detail
-
-    Route::group(['prefix' => 'schedules'], function(){
+    Route::group(['prefix' => 'schedules'], function () {
         Route::get("/", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");
         Route::get("/add", [AdminController::class, 'addSchedule'])->name("adminload.add-schedule");
         Route::get("/edit/{id}", [AdminController::class, 'editSchedule'])->name("adminload.edit-schedule");
 
         Route::post('/', [AdminController::class, 'createSchedule'])->name('adminload.create-schedule');
         Route::put('/{id}', [AdminController::class, 'updateSchedule'])->name('adminload.update-schedule');
-        Route::delete('/{id}', [AdminController::class ,'deleteSchedule'])->name('adminload.delete-schedule');
+        Route::delete('/{id}', [AdminController::class, 'deleteSchedule'])->name('adminload.delete-schedule');
 
     });
 
@@ -275,15 +255,14 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/profile", [UserController::class, 'profile'])->name("user.profile");
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
 
-    // Reports
-    Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
-    Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+    Route::get("/community", [CommunityController::class, 'index'])->name("user.community");
+    Route::get("/article", [ArticleController::class, 'index'])->name("user.article");
+
+    // // Reports
+    // Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+    // Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 });
 
-// Show Landing Page Mobile
-Route::get('/lpmobile', function () {
-    return view('mobile-landing-page');
-});
 Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
 
 
@@ -298,8 +277,6 @@ Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("us
 Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
 Route::get("/your reports", [ReportsController::class, 'yourReports'])->name("user.reports");
 Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
-// Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-// Route::post("/reports", [ReportsController::class, 'deleteReport'])->name("user.delete-report");
 
 
 // show rating and feedback
@@ -311,10 +288,6 @@ Route::get('/your rating', function () {
 });
 Route::get('/add rating', function () {
     return view('mobile-add-rating');
-});
-// Show Landing Page Desktop
-Route::get('/lpdesktop', function () {
-    return view('desktop-landing-page');
 });
 
 
@@ -332,9 +305,3 @@ Route::get('/consultation-detail', function () {
 Route::get('/psycholog-communities', function () {
     return view('psycholog-communities');
 });
-
-Route::post('/cancel-consultation', [PsychologController::class, 'cancelConsultation'])->name('consultation.cancel');
-use App\Http\Controllers\PsychologController;
-
-
-
