@@ -11,7 +11,7 @@
     <!-- Area Chart -->
     <div class="col-xl-12 col-lg-7">
         <div class="card shadow mb-4">
-            <form class="card-body" action="{{ route('admin.update-schedule', $schedule->schedule_id) }}" method="POST">
+            <form class="card-body" action="{{ route('admin.edit-schedule', $schedule->schedule_id) }}" method="POST">
                 <input type="hidden" name="_method" value="PUT">
                 @csrf
                 <div class="mb-3">
