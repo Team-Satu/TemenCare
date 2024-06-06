@@ -16,56 +16,11 @@
 </head>
 
 <body class="bg-gray-100">
-    <div class="max-w-md mx-auto relative">
-        <main class="bg-white h-screen flex flex-col">
-            @yield('content')
-        </main>
+    <div class="max-w-md mx-auto relative h-full">
+        @yield('content')
         @yield('bottom-menu')
-        {{-- @include('partials.bottom-menu') --}}
     </div>
 </body>
-
-{{-- <body id="page-top">
-    <div id="wrapper">
-        @include('partials.sidebar')
-
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                @include('partials.topbar')
-
-                <div class="container-fluid" id="load-page">
-                    @yield('content')
-                </div>
-            </div>
-
-            @include('partials.footer')
-        </div>
-    </div>
-
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    @include('partials.logout-modal')
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('sbadmin/vendor/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('sbadmin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('sbadmin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('sbadmin/js/sb-admin-2.min.js') }}"></script>
-
-    <!-- Page level plugins -->
-    <script src="{{ asset('sbadmin/vendor/chart.js/Chart.min.js') }}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('sbadmin/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('sbadmin/js/demo/chart-pie-demo.js') }}"></script>
-
-    @include('sweetalert::alert')
-</body> --}}
+@include('sweetalert::alert')
 
 </html>

@@ -12,7 +12,7 @@ class LoginIgracias extends Controller
 {
     public function login()
     {
-        return view('login-igracias');
+        return view('mobile.login');
     }
 
     public function loginIgracias(Request $request)

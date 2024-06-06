@@ -258,10 +258,6 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 });
 
-// Show Landing Page Mobile
-Route::get('/lpmobile', function () {
-    return view('mobile-landing-page');
-});
 Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
 
 
@@ -287,10 +283,6 @@ Route::get('/your rating', function () {
 });
 Route::get('/add rating', function () {
     return view('mobile-add-rating');
-});
-// Show Landing Page Desktop
-Route::get('/lpdesktop', function () {
-    return view('desktop-landing-page');
 });
 
 
