@@ -10,6 +10,7 @@ class LoginUserTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
+     * @group auth
      */
     public function testExample(): void
     {
