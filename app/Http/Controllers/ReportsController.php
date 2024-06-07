@@ -9,6 +9,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ReportsController extends Controller
 {
+    public function index()
+    {
+        return view('mobile.report');
+    }
 
     // Display report
     public function reports()
@@ -19,8 +23,8 @@ class ReportsController extends Controller
 
     public function yourReports()
     {
-    $reports = Reports::orderBy('report_id', 'desc')->get();
-    return view('mobile-your-reports', ["reports" => $reports]);
+        $reports = Reports::orderBy('report_id', 'desc')->get();
+        return view('mobile-your-reports', ["reports" => $reports]);
     }
 
 
@@ -32,10 +36,6 @@ class ReportsController extends Controller
 
             // Report bisa langsung diambil dari $request karena dia merupakan data yang langsung ditembak sebagai post data
             $report = $request->get("report");
-
-            error_log($report);
-            error_log(strlen($report));
-            error_log($userId);
 
             if (strlen($report) > 500) {
                 // Pake kode di bawah ini kalo misalkan make show error, jangan pake withError (approach kita beda soalnya).
@@ -55,34 +55,6 @@ class ReportsController extends Controller
         }
     }
 
-    public function changeReports(Request $request)
-    {
-        try {
-            // $credential = $request->only('report_id', 'user_id', 'report');
-
-            // $countPsycholog = Psychologs::where("email", $credential['email'])->count();
-
-            // User id diambil menggunakan attribute karena dia di set di middleware ke attribute
-            $userId = $request->attributes->get('user_id');
-
-            // Report bisa langsung diambil dari $request karena dia merupakan data yang langsung ditembak sebagai post data
-            $report = $request->get("report");
-            if ('parameter') {
-                Alert::error('Gagal', 'Maksimal 500 kata!');
-                return redirect()->back();
-            } else {
-                // Membuat lapaoran
-                Reports::create([
-                ]);
-
-                Alert::success('Berhasil', 'Laporan berhasil diubah!');
-                return redirect()->back();
-            }
-        } catch (\Throwable $th) {
-            Alert::error('Gagal', 'Terjadi masalah!');
-            return redirect()->back();
-        }
-    }
     public function deleteReports(Request $request)
     {
         try {
