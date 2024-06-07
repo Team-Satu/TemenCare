@@ -52,8 +52,6 @@
                                 </div>
                             </button>
                             <div class="flex w-full mt-[2px] items-center space-x-2">
-                                <div class="w-9 h-9 bg-blue-300 rounded-full">
-                                </div>
                                 <div class="">
                                     <h2 class="text-black text-xs poppins-medium">
                                         {{ $myReport->user->name }}
@@ -63,6 +61,7 @@
                                     </p>
                                 </div>
                             </div>
+                            <hr class="mt-2" />
                             <p class="text-neutral-600 text-[12px] poppins-medium py-2">
                                 {{ $myReport->report }}
                             </p>
