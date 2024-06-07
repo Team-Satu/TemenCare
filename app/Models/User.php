@@ -42,4 +42,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Relasi dengan model Community
+    public function communities()
+    {
+        return $this->hasMany(Communities::class);
+    }
+
+    // Relasi dengan model Account
+    public function account()
+    {
+        return $this->hasOne(Accounts::class, 'email', 'email');
+    }
 }

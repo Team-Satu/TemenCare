@@ -12,4 +12,9 @@ class Accounts extends Model
     protected $table = "accounts";
     protected $primaryKey = "id";
     protected $fillable = ["name", "email", "nim", "username", "class", "major", "lecture", "type", "page_id", "image_url"];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'email', 'email');
+    }
 }

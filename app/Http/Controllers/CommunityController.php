@@ -10,13 +10,7 @@ class CommunityController extends Controller
     public function index()
     {
         $communities = Communities::all();
+        error_log($communities);
         return view('mobile.community', compact('communities'));
     }
-
-    // Method for displaying a single community
-    // public function show(Communities $community)
-    // {
-    //     return view('mobile-communities-detail', compact('community'));
-    // }
-    
 }
