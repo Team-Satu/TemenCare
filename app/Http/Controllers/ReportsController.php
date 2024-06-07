@@ -9,9 +9,12 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class ReportsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('mobile.report');
+        $userId = $request->attributes->get('user_id');
+        $reports = Reports::orderBy('report_id', 'desc')->get();
+        $myReports = Reports::where('user_id', $userId)->orderBy('report_id', 'desc')->get();
+        return view('mobile.report', compact('reports', 'myReports'));
     }
 
     // Display report
