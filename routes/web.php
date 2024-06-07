@@ -265,20 +265,16 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     // Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
 });
 
-Route::get("/reports", [UserController::class, 'reports'])->name("user.reports");
-
-
-// Reports
-Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
-Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+// Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+// Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
+// Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
 
 
 // Reports
-Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
-Route::get("/your reports", [ReportsController::class, 'yourReports'])->name("user.reports");
-Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
+// Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+// Route::get("/your reports", [ReportsController::class, 'yourReports'])->name("user.reports");
+// Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 
 
 // show rating and feedback
