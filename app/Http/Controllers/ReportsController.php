@@ -17,13 +17,6 @@ class ReportsController extends Controller
         return view('mobile.report', compact('reports', 'myReports'));
     }
 
-    // Display report
-    public function reports()
-    {
-        $reports = Reports::orderBy('report_id', 'desc')->get();
-        return view('mobile-reports', ["reports" => $reports]);
-    }
-
     public function yourReports()
     {
         $reports = Reports::orderBy('report_id', 'desc')->get();
@@ -34,25 +27,20 @@ class ReportsController extends Controller
     public function addReport(Request $request)
     {
         try {
-            // User id diambil menggunakan attribute karena dia di set di middleware ke attribute
             $userId = $request->attributes->get('user_id');
-
-            // Report bisa langsung diambil dari $request karena dia merupakan data yang langsung ditembak sebagai post data
             $report = $request->get("report");
 
             if (strlen($report) > 500) {
-                // Pake kode di bawah ini kalo misalkan make show error, jangan pake withError (approach kita beda soalnya).
                 Alert::error('Gagal', 'Maksimal karakter laporan adalah 500!');
                 return redirect()->back();
             }
-
             Reports::create([
                 "user_id" => $userId,
                 "report" => $report
             ]);
-
-            return redirect(route("user.reports"));
+            return redirect(route("user.report"));
         } catch (\Throwable $th) {
+            error_log($th);
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
         }

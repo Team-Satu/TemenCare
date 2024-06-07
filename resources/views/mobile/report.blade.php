@@ -18,34 +18,32 @@
                     Laporan kamu
                 </button>
             </div>
-            <div class="flex flex-1 flex-col px-4 py-4 space-y-4 bg-white">
-                <div x-show="tab === 'reports'">
+            <div class="flex flex-1 flex-col py-4 bg-white">
+                <div x-show="tab === 'reports'" class="px-4 space-y-4">
                     @foreach ($reports as $report)
+                        @php
+                            $name = $report->user->name;
+                            $maskedName = "Pelapor: ".substr($name, 0, 2) . 'xxx';
+                        @endphp
                         <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
-                            <button class="w-full grid justify-items-end">
-                                <div class="w-6 h-4 justify-center items-center flex bg-neutral-100 rounded-sm">
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                </div>
-                            </button>
                             <div class="flex w-full mt-[2px] items-center space-x-2">
-                                <div class="w-9 h-9 bg-blue-300 rounded-full">
-                                </div>
                                 <div class="">
                                     <h2 class="text-black text-xs poppins-medium">
-                                        {{ $report->user->name }}
+                                        {{ $maskedName }}
                                     </h2>
                                     <p class="text-neutral-600 text-[10px]">
                                         {{ date('Y-m-d H:i:s', strtotime($report->created_at) + 7 * 3600) }}
                                     </p>
                                 </div>
                             </div>
+                            <hr class="mt-2" />
                             <p class="text-neutral-600 text-[12px] poppins-medium py-2">
                                 {{ $report->report }}
                             </p>
                         </div>
                     @endforeach
                 </div>
-                <div x-show="tab === 'my-reports'" style="display: none; margin-top: -4px">
+                <div x-show="tab === 'my-reports'" style="display: none; margin-top: -4px" class="px-4 space-y-4">
                     @foreach ($myReports as $myReport)
                         <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
                             <button class="w-full grid justify-items-end">
@@ -70,6 +68,13 @@
                             </p>
                         </div>
                     @endforeach
+                </div>
+                <div class="max-w-md w-full flex-col fixed bottom-8 flex px-4">
+                    <button
+                        data-modal='{"title": "Hello!", "text": "This is the first SweetAlert popup.", "icon": "success"}'
+                        class="w-[56px] h-[56px] bg-blue-300 rounded-full flex items-center justify-center shadow-md text-white self-end">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
                 </div>
             </div>
         </div>
