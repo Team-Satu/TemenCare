@@ -15,7 +15,7 @@
             </div>
             <p class="poppins-medium text-black text-xs text-center">Asesmen</p>
         </a>
-        <a href="#" class="col-span-1 space-y-1 flex-col items-center flex">
+        <a href="/report" class="col-span-1 space-y-1 flex-col items-center flex">
             <div class="h-8 w-8 border-2 border-[#7EBAEB] rounded-lg flex">
                 <img src="/img/laporkan.svg" class="self-center m-auto" />
             </div>
