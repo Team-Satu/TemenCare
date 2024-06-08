@@ -127,6 +127,8 @@ class KenalanController extends Controller
         try {
             $userId = $request->attributes->get('user_id');
             Acquaintances::where('user_id', $userId)->delete();
+            AcquaintancesLog::where('from_user', $userId)->delete();
+            AcquaintancesLog::where('to_user', $userId)->delete();
             return redirect(route('user.dashboard'));
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Terjadi masalah!');

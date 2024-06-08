@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Articles;
 use App\Models\Communities;
 use App\Models\Expertise;
+use App\Models\Profile;
 use App\Models\Psychologs;
 use App\Models\CommunityPost;
 use App\Models\User;
@@ -33,39 +34,95 @@ class AdminController extends Controller
         return view("admin.create-community");
     }
 
-    public function showCreateExpertise()
+    // PASSED
+    public function showCreateProfile()
     {
-        return view("admin-load.create-expertise");
+        return view("admin.create-profile");
     }
 
+    // PASSED
+    public function showCreateExpertise()
+    {
+        return view("admin.create-expertise");
+    }
+
+    // PASSED
+    public function createProfile(Request $request)
+    {
+        try {
+            $type = $request['type'];
+            $title = trim($request['title']);
+            $userId = $request->attributes->get('user_id');
+            if ($type && $title) {
+                Profile::create([
+                    "psycholog_id" => $userId,
+                    "type" => $type,
+                    "title" => $title,
+                    "description" => ""
+                ]);
+                Alert::success('Berhasil', 'Profile ' . $title . ' berhasil dibuat!');
+                return redirect()->back();
+            } else {
+                Alert::error('Gagal', 'Profile ' . $title . ' gagal dibuat!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
+    public function showListProfile(Request $request)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $profiles = Profile::where('psycholog_id', $userId)->get();
+
+            return view('admin.list-profile', ["profiles" => $profiles]);
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
+    public function showListExpertise(Request $request)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $expertises = Expertise::where('psycholog_id', $userId)->get();
+
+            return view('admin.list-expertise', ["expertises" => $expertises]);
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
     public function createExpertise(Request $request)
     {
         try {
-            $request->validate([
-                'expertise' => 'required|string',
-            ]);
             $expertise = trim($request['expertise']);
             $userId = $request->attributes->get('user_id');
 
             if ($expertise) {
-                $expertiseData = Expertise::where("expertise", $expertise)->count();
-                if (!$expertiseData) {
-                    Expertise::create([
-                        "psycholog_id" => $userId,
-                        "expertise" => $expertise
-                    ]);
-
-                    Alert::success('Berhasil', 'Expertise ' . $expertise . ' berhasil dibuat!');
-                    return redirect()->back();
-                } else {
-                    Alert::error('Gagal', 'Expertise ' . $expertise . ' sudah ada!');
-                    return redirect()->back();
-                }
+                Expertise::create([
+                    "psycholog_id" => $userId,
+                    "expertise" => $expertise
+                ]);
+                Alert::success('Berhasil', 'Expertise ' . $expertise . ' berhasil dibuat!');
+                return redirect()->back();
             } else {
                 Alert::error('Gagal', 'Expertise ' . $expertise . ' gagal dibuat!');
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
+            dd($th);
             Alert::error('Gagal', 'Terjadi masalah');
             return redirect()->back();
         }
@@ -392,6 +449,19 @@ class AdminController extends Controller
     }
 
     // PASSED
+    public function deleteProfile(Request $request)
+    {
+        try {
+            Profile::where('profile_id', $request->profile_id)->delete();
+            Alert::success('Berhasil', 'Profile berhasil dihapus!');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            Alert::error($th->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
     public function deleteCommunityPost(string $post_id)
     {
         try {
@@ -403,7 +473,6 @@ class AdminController extends Controller
             return;
         }
     }
-
 
     public function showCommunitiesDetail(Request $request, string $community_id)
     {
@@ -620,14 +689,6 @@ class AdminController extends Controller
         return view("admin.list-community", ["communities" => $communityList]);
     }
 
-    public function showListExpertise(Request $request)
-    {
-        $userId = $request->attributes->get("user_id");
-        $expertiseList = Expertise::where("psycholog_id", $userId)->get();
-
-        return view("admin-load.list-expertise", ["expertises" => $expertiseList]);
-    }
-
     public function showAddProfile()
     {
         return view("admin-load.add-psycholog-profile");
@@ -663,16 +724,15 @@ class AdminController extends Controller
         }
     }
 
-    public function deleteExpertise(Request $request, string $expertise_id)
+    public function deleteExpertise(string $expertise_id)
     {
         try {
             Expertise::where("expertise_id", $expertise_id)->delete();
-
             Alert::success('Berhasil', 'Expertise berhasil dihapus!');
-            return;
+            return redirect()->back();
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Terjadi masalah dengan akun Anda!');
-            return;
+            return redirect()->back();
         }
     }
 

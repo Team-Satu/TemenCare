@@ -186,7 +186,19 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     Route::get("/create-schedule", [AdminController::class, 'showCreateSchedule'])->name('admin.show-create-schedule');
     Route::post("/create-schedule", [AdminController::class, 'createSchedule'])->name('admin.create-schedule');
 
-    // Psycholog -> Schedule -> Show List Schedule
+    // Show create profile
+    Route::get("/create-profile", [AdminController::class, 'showCreateProfile'])->name('admin.show-create-profile');
+    Route::post("/create-profile", [AdminController::class, 'createProfile'])->name('admin.create-profile');
+    Route::get("/list-profile", [AdminController::class, 'showListProfile'])->name('admin.show-list-profile');
+    Route::delete("/delete-profile/{profile_id}", [AdminController::class, 'deleteProfile'])->name('admin.delete-profile');
+    
+    // Show create expertise
+    Route::get("/create-expertise", [AdminController::class, 'showCreateExpertise'])->name('admin.show-create-expertise');
+    Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin.create-expertise');
+    Route::get("/list-expertise", [AdminController::class, 'showListExpertise'])->name('admin.show-list-expertise');
+    Route::delete("/delete-expertise/{expertise_id}", [AdminController::class, 'deleteExpertise'])->name('admin.delete-expertise');
+
+  // Psycholog -> Schedule -> Show List Schedule
     Route::get("/show-schedule", [AdminController::class, 'viewSchedules'])->name("admin.show-schedule");
 
     // Psycholog -> Schedule -> Edit Schedule
@@ -211,8 +223,8 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
 
 
     // Tambah expertise
-    Route::get("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.show-create-expertise');
-    Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.create-expertise');
+    // Route::get("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin.show-create-expertise');
+    // Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.create-expertise');
 
     // // List psycholog
     // Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");

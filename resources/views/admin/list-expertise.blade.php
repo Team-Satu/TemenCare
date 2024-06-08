@@ -1,17 +1,11 @@
-@php
-    $i = 1;
-@endphp
+@extends('layouts.app')
 
-<style>
-    .cover-image {
-        width: 80px;
-        height: 80px;
-        object-fit: cover;
-        border-radius: 40%;
-    }
-</style>
+@section('title', 'Daftar Expertise')
 
-<div class="container-fluid">
+@section('content')
+    @php
+        $i = 1;
+    @endphp
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -36,7 +30,7 @@
                                 <th scope="row">{{ $i++ }}</th>
                                 <td>{{ $expertise->expertise }}</td>
                                 <td>
-                                    <div class="btn-group" role="group">
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                         <button type="button" onclick="deleteExpertise({{ $expertise->expertise_id }})"
                                             class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                     </div>
@@ -48,29 +42,24 @@
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    function deleteExpertise(expertiseId) {
-        const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
+    <script>
+        function deleteExpertise(expertiseId) {
+            const csrfToken = '{{ csrf_token() }}';
 
-        return fetch(`/admin/delete-expertise/${expertiseId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': csrfToken // Mengirimkan token CSRF
-                },
-            }).then(data => {
-                window.location.href = '/admin/list-expertise';
-            })
-            .catch(error => {
-                window.location.href = '/admin/list-expertise';
-            });
-    }
-
-    function changePage(targetLoad) {
-        const loading = "<h2>Loading...</h2>";
-        $("#load-page").html(loading);
-        $("#load-page").load("/admin/load/" + targetLoad);
-    }
-</script>
+            return fetch(`/admin/delete-expertise/${expertiseId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken
+                    },
+                })
+                .then(data => {
+                    window.location.href = '/admin/list-expertise';
+                })
+                .catch(error => {
+                    window.location.href = '/admin/list-expertise';
+                });
+        }
+    </script>
+@endsection
