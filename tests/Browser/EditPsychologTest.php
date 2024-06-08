@@ -1,0 +1,31 @@
+<?php
+
+namespace Tests\Browser;
+
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Browser;
+use Tests\DuskTestCase;
+
+class EditPsychologTest extends DuskTestCase
+{
+    /**
+     * A Dusk test example.
+     */
+    public function testExample(): void
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/admin')
+            ->type('email','admin@email.com')
+            ->type('password','adminLOGIN')
+            ->press('Login')
+            ->assertPathIs('/admin/dashboard')
+            ->click('.nav-link.collapsed[data-target="#collapsePsycholog"]')
+            ->pause(1000)
+            ->click('.collapse-item[href="http://127.0.0.1:8000/admin/list-psycholog"]')
+            ->click('#changePasswordPsycholog')
+            ->type('password','psikolog11')
+            ->type('new_password','psikolog11')
+            ->press('Ganti Password');
+        });
+    }
+}
