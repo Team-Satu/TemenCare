@@ -51,14 +51,6 @@
                     </button>
                 </form>
             </div>
-            {{-- <button type="submit"
-                class="w-full py-2 bg-[#F36464] rounded-full shadow flex items-center justify-center text-white text-lg font-medium tracking-wide">
-                Keluar
-            </button> --}}
-            </form>
+        </div>
     </main>
-@endsection
-
-@section('bottom-menu')
-    @include('partials.bottom-menu')
 @endsection

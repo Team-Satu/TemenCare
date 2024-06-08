@@ -264,7 +264,6 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
 
     Route::get("/report", [ReportsController::class, 'index'])->name("user.report");
     Route::post("/report", [ReportsController::class, 'addReport'])->name("user.post-report");
-    Route::get("/report", [ReportsController::class, 'addReport'])->name("user.post-report");
 
     Route::get("/kenalan", [KenalanController::class, 'index'])->name("user.kenalan");
     Route::get("/kenalan/profile", [KenalanController::class, 'profile'])->name("user.profile-kenalan");

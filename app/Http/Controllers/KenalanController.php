@@ -33,6 +33,21 @@ class KenalanController extends Controller
         }
     }
 
+    public function tambahKenalan(string $userId, string $targetId)
+    {
+
+    }
+
+    public function allKenalan(string $userId)
+    {
+        return Acquaintances::all();
+    }
+
+    public function myKenalan(string $userId)
+    {
+
+    }
+
     public function index(Request $request)
     {
         try {
@@ -43,7 +58,8 @@ class KenalanController extends Controller
             $countKenalan = Acquaintances::where('user_id', $userId)->count();
 
             if ($countKenalan) {
-                return view('mobile.kenalan-dashboard');
+                $allKenalan = $this->allKenalan($userId);
+                return view('mobile.kenalan-dashboard', compact('account', 'user', 'allKenalan'));
             }
 
             $kenalan = Acquaintances::where('user_id', $userId)->first();
