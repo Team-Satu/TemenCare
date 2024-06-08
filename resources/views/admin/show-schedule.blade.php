@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Buat Jadwal')
+@section('title', 'Liat Jadwal')
 
 @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -44,4 +44,28 @@
             </div>
         </div>
     </div>
+    <script>
+        function deleteSchedule(scheduleID) {
+            const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
+
+            return fetch(`/admin/schedules/${scheduleID}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken // Mengirimkan token CSRF
+                    },
+                }).then(data => {
+                    window.location.href = '/admin/dashboard';
+                })
+                .catch(error => {
+                    window.location.href = '/admin/dashboard';
+                });
+        }
+
+        function changePage(targetLoad) {
+            const loading = "<h2>Loading...</h2>";
+            $("#load-page").html(loading);
+            $("#load-page").load("/admin" + targetLoad);
+        }
+    </script>
 @endsection

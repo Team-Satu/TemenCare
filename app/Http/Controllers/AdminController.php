@@ -463,11 +463,11 @@ class AdminController extends Controller
     // }
 
 
-    public function viewSchedules()
-    {
-        $schedules = PsychologSchedule::all();
-        return view("admin.show-schedule")->with('schedules', $schedules);
-    }
+    // public function viewSchedules()
+    // {
+    //     $schedules = PsychologSchedule::all();
+    //     return view("admin.show-schedule")->with('schedules', $schedules);
+    // }
 
     // public function addSchedule()
     // {
@@ -726,6 +726,17 @@ class AdminController extends Controller
         }
     }
 
+    public function viewSchedules()
+    {
+        $schedules = PsychologSchedule::all();
+        return view("admin.show-schedule")->with('schedules', $schedules);
+    }
+
+    public function showCreateSchedule(Request $req)
+    {
+        return view("admin.create-schedule");
+    }
+
     public function createSchedule(Request $req)
     {
         try {
@@ -738,6 +749,11 @@ class AdminController extends Controller
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
         }
+    }
+
+    public function showUpdateSchedule(Request $req)
+    {
+        return view("admin.edit-schedule");
     }
 
     public function updateSchedule(Request $req, $id)
@@ -755,7 +771,6 @@ class AdminController extends Controller
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
         }
-
     }
 
     public function deleteSchedule($id)
