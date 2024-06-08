@@ -267,6 +267,7 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
 
     Route::get("/kenalan", [KenalanController::class, 'index'])->name("user.kenalan");
     Route::get("/kenalan/profile", [KenalanController::class, 'profile'])->name("user.profile-kenalan");
+    Route::get("/kenalan/{user_id}", [KenalanController::class, 'addKenalan'])->name("user.kenalan-target");
     Route::post("/kenalan", [KenalanController::class, 'upsertProfile'])->name("user.save-kenalan");
     Route::delete("/kenalan", [KenalanController::class, 'deleteProfile'])->name("user.delete-kenalan");
 

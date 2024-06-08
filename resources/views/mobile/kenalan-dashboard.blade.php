@@ -13,7 +13,7 @@
                         src="{{ $account->image_url }}" />
                     <div class="flex flex-col">
                         <h1 class="text-black text-xs font-semibold font-['Poppins']">{{ $account->name }}</h1>
-                        <pc class="text-neutral-600 text-xs font-normal font-['Poppins']">0 Kenalan</pc>
+                        <pc class="text-neutral-600 text-xs font-normal font-['Poppins']">{{ $countMyKenalan }} Kenalan</pc>
                     </div>
                 </div>
                 <div class="flex flex-1 items-center h-[56px]">
@@ -52,7 +52,7 @@
                                 </div>
                             </div>
                             <div class="flex flex-1 items-center justify-center">
-                                <a href="#"
+                                <a href="{{ route('user.kenalan-target', ['user_id' => $kenalan['user_id']]) }}"
                                     class="w-max px-6 py-2 bg-[#4CA64E] rounded-full shadow flex justify-center text-white text-sm font-medium tracking-wide">
                                     <img src="/img/logos_whatsapp-icon.svg" class="mr-2" />
                                     Kenalan
