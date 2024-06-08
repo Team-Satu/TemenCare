@@ -6,7 +6,8 @@
     <x-header-component title="Komunitas"></x-header-component>
     <main class="flex flex-1 flex-col h-screen w-full p-4 pt-6 bg-white space-y-4">
         @foreach ($communitiesUser as $community)
-            <a href="#" class="h-24 flex items-start hover:cursor-pointer hover:shadow shadow-sm border rounded">
+            <a href="/community/{{ $community['community']['community_id'] }}"
+                class="h-24 flex items-start hover:cursor-pointer hover:shadow shadow-sm border rounded">
                 <img class="w-32 h-full mr-4 flex-shrink-0 bg-zinc-300 rounded"
                     src="/images/{{ $community['community']['image_url'] }}" alt="{{ $community['community']['name'] }}">
                 <div class="flex-grow py-2">
