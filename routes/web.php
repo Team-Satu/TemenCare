@@ -186,9 +186,13 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     Route::get("/create-schedule", [AdminController::class, 'viewSchedules'])->name('admin.show-schedule');
     Route::post("/create-schedule", [AdminController::class, 'createSchedule'])->name('admin.create-schedule');
 
+    // Show create profile
+    Route::get("/create-profile", [AdminController::class, 'showCreateProfile'])->name('admin.show-create-profile');
+    Route::post("/create-profile", [AdminController::class, 'createProfile'])->name('admin.create-profile');
+
     // Show create expertise
-    Route::get("/create-expertise", [AdminController::class, 'showCreateProfile'])->name('admin.show-create-profile');
-    Route::post("/create-expertise", [AdminController::class, 'createProfile'])->name('admin.create-profile');
+    Route::get("/create-expertise", [AdminController::class, 'showCreateExpertise'])->name('admin.show-create-expertise');
+    Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin.create-expertise');
 });
 
 // Only admin load purpose - Authenticated

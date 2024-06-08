@@ -37,6 +37,12 @@ class AdminController extends Controller
     // PASSED
     public function showCreateProfile()
     {
+        return view("admin.create-profile");
+    }
+
+    // PASSED
+    public function showCreateExpertise()
+    {
         return view("admin.create-expertise");
     }
 
@@ -58,6 +64,31 @@ class AdminController extends Controller
                 return redirect()->back();
             } else {
                 Alert::error('Gagal', 'Profile ' . $title . ' gagal dibuat!');
+                return redirect()->back();
+            }
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
+    public function createExpertise(Request $request)
+    {
+        try {
+            $expertise = trim($request['expertise']);
+            $userId = $request->attributes->get('user_id');
+
+            if ($expertise) {
+                Expertise::create([
+                    "psycholog_id" => $userId,
+                    "expertise" => $expertise
+                ]);
+                Alert::success('Berhasil', 'Expertise ' . $expertise . ' berhasil dibuat!');
+                return redirect()->back();
+            } else {
+                Alert::error('Gagal', 'Expertise ' . $expertise . ' gagal dibuat!');
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
