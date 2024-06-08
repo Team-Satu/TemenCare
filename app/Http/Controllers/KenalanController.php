@@ -64,7 +64,16 @@ class KenalanController extends Controller
 
     public function allKenalan(string $userId)
     {
-        return Acquaintances::all();
+        $allKenalan = Acquaintances::all();
+        $kenalanCollect = collect();
+        foreach ($allKenalan as $key => $kenalan) {
+            $user = User::where('id', $kenalan->user_id)->first();
+            $account = Accounts::where('email', $user->email)->first();
+            if ($user) {
+                $kenalanCollect->push(compact('user', 'kenalan', 'account'));
+            }
+        }
+        return $kenalanCollect;
     }
 
     public function myKenalan(string $userId)
