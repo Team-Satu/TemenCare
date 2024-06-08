@@ -13,6 +13,7 @@ class UserController extends Controller
         $userId = request()->attributes->get('user_id');
         $user = User::where('id', $userId)->first();
         $account = Accounts::where('email', $user->email)->first();
+        // $psychologs = Accounts::all();
         return view('mobile.dashboard', ["name" => $account->name]);
     }
 

@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Articles;
 use App\Models\Communities;
 use App\Models\Expertise;
+use App\Models\Profile;
 use App\Models\Psychologs;
 use App\Models\CommunityPost;
 use App\Models\User;
@@ -33,39 +34,34 @@ class AdminController extends Controller
         return view("admin.create-community");
     }
 
-    public function showCreateExpertise()
+    // PASSED
+    public function showCreateProfile()
     {
-        return view("admin-load.create-expertise");
+        return view("admin.create-expertise");
     }
 
-    public function createExpertise(Request $request)
+    // PASSED
+    public function createProfile(Request $request)
     {
         try {
-            $request->validate([
-                'expertise' => 'required|string',
-            ]);
-            $expertise = trim($request['expertise']);
+            $type = $request['type'];
+            $title = trim($request['title']);
             $userId = $request->attributes->get('user_id');
-
-            if ($expertise) {
-                $expertiseData = Expertise::where("expertise", $expertise)->count();
-                if (!$expertiseData) {
-                    Expertise::create([
-                        "psycholog_id" => $userId,
-                        "expertise" => $expertise
-                    ]);
-
-                    Alert::success('Berhasil', 'Expertise ' . $expertise . ' berhasil dibuat!');
-                    return redirect()->back();
-                } else {
-                    Alert::error('Gagal', 'Expertise ' . $expertise . ' sudah ada!');
-                    return redirect()->back();
-                }
+            if ($type && $title) {
+                Profile::create([
+                    "psycholog_id" => $userId,
+                    "type" => $type,
+                    "title" => $title,
+                    "description" => ""
+                ]);
+                Alert::success('Berhasil', 'Profile ' . $title . ' berhasil dibuat!');
+                return redirect()->back();
             } else {
-                Alert::error('Gagal', 'Expertise ' . $expertise . ' gagal dibuat!');
+                Alert::error('Gagal', 'Profile ' . $title . ' gagal dibuat!');
                 return redirect()->back();
             }
         } catch (\Throwable $th) {
+            dd($th);
             Alert::error('Gagal', 'Terjadi masalah');
             return redirect()->back();
         }

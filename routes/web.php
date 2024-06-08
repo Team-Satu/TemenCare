@@ -185,6 +185,10 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     // Psycholog -> Schedule -> Create Schedule
     Route::get("/create-schedule", [AdminController::class, 'viewSchedules'])->name('admin.show-schedule');
     Route::post("/create-schedule", [AdminController::class, 'createSchedule'])->name('admin.create-schedule');
+
+    // Show create expertise
+    Route::get("/create-expertise", [AdminController::class, 'showCreateProfile'])->name('admin.show-create-profile');
+    Route::post("/create-expertise", [AdminController::class, 'createProfile'])->name('admin.create-profile');
 });
 
 // Only admin load purpose - Authenticated
@@ -201,8 +205,8 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
 
 
     // Tambah expertise
-    Route::get("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.show-create-expertise');
-    Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.create-expertise');
+    // Route::get("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin.show-create-expertise');
+    // Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.create-expertise');
 
     // // List psycholog
     // Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");

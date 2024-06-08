@@ -19,7 +19,6 @@
                     pertolongan dengan segera.</p>
 
                 <div class="overflow-x-auto flex">
-                    <div class="w-6 flex-none"></div>
                     <div class="w-48 border border-gray-200 rounded-2xl mt-6 flex-none mr-6">
                         <div
                             class="rounded-t-2xl h-36 w-full bg-[url(https://images.unsplash.com/photo-1651008376811-b90baee60c1f?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-cover">
