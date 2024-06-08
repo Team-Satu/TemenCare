@@ -9,6 +9,7 @@ use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureAdminTemenTokenCookieIsValid;
 use App\Http\Middleware\EnsureTemenTokenCookieIsValid;
+use App\Models\Communities;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -256,6 +257,8 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/logout", [UserController::class, 'logout'])->name("user.logout");
 
     Route::get("/community", [CommunityController::class, 'index'])->name("user.community");
+    Route::get("/community/{community_id}", [CommunityController::class, 'communityDetail'])->name("user.report");
+    
     Route::get("/article", [ArticleController::class, 'index'])->name("user.article");
 
     Route::get("/report", [ReportsController::class, 'index'])->name("user.report");
