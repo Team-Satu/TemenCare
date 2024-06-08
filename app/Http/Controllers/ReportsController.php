@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reports;
-use App\Models\Accounts;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -33,7 +32,6 @@ class ReportsController extends Controller
             ]);
             return redirect(route("user.report"));
         } catch (\Throwable $th) {
-            error_log($th);
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
         }
