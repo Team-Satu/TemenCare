@@ -64,7 +64,7 @@ class KenalanController extends Controller
 
     public function allKenalan(string $userId)
     {
-        $allKenalan = Acquaintances::all();
+        $allKenalan = Acquaintances::where('user_id', '!=', $userId)->get();
         $kenalanCollect = collect();
         foreach ($allKenalan as $key => $kenalan) {
             $user = User::where('id', $kenalan->user_id)->first();
@@ -78,7 +78,17 @@ class KenalanController extends Controller
 
     public function myKenalan(string $userId)
     {
-
+        $allKenalan = AcquaintancesLog::where('to_user', $userId)->get();
+        $kenalanCollect = collect();
+        foreach ($allKenalan as $key => $kenalan) {
+            $kenalanProfile = Acquaintances::where('user_id', $kenalan->from_user)->first();
+            $user = User::where('id', $kenalan->from_user)->first();
+            $account = Accounts::where('email', $user->email)->first();
+            if ($user) {
+                $kenalanCollect->push(compact('user', 'kenalan', 'account', 'kenalanProfile'));
+            }
+        }
+        return $kenalanCollect;
     }
 
     public function index(Request $request)
@@ -92,8 +102,9 @@ class KenalanController extends Controller
 
             if ($countKenalan) {
                 $allKenalan = $this->allKenalan($userId);
+                $myKenalan = $this->myKenalan($userId);
                 $countMyKenalan = AcquaintancesLog::where("to_user", $userId)->count();
-                return view('mobile.kenalan-dashboard', compact('account', 'user', 'allKenalan', 'countMyKenalan'));
+                return view('mobile.kenalan-dashboard', compact('account', 'user', 'allKenalan', 'myKenalan', 'countMyKenalan'));
             }
 
             $kenalan = Acquaintances::where('user_id', $userId)->first();
