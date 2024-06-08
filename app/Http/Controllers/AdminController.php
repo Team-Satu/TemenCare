@@ -89,6 +89,21 @@ class AdminController extends Controller
     }
 
     // PASSED
+    public function showListExpertise(Request $request)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $expertises = Expertise::where('psycholog_id', $userId)->get();
+
+            return view('admin.list-expertise', ["expertises" => $expertises]);
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
     public function createExpertise(Request $request)
     {
         try {
@@ -674,14 +689,6 @@ class AdminController extends Controller
         return view("admin.list-community", ["communities" => $communityList]);
     }
 
-    public function showListExpertise(Request $request)
-    {
-        $userId = $request->attributes->get("user_id");
-        $expertiseList = Expertise::where("psycholog_id", $userId)->get();
-
-        return view("admin-load.list-expertise", ["expertises" => $expertiseList]);
-    }
-
     public function showAddProfile()
     {
         return view("admin-load.add-psycholog-profile");
@@ -717,10 +724,10 @@ class AdminController extends Controller
         }
     }
 
-    public function deleteExpertise(Request $request)
+    public function deleteExpertise(string $expertise_id)
     {
         try {
-            Expertise::where("expertise_id", $request->expertise_id)->delete();
+            Expertise::where("expertise_id", $expertise_id)->delete();
             Alert::success('Berhasil', 'Expertise berhasil dihapus!');
             return redirect()->back();
         } catch (\Throwable $th) {
