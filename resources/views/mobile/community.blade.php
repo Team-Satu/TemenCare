@@ -5,6 +5,8 @@
 @section('content')
     <x-header-component title="Komunitas"></x-header-component>
     <main class="flex flex-1 flex-col h-screen w-full p-4 pt-6 bg-white space-y-4">
+        <h1 class="text-neutral-600 text-2xl font-semibold font-['Poppins'] leading-normal tracking-wide text-left">
+            Temukan Komunitas<br />baru</h1>
         @foreach ($communitiesUser as $community)
             <a href="/community/{{ $community['community']['community_id'] }}"
                 class="h-24 flex items-start hover:cursor-pointer hover:shadow shadow-sm border rounded">
@@ -23,7 +25,9 @@
                         {{ $shortDescription }}</p>
                     <div class="flex w-full items-center space-x-2">
                         <div class="flex-col justify-center items-center inline-flex mt-2">
-                            <img class="w-8 h-8 rounded-full" src="/img/psikolog_insan.png" alt="Psikolog Insan">
+                            <img class="w-8 h-8 rounded-full bg-gray-200"
+                                src="/images/{{ $community['psychologs']['image_url'] }}"
+                                alt="{{ $community['psychologs']['full_name'] }}">
                         </div>
                         <div>
                             <p
