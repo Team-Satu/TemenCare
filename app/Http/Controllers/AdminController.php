@@ -74,6 +74,21 @@ class AdminController extends Controller
     }
 
     // PASSED
+    public function showListProfile(Request $request)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $profiles = Profile::where('psycholog_id', $userId)->get();
+
+            return view('admin.list-profile', ["profiles" => $profiles]);
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
     public function createExpertise(Request $request)
     {
         try {
@@ -419,6 +434,19 @@ class AdminController extends Controller
     }
 
     // PASSED
+    public function deleteProfile(Request $request)
+    {
+        try {
+            Profile::where('profile_id', $request->profile_id)->delete();
+            Alert::success('Berhasil', 'Profile berhasil dihapus!');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            Alert::error($th->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    // PASSED
     public function deleteCommunityPost(string $post_id)
     {
         try {
@@ -430,7 +458,6 @@ class AdminController extends Controller
             return;
         }
     }
-
 
     public function showCommunitiesDetail(Request $request, string $community_id)
     {
@@ -690,16 +717,15 @@ class AdminController extends Controller
         }
     }
 
-    public function deleteExpertise(Request $request, string $expertise_id)
+    public function deleteExpertise(Request $request)
     {
         try {
-            Expertise::where("expertise_id", $expertise_id)->delete();
-
+            Expertise::where("expertise_id", $request->expertise_id)->delete();
             Alert::success('Berhasil', 'Expertise berhasil dihapus!');
-            return;
+            return redirect()->back();
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Terjadi masalah dengan akun Anda!');
-            return;
+            return redirect()->back();
         }
     }
 

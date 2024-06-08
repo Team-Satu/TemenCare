@@ -80,7 +80,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Atur Profile:</h6>
                     <a class="collapse-item" href="{{ route('admin.show-create-profile') }}">Tambah Profile</a>
-                    <a class="collapse-item" href="{{ route('admin-load.show-list-expertise') }}">Daftar Profile</a>
+                    <a class="collapse-item" href="{{ route('admin.show-list-profile') }}">Daftar Profile</a>
                 </div>
             </div>
         </li>

@@ -189,10 +189,13 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     // Show create profile
     Route::get("/create-profile", [AdminController::class, 'showCreateProfile'])->name('admin.show-create-profile');
     Route::post("/create-profile", [AdminController::class, 'createProfile'])->name('admin.create-profile');
-
+    Route::get("/list-profile", [AdminController::class, 'showListProfile'])->name('admin.show-list-profile');
+    Route::delete("/delete-profile/{profile_id}", [AdminController::class, 'deleteProfile'])->name('admin.delete-profile');
+    
     // Show create expertise
     Route::get("/create-expertise", [AdminController::class, 'showCreateExpertise'])->name('admin.show-create-expertise');
     Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin.create-expertise');
+    Route::delete("/delete-expertise", [AdminController::class, 'deleteExpertise'])->name('admin.delete-expertise');
 });
 
 // Only admin load purpose - Authenticated

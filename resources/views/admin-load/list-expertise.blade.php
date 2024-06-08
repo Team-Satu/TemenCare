@@ -54,17 +54,17 @@
     function deleteExpertise(expertiseId) {
         const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
 
-        return fetch(`/admin/load/delete-expertise/${expertiseId}`, {
+        return fetch(`/admin/delete-expertise/${expertiseId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-TOKEN': csrfToken // Mengirimkan token CSRF
                 },
             }).then(data => {
-                window.location.href = '/admin/dashboard';
+                window.location.href = '/admin/list-expertise';
             })
             .catch(error => {
-                window.location.href = '/admin/dashboard';
+                window.location.href = '/admin/list-expertise';
             });
     }
 
