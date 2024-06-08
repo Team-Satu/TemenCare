@@ -83,7 +83,15 @@ class KenalanController extends Controller
                 return redirect()->back();
             }
 
-            Acquaintances::upsert(["user_id" => $userId, "whatsapp_number" => $request->whatsapp_number, "poke_total" => 0], ['user_id'], ['whatsapp_number']);
+            $countKenalan = Acquaintances::where('user_id', $userId)->count();
+
+            if ($countKenalan) {
+                Acquaintances::where("user_id", $userId)->update([
+                    "whatsapp_number" => $request->whatsapp_number
+                ]);
+            } else {
+                Acquaintances::create(["user_id" => $userId, "whatsapp_number" => $request->whatsapp_number, "poke_total" => 0]);
+            }
 
             return redirect(route('user.kenalan'));
         } catch (\Throwable $th) {

@@ -17,7 +17,7 @@
                             class="text-neutral-600 text-base poppins-regular capitalize leading-normal tracking-wide text-left">
                             Nomor WA Anda</h1>
                         <input class="rounded border border-[#C4C4C4] w-full py-4 px-4 poppins-regular" type="text"
-                            value={{ $account->name }} name="whatsapp_number" />
+                            value="{{ $nomorTelepon }}" name="whatsapp_number" />
                     </div>
                     <p class="text-justify mb-6 mt-2"><span
                             class="text-gray-800 text-xs font-light font-['Poppins'] capitalize leading-normal tracking-wide">Hai</span><span
@@ -33,12 +33,12 @@
                     @if ($countKenalan > 0)
                         <button type="submit"
                             class="w-full py-2 bg-[#7EBAEB] rounded-full shadow flex items-center justify-center text-white text-lg font-medium tracking-wide">
-                            Mulai Kenalan
+                            Simpan & Mulai Kenalan
                         </button>
                     @else
                         <button type="submit"
                             class="w-full py-2 bg-[#60D669] rounded-full shadow flex items-center justify-center text-white text-lg font-medium tracking-wide">
-                            Simpan Profile
+                            Simpan & Setuju
                         </button>
                     @endif
                 </form>
