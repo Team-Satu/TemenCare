@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\KenalanController;
 use App\Http\Controllers\LoginIgracias;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ReportsController;
@@ -258,11 +259,17 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
 
     Route::get("/community", [CommunityController::class, 'index'])->name("user.community");
     Route::get("/community/{community_id}", [CommunityController::class, 'communityDetail'])->name("user.report");
-    
+
     Route::get("/article", [ArticleController::class, 'index'])->name("user.article");
 
     Route::get("/report", [ReportsController::class, 'index'])->name("user.report");
     Route::post("/report", [ReportsController::class, 'addReport'])->name("user.post-report");
+    Route::get("/report", [ReportsController::class, 'addReport'])->name("user.post-report");
+
+    Route::get("/kenalan", [KenalanController::class, 'index'])->name("user.kenalan");
+    Route::get("/kenalan/profile", [KenalanController::class, 'profile'])->name("user.profile-kenalan");
+    Route::post("/kenalan", [KenalanController::class, 'upsertProfile'])->name("user.save-kenalan");
+    Route::delete("/kenalan", [KenalanController::class, 'deleteProfile'])->name("user.delete-kenalan");
 
     // // Reports
     // Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
