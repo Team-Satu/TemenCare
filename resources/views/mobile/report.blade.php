@@ -15,7 +15,7 @@
                 <button @click="tab = 'my-reports'"
                     :class="{ 'border-[#2196F3] border-b-2 text-[#2196F3]': tab === 'my-reports', 'text-[#666666]': tab !== 'my-reports' }"
                     class="col-span-1 text-center py-2">
-                    Laporan kamu
+                    Laporan Kamu
                 </button>
             </div>
             <div class="flex flex-1 flex-col py-4 bg-white">

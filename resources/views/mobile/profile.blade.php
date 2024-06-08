@@ -1,6 +1,6 @@
 @extends('layouts.mobile')
 
-@section('title', 'Dashboard')
+@section('title', 'Profile')
 
 @section('content')
     <main class="bg-white h-screen flex flex-col">

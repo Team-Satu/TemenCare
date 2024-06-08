@@ -10,10 +10,16 @@ class ReportsController extends Controller
 {
     public function index(Request $request)
     {
-        $userId = $request->attributes->get('user_id');
-        $reports = Reports::orderBy('report_id', 'desc')->get();
-        $myReports = Reports::where('user_id', $userId)->orderBy('report_id', 'desc')->get();
-        return view('mobile.report', compact('reports', 'myReports'));
+        try {
+            $userId = $request->attributes->get('user_id');
+            $reports = Reports::orderBy('report_id', 'desc')->get();
+            $myReports = Reports::where('user_id', $userId)->orderBy('report_id', 'desc')->get();
+            return view('mobile.report', compact('reports', 'myReports'));
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return redirect()->back();
+        }
     }
 
     public function addReport(Request $request)
