@@ -196,7 +196,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     Route::get("/create-expertise", [AdminController::class, 'showCreateExpertise'])->name('admin.show-create-expertise');
     Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin.create-expertise');
     Route::get("/list-expertise", [AdminController::class, 'showListExpertise'])->name('admin.show-list-expertise');
-    Route::delete("/delete-expertise", [AdminController::class, 'deleteExpertise'])->name('admin.delete-expertise');
+    Route::delete("/delete-expertise/{expertise_id}", [AdminController::class, 'deleteExpertise'])->name('admin.delete-expertise');
 });
 
 // Only admin load purpose - Authenticated
