@@ -28,10 +28,9 @@
                 </div>
             </div>
         </div>
-        <div class="flex-col justify-normal items-center inline-flex mby-2">
-            <h2 class= "text-gray-800 text-xs font-light font-['Poppins'] tracking-wide">{{ $community['description'] }}
-            </h2>
-        </div>
+        <h2 class="text-left text-gray-800 text-xs font-light font-['Poppins'] tracking-wide">
+            {{ $community['description'] }}
+        </h2>
         <h2
             class= "text-neutral-600 text-base font-medium font-['Poppins'] leading-normal tracking-wide mb-2 text-left mt-4">
             Postingan</h2>
