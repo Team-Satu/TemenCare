@@ -5,6 +5,8 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\KenalanController;
 use App\Http\Controllers\LoginIgracias;
+use App\Http\Controllers\PsychologController;
+use App\Http\Controllers\PsychologyController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserController;
@@ -296,6 +298,8 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/kenalan/{user_id}", [KenalanController::class, 'addKenalan'])->name("user.kenalan-target");
     Route::post("/kenalan", [KenalanController::class, 'upsertProfile'])->name("user.save-kenalan");
     Route::delete("/kenalan", [KenalanController::class, 'deleteProfile'])->name("user.delete-kenalan");
+
+    Route::get("/psycholog/{psycholog_id}", [PsychologyController::class, 'psychologDetail'])->name("user.psycholog-detail");
 
     // // Reports
     // Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");

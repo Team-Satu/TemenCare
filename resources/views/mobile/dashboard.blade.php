@@ -20,7 +20,7 @@
 
                 <div class="overflow-x-auto flex px-4 pb-4">
                     @foreach ($psychologs as $psycholog)
-                        <div
+                        <a href="{{ route('user.psycholog-detail', ['psycholog_id' => $psycholog['psycholog']['id']]) }}"
                             class="w-48 border border-gray-200 rounded-2xl mt-6 flex-none mr-6 hover:cursor-pointer hover:border hover:shadow">
                             <img src="./images/{{ $psycholog['psycholog']['image_url'] }}" alt="Image description"
                                 class="bg-center bg-cover object-cover rounded-t-2xl h-36 w-full bg-gray-200">
@@ -41,7 +41,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             </div>
