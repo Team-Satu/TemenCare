@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accounts;
+use App\Models\Consultant;
 use App\Models\Expertise;
 use App\Models\Psychologs;
+use App\Models\PsychologSchedule;
 use App\Models\User;
 use Illuminate\Support\Facades\Cookie;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -25,6 +29,27 @@ class UserController extends Controller
             }
         }
         return view('mobile.dashboard', compact('account', 'psychologs'));
+    }
+
+    public function historyConsultant(Request $request)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $historyAll = Consultant::where('user_id', $userId)->get();
+            $history = collect();
+            foreach ($historyAll as $key => $hist) {
+                $psycholog = Psychologs::where('id', $hist->psycholog_id)->first();
+                $schedule = PsychologSchedule::where('schedule_id', $hist->schedule_id)->first();
+                if ($psycholog) {
+                    $history->push(compact('psycholog', 'hist', 'schedule'));
+                }
+            }
+            return view('mobile.history', compact('history'));
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return redirect()->back();
+        }
     }
 
     public function profile()
