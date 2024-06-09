@@ -74,6 +74,7 @@
                 </div>
                 <div class="max-w-md w-full flex-col fixed bottom-8 flex px-4">
                     <button
+                        data-modal='{"title": "Hello!", "text": "This is the first SweetAlert popup.", "icon": "success"}'
                         class="w-[56px] h-[56px] bg-blue-300 rounded-full flex items-center justify-center shadow-md text-white self-end">
                         <i class="fa-solid fa-plus"></i>
                     </button>
