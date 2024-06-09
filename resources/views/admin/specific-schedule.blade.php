@@ -10,7 +10,9 @@
     <div class="row">
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
-                <form class="card-body" action="{{ route('admin.update-spcifc-schedule', ["schedule_id" => $schedule->schedule_id]) }}" method="POST">
+                <form class="card-body"
+                    action="{{ route('admin.update-spcifc-schedule', ['schedule_id' => $schedule->schedule_id]) }}"
+                    method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Pengguna</label>
@@ -63,10 +65,10 @@
                         'X-CSRF-TOKEN': csrfToken // Mengirimkan token CSRF
                     },
                 }).then(data => {
-                    window.location.href = '/admin/dashboard';
+                    window.location.href = `/admin/show-schedule/${scheduleId}`;
                 })
                 .catch(error => {
-                    window.location.href = '/admin/dashboard';
+                    window.location.href = `/admin/show-schedule/${scheduleId}`;
                 });
         }
     </script>
