@@ -35,6 +35,8 @@ class PsychologyController extends Controller
             $reason = trim($request->reason);
             $scheduleId = trim($request->schedule_id);
             $schedule = PsychologSchedule::where('schedule_id', $scheduleId)->first();
+            $user = User::where('id', $schedule->psycholog_id)->first();
+            $psycholog = Psychologs::where('email', $user->email)->first();
 
             $location = "Gedung Kemahasiswaan";
             if ($schedule->location !== "Onsite") {
@@ -47,14 +49,16 @@ class PsychologyController extends Controller
                 "complaint" => $reason,
                 "diagnose" => null,
                 "advice" => null,
+                "psycholog_id" => $psycholog->id,
                 "url" => $location,
                 "date" => $schedule->date,
                 "status" => 0
             ]);
             PsychologSchedule::where('schedule_id', $scheduleId)->update(["status" => 1]);
 
-            return redirect()->back();
+            return redirect(route('user.dashboard'));
         } catch (\Throwable $th) {
+            dd($th);
             Alert::error('Gagal', 'Terjadi masalah!');
             return redirect()->back();
         }
