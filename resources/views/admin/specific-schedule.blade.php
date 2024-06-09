@@ -10,7 +10,9 @@
     <div class="row">
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
-                <form class="card-body" action="{{ route('admin.edit-profile') }}" method="POST" enctype="multipart/form-data">
+                <form class="card-body"
+                    action="{{ route('admin.update-spcifc-schedule', ['schedule_id' => $schedule->schedule_id]) }}"
+                    method="POST">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Pengguna</label>
@@ -47,7 +49,6 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <button type="button" class="btn btn-success">Tandai Selesai</button>
                 </form>
             </div>
         </div>

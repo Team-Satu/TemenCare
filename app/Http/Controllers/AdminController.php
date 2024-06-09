@@ -731,9 +731,10 @@ class AdminController extends Controller
         }
     }
 
-    public function viewSchedules()
+    public function viewSchedules(Request $request)
     {
-        $schedules = PsychologSchedule::all();
+        $userId = $request->attributes->get('user_id');
+        $schedules = PsychologSchedule::where('psycholog_id', $userId)->get();
         return view("admin.show-schedule")->with('schedules', $schedules);
     }
 
