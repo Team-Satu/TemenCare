@@ -112,14 +112,14 @@ Route::get('/communities-detail', function () {
 Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
 Route::post('/admin', [AdminController::class, 'login'])->name("admin.login");
 
-Route::get('/register-psycholog', function () {
-    return view("admin-load.register-psycholog");
-})->name("admin.register-psycholog");
+// Route::get('/register-psycholog', function () {
+//     return view("admin-load.register-psycholog");
+// })->name("admin.register-psycholog");
 
-// Psycholog Schedules
-Route::get('/psycholog_schedules', function () {
-    return view('admin-load.psycholog-schedules');
-})->name("admin-load.psycholog-schedules");
+// // Psycholog Schedules
+// Route::get('/psycholog_schedules', function () {
+//     return view('admin-load.psycholog-schedules');
+// })->name("admin-load.psycholog-schedules");
 
 // Admin & Psycholog Routing - Authenticated
 Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
@@ -197,7 +197,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     // Show create expertise
     Route::get("/create-expertise", [AdminController::class, 'showCreateExpertise'])->name('admin.show-create-expertise');
     Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin.create-expertise');
-    Route::get("/list-expertise", [AdminController::class, 'showListExpertise'])->name('admin.show-list-expertise');
+    Route::get("/list-expertise", [AdminController::class, 'showListExpertise'])->name('admin.list-expertise');
     Route::delete("/delete-expertise/{expertise_id}", [AdminController::class, 'deleteExpertise'])->name('admin.delete-expertise');
 
     // Psycholog -> Schedule -> Show List Schedule
@@ -217,45 +217,6 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
 
 // Only admin load purpose - Authenticated
 Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
-
-
-
-
-
-    // Membuat akun psikolog
-
-
-    // Membuat komunitas
-
-
-    // Tambah expertise
-    // Route::get("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin.show-create-expertise');
-    // Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin-load.create-expertise');
-
-    // // List psycholog
-    // Route::get("/list-psycholog", [AdminController::class, 'showListPsycholog'])->name("adminload.show-list-psycholog");
-
-    // List community
-
-    // List expertise
-    Route::get("/list-expertise", [AdminController::class, 'showListExpertise'])->name("admin-load.show-list-expertise");
-
-    // Delete psycholog
-
-    // Delete expertise
-    Route::delete("/delete-expertise/{expertise_id}", [AdminController::class, 'deleteExpertise'])->name("adminload.delete-expertise");
-
-    Route::group(['prefix' => 'schedules'], function () {
-        Route::get("/", [AdminController::class, 'viewSchedules'])->name("adminload.view-schedules");
-        Route::get("/add", [AdminController::class, 'addSchedule'])->name("adminload.add-schedule");
-        Route::get("/edit/{id}", [AdminController::class, 'editSchedule'])->name("adminload.edit-schedule");
-
-        Route::post('/', [AdminController::class, 'createSchedule'])->name('adminload.create-schedule');
-        Route::put('/{id}', [AdminController::class, 'updateSchedule'])->name('adminload.update-schedule');
-        Route::delete('/{id}', [AdminController::class, 'deleteSchedule'])->name('adminload.delete-schedule');
-
-    });
-
     Route::get('/psycholog-schedules', [AdminController::class, 'index'])->name('psycholog-schedules.index');
     Route::get('/psycholog-schedules/create', [AdminController::class, 'create'])->name('psycholog-schedules.create');
     Route::post('/psycholog-schedules', [AdminController::class, 'store'])->name('psycholog-schedules.store');
@@ -263,11 +224,8 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     Route::put('/psycholog-schedules/{id}', [AdminController::class, 'update'])->name('psycholog-schedules.update');
     Route::delete('/psycholog-schedules/{id}', [AdminController::class, 'destroy'])->name('psycholog-schedules.destroy');
 
-
-    // Route::get("/dashboard", [AdminController::class, 'loadDashboard'])->name("adminload.dashboard");
     Route::get("/add-psycholog-profile", [AdminController::class, 'showAddProfile'])->name("adminload.add-psycholog-profile");
     Route::get('/psycholog-communities/{community_id}', [AdminController::class, 'showCommunitiesDetail'])->name("adminload.psycholog-communities");
-    // Route::post('/psycholog-communities/{community_id}', [AdminController::class, 'createCommunityPost'])->name('adminload.psycholog-communities.store');
     Route::put('/psycholog-communities/{post_id}', [AdminController::class, 'updateCommunityPost'])->name('adminload.psycholog-communities.update');
     Route::delete('/psycholog-communities/{post_id}', [AdminController::class, 'deleteCommunityPost'])->name('adminload.psycholog-communities.delete');
     Route::get("/change-psycholog-profile", [AdminController::class, 'changeProfile'])->name("adminload.change-psycholog-profile");

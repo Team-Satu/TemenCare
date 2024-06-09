@@ -122,28 +122,6 @@
                                     </div>
                                 </div>
                             @endforeach
-                            {{-- @foreach ($myKenalan as $kenalan)
-                            <div class="w-full flex flex-row bg-white shadow-md border rounded-2xl py-6 px-4">
-                                <div class="flex flex-1 space-x-2">
-                                    <img class ="flex w-[56px] h-[56px] rounded-full bg-gray-200 object-cover"
-                                        src="{{ $kenalan['account']['image_url'] }}" />
-                                    <div class="flex flex-col">
-                                        <h1 class="text-black text-[12px] font-semibold font-['Poppins']">
-                                            {{ $kenalan['user']['name'] }}
-                                        </h1>
-                                        <pc class="text-neutral-600 text-[10px] font-normal font-['Poppins']">
-                                            {{ $kenalan['kenalanProfile']['poke_total'] }} Kenalan</pc>
-                                    </div>
-                                </div>
-                                <div class="flex flex-1 items-center justify-center">
-                                    <a href="{{ route('user.kenalan-target', ['user_id' => $kenalan['user']['id']]) }}"
-                                        class="w-max px-6 py-2 bg-[#4CA64E] rounded-full shadow flex justify-center text-white text-sm font-medium tracking-wide">
-                                        <img src="/img/logos_whatsapp-icon.svg" class="mr-2" />
-                                        Kenalan
-                                    </a>
-                                </div>
-                            </div>
-                        @endforeach --}}
                         </div>
                     </div>
                 </div>
