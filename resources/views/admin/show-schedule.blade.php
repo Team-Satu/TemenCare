@@ -38,7 +38,10 @@
                                         @endif
                                         @if ($schedule->status > 0)
                                             <a href="{{ route('admin.show-spicifc-schedule', ['schedule_id' => $schedule->schedule_id]) }}"
-                                                class="btn btn-success"><i class="fas fa-book"></i></a>
+                                                class="btn btn-primary"><i class="fas fa-book"></i></a>
+                                            <form>
+                                                <button class="btn btn-success"><i class="fas fa-check"></i></button>
+                                            </form>
                                         @endif
                                     </div>
                                 </td>

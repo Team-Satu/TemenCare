@@ -49,21 +49,20 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <button type="button" class="btn btn-success" onclick="setDone({{ $schedule->schedule_id }})">Tandai
-                        Selesai</button>
+                    {{-- <button type="button" class="btn btn-success" onclick="setDone({{ $schedule->schedule_id }})">Tandai
+                        Selesai</button> --}}
                 </form>
             </div>
         </div>
     </div>
-    <script>
+    {{-- <script>
         function setDone(scheduleId) {
-            const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
-
+            const csrfToken = '{{ csrf_token() }}';
             return fetch(`/admin/finish-schedule/${scheduleId}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken // Mengirimkan token CSRF
+                        'X-CSRF-TOKEN': csrfToken
                     },
                 }).then(data => {
                     window.location.href = `/admin/show-schedule/${scheduleId}`;
@@ -72,5 +71,5 @@
                     window.location.href = `/admin/show-schedule/${scheduleId}`;
                 });
         }
-    </script>
+    </script> --}}
 @endsection
