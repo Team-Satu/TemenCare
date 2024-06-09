@@ -191,15 +191,19 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     Route::post("/create-profile", [AdminController::class, 'createProfile'])->name('admin.create-profile');
     Route::get("/list-profile", [AdminController::class, 'showListProfile'])->name('admin.show-list-profile');
     Route::delete("/delete-profile/{profile_id}", [AdminController::class, 'deleteProfile'])->name('admin.delete-profile');
-    
+
     // Show create expertise
     Route::get("/create-expertise", [AdminController::class, 'showCreateExpertise'])->name('admin.show-create-expertise');
     Route::post("/create-expertise", [AdminController::class, 'createExpertise'])->name('admin.create-expertise');
     Route::get("/list-expertise", [AdminController::class, 'showListExpertise'])->name('admin.show-list-expertise');
     Route::delete("/delete-expertise/{expertise_id}", [AdminController::class, 'deleteExpertise'])->name('admin.delete-expertise');
 
-  // Psycholog -> Schedule -> Show List Schedule
+    // Psycholog -> Schedule -> Show List Schedule
     Route::get("/show-schedule", [AdminController::class, 'viewSchedules'])->name("admin.show-schedule");
+
+    // Profile -> Edit Profile
+    Route::get("/profile", [AdminController::class, 'showEditProfile'])->name("admin.show-edit-profile");
+    Route::post("/profile", [AdminController::class, 'editProfile'])->name("admin.edit-profile");
 
     // Psycholog -> Schedule -> Edit Schedule
     Route::get("/edit-schedule/{schedule_id}", [AdminController::class, 'showUpdateSchedule'])->name("admin.show-edit-schedule");

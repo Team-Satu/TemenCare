@@ -467,87 +467,17 @@ class AdminController extends Controller
         try {
             CommunityPost::where('post_id', $post_id)->delete();
             Alert::success('Berhasil', 'Postingan berhasil dihapus!');
-            return;
+            return redirect()->back();
         } catch (\Throwable $th) {
             Alert::error($th->getMessage());
-            return;
+            return redirect()->back();
         }
     }
-
-    public function showCommunitiesDetail(Request $request, string $community_id)
-    {
-        try {
-            $community = Communities::where("community_id", $community_id)->first();
-            $community_posts = CommunityPost::where('community_id', $community_id)->get();
-            if (!$community) {
-                // Log error message
-                \Log::error("Community not found with ID: $community_id");
-                // Return a response indicating failure
-                return response()->json(['error' => 'Community not found'], 404);
-            }
-
-            return view("admin-load.psycholog-communities", ["community" => $community, 'community_posts' => $community_posts, 'community_id' => $community_id]);
-        } catch (\Throwable $th) {
-            // Log detailed exception message
-            \Log::error("Exception occurred: " . $th->getMessage());
-            // Return a response indicating failure
-            return response()->json(['error' => 'Internal server error'], 500);
-        }
-    }
-
 
     public function showCommunitiesDetailnoID()
     {
         return view("admin-load.psycholog-communities");
     }
-
-
-    // public function createCommunityPost(Request $request, string $community_id)
-    // {
-    //     try {
-    //         // Validate data
-    //         $validator = Validator::make($request->all(), [
-    //             'post' => 'required|string',
-    //         ]);
-
-    //         // Check if validation fails
-    //         if ($validator->fails()) {
-    //             return response()->json(['errors' => $validator->errors()], 400);
-    //         }
-
-    //         // Create community post
-    //         $communityPost = CommunityPost::create([
-    //             'post' => $request->post,
-    //             'community_id' => $community_id
-    //         ]);
-
-    //         // Return success response
-    //         Alert::success('Berhasil', 'Post berhasil dibuat!');
-    //         return redirect()->back();
-    //     } catch (\Throwable $th) {
-    //         // Set error flash message
-    //         Alert::error('Gagal', 'Post gagal dibuat!');
-    //         return redirect()->back();
-    //     }
-    // }
-
-
-    // public function viewSchedules()
-    // {
-    //     $schedules = PsychologSchedule::all();
-    //     return view("admin.show-schedule")->with('schedules', $schedules);
-    // }
-
-    // public function addSchedule()
-    // {
-    //     return view("admin.create-schedule");
-    // }
-
-    // public function editSchedule($id)
-    // {
-    //     $schedule = PsychologSchedule::where("psycholog_id", $id)->first();
-    //     return view("admin-load.schedules.edit-schedules")->with('schedule', $schedule);
-    // }
 
     // PASSED
     public function showRegisterPsycholog(Request $request)
@@ -792,6 +722,43 @@ class AdminController extends Controller
         return view("admin.show-schedule")->with('schedules', $schedules);
     }
 
+    public function showEditProfile(Request $request)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $user = User::where('id', $userId)->first();
+            $psycholog = Psychologs::where('email', $user->email)->first();
+            return view("admin.edit-profile", compact('psycholog'));
+        } catch (\Throwable $th) {
+            Alert::error($th->getMessage());
+            return redirect()->back();
+        }
+    }
+
+    public function editProfile(Request $request)
+    {
+        try {
+            $userId = $request->attributes->get('user_id');
+            $user = User::where('id', $userId)->first();
+            $phoneNumber = $request['phone_number'];
+            $fullName = trim($request['full_name']);
+            $imageName = time() . '.' . $request->file('image')->extension();
+            $request->image->move(public_path('images'), $imageName);
+
+            Psychologs::where('email', $user->email)->update([
+                "full_name" => $fullName,
+                "phone_number" => $phoneNumber,
+                "image_url" => $imageName
+            ]);
+
+            Alert::success('Berhasil memperbarui profile Anda!');
+            return redirect(route('admin.show-edit-profile'));
+        } catch (\Throwable $th) {
+            Alert::error($th->getMessage());
+            return redirect()->back();
+        }
+    }
+
     public function showCreateSchedule(Request $req)
     {
         return view("admin.create-schedule");
@@ -844,37 +811,5 @@ class AdminController extends Controller
             return;
             // return redirect()->back();
         }
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
