@@ -49,7 +49,8 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <button type="button" class="btn btn-success">Tandai Selesai</button>
+                    <button type="button" class="btn btn-success" onclick="setDone({{ $schedule->schedule_id }})">Tandai
+                        Selesai</button>
                 </form>
             </div>
         </div>
@@ -58,7 +59,7 @@
         function setDone(scheduleId) {
             const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
 
-            return fetch(`/admin/show_schedule/${scheduleId}/finish`, {
+            return fetch(`/admin/finish-schedule/${scheduleId}`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
