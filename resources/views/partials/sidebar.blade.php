@@ -2,12 +2,12 @@
     $role = request()->attributes->get('role');
 @endphp
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="./dashboard">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
         <div class="sidebar-brand-text mx-3">Temen Care <sup>{{ $role }}</sup></div>
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item">
-        <a class="nav-link" href="./dashboard">
+        <a class="nav-link" href="/dashboard">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
         </a>
@@ -28,8 +28,6 @@
                     <h6 class="collapse-header">Atur Psikolog:</h6>
                     <a class="collapse-item" href="{{ route('admin.show-list-psycholog') }}">Daftar Psikolog</a>
                     <a class="collapse-item" href="{{ route('admin.show-register-psycholog') }}">Buat Psikolog</a>
-                    {{-- <a class="collapse-item" href="#" load="load/add-psycholog-profile">Tambah Profile</a>
-                    <a class="collapse-item" href="#" load="load/change-psycholog-profile">Profile</a> --}}
                 </div>
             </div>
         </li>
