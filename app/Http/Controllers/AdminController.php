@@ -6,6 +6,7 @@ use App\Models\Accounts;
 use App\Models\Admin;
 use App\Models\Articles;
 use App\Models\Communities;
+use App\Models\Consultant;
 use App\Models\Expertise;
 use App\Models\Profile;
 use App\Models\Psychologs;
@@ -44,6 +45,20 @@ class AdminController extends Controller
     public function showCreateExpertise()
     {
         return view("admin.create-expertise");
+    }
+
+    public function viewSpecificSchedules(Request $request, string $schedule_id)
+    {
+        try {
+            $schedule = PsychologSchedule::where('schedule_id', $schedule_id)->first();
+            $consultant = Consultant::where('schedule_id', $schedule_id)->first();
+            $user = User::where('id', $consultant->user_id)->first();
+            $account = Accounts::where('email', $user->email)->first();
+            return view('admin.specific-schedule', compact('schedule', 'consultant', 'account'));
+        } catch (\Throwable $th) {
+            Alert::error('Gagal', 'Terjadi masalah');
+            return redirect()->back();
+        }
     }
 
     // PASSED
@@ -770,12 +785,18 @@ class AdminController extends Controller
         return view("admin.create-schedule");
     }
 
-    public function createSchedule(Request $req)
+    public function createSchedule(Request $request)
     {
         try {
-            $cred = $req->only('psycholog_id', 'date', 'start_hour', 'end_hour', 'location');
-            // dd($cred);
-            PsychologSchedule::create($cred);
+            $userId = $request->attributes->get('user_id');
+
+            PsychologSchedule::create([
+                "psycholog_id" => $userId,
+                "date" => $request->date,
+                "start_hour" => $request->start_hour,
+                "end_hour" => $request->end_hour,
+                "location" => $request->location,
+            ]);
             Alert::success('Berhasil', 'Jadwal psikolog berhasil dibuat!');
             return redirect()->back();
         } catch (\Exception $e) {
