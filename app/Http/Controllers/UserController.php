@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Accounts;
+use App\Models\Expertise;
 use App\Models\Psychologs;
 use App\Models\User;
 use Illuminate\Support\Facades\Cookie;
@@ -14,8 +15,16 @@ class UserController extends Controller
         $userId = request()->attributes->get('user_id');
         $user = User::where('id', $userId)->first();
         $account = Accounts::where('email', $user->email)->first();
-        $psychologs = Psychologs::all();
-        return view('mobile.dashboard', ["name" => $account->name, "psychologs" => $psychologs]);
+        $psychologAll = Psychologs::all();
+        $psychologs = collect();
+        foreach ($psychologAll as $key => $psycholog) {
+            $user = User::where('email', $psycholog->email)->first();
+            $expertise = Expertise::where('psycholog_id', $user->id)->get();
+            if ($expertise) {
+                $psychologs->push(compact('expertise', 'psycholog'));
+            }
+        }
+        return view('mobile.dashboard', compact('account', 'psychologs'));
     }
 
     public function profile()
