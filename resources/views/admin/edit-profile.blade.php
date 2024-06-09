@@ -24,6 +24,11 @@
                             value="{{ $psycholog->phone_number }}">
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Deskripsi Singkat</label>
+                        <input type="text" class="form-control" placeholder="Deskripsi Singkat Anda" name="description"
+                            value="{{ $psycholog->description }}">
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Foto Profile</label>
                         <input type="file" name="image" class="form-control">
                     </div>

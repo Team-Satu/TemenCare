@@ -742,14 +742,20 @@ class AdminController extends Controller
             $user = User::where('id', $userId)->first();
             $phoneNumber = $request['phone_number'];
             $fullName = trim($request['full_name']);
-            $imageName = time() . '.' . $request->file('image')->extension();
-            $request->image->move(public_path('images'), $imageName);
+            $description = trim($request['description']);
 
-            Psychologs::where('email', $user->email)->update([
-                "full_name" => $fullName,
-                "phone_number" => $phoneNumber,
-                "image_url" => $imageName
-            ]);
+            $psycholog = Psychologs::where('email', $user->email)->first();
+            $psycholog->full_name = $fullName;
+            $psycholog->phone_number = $phoneNumber;
+            $psycholog->description = $description;
+
+            if ($request->image) {
+                $imageName = time() . '.' . $request->file('image')->extension();
+                $request->image->move(public_path('images'), $imageName);
+                $psycholog->image_url = $imageName;
+            }
+
+            $psycholog->save();
 
             Alert::success('Berhasil memperbarui profile Anda!');
             return redirect(route('admin.show-edit-profile'));
