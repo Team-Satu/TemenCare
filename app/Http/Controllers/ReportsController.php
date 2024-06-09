@@ -46,14 +46,15 @@ class ReportsController extends Controller
     public function deleteReports(Request $request)
     {
         try {
-            $reportId = $request->get('report_id');
-            dd($reportId);
-            $reports = Reports::find($reportId);
-            if ($reports) {
-                $reports->delete();
-                return redirect()->route('route.name');
+            $reportId = $request->report_id;
+            $myReports = Reports::where('report_id', $reportId)->first();
+            if ($myReports) {
+                $myReports->delete();
+                Alert::success('Berhasil', 'Report berhasil dihapus!');
+                return redirect()->back();
             } else {
-                return redirect()->back()->with('error', 'Report not found');
+                Alert::error('Gagal', 'Report gagal dihapus!');
+                return redirect()->back();
             }
         } catch (\Throwable $th) {
             Alert::error('Gagal', 'Terjadi masalah!');

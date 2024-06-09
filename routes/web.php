@@ -297,6 +297,7 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::post("/kenalan", [KenalanController::class, 'upsertProfile'])->name("user.save-kenalan");
     Route::delete("/kenalan", [KenalanController::class, 'deleteProfile'])->name("user.delete-kenalan");
 
+    Route::delete("/report/{report_id}", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
     // // Reports
     // Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
 });
@@ -304,7 +305,6 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
 // Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
 // Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
 // Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-// Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
 
 
 // Reports

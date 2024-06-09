@@ -46,11 +46,15 @@
                 <div x-show="tab === 'my-reports'" style="display: none; margin-top: -4px" class="px-4 space-y-4">
                     @foreach ($myReports as $myReport)
                         <div class="w-full bg-white shadow-md border rounded-3xl py-2 px-4">
-                            <button class="w-full grid justify-items-end">
+                        <form method="POST" action="{{ route('user.delete-report', ['report_id' => $myReport->report_id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="w-full grid justify-items-end">
                                 <div class="w-6 h-4 justify-center items-center flex bg-neutral-100 rounded-sm">
-                                    <i class="fa-solid fa-ellipsis"></i>
+                                    <i class="fa-solid fa-trash-can" style="color: #ff3d3d;"></i>
                                 </div>
                             </button>
+                        </form>
                             <div class="flex w-full mt-[2px] items-center space-x-2">
                                 <div class="">
                                     <h2 class="text-black text-xs poppins-medium">
