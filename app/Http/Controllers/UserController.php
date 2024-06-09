@@ -31,6 +31,14 @@ class UserController extends Controller
         return view('mobile.dashboard', compact('account', 'psychologs'));
     }
 
+
+    public function specificHistoryConsultant(Request $request, string $consultant_id)
+    {
+        $consultant = Consultant::where('consultant_id', $consultant_id)->first();
+        $psycholog = Psychologs::where('id', $consultant->psycholog_id)->first();
+        return view('mobile.history-detail', compact('psycholog'));
+    }
+
     public function historyConsultant(Request $request)
     {
         try {
