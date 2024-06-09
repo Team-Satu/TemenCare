@@ -21,16 +21,15 @@
                 <div class="overflow-x-auto flex">
                     @foreach ($psychologs as $psycholog)
                         <div class="w-48 border border-gray-200 rounded-2xl mt-6 flex-none mr-6">
-                            <div
-                                class="rounded-t-2xl h-36 w-full bg-[url(https://images.unsplash.com/photo-1651008376811-b90baee60c1f?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-center bg-cover">
-                            </div>
+                            <img src="./images/{{$psycholog->image_url}}"
+                                alt="Image description" class="bg-center bg-cover object-cover rounded-t-2xl h-36 w-full bg-gray-200">
                             <div class="bg-white w-full rounded-b-2xl py-2">
                                 <h1
-                                    class="text-center text-sky-600 text-xs font-semibold font-['Poppins'] capitalize leading-normal tracking-wide px-2">
+                                    class="text-center text-sky-600 text-xs font-semibold font-['Poppins'] capitalize leading-normal tracking-wide px-4">
                                     {{ $psycholog->full_name }}</h1>
                                 <div
                                     class="text-center text-neutral-600 text-[10px] px-2 font-normal font-['Poppins'] capitalize tracking-wide my-2">
-                                    Psikolog Industri & Organisasi <br />Spesialis Karir</div>
+                                    {{ $psycholog->description ?: '-' }}</div>
 
                                 <div class="px-2 my-1">
                                     <div
