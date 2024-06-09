@@ -27,21 +27,56 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Get all buttons with data-modal attribute
+        const buttonsCOnsult = document.querySelectorAll('[data-modal-consult]');
+
+        buttonsCOnsult.forEach(button => {
+            button.addEventListener('click', async function() {
+                const modalContent = JSON.parse(this.getAttribute('data-modal-consult'));
+
+                const {
+                    value: text
+                } = await Swal.fire({
+                    input: 'textarea',
+                    inputLabel: 'Ceritakan Keluhan mu',
+                    inputPlaceholder: 'Saya mengalami...',
+                    showCancelButton: false,
+                    confirmButtonText: 'Kirim'
+                });
+
+                if (text && modalContent['schedule_id']) {
+                    const result = await Swal.fire({
+                        title: 'Anda yakin konsultasi?',
+                        showCancelButton: true,
+                        confirmButtonText: 'Yakin'
+                    });
+
+                    if (result.isConfirmed) {
+                        fetch('/psycholog', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                },
+                                body: JSON.stringify({
+                                    schedule_id: modalContent['schedule_id'],
+                                    reason: text
+                                })
+                            })
+                            .then(data => {
+                                Swal.fire('Berhasil Atur Jadwal!');
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                Swal.fire('Error',
+                                    'There was an error submitting your message',
+                                    'error');
+                            });
+                    }
+                }
+            });
+        });
+
         const buttons = document.querySelectorAll('[data-modal]');
-
-        // buttons.forEach(button => {
-        //     button.addEventListener('click', function() {
-        //         const modalContent = JSON.parse(this.getAttribute('data-modal'));
-
-        //         Swal.fire({
-        //             title: modalContent.title,
-        //             text: modalContent.text,
-        //             icon: modalContent.icon,
-        //             confirmButtonText: 'OK'
-        //         });
-        //     });
-        // });
-
         buttons.forEach(button => {
             button.addEventListener('click', async function() {
                 const modalContent = JSON.parse(this.getAttribute('data-modal'));

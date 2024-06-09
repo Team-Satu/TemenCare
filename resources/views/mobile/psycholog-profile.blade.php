@@ -98,7 +98,30 @@
                                 </div>
                             </div>
                         </div>
-                        <div x-show="tab === 'my-kenalan'" class="px-4 space-y-4">
+                        <div x-show="tab === 'schedule'" class="px-6 space-y-4 py-2">
+                            @foreach ($schedules as $schedule)
+                                <div class="">
+                                    <h1
+                                        class="text-neutral-600 text-xs font-medium capitalize leading-normal tracking-wide text-left">
+                                        {{ $schedule['tanggal'] }}</h1>
+                                    <hr class="mt-1" />
+                                    <div class="w-full my-2 space-y-2">
+                                        @foreach ($schedule['schedules'] as $jadwal)
+                                            @php
+                                                $startHour = $jadwal['start_hour'];
+                                                $endHour = $jadwal['end_hour'];
+                                            @endphp
+                                            <button data-modal-consult='{"schedule_id": "{{ $jadwal['schedule_id'] }}"}'
+                                                class="w-full px-4 items-center border hover:border-[#7CC1E8] rounded-xl py-2 hover:cursor-pointer text-[#949494] hover:text-sky-600">
+                                                <p
+                                                    class="text-center text-xs font-medium capitalize leading-3 tracking-wide">
+                                                    {{ $startHour }} -
+                                                    {{ $endHour }}<br />{{ $jadwal['location'] }}</p>
+                                            </button>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @endforeach
                             {{-- @foreach ($myKenalan as $kenalan)
                             <div class="w-full flex flex-row bg-white shadow-md border rounded-2xl py-6 px-4">
                                 <div class="flex flex-1 space-x-2">

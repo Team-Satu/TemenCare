@@ -770,12 +770,18 @@ class AdminController extends Controller
         return view("admin.create-schedule");
     }
 
-    public function createSchedule(Request $req)
+    public function createSchedule(Request $request)
     {
         try {
-            $cred = $req->only('psycholog_id', 'date', 'start_hour', 'end_hour', 'location');
-            // dd($cred);
-            PsychologSchedule::create($cred);
+            $userId = $request->attributes->get('user_id');
+
+            PsychologSchedule::create([
+                "psycholog_id" => $userId,
+                "date" => $request->date,
+                "start_hour" => $request->start_hour,
+                "end_hour" => $request->end_hour,
+                "location" => $request->location,
+            ]);
             Alert::success('Berhasil', 'Jadwal psikolog berhasil dibuat!');
             return redirect()->back();
         } catch (\Exception $e) {

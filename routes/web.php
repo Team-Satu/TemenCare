@@ -300,9 +300,7 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::delete("/kenalan", [KenalanController::class, 'deleteProfile'])->name("user.delete-kenalan");
 
     Route::get("/psycholog/{psycholog_id}", [PsychologyController::class, 'psychologDetail'])->name("user.psycholog-detail");
-
-    // // Reports
-    // Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
+    Route::post("/psycholog", [PsychologyController::class, 'psychologClaim'])->name("user.psycholog-create");
 });
 
 // Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
