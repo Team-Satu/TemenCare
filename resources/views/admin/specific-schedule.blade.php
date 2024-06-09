@@ -52,4 +52,22 @@
             </div>
         </div>
     </div>
+    <script>
+        function setDone(scheduleId) {
+            const csrfToken = '{{ csrf_token() }}'; // Mendapatkan token CSRF dari Laravel
+
+            return fetch(`/admin/show_schedule/${scheduleId}/finish`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': csrfToken // Mengirimkan token CSRF
+                    },
+                }).then(data => {
+                    window.location.href = '/admin/dashboard';
+                })
+                .catch(error => {
+                    window.location.href = '/admin/dashboard';
+                });
+        }
+    </script>
 @endsection
