@@ -56,6 +56,9 @@ class PsychologyController extends Controller
             PsychologSchedule::where('schedule_id', $schedule_id)->update([
                 "status" => 1
             ]);
+            Consultant::where('schedule_id', $schedule_id)->update([
+                "status" => 1
+            ]);
 
             Alert::success('Berhasil', 'Memperbarui status konsultasi!');
             return redirect()->back();
