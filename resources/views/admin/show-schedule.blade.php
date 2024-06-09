@@ -37,9 +37,8 @@
                                                 class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         @endif
                                         @if ($schedule->status > 0)
-                                            <button type="button" class="btn btn-success" id="changePasswordPsycholog"
-                                                onclick="changePage('schedules/edit/{{ $schedule->psycholog_id }}')"><i
-                                                    class="fas fa-book"></i></button>
+                                            <a href="{{ route('admin.show-spicifc-schedule', ['schedule_id' => $schedule->schedule_id]) }}"
+                                                class="btn btn-success"><i class="fas fa-book"></i></a>
                                         @endif
                                     </div>
                                 </td>
@@ -66,12 +65,6 @@
                 .catch(error => {
                     window.location.href = '/admin/dashboard';
                 });
-        }
-
-        function changePage(targetLoad) {
-            const loading = "<h2>Loading...</h2>";
-            $("#load-page").html(loading);
-            $("#load-page").load("/admin" + targetLoad);
         }
     </script>
 @endsection

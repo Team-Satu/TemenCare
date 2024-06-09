@@ -26,100 +26,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/template', function () {
-    return view('template-mobile-view');
-});
-
-// Daftar Fitur Kenalan
-Route::get('/persetujuan-kenalan', function () {
-    return view('mobile-kenalan-persetujuan');
-});
-
-Route::get('/daftar-kenalan', function () {
-    return view('mobile-daftar-fitur-kenalan');
-});
-
-// Halaman Kenalan
-Route::get('/halaman-kenalan', function () {
-    return view('mobile-halaman-kenalan');
-});
-
-Route::get('/ubah-profile-kenalan', function () {
-    return view('mobile-halaman-kenalan-ubahprofile');
-});
-
-Route::get('/kenalan-kamu', function () {
-    return view('mobile-halaman-kenalankamu');
-});
-
-Route::get('/berhenti-kenalan', function () {
-    return view('mobile-kenalan-berhentikenalan');
-});
-
-// Login user
-Route::get('/login', function () {
-    return view('login-igracias');
-});
-
-Route::get("/home", function () {
-    $userName = request()->cookie('temen_cookie');
-    return "User Name: $userName";
-});
-
-Route::get("/is-valid", function () {
-    $userId = request()->attributes->get('user_id');
-
-    return "Berhasil masuk $userId";
-})->middleware(EnsureTemenTokenCookieIsValid::class);
-
-// Show user profile
-Route::get('/user-profile', function () {
-    return view('mobile-profile');
-});
-
-// Show lapor all
-Route::get('/reports', function () {
-    return view('mobile-reports');
-});
-// Show your lapor
-Route::get('/your reports', function () {
-    return view('mobile-your-reports');
-});
-
-Route::get('/articles', function () {
-    return view('articles');
-});
-
-// Show articles
-Route::get('/articles', function () {
-    return view('mobile-articles');
-});
-
-Route::get('/communities', function () {
-    return view('mobile-communities');
-});
-
-Route::get('/communities-detail', function () {
-    return view('mobile-communities-detail');
-});
-
-
 // Admin & Psycholog Routing - UnAuthenticated
 Route::get('/admin', [AdminController::class, 'index'])->name("admin.login");
 Route::post('/admin', [AdminController::class, 'login'])->name("admin.login");
-
-// Route::get('/register-psycholog', function () {
-//     return view("admin-load.register-psycholog");
-// })->name("admin.register-psycholog");
-
-// // Psycholog Schedules
-// Route::get('/psycholog_schedules', function () {
-//     return view('admin-load.psycholog-schedules');
-// })->name("admin-load.psycholog-schedules");
 
 // Admin & Psycholog Routing - Authenticated
 Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
@@ -202,6 +111,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
 
     // Psycholog -> Schedule -> Show List Schedule
     Route::get("/show-schedule", [AdminController::class, 'viewSchedules'])->name("admin.show-schedule");
+    Route::get("/show-schedule/{schedule_id}", [AdminController::class, 'viewSpecificSchedules'])->name("admin.show-spicifc-schedule");
 
     // Profile -> Edit Profile
     Route::get("/profile", [AdminController::class, 'showEditProfile'])->name("admin.show-edit-profile");
@@ -215,7 +125,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     Route::delete("/delete-schedule/{schedule_id}", [AdminController::class, 'deleteSchedule'])->name("admin.delete-schedule");
 });
 
-// Only admin load purpose - Authenticated
+// Only admin purpose - Authenticated
 Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->group(function () {
     Route::get('/psycholog-schedules', [AdminController::class, 'index'])->name('psycholog-schedules.index');
     Route::get('/psycholog-schedules/create', [AdminController::class, 'create'])->name('psycholog-schedules.create');
@@ -223,7 +133,6 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     Route::get('/psycholog-schedules/{id}/edit', [AdminController::class, 'edit'])->name('psycholog-schedules.edit');
     Route::put('/psycholog-schedules/{id}', [AdminController::class, 'update'])->name('psycholog-schedules.update');
     Route::delete('/psycholog-schedules/{id}', [AdminController::class, 'destroy'])->name('psycholog-schedules.destroy');
-
     Route::get("/add-psycholog-profile", [AdminController::class, 'showAddProfile'])->name("adminload.add-psycholog-profile");
     Route::get('/psycholog-communities/{community_id}', [AdminController::class, 'showCommunitiesDetail'])->name("adminload.psycholog-communities");
     Route::put('/psycholog-communities/{post_id}', [AdminController::class, 'updateCommunityPost'])->name('adminload.psycholog-communities.update');
@@ -260,18 +169,6 @@ Route::middleware(EnsureTemenTokenCookieIsValid::class)->group(function () {
     Route::get("/psycholog/{psycholog_id}", [PsychologyController::class, 'psychologDetail'])->name("user.psycholog-detail");
     Route::post("/psycholog", [PsychologyController::class, 'psychologClaim'])->name("user.psycholog-create");
 });
-
-// Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
-// Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
-// Route::post("/reports", [ReportsController::class, 'changeReport'])->name("user.change-report");
-// Route::delete("/reports", [ReportsController::class, 'deleteReports'])->name("user.delete-report");
-
-
-// Reports
-// Route::get("/reports", [ReportsController::class, 'reports'])->name("user.reports");
-// Route::get("/your reports", [ReportsController::class, 'yourReports'])->name("user.reports");
-// Route::post("/reports", [ReportsController::class, 'addReport'])->name("user.post-report");
-
 
 // show rating and feedback
 Route::get('/rating', function () {
