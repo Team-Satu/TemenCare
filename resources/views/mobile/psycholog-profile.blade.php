@@ -112,7 +112,7 @@
                                                 $endHour = $jadwal['end_hour'];
                                             @endphp
                                             <button data-modal-consult='{"schedule_id": "{{ $jadwal['schedule_id'] }}"}'
-                                                class="w-full px-4 items-center border hover:border-[#7CC1E8] rounded-xl py-2 hover:cursor-pointer text-[#949494] hover:text-sky-600">
+                                                class="w-full px-4 items-center border hover:border-[#7CC1E8] rounded-xl py-2 hover:cursor-pointer text-[#949494] hover:text-sky-600" name="schedule">
                                                 <p
                                                     class="text-center text-xs font-medium capitalize leading-3 tracking-wide">
                                                     {{ $startHour }} -
