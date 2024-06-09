@@ -14,19 +14,15 @@ class DeleteReportTest extends DuskTestCase
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $this->browse(function (Browser $browser) {
-                $browser->visit('/login')
-                ->type('username', 'sabithaaulia')
-                ->type('password', 'Bulans@b1t')
-                ->press('Masuk')
-                ->assertPathIs('/dashboard')
-                ->clicklink('Lapor!')
-                ->click('button[data-modal]')
-                ->waitFor('.swal2-textarea')  // Wait for the SweetAlert textarea to be present
-                ->type('.swal2-textarea', 'hello')
-                ->press('Kirim')
-                ->waitFor('.swal2-confirm');  // Wait for the confirmation button to appear
-            });
+            $browser->visit('/login')
+            ->type('username', 'windykurniawan')
+            ->type('password', 'Y99drasil!')
+            ->press('Masuk')
+            ->assertPathIs('/dashboard')
+            ->clicklink('Lapor!')
+            ->press('Laporan Kamu')
+            ->pause(1000)
+            ->click('.fa-trash-can');
         });
     }
 }
