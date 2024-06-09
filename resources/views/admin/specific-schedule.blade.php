@@ -49,27 +49,8 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    {{-- <button type="button" class="btn btn-success" onclick="setDone({{ $schedule->schedule_id }})">Tandai
-                        Selesai</button> --}}
                 </form>
             </div>
         </div>
     </div>
-    {{-- <script>
-        function setDone(scheduleId) {
-            const csrfToken = '{{ csrf_token() }}';
-            return fetch(`/admin/finish-schedule/${scheduleId}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken
-                    },
-                }).then(data => {
-                    window.location.href = `/admin/show-schedule/${scheduleId}`;
-                })
-                .catch(error => {
-                    window.location.href = `/admin/show-schedule/${scheduleId}`;
-                });
-        }
-    </script> --}}
 @endsection

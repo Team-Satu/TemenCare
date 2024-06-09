@@ -114,7 +114,7 @@ Route::middleware(EnsureAdminTemenTokenCookieIsValid::class)->prefix("admin")->g
     Route::get("/show-schedule/{schedule_id}", [AdminController::class, 'viewSpecificSchedules'])->name("admin.show-spicifc-schedule");
     Route::post("/show-schedule/{schedule_id}", [PsychologyController::class, 'updateConsultant'])->name("admin.update-spcifc-schedule");
     Route::post("/finish-schedule/{schedule_id}", [PsychologyController::class, 'consultantSetFinish'])->name("admin.consultant-finish");
-    Route::delete("/show-schedule/{schedule_id}", [PsychologyController::class, 'deleteConsultant'])->name("admin.update-spicifc-schedule");
+    Route::delete("/show-schedule/{schedule_id}", [PsychologyController::class, 'deleteConsultant'])->name("admin.delete-spicifc-schedule");
 
     // Profile -> Edit Profile
     Route::get("/profile", [AdminController::class, 'showEditProfile'])->name("admin.show-edit-profile");

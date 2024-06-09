@@ -33,8 +33,14 @@
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                         @if ($schedule->status < 1)
-                                            <button type="button" onclick="deleteSchedule({{ $schedule->schedule_id }})"
-                                                class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                            <form
+                                                action="{{ route('admin.delete-spicifc-schedule', ['schedule_id' => $schedule->schedule_id]) }}"
+                                                method="POST">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger"><i
+                                                        class="fas fa-trash"></i></button>
+                                            </form>
                                         @endif
                                         @if ($schedule->status > 0)
                                             <a href="{{ route('admin.show-spicifc-schedule', ['schedule_id' => $schedule->schedule_id]) }}"
