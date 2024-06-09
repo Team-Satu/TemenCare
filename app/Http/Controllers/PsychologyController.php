@@ -28,6 +28,58 @@ class PsychologyController extends Controller
         return view('mobile.psycholog-profile', compact('psycholog', 'expertise', 'alumnus', 'job', 'building', 'legal', 'schedules'));
     }
 
+    public function updateConsultant(Request $request, string $schedule_id)
+    {
+        try {
+            $url = trim($request->url);
+            $diagnose = trim($request->diagnose);
+            $advice = trim($request->advice);
+
+            Consultant::where('schedule_id', $schedule_id)->update([
+                "diagnose" => $diagnose,
+                "advice" => $advice,
+                "url" => $url
+            ]);
+
+            Alert::success('Berhasil', 'Memperbarui detail konsultasi!');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return redirect()->back();
+        }
+    }
+
+    public function consultantSetFinish(Request $request, string $schedule_id)
+    {
+        try {
+            PsychologSchedule::where('schedule_id', $schedule_id)->update([
+                "status" => 1
+            ]);
+
+            Alert::success('Berhasil', 'Memperbarui status konsultasi!');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return redirect()->back();
+        }
+    }
+
+    public function deleteConsultant(Request $request, string $schedule_id)
+    {
+        try {
+            PsychologSchedule::where('schedule_id', $schedule_id)->delete();
+
+            Alert::success('Berhasil', 'Menghapus konsultasi!');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            dd($th);
+            Alert::error('Gagal', 'Terjadi masalah!');
+            return redirect()->back();
+        }
+    }
+
     public function psychologClaim(Request $request)
     {
         try {
