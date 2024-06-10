@@ -10,10 +10,6 @@
                 <div class="relative items-center flex flex-col">
                     <img class ="flex w-[180px] h-[180px] rounded-2xl bg-gray-200 object-cover"
                         src="/images/{{ $psycholog->image_url }}" />
-                    <div class="inline-flex bg-white py-1 px-2 space-x-1 rounded-full -mt-2 shadow">
-                        <img src="/img/ph_star-fill.svg" />
-                        <h1 class="text-black text-xs font-bold font-['Poppins'] tracking-wide">5.0</h1>
-                    </div>
                 </div>
                 <div class="px-4 text-center space-y-1 w-full">
                     <h1

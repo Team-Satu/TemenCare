@@ -64,6 +64,7 @@
                             })
                             .then(data => {
                                 Swal.fire('Berhasil Atur Jadwal!');
+                                window.location.href = '/history';
                             })
                             .catch(error => {
                                 console.error('Error:', error);
