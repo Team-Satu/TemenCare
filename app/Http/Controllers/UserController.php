@@ -36,7 +36,10 @@ class UserController extends Controller
     {
         $consultant = Consultant::where('consultant_id', $consultant_id)->first();
         $psycholog = Psychologs::where('id', $consultant->psycholog_id)->first();
-        return view('mobile.history-detail', compact('psycholog'));
+        $user = User::where('email', $psycholog->email)->first();
+        $expertise = Expertise::where('psycholog_id', $user->id)->get();
+        $schedule = PsychologSchedule::where('schedule_id', $consultant->schedule_id)->first();
+        return view('mobile.history-detail', compact('psycholog', 'expertise', 'consultant', 'schedule'));
     }
 
     public function historyConsultant(Request $request)

@@ -10,10 +10,10 @@
                 <div class="relative items-center flex flex-col">
                     <img class ="flex w-[180px] h-[180px] rounded-2xl bg-gray-200 object-cover"
                         src="/images/{{ $psycholog->image_url }}" />
-                    <div class="inline-flex bg-white py-1 px-2 space-x-1 rounded-full -mt-2 shadow">
+                    {{-- <div class="inline-flex bg-white py-1 px-2 space-x-1 rounded-full -mt-2 shadow">
                         <img src="/img/ph_star-fill.svg" />
                         <h1 class="text-black text-xs font-bold font-['Poppins'] tracking-wide">5.0</h1>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="px-4 text-center space-y-1 w-full">
                     <h1
@@ -30,102 +30,63 @@
                         @endforeach
                     </div>
                 </div>
-                <div x-data="{ tab: 'profil' }" class="w-full mt-2">
-                    <div class="grid grid-cols-2 w-full text-xs poppins-medium leading-normal tracking-tight">
-                        <button @click="tab = 'profil'"
-                            :class="{ 'border-[#2196F3] border-b-2 text-[#2196F3]': tab === 'profil', 'text-[#666666]': tab !== 'profil' }"
-                            class="col-span-1 text-center py-2">
-                            Profil Psikolog
-                        </button>
-                        <button @click="tab = 'schedule'"
-                            :class="{ 'border-[#2196F3] border-b-2 text-[#2196F3]': tab === 'schedule', 'text-[#666666]': tab !== 'schedule' }"
-                            class="col-span-1 text-center py-2">
-                            Jadwal
-                        </button>
+                <div class="w-full mt-4 flex flex-1 px-6 flex-col space-y-4">
+                    <hr>
+                    <div class="space-y-1">
+                        <h2 class="text-gray-800 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
+                            Status</h2>
+                        @if ($consultant->status > 0)
+                            <h2 class="text-green-600 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
+                                Selesai</h2>
+                        @else
+                            <h2 class="text-[#2196F3] text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
+                                Sedang Berlangsung</h2>
+                        @endif
                     </div>
-                    <div class="flex flex-1 flex-col py-4 bg-white">
-                        <div x-show="tab === 'profil'" class="px-4">
-                            <div class="w-full flex px-4 space-x-4 py-4">
-                                <img src="/img/nimbus_university.svg" class="h-10" />
-                                <div>
-                                    <h1 class="text-neutral-600 text-xs font-semibold font-['Poppins'] tracking-wide">
-                                        Alumnus</h1>
-                                    <div>
-                                        @foreach ($alumnus as $alumni)
-                                            <p class="text-neutral-600 text-xs font-normal font-['Poppins'] tracking-wide">
-                                                {{ $alumni->title }}</p>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full flex px-4 space-x-4 py-4">
-                                <img src="/img/material-symbols_work-outline.svg" class="h-10" />
-                                <div>
-                                    <h1 class="text-neutral-600 text-xs font-semibold font-['Poppins'] tracking-wide">
-                                        Pengalaman Kerja</h1>
-                                    <div>
-                                        @foreach ($job as $kerja)
-                                            <p class="text-neutral-600 text-xs font-normal font-['Poppins'] tracking-wide">
-                                                {{ $kerja->title }}</p>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full flex px-4 space-x-4 py-4">
-                                <img src="/img/mingcute_hospital-line.svg" class="h-10" />
-                                <div>
-                                    <h1 class="text-neutral-600 text-xs font-semibold font-['Poppins'] tracking-wide">
-                                        Tempat Praktek</h1>
-                                    <div>
-                                        @foreach ($building as $lokasi)
-                                            <p class="text-neutral-600 text-xs font-normal font-['Poppins'] tracking-wide">
-                                                {{ $lokasi->title }}</p>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full flex px-4 space-x-4 py-4">
-                                <img src="/img/la_university.svg" class="h-10" />
-                                <div>
-                                    <h1 class="text-neutral-600 text-xs font-semibold font-['Poppins'] tracking-wide">
-                                        Nomor STR</h1>
-                                    <div>
-                                        @foreach ($legal as $legal)
-                                            <p class="text-neutral-600 text-xs font-normal font-['Poppins'] tracking-wide">
-                                                {{ $legal->title }}</p>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div x-show="tab === 'schedule'" class="px-6 space-y-4 py-2">
-                            @foreach ($schedules as $schedule)
-                                <div class="">
-                                    <h1
-                                        class="text-neutral-600 text-xs font-medium capitalize leading-normal tracking-wide text-left">
-                                        {{ $schedule['tanggal'] }}</h1>
-                                    <hr class="mt-1" />
-                                    <div class="w-full my-2 space-y-2">
-                                        @foreach ($schedule['schedules'] as $jadwal)
-                                            @php
-                                                $startHour = $jadwal['start_hour'];
-                                                $endHour = $jadwal['end_hour'];
-                                            @endphp
-                                            <button data-modal-consult='{"schedule_id": "{{ $jadwal['schedule_id'] }}"}'
-                                                class="w-full px-4 items-center border hover:border-[#7CC1E8] rounded-xl py-2 hover:cursor-pointer text-[#949494] hover:text-sky-600">
-                                                <p
-                                                    class="text-center text-xs font-medium capitalize leading-3 tracking-wide">
-                                                    {{ $startHour }} -
-                                                    {{ $endHour }}<br />{{ $jadwal['location'] }}</p>
-                                            </button>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
+                    <div class="space-y-1">
+                        <h2 class="text-gray-800 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
+                            Jadwal</h2>
+                        <h2 class="text-gray-800 text-xs font-normal font-['Poppins'] leading-normal tracking-wide">
+                            {{ $schedule->date }},
+                            {{ $schedule->start_hour }}-{{ $schedule->end_hour }} ({{ $schedule->location }})</h2>
+                    </div>
+                    <div class="space-y-1">
+                        <h2 class="text-gray-800 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
+                            Lokasi</h2>
+                        @if ($schedule->location === 'Online')
+                            <a href="{{ $consultant->url }}"
+                                class="px-4 py-1.5 bg-[#0288D1] rounded-3xl border border-[#0288D1] flex-col justify-center items-center inline-flex gap-2">
+                                <h1
+                                    class="text-center text-white text-xs font-medium font-['Poppins'] capitalize leading-normal tracking-wide">
+                                    Google Meet</h1>
+                            </a>
+                        @else
+                            <h1 class="text-gray-800 text-xs font-normal font-['Poppins'] leading-normal tracking-wide">
+                                {{ $consultant->url }}</h1>
+                        @endif
+                    </div>
+                    <div class="space-y-1">
+                        <h2 class="text-gray-800 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
+                            Keluhan</h2>
+                        <h1 class="text-gray-800 text-xs font-normal font-['Poppins'] leading-normal tracking-wide">
+                            {{ $consultant->complaint }}</h1>
+                    </div>
+                    <hr />
+                    <div class="space-y-1">
+                        <h2 class="text-gray-800 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
+                            Diagnosa</h2>
+                        <h1 class="text-gray-800 text-xs font-normal font-['Poppins'] leading-normal tracking-wide">
+                            {{ $consultant->diagnose }}</h1>
+                    </div>
+                    <div class="space-y-1">
+                        <h2 class="text-gray-800 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
+                            Saran</h2>
+                        <h1 class="text-gray-800 text-xs font-normal font-['Poppins'] leading-normal tracking-wide">
+                            {{ $consultant->advice }}</h1>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </main>
 @endsection
