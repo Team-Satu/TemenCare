@@ -22,8 +22,9 @@ class UpdateArticleTest extends DuskTestCase
             ->click('.nav-link.collapsed[data-target="#collapseArticles"]')
             ->pause(1000)
             ->click('.collapse-item[href="http://127.0.0.1:8000/admin/articles"]')
-            ->screenshot('tampilan') 
-            ->click('.btn.btn-info');
+            ->click('.btn.btn-info')
+            ->type('title', 'Prok Prok Jadi Apa?')
+            ->click('.btn.btn-primary');
         });
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class CreateArticleTest extends DuskTestCase
+class UpdatePsychologTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
@@ -19,14 +19,10 @@ class CreateArticleTest extends DuskTestCase
             ->type('password','sabitha123')
             ->press('Login')
             ->assertPathIs('/admin/dashboard')
-            ->click('.nav-link.collapsed[data-target="#collapseArticles"]')
-            ->pause(1000)
-            ->click('.collapse-item[href="http://127.0.0.1:8000/admin/create-article"]')
-            ->attach('image','/Users/rubyh/Documents/ic_launcher.png')
-            ->type('title','Artikel Bunuh Diri')
-            ->select('category', 'Mental')
-            ->type('url','https://search.app/enCraMxBUcUK8dhq7')
-            ->press('Buat Artikel');
+            ->visit('/admin/profile')
+            ->type('full_name', 'Update Nama Profile')
+            ->attach('image', '/Users/rubyh/Documents/ic_launcher.png')
+            ->click('.btn.btn-primary');
         });
     }
 }
