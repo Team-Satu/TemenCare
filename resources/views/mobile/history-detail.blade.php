@@ -39,7 +39,7 @@
                             <h2 class="text-green-600 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
                                 Selesai</h2>
                         @else
-                            <h2 class="text-[#2196F3] text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
+                            <h2 class="text-sky-500 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
                                 Sedang Berlangsung</h2>
                         @endif
                     </div>
@@ -76,13 +76,13 @@
                         <h2 class="text-gray-800 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
                             Diagnosa</h2>
                         <h1 class="text-gray-800 text-xs font-normal font-['Poppins'] leading-normal tracking-wide">
-                            {{ $consultant->diagnose }}</h1>
+                            {{ $consultant->diagnose ?: "-" }}</h1>
                     </div>
                     <div class="space-y-1">
                         <h2 class="text-gray-800 text-xs font-semibold font-['Poppins'] leading-normal tracking-wide">
                             Saran</h2>
                         <h1 class="text-gray-800 text-xs font-normal font-['Poppins'] leading-normal tracking-wide">
-                            {{ $consultant->advice }}</h1>
+                            {{ $consultant->advice ?: "-" }}</h1>
                     </div>
                 </div>
             </div>

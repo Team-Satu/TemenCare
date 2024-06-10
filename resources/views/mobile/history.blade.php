@@ -12,14 +12,21 @@
                     <p class="text-zinc-600 text-xs font-medium font-['Poppins'] leading-normal tracking-wide">Konsultasi
                         dengan
                     </p>
-                    <div
-                        class="px-4 py-1.5 rounded-3xl border border-sky-500 flex-col justify-center items-center inline-flex">
-                        <div class="justify-center items-center gap-2 inline-flex">
-                            <div
-                                class="text-center text-sky-500 text-xs font-medium font-['Poppins'] capitalize leading-normal tracking-wide">
-                                Berlangsung</div>
+                    @if ($hist['hist']['status'] > 0)
+                        <div
+                            class="px-4 py-1.5 rounded-3xl border border-green-600 bg-green-600 flex-col justify-center items-center inline-flex">
+                            <h1
+                                class="text-center text-white text-xs font-medium font-['Poppins'] capitalize leading-normal tracking-wide">
+                                Selesai</h1>
                         </div>
-                    </div>
+                    @else
+                        <div
+                            class="px-4 py-1.5 rounded-3xl border border-sky-500 flex-col justify-center items-center inline-flex">
+                            <h1
+                                class="text-center text-sky-500 text-xs font-medium font-['Poppins'] capitalize leading-normal tracking-wide">
+                                Sedang Berlangsung</h1>
+                        </div>
+                    @endif
                 </div>
                 <h1 class="text-gray-800 text-xs font-light font-['Poppins'] leading-normal tracking-wide">
                     {{ $hist['schedule']['date'] }},

@@ -46,7 +46,7 @@ class UserController extends Controller
     {
         try {
             $userId = $request->attributes->get('user_id');
-            $historyAll = Consultant::where('user_id', $userId)->get();
+            $historyAll = Consultant::where('user_id', $userId)->orderByDesc('created_at')->get();
             $history = collect();
             foreach ($historyAll as $key => $hist) {
                 $psycholog = Psychologs::where('id', $hist->psycholog_id)->first();
